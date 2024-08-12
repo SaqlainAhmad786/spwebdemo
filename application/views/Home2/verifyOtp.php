@@ -68,7 +68,7 @@
                 style="font-size: 24px; color: black;font-family: 'League Spartan', sans-serif; font-weight: 600;">
                 Verify with OTP
             </h1>
-            <p class="mb-1" style="font-size: 14px; color: gray;">Enter the OTP sent to your mobile number/email</p>
+            <p class="mb-1" style="font-size: 14px; color: gray;"> the OTP sent to your mobile number/email</p>
             <p class="mb-4" style="font-size: 16px;font-weight: 600;">+91 9876543210</p>
             <form id="otpForm" onsubmit="onFormSubmit(event)">
                 <div class="inputs" id="inputs">
