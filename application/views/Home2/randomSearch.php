@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Slick Pattern - Home </title>
+    <title> Slick Pattern - Random search </title>
     <?php include('include/cssLinks.php'); ?>
 </head>
 

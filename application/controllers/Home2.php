@@ -65,5 +65,11 @@ class Home2 extends Home_Controller
     public function products(){
    $this->load->view('Home2/products');
  }
+    public function cart(){
+   $this->load->view('Home2/cart');
+ }
+    public function address(){
+   $this->load->view('Home2/address');
+ }
     
 }

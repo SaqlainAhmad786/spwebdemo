@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Slick Pattern - Home </title>
+    <title> Slick Pattern - Wishlist </title>
     <?php include('include/cssLinks.php'); ?>
 </head>
 
@@ -18,8 +18,40 @@
             --color5: #683481;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        input {
+            font-family: 'Inter', sans-serif;
+        }
+
         input[type="checkbox"] {
             accent-color: var(--color2);
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: var(--color2) !important;
+        }
+
+        img {
+            width: 100%;
         }
 
         .btn:focus,
@@ -316,19 +348,43 @@
     </style>
     <?php include('include/header.php'); ?>
     <main>
-    <section>
+        <section>
+            <div class="saleStrip">
+                <p class="m-0 p-0" style="font-size: 26px; font-weight: 600;">EXTRA 10% OFF</p>
+                <div class="text-center py-2">
+                    <p class="m-0 p-0">USE CODE:</p>
+                    <p class="m-0 p-0" style="font-size: 28px; font-weight: 600;">SPFLAT20</p>
+                </div>
+
+            </div>
+        </section>
+        <section>
             <div class="px-lg-5 px-md-3 px-sm-3 px-3 mt-lg-5 mt-3 d-flex justify-content-between align-items-center"
                 style="font-style: 'League Spartan';">
                 <p class="font-weight-bold m-0" style="font-size: 20px;">My Wishlist <span
                         class="font-weight-normal text-secondary" style="font-size: 16px;">(0)</span></p>
-                <!-- <button class="btn m-0 p-0"><i class="fa-solid fa-rotate-right mr-1"></i>Clear</button> -->
-                <div class="selectBtns">
+                <button class="btn m-0 p-0 wishlistClearBtn"><i class="fa-solid fa-rotate-right mr-1"></i>Clear</button>
+                <dialog class="dialog2" id="wishlistClearDialog">
+                    <div>
+                        <button id="" aria-label="close" class="x wishlistClearCloseBtn">❌</button>
+                        <p class="font-weight-bold text-left m-0 p-0"
+                            style="font-family: 'League Spartan'; font-size: 32px;">Are you
+                            sure?</p>
+                        <hr class="my-2" />
+                        <p class="text-secondary">Are you sure you want to clear your wishlist?</p>
+                        <div>
+                            <button class="btn w-100 rounded-sm"
+                                style="background-color: var(--color1); color: white;">Confirm</button>
+                        </div>
+                    </div>
+                </dialog>
+                <!-- <div class="selectBtns">
                     <button><i class="fa-solid fa-cart-shopping"></i><span
                             class="d-none d-lg-inline d-md-inline d-sm-none"> Move to
                             Cart</span></button>
                     <button><i class="fa-solid fa-trash"></i><span class="d-none d-lg-inline d-md-inline d-sm-none">
                             Remove</span></button>
-                </div>
+                </div> -->
             </div>
         </section>
         <section>
@@ -346,29 +402,57 @@
                 </div>
             </div> -->
             <div class="px-3 px-lg-5 my-3 productContainer">
-                <div class="border text-center productCard">
-                    <div class="imageContainer">
-                        <img src="./images/product-1.jpg" alt="">
+                <div class="text-center text-decoration-none productCard">
+                    <a href="#" class="imageContainer">
+                        <div class="outOfStockLayer">
+                            <img src="./images/out-of-stock.png" alt="out of stock icon">
+                        </div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW2NXkjmT8p4x4kMkg73c2OJCrHncQbn26gg&s" alt="">
                         <input type="checkbox" name="" id="">
-                        <div class="stockTag">
+                        <!-- <div class="stockTag">
                             <p class="m-0 text-white font-weight-bold">5 left!</p>
                         </div>
                         <div class="preorderTag">
                             <p class="m-0 text-white font-weight-bold">Pre-Order</p>
-                        </div>
+                        </div> -->
+                    </a>
+                    <div class="border pb-3">
+                        <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
+                        <p class="m-0 mt-1">
+                            <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                            <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                2,999</span>
+                            <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                        </p>
                     </div>
-                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
-                    <p class="m-0 mt-1">
-                        <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
-                        <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
-                            2,999</span>
-                        <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
-                    </p>
-                    <button class="btn border-top w-100 mt-3 moveBtn">MOVE TO CART</button>
+                    <!-- <button class="btn border-top w-100 mt-3 moveBtn">MOVE TO
+                        CART</button> -->
+                    <button class="btn border w-100 notifyBtn
+                    notifyBtn">NOTIFY ME</button>
+                    <dialog class="dialog2 notifyDialog text-left" id="notifyDialog">
+                        <div>
+                            <button id="" aria-label="close" class="x notifyCloseBtn">❌</button>
+                            <p class="font-weight-bold text-left m-0 p-0"
+                                style="font-family: 'League Spartan'; font-size: 28px;">Get notified</p>
+                            <hr class="my-2" />
+                            <p class="text-secondary p-0">Get notified by email or WhatsApp for size restocks, price
+                                drops,
+                                or availability.</p>
+                            <form>
+                                <input type="text" name="" id="" placeholder="Enter Email id or WhatsApp number"
+                                    class="form-control">
+                                <button class="btn w-100 rounded-sm mt-2"
+                                    style="background-color: var(--color1); color: white;">Confirm</button>
+                            </form>
+                        </div>
+                    </dialog>
                 </div>
-                <div class="border text-center productCard">
-                    <div class="imageContainer">
-                        <img src="./images/product-1.jpg" alt="">
+                <div class="text-center text-decoration-none productCard">
+                    <a href="#" class="imageContainer">
+                        <!-- <div class="outOfStockLayer">
+                            <img src="./images/out-of-stock.png" alt="">
+                        </div> -->
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW2NXkjmT8p4x4kMkg73c2OJCrHncQbn26gg&s" alt="">
                         <input type="checkbox" name="" id="">
                         <div class="stockTag">
                             <p class="m-0 text-white font-weight-bold">5 left!</p>
@@ -376,99 +460,124 @@
                         <div class="preorderTag">
                             <p class="m-0 text-white font-weight-bold">Pre-Order</p>
                         </div>
+                    </a>
+                    <div class="border pb-3">
+                        <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
+                        <p class="m-0 mt-1">
+                            <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                            <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                2,999</span>
+                            <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                        </p>
                     </div>
-                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
-                    <p class="m-0 mt-1">
-                        <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
-                        <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
-                            2,999</span>
-                        <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
-                    </p>
-                    <button class="btn border-top w-100 mt-3 moveBtn">MOVE TO CART</button>
-                </div>
-                <div class="border text-center productCard">
-                    <div class="imageContainer">
-                        <img src="./images/product-1.jpg" alt="">
-                        <input type="checkbox" name="" id="">
-                        <div class="stockTag">
-                            <p class="m-0 text-white font-weight-bold">5 left!</p>
+                    <button class="btn border w-100 moveBtn">MOVE TO
+                        CART</button>
+                    <dialog class="dialog" id="dialog">
+                        <div>
+                            <div class="d-flex">
+                                <img src="./images/product-1.jpg" style="width: 80px;" alt="">
+                                <div class="ml-3 text-left">
+                                    <p class="m-0 p-0">Lorem, ipsum.</p>
+                                    <p class="m-0 p-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
+                                    <p class="m-0 p-0">
+                                        <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                        <span class="text-secondary"
+                                            style="text-decoration: line-through; font-size: 14px;">₹
+                                            2,999</span>
+                                        <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <hr class="my-2" />
+                            <p class="font-weight-bold text-left m-0 p-0"
+                                style="font-family: 'League Spartan'; font-size: 16px;">SELECT SIZE</p>
+                            <div class="text-left mt-2 stockBtns">
+                                <button class="sizeBtn">XS</button>
+                                <button class="sizeBtn outOfStock">S</button>
+                                <button class="sizeBtn">M</button>
+                                <button class="sizeBtn">L</button>
+                                <button class="sizeBtn">XL</button>
+                                <button class="sizeBtn">XXL</button>
+                            </div>
+                            <button class="btn w-100 mt-4"
+                                style="background-color: var(--color1); color: white;">DONE</button>
+                            <button id="closeModalBtn" aria-label="close" class="x closeModalBtn">❌</button>
                         </div>
-                        <div class="preorderTag">
-                            <p class="m-0 text-white font-weight-bold">Pre-Order</p>
+                    </dialog>
+                    <!-- <button class="btn border w-100 notifyBtn
+                    notifyBtn">NOTIFY ME</button> -->
+                    <dialog class="dialog2 notifyDialog text-left" id="notifyDialog">
+                        <div>
+                            <button id="" aria-label="close" class="x notifyCloseBtn">❌</button>
+                            <p class="font-weight-bold text-left m-0 p-0"
+                                style="font-family: 'League Spartan'; font-size: 28px;">Get notified</p>
+                            <hr class="my-2" />
+                            <p class="text-secondary p-0">Get notified by email or WhatsApp for size restocks, price
+                                drops,
+                                or availability.</p>
+                            <form>
+                                <input type="text" name="" id="" placeholder="Enter email address" class="form-control">
+                                <button class="btn w-100 rounded-sm mt-2"
+                                    style="background-color: var(--color1); color: white;">Confirm</button>
+                            </form>
                         </div>
-                    </div>
-                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
-                    <p class="m-0 mt-1">
-                        <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
-                        <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
-                            2,999</span>
-                        <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
-                    </p>
-                    <button class="btn border-top w-100 mt-3 moveBtn">MOVE TO CART</button>
-                </div>
-                <div class="border text-center productCard">
-                    <div class="imageContainer">
-                        <img src="./images/product-1.jpg" alt="">
-                        <input type="checkbox" name="" id="">
-                        <div class="stockTag">
-                            <p class="m-0 text-white font-weight-bold">5 left!</p>
-                        </div>
-                        <div class="preorderTag">
-                            <p class="m-0 text-white font-weight-bold">Pre-Order</p>
-                        </div>
-                    </div>
-                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
-                    <p class="m-0 mt-1">
-                        <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
-                        <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
-                            2,999</span>
-                        <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
-                    </p>
-                    <button class="btn border-top w-100 mt-3 moveBtn">MOVE TO CART</button>
-                </div>
-                <div class="border text-center productCard">
-                    <div class="imageContainer">
-                        <img src="./images/product-1.jpg" alt="">
-                        <input type="checkbox" name="" id="">
-                        <div class="stockTag">
-                            <p class="m-0 text-white font-weight-bold">5 left!</p>
-                        </div>
-                        <div class="preorderTag">
-                            <p class="m-0 text-white font-weight-bold">Pre-Order</p>
-                        </div>
-                    </div>
-                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
-                    <p class="m-0 mt-1">
-                        <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
-                        <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
-                            2,999</span>
-                        <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
-                    </p>
-                    <button class="btn border-top w-100 mt-3 moveBtn">MOVE TO CART</button>
-                </div>
-                <div class="border text-center productCard">
-                    <div class="imageContainer">
-                        <img src="./images/product-1.jpg" alt="">
-                        <input type="checkbox" name="" id="">
-                        <div class="stockTag">
-                            <p class="m-0 text-white font-weight-bold">5 left!</p>
-                        </div>
-                        <div class="preorderTag">
-                            <p class="m-0 text-white font-weight-bold">Pre-Order</p>
-                        </div>
-                    </div>
-                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
-                    <p class="m-0 mt-1">
-                        <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
-                        <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
-                            2,999</span>
-                        <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
-                    </p>
-                    <button class="btn border-top w-100 mt-3 moveBtn">MOVE TO CART</button>
+                    </dialog>
                 </div>
             </div>
         </section>
     </main>
+    <script>
+        const moveBtns = document.querySelectorAll('.moveBtn');
+        const modal = document.querySelectorAll('.dialog')
+        const closeModalBtn = document.querySelectorAll('.closeModalBtn')
+        const wishlistClearBtn = document.querySelector('.wishlistClearBtn')
+        const wishlistClearDialog = document.getElementById('wishlistClearDialog')
+        const wishlistClearCloseBtn = document.querySelector('.wishlistClearCloseBtn')
+        const notifyBtn = document.querySelectorAll('.notifyBtn')
+        const notifyDialog = document.querySelectorAll('.notifyDialog')
+        const notifyCloseBtn = document.querySelectorAll('.notifyCloseBtn')
+
+        moveBtns.forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                modal[i].showModal();
+                document.body.classList.toggle('modal-open');
+            })
+        })
+
+        closeModalBtn.forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                modal[i].close();
+                document.body.classList.toggle('modal-open');
+                console.log(i)
+            })
+        })
+
+        wishlistClearBtn.addEventListener('click', () => {
+            wishlistClearDialog.showModal();
+            document.body.classList.toggle('modal-open');
+        })
+
+        wishlistClearCloseBtn.addEventListener('click', () => {
+            wishlistClearDialog.close();
+            document.body.classList.toggle('modal-open');
+        })
+
+        notifyBtn.forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                notifyDialog[i].showModal();
+                document.body.classList.toggle('modal-open');
+            })
+        })
+
+        notifyCloseBtn.forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                notifyDialog[i].close();
+                document.body.classList.toggle('modal-open');
+                console.log(i)
+            })
+        })
+
+    </script>
     <?php include('include/footer.php'); ?>
     <!-- <?php include('include/modal.php'); ?> -->
     <?php include('include/jsLinks.php'); ?>
