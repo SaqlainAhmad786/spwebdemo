@@ -273,7 +273,7 @@
                                         style="font-size: 14px;" type="button" data-toggle="collapse"
                                         data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         <span class="font-weight-bold">
-                                            <img src="./images/upi.png" style="width: 20px;" alt="">
+                                            <img src="<?=base_url('assets/new_website/img/upi.png')?>" style="width: 20px;" alt="">
                                             UPI
                                             <span class="font-weight-normal">(Pay with any UPI app)</span></span>
                                         <i class="fa-solid fa-caret-down float-right mt-1"></i>
@@ -287,7 +287,7 @@
                                             <div class="d-flex align-items-center">
                                                 <input type="radio" name="onlinePayments" id="gpay" value="gpay" />
                                                 <div class="ml-2">
-                                                    <img src="./images/gpay-icon.png" style="width: 20px;" alt="">
+                                                    <img src="<?=base_url('assets/new_website/img/gpay-icon.png')?>" style="width: 20px;" alt="">
                                                 </div>
                                                 <p class="m-0 p-0 ml-2 font-weight-bold">Gpay</p>
                                             </div>
@@ -299,7 +299,7 @@
                                                 <input type="radio" name="onlinePayments" id="phonepe"
                                                     value="phonepe" />
                                                 <div class="icon2 ml-2">
-                                                    <img src="./images/phonepe.png" style="width: 20px;" alt="">
+                                                    <img src="<?=base_url('assets/new_website/img/phonepe.png')?>" style="width: 20px;" alt="">
                                                 </div>
                                                 <p class="m-0 p-0 ml-1 font-weight-bold">PhonePe</p>
                                             </div>
