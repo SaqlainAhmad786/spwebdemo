@@ -266,29 +266,6 @@
                         <div class="mt-2">
                             <p class="text-secondary m-0 p-0 font-weight-bold" style="font-size: 10px;">ONLINE PAYMENT
                                 METHODS</p>
-                            <!-- <div class="d-flex flex-column mt-1">
-                                <label for="pod"
-                                    class="d-flex align-items-center justify-content-between p-3 mb-0 recommendPayments">
-                                    <div class="d-flex align-items-center">
-                                        <input type="radio" name="recommendPayment" id="pod" value="pod" />
-                                        <p class="m-0 p-0 ml-2 font-weight-bold">Pay on delivery</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa-solid fa-money-bill-wave"></i>
-                                    </div>
-                                </label>
-                                <hr class="my-0">
-                                <label for="online"
-                                    class="d-flex align-items-center justify-content-between p-3 recommendPayments">
-                                    <div class="d-flex align-items-center">
-                                        <input type="radio" name="recommendPayment" id="online" value="online" />
-                                        <p class="m-0 p-0 ml-2 font-weight-bold">Gpay</p>
-                                    </div>
-                                    <div class="icon2">
-                                        <i class="fa-brands fa-google-pay" style="font-size: 20px;"></i>
-                                    </div>
-                                </label>
-                            </div> -->
                             <div class="card py-2 rounded-lg mt-1 border-0">
                                 <div class="" id="headingOne">
                                     <button
@@ -296,7 +273,7 @@
                                         style="font-size: 14px;" type="button" data-toggle="collapse"
                                         data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         <span class="font-weight-bold">
-                                            <img src="<?= base_url('assets/new_website/img/upi.png')?>" style="width: 20px;" alt="">
+                                            <img src="./images/upi.png" style="width: 20px;" alt="">
                                             UPI
                                             <span class="font-weight-normal">(Pay with any UPI app)</span></span>
                                         <i class="fa-solid fa-caret-down float-right mt-1"></i>
@@ -310,7 +287,7 @@
                                             <div class="d-flex align-items-center">
                                                 <input type="radio" name="onlinePayments" id="gpay" value="gpay" />
                                                 <div class="ml-2">
-                                                    <img src="<?= base_url('assets/new_website/img/gpay-icon.png')?>" style="width: 20px;" alt="">
+                                                    <img src="./images/gpay-icon.png" style="width: 20px;" alt="">
                                                 </div>
                                                 <p class="m-0 p-0 ml-2 font-weight-bold">Gpay</p>
                                             </div>
@@ -322,7 +299,7 @@
                                                 <input type="radio" name="onlinePayments" id="phonepe"
                                                     value="phonepe" />
                                                 <div class="icon2 ml-2">
-                                                    <img src="<?= base_url('assets/new_website/img/phonepe.png')?>" style="width: 20px;" alt="">
+                                                    <img src="./images/phonepe.png" style="width: 20px;" alt="">
                                                 </div>
                                                 <p class="m-0 p-0 ml-1 font-weight-bold">PhonePe</p>
                                             </div>
@@ -366,6 +343,19 @@
                                         </form>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-secondary m-0 p-0 font-weight-bold" style="font-size: 10px;">PAY ON DELIVERY
+                                OPTION</p>
+                            <div>
+                                <label for="cod" class="w-100 p-3 mb-0 recommendPayments">
+                                    <div class="d-flex align-items-center">
+                                        <input type="radio" name="cod" id="cod" value="cod" />
+                                        <p class="m-0 p-0 ml-2 font-weight-bold">Cash on delivery
+                                            <span class="font-weight-normal">(CASH/UPI)</span></p>
+                                    </div>
+                                </label>
                             </div>
                         </div>
                     </div>
