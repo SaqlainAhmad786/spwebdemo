@@ -71,5 +71,8 @@ class Home2 extends Home_Controller
     public function address(){
    $this->load->view('Home2/address');
  }
+    public function payment(){
+   $this->load->view('Home2/payment');
+ }
     
 }
