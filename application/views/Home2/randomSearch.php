@@ -158,6 +158,12 @@
         .swiper-button-prev::after {
             color: var(--color2);
         }
+
+        @media (width<568px){
+            .searchResults{
+                display: none!important;
+            }
+        }
     </style>
     <?php include('include/header.php'); ?>
     <main>
@@ -173,7 +179,7 @@
                     </form>
                     <div class="searchResults text-left">
                         <p class="font-weight-bold" style="font-size: 14px; font-family: 'League Spartan', sans-serif;">
-                            <img src="./images/search.png" class="" style="width: 16px;" alt="">
+                            <img src="<?=base_url('assets/new_website/img/search.png')?>" class="" style="width: 16px;" alt="">
                             SUGGESTIONS:
                         </p>
                         <ul>
@@ -192,7 +198,7 @@
                         </ul>
                         <p class="font-weight-bold d-flex align-items-center"
                             style="font-size: 14px; font-family: 'League Spartan', sans-serif;">
-                            <img src="./images/recent-search.png" class="mr-1" style="width: 18px;" alt="">
+                            <img src="<?=base_url('assets/new_website/img/recent-search.png')?>" class="mr-1" style="width: 18px;" alt="">
                             <span>RECENT SEARCHES:</span>
                         </p>
                         <ul>

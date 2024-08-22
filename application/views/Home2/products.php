@@ -1020,7 +1020,7 @@
                                         </div>
                                     </div>
                                     <div class="similarBtn">
-                                        <button onclick="openSidebar()"><img src="./images/cards.png" alt=""><span
+                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
                                     </div>
@@ -1148,7 +1148,7 @@
                                         </div>
                                     </div>
                                     <div class="similarBtn">
-                                        <button onclick="openSidebar()"><img src="./images/cards.png" alt=""><span
+                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
                                     </div>
@@ -1276,7 +1276,7 @@
                                         </div>
                                     </div>
                                     <div class="similarBtn">
-                                        <button onclick="openSidebar()"><img src="./images/cards.png" alt=""><span
+                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
                                     </div>
@@ -1404,7 +1404,7 @@
                                         </div>
                                     </div>
                                     <div class="similarBtn">
-                                        <button onclick="openSidebar()"><img src="./images/cards.png" alt=""><span
+                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
                                     </div>
@@ -1532,7 +1532,7 @@
                                         </div>
                                     </div>
                                     <div class="similarBtn">
-                                        <button onclick="openSidebar()"><img src="./images/cards.png" alt=""><span
+                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
                                     </div>
