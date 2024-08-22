@@ -73,6 +73,30 @@
             margin-inline: auto;
         }
 
+        .saleStrip .text{
+            font-size: 28px;
+        }
+
+        .newsStrip {
+            background-color: rgba(0,128,0,0.1);
+            color:black;
+            display: flex;
+            align-items: center;
+            gap:4px;
+            padding: 4px 8px;
+        }
+
+        .newsStrip p{
+            font-weight: 300;
+        }
+
+        .newsStrip .icon{
+            background-color: white;
+            color:green;
+            padding: 4px 8px;
+            border-radius:100vh;
+        }
+
         .selectBtns {
             display: flex;
             gap: 16px;
@@ -134,7 +158,7 @@
             right: 14px;
             border-radius: 50%;
             cursor: pointer;
-            z-index: 10000;
+            z-index: 998;
         }
 
         .productCloseIcon .close-btn{
@@ -227,26 +251,6 @@
             color: white;
         }
 
-        @media (max-width: 1100px) {
-            .productContainer {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .saleStrip {
-                width: 75%;
-            }
-        }
-
-        @media (max-width: 800px) {
-            .productContainer {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-
-            .saleStrip {
-                width: 90%;
-            }
-        }
 
         body.modal-open {
             /* height: 100vh; */
@@ -357,16 +361,70 @@
             z-index: 2;
             border-radius: 12px;
         }
+
+        @media (max-width: 1100px) {
+            .productContainer {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .saleStrip {
+                width: 75%;
+            }
+
+            .saleStrip .text {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .productContainer {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .saleStrip {
+                width: 90%;
+            }
+
+            .saleStrip .text {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 568px) {
+            .productContainer {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .productCard:hover{
+                scale:1;
+                box-shadow:none;
+            }
+        }
     </style>
     <?php include('include/header.php'); ?>
     <main>
-        <section>
+        <!-- <section>
             <div class="saleStrip">
-                <p class="m-0 p-0" style="font-size: 26px; font-weight: 600;">EXTRA 10% OFF</p>
+                <p class="m-0 p-0 text">EXTRA 10% OFF</p>
                 <div class="text-center py-2">
                     <p class="m-0 p-0">USE CODE:</p>
-                    <p class="m-0 p-0" style="font-size: 28px; font-weight: 600;">SPFLAT20</p>
+                    <p class="m-0 p-0 text">SPFLAT20</p>
                 </div>
+            </div>
+        </section>
+        <section>
+            <div class="newsStrip">
+                <div class="icon">
+                    <i class="fa-solid fa-arrow-trend-down"></i>
+                </div>
+                <p class="m-0 p-0">Great news! Prices have dropped for one or more items since you wishlisted them.</p>
+            </div>
+        </section> -->
+        <section>
+            <div>
+                
             </div>
         </section>
         <section>
@@ -377,15 +435,14 @@
                 <!-- CONDITIONALLY DISPLAY -->
                 <button class="btn m-0 p-0 wishlistClearBtn"><i class="fa-solid fa-rotate-right mr-1"></i>Clear all</button>
                 <dialog class="dialog2" id="wishlistClearDialog">
-                    <div>
+                    <div class="text-center">
                         <button id="" aria-label="close" class="x wishlistClearCloseBtn">
                             <span class="close-btn" id="close-popup">×</span>
                         </button>
-                        <p class="font-weight-bold text-left m-0 p-0"
+                        <p class="font-weight-bold m-0 p-0"
                             style="font-family: 'League Spartan'; font-size: 32px;">Are you
                             sure?</p>
-                        <hr class="my-2" />
-                        <p class="text-secondary">Are you sure you want to clear your wishlist?</p>
+                        <p class="text-secondary mt-2" style="font-size: 14px;">Are you sure you want to clear your wishlist?</p>
                         <div>
                             <button class="btn w-100 rounded-sm"
                                 style="background-color: var(--color1); color: white;">Confirm</button>

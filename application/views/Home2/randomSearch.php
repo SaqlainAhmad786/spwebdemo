@@ -163,18 +163,15 @@
     <main>
         <section>
             <div class="text-center my-5 px-2">
-                <p class="m-0" style="font-family: 'League Spartan', sans-serif; font-size: 26px;">No results for: <span
+                <p class="m-0 text-dark" style="font-family: 'League Spartan', sans-serif; font-size: 26px;">No results for: <span
                         class="font-weight-bold">"random
                         word"</span></p>
                 <div class="searchContainer">
                     <form>
-                        <input type="text" class="form-control" name="" id="searchBar" placeholder="Search again">
+                        <input type="text" class="form-control" name="" id="searchBar" placeholder="Let's try a new search">
                         <button class="btn ml-2 submitBtn" type="submit">Search</button>
                     </form>
                     <div class="searchResults text-left">
-                        <button class="searchCloseBtn" id="searchCloseBtn">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
                         <p class="font-weight-bold" style="font-size: 14px; font-family: 'League Spartan', sans-serif;">
                             <img src="./images/search.png" class="" style="width: 16px;" alt="">
                             SUGGESTIONS:
@@ -210,7 +207,7 @@
                             RELATED PRODUCTS:</p>
                         <div class="d-flex justify-content-between mt-2" style="gap: 8px;">
                             <a href="#" class="text-dark" style="font-size: 12px;">
-                                <img src="./images/product-1.jpg" style="width: 80px;" alt="">
+                                <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" style="width: 80px;" alt="">
                                 <div class="text-center">
                                     <p class="font-weight-bold mt-1 text-dark">Lorem, ipsum.</p>
                                     <p style="font-size: 10px;">T-Shirt</p>
@@ -218,7 +215,7 @@
                                 </div>
                             </a>
                             <a href="#" class="text-dark" style="font-size: 12px;">
-                                <img src="./images/product-1.jpg" style="width: 80px;" alt="">
+                                <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" style="width: 80px;" alt="">
                                 <div class="text-center">
                                     <p class="font-weight-bold mt-1 text-dark">Lorem, ipsum.</p>
                                     <p style="font-size: 10px;">T-Shirt</p>
@@ -226,7 +223,7 @@
                                 </div>
                             </a>
                             <a href="#" class="text-dark" style="font-size: 12px;">
-                                <img src="./images/product-1.jpg" style="width: 80px;" alt="">
+                                <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" style="width: 80px;" alt="">
                                 <div class="text-center">
                                     <p class="font-weight-bold mt-1 text-dark">Lorem, ipsum.</p>
                                     <p style="font-size: 10px;">T-Shirt</p>
@@ -236,16 +233,17 @@
                         </div>
                     </div>
                 </div>
-                <p class="mt-5 mb-2 font-weight-bold">Still need help looking for something?</p>
-                <p style="font-size: 14px;"><a href="#" class="text-dark" style="text-decoration: underline;">Connect
-                        with
-                        us</a> via chat or text on your mobile device at +91
-                    1234567890.</p>
+                <div style="margin-top:2rem;">
+                    <p class="mb-1 font-weight-bold text-dark">Still need help looking for something?</p>
+                    <p style="font-size: 14px;"><a href="#" class="text-dark" style="text-decoration: underline;">Chat
+                            with
+                            us</a> or text us with your mobile device at +91-9718636582</p>
+                </div>
             </div>
         </section>
         <section>
             <div class="container p-0">
-                <p class="text-center font-weight-bold mb-4"
+                <p class="text-center text-dark font-weight-bold mb-4"
                     style="font-family: 'League Spartan', sans-serif; font-size: 22px;">NOW TRENDING</p>
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
@@ -255,67 +253,65 @@
                                     <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
                                         alt="" class="">
                                 </div>
-                                <div>
-                                    <p class="font-weight-bold mt-1 mb-0" style="font-size: 16px;">Lorem, ipsum dolor.
+                                <div class="pb-1">
+                                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                                    <p class="m-0 mt-1">
+                                    <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                    <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                        2,999</span>
                                     </p>
-                                    <p class="m-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
-                                    <p class="font-weight-bold m-0" style="font-size: 14px;">₹ 1,999</p>
+                                    <p class="font-weight-bold text-success" style="font-size: 12px;">Upto 35% off</p>
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a href="#" class="text-dark productCard">
-                                <div>
+                                <div class="productCardImg">
                                     <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
                                         alt="" class="">
                                 </div>
-                                <div>
-                                    <p class="font-weight-bold mt-1 mb-0" style="font-size: 16px;">Lorem, ipsum dolor.
+                                <div class="pb-1">
+                                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                                    <p class="m-0 mt-1">
+                                    <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                    <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                        2,999</span>
                                     </p>
-                                    <p class="m-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
-                                    <p class="font-weight-bold m-0" style="font-size: 14px;">₹ 1,999</p>
+                                    <p class="font-weight-bold text-success" style="font-size: 12px;">Upto 35% off</p>
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a href="#" class="text-dark productCard">
-                                <div>
+                                <div class="productCardImg">
                                     <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
                                         alt="" class="">
                                 </div>
-                                <div>
-                                    <p class="font-weight-bold mt-1 mb-0" style="font-size: 16px;">Lorem, ipsum dolor.
+                                <div class="pb-1">
+                                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                                    <p class="m-0 mt-1">
+                                    <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                    <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                        2,999</span>
                                     </p>
-                                    <p class="m-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
-                                    <p class="font-weight-bold m-0" style="font-size: 14px;">₹ 1,999</p>
+                                    <p class="font-weight-bold text-success" style="font-size: 12px;">Upto 35% off</p>
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
                             <a href="#" class="text-dark productCard">
-                                <div>
+                                <div class="productCardImg">
                                     <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
                                         alt="" class="">
                                 </div>
-                                <div>
-                                    <p class="font-weight-bold mt-1 mb-0" style="font-size: 16px;">Lorem, ipsum dolor.
+                                <div class="pb-1">
+                                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                                    <p class="m-0 mt-1">
+                                    <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                    <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                        2,999</span>
                                     </p>
-                                    <p class="m-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
-                                    <p class="font-weight-bold m-0" style="font-size: 14px;">₹ 1,999</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#" class="text-dark productCard">
-                                <div>
-                                    <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                        alt="" class="">
-                                </div>
-                                <div>
-                                    <p class="font-weight-bold mt-1 mb-0" style="font-size: 16px;">Lorem, ipsum dolor.
-                                    </p>
-                                    <p class="m-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
-                                    <p class="font-weight-bold m-0" style="font-size: 14px;">₹ 1,999</p>
+                                    <p class="font-weight-bold text-success" style="font-size: 12px;">Upto 35% off</p>
                                 </div>
                             </a>
                         </div>
@@ -325,67 +321,75 @@
         </section>
         <section>
             <div class="container p-0 my-5">
-                <p class="text-center font-weight-bold mb-4"
+                <p class="text-center text-dark font-weight-bold mb-4"
                     style="font-family: 'League Spartan', sans-serif; font-size: 22px;">BEST SELLERS</p>
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <a href="#" class="text-dark">
-                                <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                    alt="">
-                                <div>
-                                    <p class="font-weight-bold mt-1 mb-0" style="font-size: 16px;">Lorem, ipsum dolor.
+                    <div class="swiper-slide">
+                            <a href="#" class="text-dark productCard">
+                                <div class="productCardImg">
+                                    <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                        alt="" class="">
+                                </div>
+                                <div class="pb-1">
+                                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                                    <p class="m-0 mt-1">
+                                    <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                    <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                        2,999</span>
                                     </p>
-                                    <p class="m-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
-                                    <p class="font-weight-bold m-0" style="font-size: 14px;">₹ 1,999</p>
+                                    <p class="font-weight-bold text-success" style="font-size: 12px;">Upto 35% off</p>
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
-                            <a href="#" class="text-dark">
-                                <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                    alt="">
-                                <div>
-                                    <p class="font-weight-bold mt-1 mb-0" style="font-size: 16px;">Lorem, ipsum dolor.
+                            <a href="#" class="text-dark productCard">
+                                <div class="productCardImg">
+                                    <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                        alt="" class="">
+                                </div>
+                                <div class="pb-1">
+                                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                                    <p class="m-0 mt-1">
+                                    <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                    <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                        2,999</span>
                                     </p>
-                                    <p class="m-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
-                                    <p class="font-weight-bold m-0" style="font-size: 14px;">₹ 1,999</p>
+                                    <p class="font-weight-bold text-success" style="font-size: 12px;">Upto 35% off</p>
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
-                            <a href="#" class="text-dark">
-                                <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                    alt="">
-                                <div>
-                                    <p class="font-weight-bold mt-1 mb-0" style="font-size: 16px;">Lorem, ipsum dolor.
+                            <a href="#" class="text-dark productCard">
+                                <div class="productCardImg">
+                                    <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                        alt="" class="">
+                                </div>
+                                <div class="pb-1">
+                                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                                    <p class="m-0 mt-1">
+                                    <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                    <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                        2,999</span>
                                     </p>
-                                    <p class="m-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
-                                    <p class="font-weight-bold m-0" style="font-size: 14px;">₹ 1,999</p>
+                                    <p class="font-weight-bold text-success" style="font-size: 12px;">Upto 35% off</p>
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide">
-                            <a href="#" class="text-dark">
-                                <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                    alt="">
-                                <div>
-                                    <p class="font-weight-bold mt-1 mb-0" style="font-size: 16px;">Lorem, ipsum dolor.
-                                    </p>
-                                    <p class="m-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
-                                    <p class="font-weight-bold m-0" style="font-size: 14px;">₹ 1,999</p>
+                            <a href="#" class="text-dark productCard">
+                                <div class="productCardImg">
+                                    <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                        alt="" class="">
                                 </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#" class="text-dark">
-                                <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                    alt="">
-                                <div>
-                                    <p class="font-weight-bold mt-1 mb-0" style="font-size: 16px;">Lorem, ipsum dolor.
+                                <div class="pb-1">
+                                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                                    <p class="m-0 mt-1">
+                                    <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                    <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                        2,999</span>
                                     </p>
-                                    <p class="m-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
-                                    <p class="font-weight-bold m-0" style="font-size: 14px;">₹ 1,999</p>
+                                    <p class="font-weight-bold text-success" style="font-size: 12px;">Upto 35% off</p>
                                 </div>
                             </a>
                         </div>
@@ -422,7 +426,7 @@
         });
 
         const searchBar = document.getElementById('searchBar')
-        const searchCloseBtn = document.getElementById('searchCloseBtn')
+        const submitBtn = document.querySelector('.submitBtn')
 
         searchBar.addEventListener('input', () => {
             if (searchBar.value.length > 0) {
@@ -432,10 +436,14 @@
             }
         })
 
-        searchCloseBtn.addEventListener('click', () => {
-            if (document.querySelector('.searchResults').style.display === 'block') {
-                document.querySelector('.searchResults').style.display = 'none'
+        submitBtn.addEventListener('click', () => {
+            if (searchBar.value.length <= 0) {
+                window.location.href = '/'
             }
+        })
+
+        searchBar.addEventListener('blur', () => {
+            document.querySelector('.searchResults').style.display = 'none'
         })
 
     </script>
