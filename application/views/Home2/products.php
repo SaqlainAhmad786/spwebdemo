@@ -385,6 +385,20 @@
             animation: blink 1.5s linear infinite;
         }
 
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
         a.toolTip {
             position: relative;
             font-size: 12px;
@@ -495,20 +509,6 @@
             position: absolute;
             top: 8px;
             left: 8px;
-        }
-
-        @keyframes blink {
-            0% {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
         }
 
         @media (max-width: 1160px) {

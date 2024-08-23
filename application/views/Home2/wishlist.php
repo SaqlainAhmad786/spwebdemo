@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Slick Pattern - Wishlist </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <?php include('include/cssLinks.php'); ?>
 </head>
 
@@ -31,6 +32,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
         }
 
         ul {
@@ -69,7 +71,7 @@
             place-items: center;
             color: white;
             padding: 0 1rem;
-            margin-top: 2rem;
+            margin-top: 1rem;
             margin-inline: auto;
         }
 
@@ -78,7 +80,7 @@
         }
 
         .newsStrip {
-            background-color: rgba(0,128,0,0.1);
+            background-color: #90EE90;
             color:black;
             display: flex;
             align-items: center;
@@ -224,6 +226,16 @@
             background-color: var(--color1);
             padding: 2px 4px;
         }
+        
+        .rating {
+            font-size: 12px;
+            position: absolute;
+            bottom: 32px;
+            left: 2px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
 
         .moveBtn {
             font-size: 14px;
@@ -255,6 +267,21 @@
         body.modal-open {
             /* height: 100vh; */
             overflow-y: hidden;
+        }
+
+        body.sidebar-open{
+            overflow-y: hidden;
+        }
+
+        body.sidebar-open::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
         }
 
         dialog {
@@ -342,6 +369,12 @@
             border-color: var(--color2);
         }
 
+        .stockBtns {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            place-items: center;
+        }
+
         .stockBtns .outOfStock {
             position: relative;
             background-color: rgb(0, 0, 0, 0.35);
@@ -364,7 +397,7 @@
 
         .sidebar {
             height: 100%;
-            background-color: #ffe9f4;
+            background-color: white;
             width: 0;
             position: fixed;
             top: 0;
@@ -372,8 +405,12 @@
             overflow-x: hidden;
             overflow-y: scroll;
             transition: 0.3s;
-            padding-top: 60px;
+            padding-top: 10px;
             z-index: 100000;
+        }
+
+        .sidebar.open{
+            width: 480px;
         }
 
         .sidebar::-webkit-scrollbar {
@@ -416,6 +453,49 @@
             width: 20px;
             height: 20px;
         }
+        
+        .similarText {
+            display: none;
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color2);
+            margin-left: 4px;
+        }
+
+        .blinkingText {
+            animation: blink 1.5s linear infinite;
+        }
+
+        .cartCounterBtn {
+            position: relative;
+        }
+
+        .cartCounter {
+            position: absolute;
+            top: -18px;
+            right: -10px;
+            background-color: var(--color1);
+            color: white;
+            font-size: 10px;
+            padding-inline:6px;
+            border-radius: 100vh;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
 
         @media (max-width: 1100px) {
             .productContainer {
@@ -446,6 +526,12 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .subHeaderSection {
+                padding-top: 56px;
+            }
+        }
+
         @media (max-width: 568px) {
             .productContainer {
                 grid-template-columns: repeat(2, 1fr);
@@ -464,22 +550,30 @@
                 min-width: 100%;
                 border-radius: 0;
             }
+
+            .sidebar.open{
+                width: 376px;
+            }
+
+            /* .newsStrip{
+                width: 100%;
+                position: fixed;
+                top:56px;
+                z-index: 10000;
+            }
+
+            .newsStrip p{
+                font-size: 12px;
+            } */
         }
     </style>
+    <?php include('include/header.php'); ?>
     <main>
-        <!-- <section>
-            <div class="saleStrip">
-                <p class="m-0 p-0 text">EXTRA 10% OFF</p>
-                <div class="text-center py-2">
-                    <p class="m-0 p-0">USE CODE:</p>
-                    <p class="m-0 p-0 text">SPFLAT20</p>
-                </div>
-            </div>
-        </section> -->
         <div id="sidebar" class="sidebar">
             <button onclick="closeSidebar()">
             <span class="close-btn">×</span>
             </button>
+            <p class="m-0 p-0 font-weight-bold text-dark text-center" >SIMILAR PRODUCTS</p>
             <div class="sidebar-content">
                 <div class="text-center text-decoration-none productCardSidebar">
                     <a href="#" class="imageContainer">
@@ -551,45 +645,44 @@
                         </p>
                     </div>
                 </div>
-                <div class="text-center text-decoration-none productCardSidebar">
-                    <a href="#" class="imageContainer">
-                        <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
-                    </a>
-                    <div class="pb-3">
-                        <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
-                        <p class="m-0 mt-1">
-                            <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
-                            <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
-                                2,999</span>
-                            <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
-                        </p>
-                    </div>
+                <div class="border d-flex justify-content-center align-items-center">
+                    <p class="m-0 p-0 text-center">No more products...</p>
                 </div>
             </div>
         </div>
         <section class="d-lg-none d-md-none d-sm-block position-fixed top-0 w-100 bg-white" style="z-index: 10000;" >
             <div class="d-flex justify-content-between align-items-center px-3 py-1 shadow-sm">
                 <div class="d-flex align-items-center text-dark">
-                    <span style="font-size: 20px;"><i class="fa-solid fa-arrow-left"></i></span>
+                    <a href=""><span style="font-size: 20px;"><i class="fa-solid fa-arrow-left"></i></span></a>
                     <span class="ml-2 d-flex flex-column font-weight-bold" style="font-size: 18px;">My Wishlist
                         <span class="font-weight-normal" style="color: #777; font-size: 10px;">(210 products)</span>
                     </span>
                 </div>
                 <div>
-                    <img src="<?= base_url('assets/new_website/img/bag.png') ?>" style="width: 20px;" alt="">
+                    <a class="cartCounterBtn" href="">
+                        <img src="<?= base_url('assets/new_website/img/bag.png') ?>" style="width: 20px;" alt="">
+                        <div>
+                            <span class="cartCounter m-0">10</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
-        <!-- <section>
+        <section class="subHeaderSection">
             <div class="newsStrip">
                 <div class="icon">
                     <i class="fa-solid fa-arrow-trend-down"></i>
                 </div>
                 <p class="m-0 p-0">Great news! Prices have dropped for one or more items since you wishlisted them.</p>
             </div>
-        </section> -->
-        <section class="pt-lg-2 pt-md-3 pt-sm-5 pt-5">
-            <div class="px-lg-5 px-md-3 px-sm-3 px-3 mt-lg-5 mt-3 d-flex justify-content-between align-items-center"
+            <div class="saleStrip">
+                <p class="m-0 p-0 text">EXTRA 10% OFF</p>
+                <div class="text-center py-2">
+                    <p class="m-0 p-0">USE CODE:</p>
+                    <p class="m-0 p-0 text">SPFLAT20</p>
+                </div>
+            </div>
+            <div class="px-lg-5 px-md-3 px-sm-3 px-3 mt-lg-5 mt-3 d-flex justify-content-end justify-content-lg-between justify-content-md-between justify-content-sm-end align-items-center"
                 style="font-style: 'League Spartan';">
                 <p class="font-weight-bolder m-0 d-lg-block d-md-block d-sm-none d-none" style="font-size: 20px;">My Wishlist <span
                         class="font-weight-normal text-secondary" style="font-size: 14px;">(210 products)</span></p>
@@ -642,13 +735,20 @@
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW2NXkjmT8p4x4kMkg73c2OJCrHncQbn26gg&s" alt="">
                         <input type="checkbox" name="" id="">
                         <div class="similarBtn">
-                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""></button>
+                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
+                                                class="similarText">Similar
+                                                Products</span></button>
                                     </div>
                         <!-- <div class="stockTag">
                             <p class="m-0 text-white font-weight-bold">5 left!</p>
                         </div>
                         <div class="preorderTag">
-                            <p class="m-0 text-white font-weight-bold">Pre-Order</p>
+                            <p class="m-0 text-white font-weight-bold blinkingText">Pre-Order</p>
+                        </div> 
+                        <div class="rating text-white">
+                            <span>4.5</span>
+                            <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                            <span>| 10</span>
                         </div> -->
                     </a>
                     <div class="border pb-3">
@@ -658,18 +758,18 @@
                             <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
                                 2,999</span>
                             </p>
-                            <p class="font-weight-bold text-success m-0" style="font-size: 12px;">Upto 35% off</p>
+                            <p class="text-success m-0" style="font-size: 12px;">Upto 35% off</p>
                             <p class="m-0 d-inline text-success rounded-lg" style="font-size: 10px; border: 1px solid limegreen; padding: 2px 4px;">
                                 <span>Price dropped by <span class="font-weight-bold">₹ 1,999</span> </span>
-                                <img src="<?= base_url('assets/new_website/img/price-down2.png') ?>" style="width: 12px;" alt="">
+                                <img class="blinkingText" src="<?= base_url('assets/new_website/img/price-down2.png') ?>" style="width: 12px;" alt="">
                             </p>
                     </div>
-                    <!-- <button class="btn border-top w-100 mt-3 moveBtn">MOVE TO
-                        CART</button>
+                    <!-- <button class="btn border border-top-0 w-100 moveBtn">MOVE TO
+                        BAG</button>
                         <dialog class="dialog" id="dialog">
                         <div>
                             <div class="d-flex">
-                                <img src="./images/product-1.jpg" style="width: 80px;" alt="">
+                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 80px;" alt="">
                                 <div class="ml-3 text-left">
                                     <p class="m-0 p-0">Lorem, ipsum.</p>
                                     <p class="m-0 p-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
@@ -678,7 +778,7 @@
                                         <span class="text-secondary"
                                             style="text-decoration: line-through; font-size: 14px;">₹
                                             2,999</span>
-                                        <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 14px;">35%</span>
                                     </p>
                                 </div>
                             </div>
@@ -695,25 +795,29 @@
                             </div>
                             <button class="btn w-100 mt-4"
                                 style="background-color: var(--color1); color: white;">DONE</button>
-                            <button id="closeModalBtn" aria-label="close" class="x closeModalBtn">❌</button>
+                            <button id="closeModalBtn" aria-label="close" class="x closeModalBtn">
+                                <span class="close-btn" id="close-popup">×</span>
+                            </button>
                         </div>
                     </dialog> -->
-                    <button class="btn border w-100 notifyBtn
+                    <button class="btn border border-top-0 w-100 notifyBtn
                     notifyBtn">NOTIFY ME</button>
                     <dialog class="dialog2 notifyDialog text-left" id="notifyDialog">
                         <div>
                             <button id="" aria-label="close" class="x notifyCloseBtn"><span class="close-btn" id="close-popup">×</span></button>
-                            <p class="font-weight-bold text-left m-0 p-0"
-                                style="font-family: 'League Spartan'; font-size: 28px;">Get notified</p>
+                            <div class="d-flex align-items-center">
+                                <img src="<?= base_url('assets/new_website/img/notification.gif') ?>" style="width: 40px;" alt="">
+                                <p class="font-weight-bold text-left m-0 p-0"
+                                style="font-family: 'League Spartan'; font-size: 28px;">
+                                Receive Updates</p>
+                            </div>
                             <hr class="my-2" />
-                            <p class="text-secondary p-0">Get notified by email or WhatsApp for size restocks, price
-                                drops,
-                                or availability.</p>
-                            <form>
+                            <p class="text-secondary p-0">Get alerts for restocks, price drops, and availability.</p>
+                            <form id="notifyForm">
                                 <input type="text" name="" id="" placeholder="Enter Email id or WhatsApp number"
-                                    class="form-control">
-                                <button class="btn w-100 rounded-sm mt-2"
-                                    style="background-color: var(--color1); color: white;">Confirm</button>
+                                    class="form-control notifyCredentialInput">
+                                <button class="btn w-100 rounded-sm mt-2 btn-disabled notifyCredentialBtn"
+                                    style="background-color: var(--color1); color: white;" disabled>CONFIRM</button>
                             </form>
                         </div>
                     </dialog>
@@ -733,7 +837,12 @@
                             <p class="m-0 text-white font-weight-bold">5 left!</p>
                         </div>
                         <div class="preorderTag">
-                            <p class="m-0 text-white font-weight-bold">Pre-Order</p>
+                            <p class="m-0 text-white font-weight-bold blinkingText">Pre-Order</p>
+                        </div>
+                        <div class="rating text-white">
+                            <span>4.5</span>
+                            <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                            <span>| 10</span>
                         </div>
                     </a>
                     <div class="border pb-3">
@@ -743,18 +852,18 @@
                             <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
                                 2,999</span>
                             </p>
-                            <p class="font-weight-bold text-success m-0" style="font-size: 12px;">Upto 35% off</p>
+                            <p class="text-success m-0" style="font-size: 12px;">Upto 35% off</p>
                             <p class="m-0 d-inline text-success rounded-lg" style="font-size: 10px; border: 1px solid limegreen; padding: 2px 4px;">
                                 <span>Price dropped by <span class="font-weight-bold">₹ 1,999</span> </span>
-                                <img src="<?= base_url('assets/new_website/img/price-down2.png') ?>" style="width: 12px;" alt="">
+                                <img class="blinkingText" src="<?= base_url('assets/new_website/img/price-down2.png') ?>" style="width: 12px;" alt="">
                             </p>
                     </div>
-                    <button class="btn border w-100 moveBtn">MOVE TO
-                        CART</button>
+                    <button class="btn border w-100 border-top-0 moveBtn">MOVE TO
+                        BAG</button>
                         <dialog class="dialog" id="dialog">
                         <div>
                             <div class="d-flex">
-                                <img src="./images/product-1.jpg" style="width: 80px;" alt="">
+                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 80px;" alt="">
                                 <div class="ml-3 text-left">
                                     <p class="m-0 p-0">Lorem, ipsum.</p>
                                     <p class="m-0 p-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
@@ -763,7 +872,7 @@
                                         <span class="text-secondary"
                                             style="text-decoration: line-through; font-size: 14px;">₹
                                             2,999</span>
-                                        <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 14px;">35%</span>
                                     </p>
                                 </div>
                             </div>
@@ -780,28 +889,32 @@
                             </div>
                             <button class="btn w-100 mt-4"
                                 style="background-color: var(--color1); color: white;">DONE</button>
-                            <button id="closeModalBtn" aria-label="close" class="x closeModalBtn">❌</button>
+                            <button id="closeModalBtn" aria-label="close" class="x closeModalBtn">
+                                <span class="close-btn" id="close-popup">×</span>
+                            </button>
                         </div>
                     </dialog>
                     <!-- <button class="btn border w-100 notifyBtn
-                    notifyBtn">NOTIFY ME</button> -->
-                    <dialog class="dialog2 notifyDialog text-left" id="notifyDialog">
+                    notifyBtn">NOTIFY ME</button>
+                    <dialog class="dialog2 notifyDialog border-top-0 text-left" id="notifyDialog">
                         <div>
                             <button id="" aria-label="close" class="x notifyCloseBtn"><span class="close-btn" id="close-popup">×</span></button>
-                            <p class="font-weight-bold text-left m-0 p-0"
-                                style="font-family: 'League Spartan'; font-size: 28px;">Get notified</p>
+                            <div class="d-flex align-items-center">
+                                <img src="<?= base_url('assets/new_website/img/notification.gif') ?>" style="width: 40px;" alt="">
+                                <p class="font-weight-bold text-left m-0 p-0"
+                                style="font-family: 'League Spartan'; font-size: 28px;">
+                                Receive Updates</p>
+                            </div>
                             <hr class="my-2" />
-                            <p class="text-secondary p-0">Get notified by email or WhatsApp for size restocks, price
-                                drops,
-                                or availability.</p>
+                            <p class="text-secondary p-0">Get alerts for restocks, price drops, and availability.</p>
                             <form>
                                 <input type="text" name="" id="" placeholder="Enter Email id or WhatsApp number"
                                     class="form-control">
                                 <button class="btn w-100 rounded-sm mt-2"
-                                    style="background-color: var(--color1); color: white;">Confirm</button>
+                                    style="background-color: var(--color1); color: white;">CONFIRM</button>
                             </form>
                         </div>
-                    </dialog>
+                    </dialog> -->
                 </div>
                 <div class="text-center text-decoration-none productCard">
                     <div class="productCloseIcon"> <span class="close-btn" id="close-popup">×</span></div>
@@ -818,7 +931,12 @@
                             <p class="m-0 text-white font-weight-bold">5 left!</p>
                         </div>
                         <div class="preorderTag">
-                            <p class="m-0 text-white font-weight-bold">Pre-Order</p>
+                            <p class="m-0 text-white font-weight-bold blinkingText">Pre-Order</p>
+                        </div>
+                        <div class="rating text-white">
+                            <span>4.5</span>
+                            <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                            <span>| 10</span>
                         </div>
                     </a>
                     <div class="border pb-3">
@@ -828,18 +946,18 @@
                             <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
                                 2,999</span>
                             </p>
-                            <p class="font-weight-bold text-success m-0" style="font-size: 12px;">Upto 35% off</p>
+                            <p class="text-success m-0" style="font-size: 12px;">Upto 35% off</p>
                             <p class="m-0 d-inline text-success rounded-lg" style="font-size: 10px; border: 1px solid limegreen; padding: 2px 4px;">
                                 <span>Price dropped by <span class="font-weight-bold">₹ 1,999</span> </span>
-                                <img src="<?= base_url('assets/new_website/img/price-down2.png') ?>" style="width: 12px;" alt="">
+                                <img class="blinkingText" src="<?= base_url('assets/new_website/img/price-down2.png') ?>" style="width: 12px;" alt="">
                             </p>
                     </div>
                     <button class="btn border w-100 moveBtn">MOVE TO
-                        CART</button>
+                        BAG</button>
                         <dialog class="dialog" id="dialog">
                         <div>
                             <div class="d-flex">
-                                <img src="./images/product-1.jpg" style="width: 80px;" alt="">
+                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 80px;" alt="">
                                 <div class="ml-3 text-left">
                                     <p class="m-0 p-0">Lorem, ipsum.</p>
                                     <p class="m-0 p-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
@@ -848,7 +966,7 @@
                                         <span class="text-secondary"
                                             style="text-decoration: line-through; font-size: 14px;">₹
                                             2,999</span>
-                                        <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 14px;">35%</span>
                                     </p>
                                 </div>
                             </div>
@@ -862,31 +980,43 @@
                                 <button class="sizeBtn">L</button>
                                 <button class="sizeBtn">XL</button>
                                 <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn">XXL</button>
                             </div>
                             <button class="btn w-100 mt-4"
                                 style="background-color: var(--color1); color: white;">DONE</button>
-                            <button id="closeModalBtn" aria-label="close" class="x closeModalBtn">❌</button>
+                            <button id="closeModalBtn" aria-label="close" class="x closeModalBtn">
+                                <span class="close-btn" id="close-popup">×</span>
+                            </button>
                         </div>
                     </dialog>
                     <!-- <button class="btn border w-100 notifyBtn
-                    notifyBtn">NOTIFY ME</button> -->
+                    notifyBtn">NOTIFY ME</button>
                     <dialog class="dialog2 notifyDialog text-left" id="notifyDialog">
                         <div>
                             <button id="" aria-label="close" class="x notifyCloseBtn"><span class="close-btn" id="close-popup">×</span></button>
-                            <p class="font-weight-bold text-left m-0 p-0"
-                                style="font-family: 'League Spartan'; font-size: 28px;">Get notified</p>
+                            <div class="d-flex align-items-center">
+                                <img src="<?= base_url('assets/new_website/img/notification.gif') ?>" style="width: 40px;" alt="">
+                                <p class="font-weight-bold text-left m-0 p-0"
+                                style="font-family: 'League Spartan'; font-size: 28px;">
+                                Receive Updates</p>
+                            </div>
                             <hr class="my-2" />
-                            <p class="text-secondary p-0">Get notified by email or WhatsApp for size restocks, price
-                                drops,
-                                or availability.</p>
+                            <p class="text-secondary p-0">Get alerts for restocks, price drops, and availability.</p>
                             <form>
                                 <input type="text" name="" id="" placeholder="Enter Email id or WhatsApp number"
                                     class="form-control">
                                 <button class="btn w-100 rounded-sm mt-2"
-                                    style="background-color: var(--color1); color: white;">Confirm</button>
+                                    style="background-color: var(--color1); color: white;">CONFIRM</button>
                             </form>
                         </div>
-                    </dialog>
+                    </dialog> -->
                 </div>
                 <div class="text-center text-decoration-none productCard">
                     <div class="productCloseIcon"> <span class="close-btn" id="close-popup">×</span></div>
@@ -903,7 +1033,12 @@
                             <p class="m-0 text-white font-weight-bold">5 left!</p>
                         </div>
                         <div class="preorderTag">
-                            <p class="m-0 text-white font-weight-bold">Pre-Order</p>
+                            <p class="m-0 text-white font-weight-bold blinkingText">Pre-Order</p>
+                        </div>
+                        <div class="rating text-white">
+                            <span>4.5</span>
+                            <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                            <span>| 10</span>
                         </div>
                     </a>
                     <div class="border pb-3">
@@ -913,18 +1048,18 @@
                             <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
                                 2,999</span>
                             </p>
-                            <p class="font-weight-bold text-success m-0" style="font-size: 12px;">Upto 35% off</p>
+                            <p class="text-success m-0" style="font-size: 12px;">Upto 35% off</p>
                             <p class="m-0 d-inline text-success rounded-lg" style="font-size: 10px; border: 1px solid limegreen; padding: 2px 4px;">
                                 <span>Price dropped by <span class="font-weight-bold">₹ 1,999</span> </span>
-                                <img src="<?= base_url('assets/new_website/img/price-down2.png') ?>" style="width: 12px;" alt="">
+                                <img class="blinkingText" src="<?= base_url('assets/new_website/img/price-down2.png') ?>" style="width: 12px;" alt="">
                             </p>
                     </div>
                     <button class="btn border w-100 moveBtn">MOVE TO
-                        CART</button>
+                        BAG</button>
                         <dialog class="dialog" id="dialog">
                         <div>
                             <div class="d-flex">
-                                <img src="./images/product-1.jpg" style="width: 80px;" alt="">
+                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 80px;" alt="">
                                 <div class="ml-3 text-left">
                                     <p class="m-0 p-0">Lorem, ipsum.</p>
                                     <p class="m-0 p-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
@@ -933,7 +1068,7 @@
                                         <span class="text-secondary"
                                             style="text-decoration: line-through; font-size: 14px;">₹
                                             2,999</span>
-                                        <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 14px;">35%</span>
                                     </p>
                                 </div>
                             </div>
@@ -950,28 +1085,32 @@
                             </div>
                             <button class="btn w-100 mt-4"
                                 style="background-color: var(--color1); color: white;">DONE</button>
-                            <button id="closeModalBtn" aria-label="close" class="x closeModalBtn">❌</button>
+                            <button id="closeModalBtn" aria-label="close" class="x closeModalBtn">
+                                <span class="close-btn" id="close-popup">×</span>
+                            </button>
                         </div>
                     </dialog>
                     <!-- <button class="btn border w-100 notifyBtn
-                    notifyBtn">NOTIFY ME</button> -->
+                    notifyBtn">NOTIFY ME</button>
                     <dialog class="dialog2 notifyDialog text-left" id="notifyDialog">
                         <div>
                             <button id="" aria-label="close" class="x notifyCloseBtn"><span class="close-btn" id="close-popup">×</span></button>
-                            <p class="font-weight-bold text-left m-0 p-0"
-                                style="font-family: 'League Spartan'; font-size: 28px;">Get notified</p>
+                            <div class="d-flex align-items-center">
+                                <img src="<?= base_url('assets/new_website/img/notification.gif') ?>" style="width: 40px;" alt="">
+                                <p class="font-weight-bold text-left m-0 p-0"
+                                style="font-family: 'League Spartan'; font-size: 28px;">
+                                Receive Updates</p>
+                            </div>
                             <hr class="my-2" />
-                            <p class="text-secondary p-0">Get notified by email or WhatsApp for size restocks, price
-                                drops,
-                                or availability.</p>
+                            <p class="text-secondary p-0">Get alerts for restocks, price drops, and availability.</p>
                             <form>
                                 <input type="text" name="" id="" placeholder="Enter Email id or WhatsApp number"
                                     class="form-control">
                                 <button class="btn w-100 rounded-sm mt-2"
-                                    style="background-color: var(--color1); color: white;">Confirm</button>
+                                    style="background-color: var(--color1); color: white;">CONFIRM</button>
                             </form>
                         </div>
-                    </dialog>
+                    </dialog> -->
                 </div>
                 <div class="text-center text-decoration-none productCard">
                     <div class="productCloseIcon"> <span class="close-btn" id="close-popup">×</span></div>
@@ -988,7 +1127,12 @@
                             <p class="m-0 text-white font-weight-bold">5 left!</p>
                         </div>
                         <div class="preorderTag">
-                            <p class="m-0 text-white font-weight-bold">Pre-Order</p>
+                            <p class="m-0 text-white font-weight-bold blinkingText">Pre-Order</p>
+                        </div>
+                        <div class="rating text-white">
+                            <span>4.5</span>
+                            <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                            <span>| 10</span>
                         </div>
                     </a>
                     <div class="border pb-3">
@@ -998,18 +1142,18 @@
                             <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
                                 2,999</span>
                             </p>
-                            <p class="font-weight-bold text-success m-0" style="font-size: 12px;">Upto 35% off</p>
+                            <p class="text-success m-0" style="font-size: 12px;">Upto 35% off</p>
                             <p class="m-0 d-inline text-success rounded-lg" style="font-size: 10px; border: 1px solid limegreen; padding: 2px 4px;">
                                 <span>Price dropped by <span class="font-weight-bold">₹ 1,999</span> </span>
-                                <img src="<?= base_url('assets/new_website/img/price-down2.png') ?>" style="width: 12px;" alt="">
+                                <img class="blinkingText" src="<?= base_url('assets/new_website/img/price-down2.png') ?>" style="width: 12px;" alt="">
                             </p>
                     </div>
                     <button class="btn border w-100 moveBtn">MOVE TO
-                        CART</button>
+                        BAG</button>
                         <dialog class="dialog" id="dialog">
                         <div>
                             <div class="d-flex">
-                                <img src="./images/product-1.jpg" style="width: 80px;" alt="">
+                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 80px;" alt="">
                                 <div class="ml-3 text-left">
                                     <p class="m-0 p-0">Lorem, ipsum.</p>
                                     <p class="m-0 p-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
@@ -1018,7 +1162,7 @@
                                         <span class="text-secondary"
                                             style="text-decoration: line-through; font-size: 14px;">₹
                                             2,999</span>
-                                        <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 14px;">35%</span>
                                     </p>
                                 </div>
                             </div>
@@ -1035,28 +1179,126 @@
                             </div>
                             <button class="btn w-100 mt-4"
                                 style="background-color: var(--color1); color: white;">DONE</button>
-                            <button id="closeModalBtn" aria-label="close" class="x closeModalBtn">❌</button>
+                            <button id="closeModalBtn" aria-label="close" class="x closeModalBtn">
+                                <span class="close-btn" id="close-popup">×</span>
+                            </button>
                         </div>
                     </dialog>
                     <!-- <button class="btn border w-100 notifyBtn
-                    notifyBtn">NOTIFY ME</button> -->
+                    notifyBtn">NOTIFY ME</button>
                     <dialog class="dialog2 notifyDialog text-left" id="notifyDialog">
                         <div>
                             <button id="" aria-label="close" class="x notifyCloseBtn"><span class="close-btn" id="close-popup">×</span></button>
-                            <p class="font-weight-bold text-left m-0 p-0"
-                                style="font-family: 'League Spartan'; font-size: 28px;">Get notified</p>
+                            <div class="d-flex align-items-center">
+                                <img src="<?= base_url('assets/new_website/img/notification.gif') ?>" style="width: 40px;" alt="">
+                                <p class="font-weight-bold text-left m-0 p-0"
+                                style="font-family: 'League Spartan'; font-size: 28px;">
+                                Receive Updates</p>
+                            </div>
                             <hr class="my-2" />
-                            <p class="text-secondary p-0">Get notified by email or WhatsApp for size restocks, price
-                                drops,
-                                or availability.</p>
+                            <p class="text-secondary p-0">Get alerts for restocks, price drops, and availability.</p>
                             <form>
                                 <input type="text" name="" id="" placeholder="Enter Email id or WhatsApp number"
                                     class="form-control">
                                 <button class="btn w-100 rounded-sm mt-2"
-                                    style="background-color: var(--color1); color: white;">Confirm</button>
+                                    style="background-color: var(--color1); color: white;">CONFIRM</button>
                             </form>
                         </div>
+                    </dialog> -->
+                </div>
+                <div class="text-center text-decoration-none productCard">
+                    <div class="productCloseIcon"> <span class="close-btn" id="close-popup">×</span></div>
+                    <a href="#" class="imageContainer">
+                        <!-- <div class="outOfStockLayer">
+                            <img src="<?= base_url('assets/new_website/img/out-of-stock.png') ?>" alt="out of stock icon">
+                        </div> -->
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW2NXkjmT8p4x4kMkg73c2OJCrHncQbn26gg&s" alt="">
+                        <input type="checkbox" name="" id="">
+                        <!-- <div class="similarBtn">
+                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""></button>
+                                    </div> -->
+                        <div class="stockTag">
+                            <p class="m-0 text-white font-weight-bold">5 left!</p>
+                        </div>
+                        <div class="preorderTag">
+                            <p class="m-0 text-white font-weight-bold blinkingText">Pre-Order</p>
+                        </div>
+                        <div class="rating text-white">
+                            <span>4.5</span>
+                            <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                            <span>| 10</span>
+                        </div>
+                    </a>
+                    <div class="border pb-3">
+                        <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                        <p class="m-0 mt-1">
+                            <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                            <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                2,999</span>
+                            </p>
+                            <p class="text-success m-0" style="font-size: 12px;">Upto 35% off</p>
+                            <p class="m-0 d-inline text-success rounded-lg" style="font-size: 10px; border: 1px solid limegreen; padding: 2px 4px;">
+                                <span>Price dropped by <span class="font-weight-bold">₹ 1,999</span> </span>
+                                <img class="blinkingText" src="<?= base_url('assets/new_website/img/price-down2.png') ?>" style="width: 12px;" alt="">
+                            </p>
+                    </div>
+                    <button class="btn border w-100 moveBtn">MOVE TO
+                        BAG</button>
+                        <dialog class="dialog" id="dialog">
+                        <div>
+                            <div class="d-flex">
+                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 80px;" alt="">
+                                <div class="ml-3 text-left">
+                                    <p class="m-0 p-0">Lorem, ipsum.</p>
+                                    <p class="m-0 p-0 text-secondary" style="font-size: 14px;">Lorem, ipsum.</p>
+                                    <p class="m-0 p-0">
+                                        <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                        <span class="text-secondary"
+                                            style="text-decoration: line-through; font-size: 14px;">₹
+                                            2,999</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 14px;">35%</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <hr class="my-2" />
+                            <p class="font-weight-bold text-left m-0 p-0"
+                                style="font-family: 'League Spartan'; font-size: 16px;">SELECT SIZE</p>
+                            <div class="text-left mt-2 stockBtns">
+                                <button class="sizeBtn">XS</button>
+                                <button class="sizeBtn outOfStock">S</button>
+                                <button class="sizeBtn">M</button>
+                                <button class="sizeBtn">L</button>
+                                <button class="sizeBtn">XL</button>
+                                <button class="sizeBtn">XXL</button>
+                            </div>
+                            <button class="btn w-100 mt-4"
+                                style="background-color: var(--color1); color: white;">DONE</button>
+                            <button id="closeModalBtn" aria-label="close" class="x closeModalBtn">
+                                <span class="close-btn" id="close-popup">×</span>
+                            </button>
+                        </div>
                     </dialog>
+                    <!-- <button class="btn border w-100 notifyBtn
+                    notifyBtn">NOTIFY ME</button>
+                    <dialog class="dialog2 notifyDialog text-left" id="notifyDialog">
+                        <div>
+                            <button id="" aria-label="close" class="x notifyCloseBtn"><span class="close-btn" id="close-popup">×</span></button>
+                            <div class="d-flex align-items-center">
+                                <img src="<?= base_url('assets/new_website/img/notification.gif') ?>" style="width: 40px;" alt="">
+                                <p class="font-weight-bold text-left m-0 p-0"
+                                style="font-family: 'League Spartan'; font-size: 28px;">
+                                Receive Updates</p>
+                            </div>
+                            <hr class="my-2" />
+                            <p class="text-secondary p-0">Get alerts for restocks, price drops, and availability.</p>
+                            <form>
+                                <input type="text" name="" id="" placeholder="Enter Email id or WhatsApp number"
+                                    class="form-control">
+                                <button class="btn w-100 rounded-sm mt-2"
+                                    style="background-color: var(--color1); color: white;">CONFIRM</button>
+                            </form>
+                        </div>
+                    </dialog> -->
                 </div>
             </div>
         </section>
@@ -1071,6 +1313,8 @@
         const notifyBtn = document.querySelectorAll('.notifyBtn')
         const notifyDialog = document.querySelectorAll('.notifyDialog')
         const notifyCloseBtn = document.querySelectorAll('.notifyCloseBtn')
+        const notifyCredentialInput = document.querySelectorAll('.notifyCredentialInput')
+        const notifyCredentialBtn = document.querySelectorAll('.notifyCredentialBtn')
 
         moveBtns.forEach((btn, i) => {
             btn.addEventListener('click', () => {
@@ -1112,12 +1356,31 @@
         })
 
         function openSidebar() {
-            document.getElementById("sidebar").style.width = "376px";
+            document.getElementById("sidebar").classList.add("open");
+            document.body.classList.toggle('sidebar-open');
         }
 
         function closeSidebar() {
-            document.getElementById("sidebar").style.width = "0";
+            document.getElementById("sidebar").classList.remove("open");
+            document.body.classList.toggle('sidebar-open');
         }
+
+        notifyCredentialInput.forEach((input, i) => {
+            input.addEventListener('input', () => {
+                if(input.value.length >= 10){
+                    notifyCredentialBtn[i].removeAttribute('disabled')
+                    notifyCredentialBtn[i].classList.remove('btn-disabled')
+                }else if(input.value.length == 0){
+                    notifyCredentialBtn[i].setAttribute('disabled', true)
+                    notifyCredentialBtn[i].classList.add('btn-disabled')
+                }else{
+                    notifyCredentialBtn[i].setAttribute('disabled', true)
+                    notifyCredentialBtn[i].classList.add('btn-disabled')
+                }
+            })
+        })
+
+
     </script>
     <?php include('include/footer.php'); ?>
     <!-- <?php include('include/modal.php'); ?> -->

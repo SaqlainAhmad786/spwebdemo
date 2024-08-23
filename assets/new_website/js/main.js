@@ -47,7 +47,7 @@
 
         searchInput.addEventListener('click', function () {
             searchSuggestions.classList.add('show');
-            overlay.style.display = 'block';
+            overlay.style.display = 'block';    
         });
 
         document.addEventListener('click', function (event) {
@@ -1165,12 +1165,10 @@
     });
 
     document.addEventListener("DOMContentLoaded", function () {
-        // Show first popup after 8 seconds
         setTimeout(() => {
-            document.getElementById('notification-popup').style.display = 'block';
+            // document.getElementById('notification-popup').style.display = 'block'; 
         }, 6000);
 
-        // Close first popup and show second popup after 8 seconds
         document.getElementById('close-popup').addEventListener('click', function () {
             document.getElementById('notification-popup').style.display = 'none';
             setTimeout(() => {

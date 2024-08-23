@@ -1337,7 +1337,7 @@ nav .wrapper {
     line-height: 45px;
     top: 85px;
     opacity: 0;
-    visibility: hidden;
+    display: none;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -1347,6 +1347,7 @@ nav .wrapper {
     top: 40px;
     opacity: 1;
     visibility: visible;
+    display:block;
 }
 
 .drop-menu li a {
@@ -1365,8 +1366,8 @@ nav .wrapper {
     padding: 0 30px;
     top: 85px;
     opacity: 0;
-    visibility: visible;
     z-index: 999;
+    display: none;
 }
 
 .mega-box .content {
@@ -1511,11 +1512,11 @@ nav .wrapper {
     }
 
     .nav-links .desktop-item:hover .mega-box {
-        display: block;
+        /* display: block; */
     }
 
     .nav-links .mobile-item {
-        display: block;
+        /* display: block; */
         color: #f2f2f2;
         font-size: 20px;
         font-weight: 500;
