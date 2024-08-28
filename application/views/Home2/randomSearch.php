@@ -159,6 +159,8 @@
             color: var(--color2);
         }
 
+         
+
         @media (width<568px){
             .searchResults{
                 display: none!important;
@@ -167,9 +169,31 @@
     </style>
     <?php include('include/header.php'); ?>
     <main>
+        <section class="d-lg-none d-md-none d-sm-block position-fixed top-0 w-100 bg-white" style="z-index: 10000;" >
+            <div class="d-flex justify-content-between align-items-center px-3 py-1 shadow-sm">
+                <div class="d-flex align-items-center text-dark">
+                    <a href=""><span style="font-size: 20px;"><i class="fa-solid fa-arrow-left"></i></span></a>
+                    <img src="<?= base_url('assets/new_website/img/favicon.png') ?>" class="ml-2" style="width: 40px;" alt="">
+                </div>
+                <div class="d-flex align-items-center">
+                    <a class="cartCounterBtn ml-3" href="">
+                        <img src="<?= base_url('assets/new_website/img/heart.png') ?>" style="width: 20px;" alt="">
+                    </a>
+                    <a class="cartCounterBtn ml-3" href="">
+                        <img src="<?= base_url('assets/new_website/img/search.png') ?>" style="width: 18px;" alt="">
+                    </a>
+                    <a class="cartCounterBtn ml-3" href="">
+                        <img src="<?= base_url('assets/new_website/img/bag.png') ?>" style="width: 20px;" alt="">
+                        <div>
+                            <span class="cartCounter m-0">10</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
         <section>
-            <div class="text-center my-5 px-2">
-                <p class="m-0 text-dark" style="font-family: 'League Spartan', sans-serif; font-size: 26px;">No results for: <span
+            <div class="text-center py-5 px-2">
+                <p class="text-dark" style="font-family: 'League Spartan', sans-serif; font-size: 26px; margin-top: 3rem;">No results for: <span
                         class="font-weight-bold">"random
                         word"</span></p>
                 <div class="searchContainer">
@@ -321,6 +345,40 @@
                                 </div>
                             </a>
                         </div>
+                        <div class="swiper-slide">
+                            <a href="#" class="text-dark productCard">
+                                <div class="productCardImg">
+                                    <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                        alt="" class="">
+                                </div>
+                                <div class="pb-1">
+                                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                                    <p class="m-0 mt-1">
+                                    <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                    <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                        2,999</span>
+                                    </p>
+                                    <p class="font-weight-bold text-success" style="font-size: 12px;">Upto 35% off</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#" class="text-dark productCard">
+                                <div class="productCardImg">
+                                    <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                        alt="" class="">
+                                </div>
+                                <div class="pb-1">
+                                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                                    <p class="m-0 mt-1">
+                                    <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                    <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                        2,999</span>
+                                    </p>
+                                    <p class="font-weight-bold text-success" style="font-size: 12px;">Upto 35% off</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -331,6 +389,40 @@
                     style="font-family: 'League Spartan', sans-serif; font-size: 22px;">BEST SELLERS</p>
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                            <a href="#" class="text-dark productCard">
+                                <div class="productCardImg">
+                                    <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                        alt="" class="">
+                                </div>
+                                <div class="pb-1">
+                                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                                    <p class="m-0 mt-1">
+                                    <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                    <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                        2,999</span>
+                                    </p>
+                                    <p class="font-weight-bold text-success" style="font-size: 12px;">Upto 35% off</p>
+                                </div>
+                            </a>
+                        </div>
+                    <div class="swiper-slide">
+                            <a href="#" class="text-dark productCard">
+                                <div class="productCardImg">
+                                    <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                        alt="" class="">
+                                </div>
+                                <div class="pb-1">
+                                    <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem ipsum dolor..</p>
+                                    <p class="m-0 mt-1">
+                                    <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                                    <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                        2,999</span>
+                                    </p>
+                                    <p class="font-weight-bold text-success" style="font-size: 12px;">Upto 35% off</p>
+                                </div>
+                            </a>
+                        </div>
                     <div class="swiper-slide">
                             <a href="#" class="text-dark productCard">
                                 <div class="productCardImg">

@@ -27,7 +27,6 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #e83e8c15;
         }
 
         ul {
@@ -54,43 +53,65 @@
             -moz-appearance: textfield;
         }
 
-        .inputGroup {
-            font-family: 'Inter', sans-serif;
-            margin: 0.5em 0 1em 0;
+        input[type="checkbox"] {
+            accent-color: var(--color2);
+        }
+
+        .container {
+            height: 48px;
             position: relative;
-        }
-
-        .inputGroup input {
-            font-size: 100%;
-            padding: 0.8em;
-            outline: none;
-            border: 2px solid rgb(200, 200, 200);
-            background-color: var(--color4);
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-            border: none;
-            border-bottom: 2px solid rgb(0, 0, 0, 0.2);
             width: 100%;
+            background-color: var(--color4);
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
         }
 
-        .inputGroup label {
-            font-size: 100%;
+        .container input {
+            width: 100%;
+            background: transparent;
+            outline: none;
+            border: none;
+            color: #222;
+            padding-top: 18px;
+        }
+
+        .container label {
+            position: absolute;
+            left: 8px;
+            top: 12px;
+            color: rgba(105, 105, 105, 0.7);
+            pointer-events: none;
+            transition: .3s;
+        }
+
+        .container input:valid~label,
+        .container input:focus~label {
+            color: var(--color1);
+            transform: translateY(-12px);
+            font-size: .65rem;
+        }
+
+        .container i {
             position: absolute;
             left: 0;
-            padding: 0.8em;
-            margin-left: 0.5em;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            color: rgb(100, 100, 100);
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #222;
         }
 
-        .inputGroup :is(input:focus, input:valid)~label {
-            transform: translateY(-50%) scale(.8);
-            margin: 0em;
-            margin-top: 0.5em;
-            margin-left: 0em;
-            /* padding: 0em; */
-            color: var(--color1);
+        .container i:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: gray;
+            /* background: linear-gradient(90deg, #ff1b69, #ff0, #2196f3, #9c27b0, #ff1b69); */
+            animation: animate 3s linear infinite;
+        }
+
+        .container input:focus~i:before {
+            background-color: var(--color1);
         }
 
         .inputGroup :is(input:focus, input:valid) {
@@ -116,7 +137,7 @@
             cursor: not-allowed;
         }
         
-    .youtube-embed-container {
+        .youtube-embed-container {
             position: relative;
             width: 800px;
             height: 400px;
@@ -157,7 +178,7 @@
 <body>
     <?php include('include/header.php'); ?>
     <main>
-        <div class="loginContainer bg-white mx-auto mt-5 shadow" style="max-width: 400px;">
+        <div class="loginContainer bg-white mx-auto mt-5 shadow my-lg-4 my-md-2" style="max-width: 400px;">
             <div>
                 <img src="https://static.vecteezy.com/system/resources/previews/005/405/595/non_2x/special-offer-sale-banner-besign-discount-label-and-sticker-for-media-promotion-product-free-vector.jpg" alt="">
             </div>
@@ -166,16 +187,17 @@
                     <span style="font-size: 24px; color: black;;">Login</span> or <span
                         style="font-size: 24px; color: black;;">Signup</span>
                 </h1>
-                <p class="mb-1" style="font-size: 12px; color: var(--color1);">Kindly enter your 10 digit mobile number
-                    and verify using OTP</p>
+                <p class="mb-1" style="font-size: 12px; color: var(--color1);">Please enter your mobile number and verify with OTP</p>
                 <form>
-                    <div class="inputGroup">
-                        <input type="number" maxlength="10" inputmode="numeric" id="number" required>
-                        <label for="number">Mobile number</label>
+                <div class="container">
+                        <input type="number" id="number" required="true">
+                        <label>Mobile number</label>
+                        <i></i>
                     </div>
-                    <div class="inputGroup">
-                        <input type="text" required>
-                        <label for="referral">Referral code (optional)</label>
+                    <div class="container" style="margin-top: 20px;">
+                        <input type="text" id="referral" required>
+                        <label>Referral code (optional)</label>
+                        <i></i>
                     </div>
                     <div class="d-flex align-items-center mt-2 mb-4"
                         style="gap: 4px;font-size: 12px;font-weight: 500; color: var(--color1);">
@@ -211,7 +233,6 @@
         }
         validate()
     </script>
-    <?php include('include/footer.php'); ?>
     <!-- <?php include('include/modal.php'); ?> -->
     <?php include('include/jsLinks.php'); ?>
 </body>

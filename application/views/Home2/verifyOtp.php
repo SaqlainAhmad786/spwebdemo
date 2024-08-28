@@ -59,7 +59,7 @@
 
 <body>
     <?php include('include/header.php'); ?>
-    <main class="d-flex align-items-center" style="min-height: 90vh;">
+    <main class="d-flex align-items-center" style="min-height: 60vh;">
         <div class="bg-white px-4 py-4 mx-auto shadow" style="width:30%; min-width: 360px; border-radius: 8px;">
             <!-- <a class="d-block mb-4" href="loginEmail.html">
                 <i class="fa-solid fa-arrow-left"></i>
@@ -69,19 +69,19 @@
                 Verify with OTP
             </h1>
             <p class="mb-1" style="font-size: 14px; color: gray;">Enter the OTP sent to your mobile number/email</p>
-            <p class="mb-4" style="font-size: 16px;font-weight: 600;">+91 9876543210</p>
+            <p class="mb-4 text-dark" style="font-size: 16px;font-weight: 600;">+91 9876543210</p>
             <form id="otpForm" onsubmit="onFormSubmit(event)">
                 <div class="inputs" id="inputs">
-                    <input type="number" inputmode="numeric" class="otpValue">
-                    <input type="number" inputmode="numeric" class="otpValue">
-                    <input type="number" inputmode="numeric" class="otpValue">
-                    <input type="number" inputmode="numeric" class="otpValue">
-                    <input type="number" inputmode="numeric" class="otpValue">
-                    <input type="number" inputmode="numeric" class="otpValue">
+                    <input type="number" inputmode="numeric" class="otpField otpField1">
+                    <input type="number" inputmode="numeric" class="otpField">
+                    <input type="number" inputmode="numeric" class="otpField">
+                    <input type="number" inputmode="numeric" class="otpField">
+                    <input type="number" inputmode="numeric" class="otpField">
+                    <input type="number" inputmode="numeric" class="otpField">
                 </div>
-                <p class="text-danger" id="otpErrorMsg" style="font-size: 12px;display: none;"><i
+                <!-- <p class="text-danger" id="otpErrorMsg" style="font-size: 12px;display: block;"><i
                         class="fa-solid fa-triangle-exclamation mr-1"></i>The
-                    OTP does not match</p>
+                    OTP does not match</p> -->
                 <!-- <button class="px-2 py-1 bg-transparent"
                     style="font-family: 'League Spartan', sans-serif; font-size: 16px;border: 1px solid rgb(0, 0, 0, 0.2);">Resend
                     OTP</button> -->
@@ -94,7 +94,7 @@
     </main>
     <script>
         const inputs = document.getElementById("inputs");
-        const otp = document.querySelectorAll(".otpValue");
+        const otpFields = document.querySelectorAll(".otpField");
         const otpForm = document.getElementById("otpForm");
 
         inputs.addEventListener("input", function (e) {
@@ -128,8 +128,22 @@
                 return;
             }
         });
+
+        document.querySelector('.otpField1').addEventListener('paste', function(e) {
+            const otp = e.clipboardData.getData('text').trim();
+
+            if (otp.length < 6 || otp.length > 6) {
+                return
+            }
+            if (otp.length === otpFields.length) {
+                otpFields.forEach((field, index) => {
+                    field.value = otp[index];
+                });
+                otpFields[5].focus();
+            }
+            e.preventDefault(); 
+        });
     </script>
-    <?php include('include/footer.php'); ?>
     <!-- <?php include('include/modal.php'); ?> -->
     <?php include('include/jsLinks.php'); ?>
 </body>

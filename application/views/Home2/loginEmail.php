@@ -27,7 +27,6 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #e83e8c15;
         }
 
         ul {
@@ -84,7 +83,7 @@
         .container input:valid~label,
         .container input:focus~label {
             color: var(--color1);
-            transform: translateY(-8px);
+            transform: translateY(-12px);
             font-size: .65rem;
         }
 
@@ -144,8 +143,7 @@
                     <span style="font-size: 24px; color: black;;">Login</span> or <span
                         style="font-size: 24px; color: black;;">Signup</span>
                 </h1>
-                <p class="mb-1" style="font-size: 12px; color: var(--color1);">Kindly enter your email address and
-                    verify using OTP</p>
+                <p class="mb-1" style="font-size: 12px; color: var(--color1);">Please enter your email address and verify with OTP</p>
                 <form id="loginForm">
                     <div class="container">
                         <input type="email" id="email" required="true">
@@ -212,7 +210,6 @@
         })
 
     </script>
-    <?php include('include/footer.php'); ?>
     <!-- <?php include('include/modal.php'); ?> -->
     <?php include('include/jsLinks.php'); ?>
 </body>
