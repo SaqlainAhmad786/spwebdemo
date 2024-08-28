@@ -125,10 +125,19 @@
         }
 
         .productCard:hover .productCardHoverBtn,
-        .productCard:hover .similarBtn {
+        .productCard:hover .similarBtn,
+        .productCard:hover .quickViewBtn {
             opacity: 1;
         }
 
+        .productCard:hover .card-img {
+            display: none;
+        }
+
+        .productCard:hover .swiper {
+            display: block;
+        }
+        
         .card-img{
             height: 320px;
             width: 100%;
@@ -333,6 +342,7 @@
             border-bottom-left-radius: 8px;
             overflow: hidden;
             transition: all .2s ease-in-out;
+            z-index: 999;
         }
 
         .productCardHoverBtn button {
@@ -361,6 +371,7 @@
             right: 8px;
             opacity: 0;
             transition: all .2s ease-in-out;
+            z-index: 999;
         }
 
         .similarBtn button {
@@ -761,13 +772,74 @@
             font-size: 12px;
         }
 
+        .quickViewBtn{
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all .2s ease-in-out;
+            z-index: 999;
+        }
+
+        .quickViewBtn button{
+            outline: none;
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 4px 8px;
+            font-size: 14px;
+            background-color: #ffffff50;
+        }
+
         .quickViewSimilarProducts{
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            margin-top: 1.5rem;
+            margin-top: 0.75rem;
         }
+
+        .swiper {
+            display: none;
+            width: 280px;
+            height: 320px;
+        }
+
+        .quickViewSwiper {
+            display: block;
+            width: 100%;
+            height: 80px;
+        }
+
+        .quickViewSwiper img{
+            width: 60px;
+            height: 80px;
+
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            color: var(--color2);
+        }
+
+        .swiper-pagination-bullet-active {
+             background: var(--color2)!important;
+         }
 
         @media (max-width: 1160px) {
             .productsList {
@@ -888,36 +960,72 @@
                         <button class="btn" style="background-color: var(--color1); color: white;">BUY NOW</button>
                     </div>
                 </div>
-                <div class="quickViewSimilarProducts col-12">
-                    <div>
-                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 100px;" alt="">
-                        <div class="p-1 text-center">
-                            <p class="m-0 p-0" style="font-size: 12px;">Lorem ipsum...</p>
-                            <p class="m-0 p-0 text-secondary font-weight-bold" style="font-size: 14px;">₹120</p>
+                <div class="col-12" style="margin-top: 1rem;">
+                    <p class="m-0 p-0 fontLeague font-weight-bold">COMPLETE THE LOOK</p>
+                    <!-- <div class="quickViewSimilarProducts">
+                        <div>
+                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 100px;" alt="">
+                            <div class="p-1 text-center">
+                                <p class="m-0 p-0" style="font-size: 12px;">Lorem ipsum...</p>
+                                <p class="m-0 p-0 text-secondary font-weight-bold" style="font-size: 14px;">₹120</p>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 100px;" alt="">
-                        <div class="p-1 text-center">
-                            <p class="m-0 p-0" style="font-size: 12px;">Lorem ipsum...</p>
-                            <p class="m-0 p-0 text-secondary font-weight-bold" style="font-size: 14px;">₹120</p>
+                        <div>
+                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 100px;" alt="">
+                            <div class="p-1 text-center">
+                                <p class="m-0 p-0" style="font-size: 12px;">Lorem ipsum...</p>
+                                <p class="m-0 p-0 text-secondary font-weight-bold" style="font-size: 14px;">₹120</p>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 100px;" alt="">
-                        <div class="p-1 text-center">
-                            <p class="m-0 p-0" style="font-size: 12px;">Lorem ipsum...</p>
-                            <p class="m-0 p-0 text-secondary font-weight-bold" style="font-size: 14px;">₹120</p>
+                        <div>
+                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 100px;" alt="">
+                            <div class="p-1 text-center">
+                                <p class="m-0 p-0" style="font-size: 12px;">Lorem ipsum...</p>
+                                <p class="m-0 p-0 text-secondary font-weight-bold" style="font-size: 14px;">₹120</p>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 100px;" alt="">
-                        <div class="p-1 text-center">
-                            <p class="m-0 p-0" style="font-size: 12px;">Lorem ipsum...</p>
-                            <p class="m-0 p-0 text-secondary font-weight-bold" style="font-size: 14px;">₹120</p>
+                        <div>
+                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="width: 100px;" alt="">
+                            <div class="p-1 text-center">
+                                <p class="m-0 p-0" style="font-size: 12px;">Lorem ipsum...</p>
+                                <p class="m-0 p-0 text-secondary font-weight-bold" style="font-size: 14px;">₹120</p>
+                            </div>
                         </div>
+                    </div> -->
+                    <div class="swiper quickViewSwiper">
+                        <div class="swiper-wrapper">
+                            <div>
+                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"  alt="">
+                                <div class="p-1 text-center">
+                                    <p class="m-0 p-0" style="font-size: 12px;">Lorem ipsum...</p>
+                                    <p class="m-0 p-0 text-secondary font-weight-bold" style="font-size: 14px;">₹120</p>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"  alt="">
+                                <div class="p-1 text-center">
+                                    <p class="m-0 p-0" style="font-size: 12px;">Lorem ipsum...</p>
+                                    <p class="m-0 p-0 text-secondary font-weight-bold" style="font-size: 14px;">₹120</p>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"  alt="">
+                                <div class="p-1 text-center">
+                                    <p class="m-0 p-0" style="font-size: 12px;">Lorem ipsum...</p>
+                                    <p class="m-0 p-0 text-secondary font-weight-bold" style="font-size: 14px;">₹120</p>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"  alt="">
+                                <div class="p-1 text-center">
+                                    <p class="m-0 p-0" style="font-size: 12px;">Lorem ipsum...</p>
+                                    <p class="m-0 p-0 text-secondary font-weight-bold" style="font-size: 14px;">₹120</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
                     </div>
-                </div>
             </div>
         </dialog>
         <section class="d-lg-none d-md-none d-sm-block position-fixed top-0 w-100 bg-white" style="z-index: 10000;" >
@@ -1285,7 +1393,7 @@
                         <button class="btn m-0 pincodeBtn" onClick="openPincodeForm()"
                             style="font-size: 14px; color: var(--color1);">Check<i class="fa-solid fa-pen ml-1"></i></button>
                     </p>
-                    <div class="pincodeFormContainer" style="display:none;">
+                    <div class="pincodeFormContainer">
                         <form id="pincodeForm" class="d-flex align-items-center">
                             <input type="number" name="pincode" class="form-control pincodeInput" style="width: 150px; font-size: 14px" id=""
                             placeholder="deliver to pincode">
@@ -1606,10 +1714,33 @@
                                 <div class="position-relative">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
                                         class="card-img" alt="">
+                                    <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                    </div>
                                     <div class="productCardHoverBtn">
-                                        <div class="quickViewBtn">
+                                        <!-- <div class="quickViewBtn">
                                             <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div>
+                                        </div> -->
                                         <div>
                                             <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
                                         </div>
@@ -1618,6 +1749,12 @@
                                         <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
+                                    </div>
+                                    <div class="quickViewBtn">
+                                        <button onClick="openQuickViewDialog()">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            QUICK VIEW
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -1734,10 +1871,33 @@
                                 <div class="position-relative">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
                                         class="card-img" alt="">
+                                    <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                    </div>
                                     <div class="productCardHoverBtn">
-                                        <div class="quickViewBtn">
+                                        <!-- <div class="quickViewBtn">
                                             <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div>
+                                        </div> -->
                                         <div>
                                             <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
                                         </div>
@@ -1746,6 +1906,12 @@
                                         <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
+                                    </div>
+                                    <div class="quickViewBtn">
+                                        <button onClick="openQuickViewDialog()">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            QUICK VIEW
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -1862,10 +2028,33 @@
                                 <div class="position-relative">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
                                         class="card-img" alt="">
+                                    <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                    </div>
                                     <div class="productCardHoverBtn">
-                                        <div class="quickViewBtn">
+                                        <!-- <div class="quickViewBtn">
                                             <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div>
+                                        </div> -->
                                         <div>
                                             <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
                                         </div>
@@ -1874,6 +2063,12 @@
                                         <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
+                                    </div>
+                                    <div class="quickViewBtn">
+                                        <button onClick="openQuickViewDialog()">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            QUICK VIEW
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -1990,10 +2185,33 @@
                                 <div class="position-relative">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
                                         class="card-img" alt="">
+                                    <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                    </div>
                                     <div class="productCardHoverBtn">
-                                        <div class="quickViewBtn">
+                                        <!-- <div class="quickViewBtn">
                                             <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div>
+                                        </div> -->
                                         <div>
                                             <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
                                         </div>
@@ -2002,6 +2220,12 @@
                                         <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
+                                    </div>
+                                    <div class="quickViewBtn">
+                                        <button onClick="openQuickViewDialog()">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            QUICK VIEW
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -2118,10 +2342,33 @@
                                 <div class="position-relative">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
                                         class="card-img" alt="">
+                                    <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                    </div>
                                     <div class="productCardHoverBtn">
-                                        <div class="quickViewBtn">
+                                        <!-- <div class="quickViewBtn">
                                             <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div>
+                                        </div> -->
                                         <div>
                                             <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
                                         </div>
@@ -2130,6 +2377,12 @@
                                         <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
+                                    </div>
+                                    <div class="quickViewBtn">
+                                        <button onClick="openQuickViewDialog()">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            QUICK VIEW
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -2246,10 +2499,33 @@
                                 <div class="position-relative">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
                                         class="card-img" alt="">
+                                    <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                    </div>
                                     <div class="productCardHoverBtn">
-                                        <div class="quickViewBtn">
+                                        <!-- <div class="quickViewBtn">
                                             <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div>
+                                        </div> -->
                                         <div>
                                             <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
                                         </div>
@@ -2258,6 +2534,12 @@
                                         <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
+                                    </div>
+                                    <div class="quickViewBtn">
+                                        <button onClick="openQuickViewDialog()">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            QUICK VIEW
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -2374,10 +2656,33 @@
                                 <div class="position-relative">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
                                         class="card-img" alt="">
+                                    <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                    </div>
                                     <div class="productCardHoverBtn">
-                                        <div class="quickViewBtn">
+                                        <!-- <div class="quickViewBtn">
                                             <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div>
+                                        </div> -->
                                         <div>
                                             <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
                                         </div>
@@ -2386,6 +2691,12 @@
                                         <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
+                                    </div>
+                                    <div class="quickViewBtn">
+                                        <button onClick="openQuickViewDialog()">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            QUICK VIEW
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -2502,10 +2813,33 @@
                                 <div class="position-relative">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
                                         class="card-img" alt="">
+                                    <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div>
+                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
+                                                            alt="" class="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                    </div>
                                     <div class="productCardHoverBtn">
-                                        <div class="quickViewBtn">
+                                        <!-- <div class="quickViewBtn">
                                             <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div>
+                                        </div> -->
                                         <div>
                                             <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
                                         </div>
@@ -2514,6 +2848,12 @@
                                         <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
                                                 class="similarText">Similar
                                                 Products</span></button>
+                                    </div>
+                                    <div class="quickViewBtn">
+                                        <button onClick="openQuickViewDialog()">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            QUICK VIEW
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -2556,7 +2896,28 @@
             </div>
         </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            autoplay: {
+                delay: 1000
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            }
+        });
+
+        var swiper = new Swiper(".quickViewSwiper", {
+            slidesPerView: 4,
+            spaceBetween: '16px',
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            }
+        });
 
         function showToast(message, type) {
             const toaster = document.getElementById('toaster');

@@ -159,8 +159,6 @@
             color: var(--color2);
         }
 
-         
-
         @media (width<568px){
             .searchResults{
                 display: none!important;
@@ -497,8 +495,6 @@
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
     <script>
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 4,
