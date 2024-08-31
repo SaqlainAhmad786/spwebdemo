@@ -29,6 +29,11 @@
             font-family: 'Inter', sans-serif;
         }
 
+        main{
+            background-image: linear-gradient(127deg, #feedf4 0%, #fcf0e3 100%);
+            height: 80vh;
+        }
+
         ul {
             list-style-type: none;
         }

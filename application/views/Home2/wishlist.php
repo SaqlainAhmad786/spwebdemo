@@ -115,10 +115,23 @@
             border-radius: 4px;
             font-family: 'League Spartan', sans-serif;
             font-weight: 600;
+            transition: all .2s ease-in-out;
+        }
+
+        .selectBtns button:hover {
+            transform: scale(1.1);
         }
 
         .selectBtns button img {
             width: 18px;
+        }
+
+        .wishlistClearBtn{
+            transition: all .2s ease-in-out;
+        }
+
+        .wishlistClearBtn:hover{
+            transform: scale(1.1);
         }
 
         .continueBtn {
@@ -220,6 +233,24 @@
             height: 140px;
         }
 
+        .outOfStockLayer .outOfStockBtn {
+            color: var(--color2);
+            font-weight: 600;
+            background-color: white;
+            padding: 4px 8px;
+            border:none;
+            outline: none;
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        .outOfStockLayer .outOfStockBtn:hover {
+            text-decoration: underline;
+        }
+
         .stockTag {
             font-size: 12px;
             position: absolute;
@@ -261,6 +292,30 @@
             color: white;
         }
 
+        .notifyCredentialInputContainer {
+          border: 1px solid rgba(0, 0, 0, 0.15);
+          padding: 4px 8px;
+          border-radius: 4px;   
+        }
+
+        .notifyCredentialInputContainer .notifyCredentialInputSpan {
+            display: none;
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .notifyCredentialInput {
+            border: none;
+            outline: none;
+            padding: 4px 8px;
+            border-radius: 0;
+            font-size: 14px;
+            width: 254px;
+        }
+
+        .notifyCredentialInput::placeholder {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
         .notifyBtn {
             font-size: 14px;
             color: var(--color2);
@@ -272,6 +327,10 @@
         .notifyBtn:hover {
             background-color: var(--color2);
             color: white;
+        }
+
+        .notifyMsg, .notifyErrorMsg {
+            display: none;
         }
 
 
@@ -370,6 +429,7 @@
 
         .sizeBtn {
             background-color: white;
+            position: relative;
             border: 2px solid var(--color1);
             width: 40px;
             height: 40px;
@@ -415,6 +475,16 @@
             background-color: var(--color1);
             z-index: 2;
             border-radius: 12px;
+        }
+
+        .stockBtns .recommended::after {
+            content: "RECOMMENDED SIZE";
+            font-size: 10px;
+            text-align: left;
+            line-height: 1;
+            position: absolute;
+            top: -16px;
+            left:0px;
         }
 
         .sidebar {
@@ -521,7 +591,7 @@
 
         #toaster {
             position: fixed;
-            top: 20px;
+            top: 160px;
             right: 20px;
             z-index: 1000;
         }
@@ -604,7 +674,7 @@
                 box-shadow:none;
             }
 
-            .dialog, .dialog2{
+            dialog, .dialog2{
                 top:100%;
                 left:0;
                 transform: translateY(-100%);
@@ -723,13 +793,19 @@
                             <div class="text-left mt-2 stockBtns">
                                 <button class="sizeBtn">XS</button>
                                 <button class="sizeBtn outOfStock">S</button>
-                                <button class="sizeBtn">M</button>
+                                <button class="sizeBtn recommended">M</button>
                                 <button class="sizeBtn">L</button>
                                 <button class="sizeBtn">XL</button>
                                 <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn recommended">XXL</button>
+                                <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn">XXL</button>
+                                <button class="sizeBtn">XXL</button>
                             </div>
                             <button onclick="sizeDialogBtn()" class="btn w-100 mt-4"
-                                style="background-color: var(--color1); color: white;">DONE</button>
+                                style="background-color: var(--color1); color: white;">ADD TO BAG</button>
                             <button id="closeModalBtn" aria-label="close" class="x closeSizeModalBtn">
                                 <span class="close-btn" id="close-popup">×</span>
                             </button>
@@ -746,11 +822,16 @@
                 </div>
                 <hr class="my-2" />
                 <p class="text-secondary p-0">Get alerts for restocks, price drops, and availability.</p>
+                <p class="text-success m-0 p-0 notifyMsg" style="font-size: 14px;"><i class="fas fa-check-circle"></i> You're all set</p>
+                <p class="text-danger m-0 p-0 notifyErrorMsg" style="font-size: 14px;"><i class="fas fa-info-circle"></i> Please input valid details!</p>
                 <form class="notifyForm">
-                    <input type="text" name="credential" id="" placeholder="Enter Email id or WhatsApp number"
-                        class="form-control notifyCredentialInput">
-                    <button type="submit" class="btn btn-disabled w-100 rounded-sm mt-2 notifyCredentialBtn"
-                        style="background-color: var(--color1); color: white;" disabled>CONFIRM</button>
+                    <div class="notifyCredentialInputContainer">
+                        <span class="notifyCredentialInputSpan">+91 |</span>
+                        <input type="text" name="credential" id="" placeholder="Enter Email id or WhatsApp number"
+                        class="notifyCredentialInput">
+                    </div>
+                    <button type="submit" class="btn w-100 rounded-sm mt-2 notifyCredentialBtn"
+                        style="background-color: var(--color1); color: white;">CONFIRM</button>
                     <button type="button" onClick="notifyFocus()" class="btn w-100 rounded-sm mt-2 notifyCredentialEditBtn"
                         style="background-color: var(--color1); color: white; display: none">EDIT</button>
                 </form>
@@ -806,7 +887,7 @@
                 style="font-style: 'League Spartan';">
                 <p class="font-weight-bolder m-0 d-lg-block d-md-block d-sm-none d-none text-dark" style="font-size: 20px;">My Wishlist <span
                         class="font-weight-normal text-secondary" style="font-size: 14px;">(210 products)</span></p>
-                <button class="btn m-0 p-0 wishlistClearBtn float-right font-weight-bold" style="font-family: 'League Spartan';"><img src="<?= base_url('assets/new_website/img/clear.png') ?>" style="width: 20px;" alt=""></i>Clear all</button>
+                <button class="btn m-0 p-0 wishlistClearBtn float-right font-weight-bold" style="font-family: 'League Spartan';"><img src="<?= base_url('assets/new_website/img/clear.png') ?>" style="width: 20px;" alt=""></i>Clear All</button>
                 <div class="selectBtns text-dark" style="display: none;">
                     <button>
                         <img src="<?= base_url('assets/new_website/img/bag.png') ?>" alt="">
@@ -899,6 +980,9 @@
                         <div class="productCloseIcon"> <span class="close-btn" id="close-popup">×</span></div>
                         <div class="outOfStockLayer">
                             <img src="<?= base_url('assets/new_website/img/out-of-stock.png') ?>" alt="out of stock icon">
+                            <button onclick="openSidebar()" class="outOfStockBtn">
+                                VIEW SIMILAR
+                            </button>
                         </div>
                         <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" class="productImage" alt="">
                         <input type="checkbox" class="checkMark" name="" id="">
@@ -1413,41 +1497,42 @@
         const notifyCloseBtn = document.querySelector('.notifyCloseBtn')
         const notifyCredentialInput = document.querySelector('.notifyCredentialInput')
         const notifyCredentialBtn = document.querySelector('.notifyCredentialBtn')
+        const notifyCredentialInputContainer = document.querySelector('.notifyCredentialInputContainer')
 
         const checkMarks = document.querySelectorAll('.checkMark')
 
         moveBtns.forEach((btn) => {
             btn.addEventListener('click', () => {
                 sizeModal.showModal();
-                document.body.classList.toggle('modal-open');
+                document.body.classList.add('modal-open');
             })
         })
 
         closeSizeModalBtn.addEventListener('click', () => {
             sizeModal.close();
-            document.body.classList.toggle('modal-open');
+            document.body.classList.remove('modal-open');
         })
 
         wishlistClearBtn.addEventListener('click', () => {
             wishlistClearDialog.showModal();
-            document.body.classList.toggle('modal-open');
+            document.body.classList.add('modal-open');
         })
 
         wishlistClearCloseBtn.addEventListener('click', () => {
             wishlistClearDialog.close();
-            document.body.classList.toggle('modal-open');
+            document.body.classList.remove('modal-open');
         })
 
         notifyBtn.forEach((btn) => {
             btn.addEventListener('click', () => {
                 notifyDialog.showModal();
-                document.body.classList.toggle('modal-open');
+                document.body.classList.add('modal-open');
             })
         })
 
         notifyCloseBtn.addEventListener('click', () => {
             notifyDialog.close();
-            document.body.classList.toggle('modal-open');
+            document.body.classList.remove('modal-open');
         })
 
         function openSidebar() {
@@ -1461,15 +1546,19 @@
         }
 
         notifyCredentialInput.addEventListener('input', (e) => {
-            if(e.target.value.length >= 10){
-                notifyCredentialBtn.removeAttribute('disabled')
-                notifyCredentialBtn.classList.remove('btn-disabled')
-            }else if(e.target.value.length == 0){
-                notifyCredentialBtn.setAttribute('disabled', true)
+            if(e.target.value.length == 0){
+                notifyCredentialInputContainer.style.borderColor = 'rgba(0, 0, 0, 0.15)'
+                document.querySelector('.notifyMsg').style.display = 'none'
+                document.querySelector('.notifyErrorMsg').style.display = 'none'
+                document.querySelector('.notifyCredentialInputSpan').style.display = 'none'
+            }
+
+            if(e.target.value.charAt(0) >= 0 || e.target.value.charAt(0) <= '9'){
+                document.querySelector('.notifyCredentialInputSpan').style.display = 'inline-block'
+            }else if(e.target.value == '0000000000'){
                 notifyCredentialBtn.classList.add('btn-disabled')
             }else{
-                notifyCredentialBtn.setAttribute('disabled', true)
-                notifyCredentialBtn.classList.add('btn-disabled')
+                document.querySelector('.notifyCredentialInputSpan').style.display = 'none'
             }
         })
 
@@ -1498,6 +1587,14 @@
             e.preventDefault()
             const data = new FormData(notifyForm)
             const credential = data.get('credential')
+            if(credential.length == 0){
+                notifyCredentialInputContainer.style.borderColor = 'red'
+                return
+            }else if (credential == '0000000000'){
+                notifyCredentialInputContainer.style.borderColor = 'red'
+                document.querySelector('.notifyErrorMsg').style.display = 'block'
+                return
+            }
             notifyCredentialInput.value = credential
             notifyCredentialInput.style.borderColor = 'green'
             notifyCredentialBtn.style.display = 'none'
@@ -1506,18 +1603,18 @@
         })
 
         function notifyFocus() {
-            console.log('focus')
             notifyCredentialBtn.style.display = 'block'
             document.querySelector('.notifyCredentialEditBtn').style.display = 'none'
             notifyCredentialInput.value = ''
             notifyCredentialInput.style.borderColor = 'gray'
+            notifyCredentialInputContainer.style.borderColor = 'rgba(0, 0, 0, 0.15)'
             notifyCredentialInput.focus()
         }
 
         function sizeDialogBtn() {
             sizeModal.close();
             document.body.classList.toggle('modal-open');
-            showToast('Product added to cart', 'success')
+            showToast('Product moved to bag', 'success')
         }
 
 

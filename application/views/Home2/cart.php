@@ -636,7 +636,6 @@
             }
         }
     </style>
-    <?php include('include/header.php'); ?>
     <main>
         <div id="couponSidebar" class="sidebar">
             <button class="close-btn btn" onclick="closeCouponSidebar()">❌</button>
@@ -915,7 +914,7 @@
                     <div class="px-4 py-3 border rounded-lg d-flex align-items-center justify-content-between"
                         style="background-color: rgba(255, 193, 193, 0.25); font-size: 14px;">
                         <p class="m-0">Deliver to: <span class="font-weight-bold">221010</span></p>
-                        <button class="btn border-danger text-danger addressDialogBtn" style="font-size: 12px;">CHANGE
+                        <button class="btn border-danger text-danger font-weight-bold addressDialogBtn" style="font-size: 12px;">CHANGE
                             ADDRESS</button>
                     </div>
                     <div class="mt-2 mt-lg-4 mt-md-4 mt-sm-2">
@@ -1078,7 +1077,7 @@
                             <button class="btn btn-block text-left font-weight-bold text-dark align-items-center"
                                 style="font-size: 14px;" type="button" data-toggle="collapse" data-target="#collapseOne"
                                 aria-expanded="true" aria-controls="collapseOne">
-                                <img src="./images/coupon.png" class="mr-1" style="width: 20px; margin-top: -2px;"
+                                <img src="<?=base_url(); ?>assets/new_website/img/coupon.png" class="mr-1" style="width: 20px; margin-top: -2px;"
                                     alt="">
                                 <span class="font-weight-bold">Apply coupons</span>
                                 <i class="fa-solid fa-caret-down float-right mt-1"></i>

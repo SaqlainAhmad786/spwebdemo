@@ -100,7 +100,7 @@
         }
 
         .filtersContainer {
-            background-color: #e83e8c15;
+            background-color: #F8F9FA;
             position: sticky;
             height: 100vh;
             top: 0;
@@ -115,13 +115,13 @@
 
         .productCard {
             position: relative;
-            transition: all .2s ease-in-out;
+            /* transition: all .2s ease-in-out; */
+            border-radius: 4px;
             z-index: 10;
         }
 
         .productCard:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+            border: 1px solid rgb(0, 0, 0, 0.15);
         }
 
         .productCard:hover .productCardHoverBtn,
@@ -1787,7 +1787,7 @@
                                             <i class="fa-solid fa-circle-info text-dark"></i>
                                         </a>
                                     </p>
-                                    <p class="m-0 mt-1" style="font-size: 14px;">Get it by <span
+                                    <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
                                             class="font-weight-bold">Aug 31</span></p>
                                 </div>
                             </a>

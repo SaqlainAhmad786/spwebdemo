@@ -219,7 +219,6 @@
             }
         }
     </style>
-    <?php include('include/header.php'); ?>
     <main>
         <div id="addressSidebar" class="sidebar" style="z-index: 1000;">
             <button class="close-btn btn" onclick="closeAddressSidebar()">❌</button>
