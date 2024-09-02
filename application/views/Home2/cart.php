@@ -49,6 +49,26 @@
             overflow-y: hidden;
         }
 
+        body.sidebar-open{
+            overflow-y: hidden;
+        }
+
+        body.sidebar-open::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 5;
+        }
+
+        main {
+            max-width: 1560px;
+            margin-inline: auto;
+        }
+
         input[type="checkbox"] {
             accent-color: var(--color2);
         }
@@ -305,6 +325,7 @@
             border: 0;
             box-shadow: 0 5px 30px 0 #000;
             animation: fadeIn 300ms ease both;
+            z-index: 10000;
         }
 
         dialog::backdrop {
@@ -518,6 +539,16 @@
             color: var(--color2);
         }
 
+        .addNewAddressBtn {
+            background-color: white;
+            padding: 0.25rem;
+            bottom: 0;
+        }
+
+        .addNewAddressBtn button {
+            border: 1px solid black;
+        }
+
         .sizeBtn {
             background-color: white;
             border: 2px solid var(--color1);
@@ -577,6 +608,11 @@
             color: white;
         }
 
+        .borderStart {
+            border-left: 1px solid rgb(0, 0, 0, 0.1);
+            padding-left: 8px;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -617,6 +653,11 @@
                 grid-template-columns: 1fr;
             }
 
+            .borderStart {
+                border-left: none;
+                padding-left: 0;
+            }
+
             .addressDialog {
                 min-width: 70%;
             }
@@ -633,6 +674,14 @@
 
             .productsContainer .products {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dialog {
+                top: 100%;
+                left: 0;
+                transform: translateY(-100%);
+                min-width: 100%;
+                border-radius: 0;
             }
         }
     </style>
@@ -770,11 +819,14 @@
             </div>
         </div>
         <dialog class="dialog addressDialog" id="dialog" style="z-index: 1;">
-            <div>
+            <div class="position-relative">
                 <div class="d-flex px-3 py-1 font-weight-bold justify-content-between align-items-center shadow-sm">
                     <p>Select Delivery Address</p>
                     <button id="closeAddressDialogBtn" aria-label="close"
-                        class="btn p-0 m-0 closeAddressDialogBtn">❌</button>
+                        class="btn p-0 m-0 closeAddressDialogBtn font-weight-bold">×</button>
+                </div>
+                <div class="position-fixed w-100 addNewAddressBtn">
+                    <button class="btn w-100">ADD NEW ADDRESS</button>
                 </div>
                 <div class="pincodeContainer">
                     <input type="text" class="border-0 ml-1" placeholder="Enter Pincode">
@@ -787,11 +839,11 @@
                         <button class="btn addAddressBtn" onclick="openAddressSidebar()"
                             style="color: var(--color2);"><i class="fa-solid fa-plus"></i>
                             Add
-                            new</button>
+                            new address</button>
                     </div>
                     <div>
                         <!-- <p class="m-0 p-3 text-center" style="font-size: 12px;">No saved address</p> -->
-                        <div class="px-3 py-2">
+                        <div class="px-3 py-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
                                     <input type="radio" class="mr-2" name="address" id="address">
@@ -803,36 +855,14 @@
                             <p class="m-0 text-secondary" style="font-size: 14px;">Lorem ipsum, dolor sit amet
                                 consectetur adipisicing elit. Consectetur, maxime.</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
+                                <div>
                                     <button class="btn border"><i class="fa-solid fa-location-dot mr-1"></i>Delivering
                                         here</button>
                                     <!-- <button class="btn"><i class="fa-solid fa-truck mr-1"></i>Deliver here</button> -->
-                                    <button class="btn btn-secondary"><i
+                                    <button class="btn border"><i
                                             class="fa-solid fa-pencil mr-1"></i>Edit</button>
                                 </div>
-                                <button class="btn border"><i class="fa-solid fa-trash"></i></button>
-                            </div>
-                        </div>
-                        <div class="px-3 py-2">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <input type="radio" class="mr-2" name="address" id="address">
-                                    <p class="m-0 p-0 font-weight-bold">John Doe</p>
-                                </div>
-                                <p class="text-success p-0 m-0" style="font-size: 10px; font-weight: 500;">HOME</p>
-                            </div>
-                            <p class="m-0 text-secondary" style="font-size: 14px;">Lorem ipsum, dolor sit amet
-                                consectetur adipisicing elit. Consectetur, maxime.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <!-- <button class="btn border"><i class="fa-solid fa-location-dot mr-1"></i>Delivering
-                                        here</button> -->
-                                    <button class="btn border"><i class="fa-solid fa-truck mr-1"></i>Deliver
-                                        here</button>
-                                    <button class="btn btn-secondary"><i
-                                            class="fa-solid fa-pencil mr-1"></i>Edit</button>
-                                </div>
-                                <button class="btn border"><i class="fa-solid fa-trash"></i></button>
+                                <button class="btn border"><img src="<?=base_url('assets/new_website/img/trash.png')?>" style="width: 18px;" alt=""></button>
                             </div>
                         </div>
                     </div>
@@ -886,7 +916,20 @@
                 </form>
             </div>
         </div>
-        <section>
+        <section class="d-lg-none d-md-none d-sm-block position-fixed top-0 w-100 bg-white" style="z-index: 10000;" >
+            <div class="d-flex justify-content-between align-items-center px-3 py-1 shadow-sm">
+                <div class="d-flex align-items-center text-dark">
+                    <a href=""><span style="font-size: 20px;"><i class="fa-solid fa-arrow-left"></i></span></a>
+                    <span class="ml-2 d-flex flex-column font-weight-bold" style="font-size: 18px;">My Wishlist
+                        <span class="font-weight-normal" style="color: #777; font-size: 10px;">(210 products)</span>
+                    </span>
+                </div>
+                <div>
+                    <p>STEP 1/3</p>
+                </div>
+            </div>
+        </section>
+        <section class="d-lg-block d-md-block d-sm-none d-none">
             <div class="stepper-wrapper">
                 <div class="stepper-item active">
                     <div class="step-counter">1</div>
@@ -902,7 +945,7 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section style="padding-top: 66px;">
             <!-- <div class="d-flex flex-column justify-content-center align-items-center" style="height: 500px;">
                 <img src="./images/empty-cart.png" style="width: 200px;" alt="">
                 <p class="text-dark font-weight-bold m-0" style="font-size: 20px;">"It feels so effortless!"</p>
@@ -913,9 +956,19 @@
                 <div class="mt-lg-3 mt-md-3 mt-sm-0 mt-0">
                     <div class="px-4 py-3 border rounded-lg d-flex align-items-center justify-content-between"
                         style="background-color: rgba(255, 193, 193, 0.25); font-size: 14px;">
-                        <p class="m-0">Deliver to: <span class="font-weight-bold">221010</span></p>
+                        <div class="d-flex flex-column flex-lg-row flex-md-row flex-sm-column">
+                            <p class="m-0 p-0">Deliver to:</p>
+                            <p class="p-0 ml-1 text-dark font-weight-bold" style="line-height: 1.25;">John Doe, Sigra, Varanasi,<br>
+                                U.P. India
+                            </p>
+                        </div>
+                        <!-- <p class="m-0">Deliver to: <span class="font-weight-bold">221010</span></p> -->
                         <button class="btn border-danger text-danger font-weight-bold addressDialogBtn" style="font-size: 12px;">CHANGE
                             ADDRESS</button>
+                    </div>
+                    <div class="d-flex align-items-center border rounded-lg mt-2 px-2 py-1" style="background-color: #FFFAE8;">
+                            <i class="fa-solid fa-triangle-exclamation text-danger mr-2"></i>
+                            <p style="font-size: 12px; line-height: 1.25;">Some items in your cart have gone out of stock and have been removed. <a href="" class="text-info font-weight-bold">Click here for more details</a></p>
                     </div>
                     <div class="mt-2 mt-lg-4 mt-md-4 mt-sm-2">
                         <div class="d-flex align-items-center justify-content-between">
@@ -927,7 +980,7 @@
                             </div>
                             <div class="d-flex align-items-center">
                                 <button class="btn font-weight-bold" style="font-size: 10px;">REMOVE</button>
-                                <button class="btn font-weight-bold" style="font-size: 10px;">MOVE TO WISHLIST</button>
+                                <button class="btn font-weight-bold" style="font-size: 10px; white-space: nowrap">MOVE TO WISHLIST</button>
                             </div>
                         </div>
                         <div class="productList mt-2">
@@ -1063,21 +1116,417 @@
                                     <input type="checkbox" name="" id="">
                                 </div>
                             </div>
+                            <div class="productCard">
+                                <div><img
+                                        src="https://www.jiomart.com/images/product/original/rvxqd4wmk4/eyebogler-light-green-tshirts-men-tshirt-tshirt-for-men-tshirt-mens-tshirt-men-s-polo-neck-regular-fit-half-sleeves-colorblocked-t-shirt-product-images-rvxqd4wmk4-1-202402121853.jpg?im=Resize=(500,630)"
+                                        style="width: 120px;" alt=""></div>
+                                <div>
+                                    <p class="font-weight-bold text-dark" style="font-style: 'League Spartan';">Levis's
+                                        Men's Slim Fit Shirt</p>
+                                    <p class="text-secondary" style="font-size: 12px;">T-Shirt</p>
+                                    <div class="mt-1">
+                                        <button class="btn px-1 py-0 font-weight-bold sizeSelectBtn"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Size: XL <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog sizeDialog" id="dialog">
+                                            <div>
+                                                <div class="d-flex">
+                                                    <img src="./images/product-1.jpg" style="width: 80px;" alt="">
+                                                    <div class="ml-3 text-left">
+                                                        <p class="m-0 p-0">Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0 text-secondary" style="font-size: 14px;">
+                                                            Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0">
+                                                            <span class="font-weight-bold text-dark"
+                                                                style="font-size: 15px;">₹ 1,999</span>
+                                                            <span class="text-secondary"
+                                                                style="text-decoration: line-through; font-size: 14px;">₹
+                                                                2,999</span>
+                                                            <span class="font-weight-bold text-danger"
+                                                                style="font-size: 14px;">35%</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <hr class="my-2" />
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT SIZE
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">XS</button>
+                                                    <button class="sizeBtn outOfStock">S</button>
+                                                    <button class="sizeBtn">M</button>
+                                                    <button class="sizeBtn">L</button>
+                                                    <button class="sizeBtn">XL</button>
+                                                    <button class="sizeBtn">XXL</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeSizeDialogBtn" aria-label="close"
+                                                    class="x closeSizeDialogBtn">❌</button>
+                                            </div>
+                                        </dialog>
+                                        <button class="btn px-1 py-0 font-weight-bold quantityBtn"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Quantity: 1 <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog quantityDialog" id="dialog">
+                                            <div>
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT
+                                                    QUANTITY
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">1</button>
+                                                    <button class="sizeBtn">2</button>
+                                                    <button class="sizeBtn">3</button>
+                                                    <button class="sizeBtn">4</button>
+                                                    <button class="sizeBtn">5</button>
+                                                    <button class="sizeBtn">6</button>
+                                                    <button class="sizeBtn">7</button>
+                                                    <button class="sizeBtn">8</button>
+                                                    <button class="sizeBtn">9</button>
+                                                    <button class="sizeBtn">10</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeQuantitiDialogBtn" aria-label="close"
+                                                    class="x closeQuantitiDialogBtn">❌</button>
+                                            </div>
+                                        </dialog>
+                                        <span class="border border-danger rounded-lg p-1 text-danger font-weight-bold"
+                                            style="font-size: 10px; white-space: nowrap;">2 left</span>
+                                    </div>
+                                    <div class="mt-1" style="font-size: 14px;">
+                                        <span class="font-weight-bold">₹200</span>
+                                        <span class="text-secondary ml-1"
+                                            style="text-decoration: line-through;">₹300</span>
+                                        <span class="text-danger font-weight-bold ml-1">35%</span>
+                                        <span class="font-weight-bold"
+                                            style="border: 1px solid rgb(0, 0, 0,0.15); padding: 2px 4px; border-radius: 100vh; font-size: 12px; white-space: nowrap;">
+                                            <i class="fa-solid fa-crown" style="color: yellow;"></i>
+                                            <span>RC Price: ₹195</span>
+                                        </span>
+                                    </div>
+                                    <p class="text-secondary mt-2" style="font-size: 12px;">
+                                        <i class="fa-solid fa-rotate-left border p-1 rounded-circle text-dark"
+                                            style="font-size: 8px;"></i>
+                                        <span class="text-dark font-weight-bold">14 days</span> return available
+                                    </p>
+                                    <p class="text-secondary mt-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-gift border p-1 rounded-circle text-dark"
+                                            style="font-size: 8px;"></i>
+                                        This product
+                                        <span class="text-dark font-weight-bold">cannot</span> be Gift wrapped
+                                    </p>
+                                    <p class="text-secondary mt-1 pl-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
+                                        Deliverd by
+                                        <span class="text-dark font-weight-bold">15 Aug, 2024</span>
+                                    </p>
+                                    <button class="closeBtn btn p-0"><i class="fa-solid fa-xmark"></i></button>
+                                    <dialog class="dialog closeProductDialogBtn" id="dialog">
+                                        <div>
+                                            <div class="d-flex">
+                                                <img src="./images/product-1.jpg" style="width: 60px;" alt="">
+                                                <div class="ml-3 text-left">
+                                                    <p class="m-0 p-0">Move from Cart</p>
+                                                    <p class="text-secondary" style="font-size: 14px;">Are you sure want
+                                                        to move this product from cart?</p>
+                                                </div>
+                                            </div>
+                                            <hr class="mt-4" />
+                                            <div class="d-flex" style="gap: 8px;">
+                                                <button class="btn w-100 text-secondary"
+                                                    style="font-size: 12px;">REMOVE</button>
+                                                <button class="btn w-100"
+                                                    style="color: var(--color2);font-size: 12px; white-space: nowrap;">MOVE
+                                                    TO WISHLIST</button>
+                                            </div>
+                                            <button id="closeModalBtn" aria-label="close"
+                                                class="x closeModalBtn">❌</button>
+                                        </div>
+                                    </dialog>
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                            </div>
+                            <div class="productCard">
+                                <div><img
+                                        src="https://www.jiomart.com/images/product/original/rvxqd4wmk4/eyebogler-light-green-tshirts-men-tshirt-tshirt-for-men-tshirt-mens-tshirt-men-s-polo-neck-regular-fit-half-sleeves-colorblocked-t-shirt-product-images-rvxqd4wmk4-1-202402121853.jpg?im=Resize=(500,630)"
+                                        style="width: 120px;" alt=""></div>
+                                <div>
+                                    <p class="font-weight-bold text-dark" style="font-style: 'League Spartan';">Levis's
+                                        Men's Slim Fit Shirt</p>
+                                    <p class="text-secondary" style="font-size: 12px;">T-Shirt</p>
+                                    <div class="mt-1">
+                                        <button class="btn px-1 py-0 font-weight-bold sizeSelectBtn"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Size: XL <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog sizeDialog" id="dialog">
+                                            <div>
+                                                <div class="d-flex">
+                                                    <img src="./images/product-1.jpg" style="width: 80px;" alt="">
+                                                    <div class="ml-3 text-left">
+                                                        <p class="m-0 p-0">Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0 text-secondary" style="font-size: 14px;">
+                                                            Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0">
+                                                            <span class="font-weight-bold text-dark"
+                                                                style="font-size: 15px;">₹ 1,999</span>
+                                                            <span class="text-secondary"
+                                                                style="text-decoration: line-through; font-size: 14px;">₹
+                                                                2,999</span>
+                                                            <span class="font-weight-bold text-danger"
+                                                                style="font-size: 14px;">35%</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <hr class="my-2" />
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT SIZE
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">XS</button>
+                                                    <button class="sizeBtn outOfStock">S</button>
+                                                    <button class="sizeBtn">M</button>
+                                                    <button class="sizeBtn">L</button>
+                                                    <button class="sizeBtn">XL</button>
+                                                    <button class="sizeBtn">XXL</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeSizeDialogBtn" aria-label="close"
+                                                    class="x closeSizeDialogBtn">❌</button>
+                                            </div>
+                                        </dialog>
+                                        <button class="btn px-1 py-0 font-weight-bold quantityBtn"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Quantity: 1 <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog quantityDialog" id="dialog">
+                                            <div>
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT
+                                                    QUANTITY
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">1</button>
+                                                    <button class="sizeBtn">2</button>
+                                                    <button class="sizeBtn">3</button>
+                                                    <button class="sizeBtn">4</button>
+                                                    <button class="sizeBtn">5</button>
+                                                    <button class="sizeBtn">6</button>
+                                                    <button class="sizeBtn">7</button>
+                                                    <button class="sizeBtn">8</button>
+                                                    <button class="sizeBtn">9</button>
+                                                    <button class="sizeBtn">10</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeQuantitiDialogBtn" aria-label="close"
+                                                    class="x closeQuantitiDialogBtn">❌</button>
+                                            </div>
+                                        </dialog>
+                                        <span class="border border-danger rounded-lg p-1 text-danger font-weight-bold"
+                                            style="font-size: 10px; white-space: nowrap;">2 left</span>
+                                    </div>
+                                    <div class="mt-1" style="font-size: 14px;">
+                                        <span class="font-weight-bold">₹200</span>
+                                        <span class="text-secondary ml-1"
+                                            style="text-decoration: line-through;">₹300</span>
+                                        <span class="text-danger font-weight-bold ml-1">35%</span>
+                                        <span class="font-weight-bold"
+                                            style="border: 1px solid rgb(0, 0, 0,0.15); padding: 2px 4px; border-radius: 100vh; font-size: 12px; white-space: nowrap;">
+                                            <i class="fa-solid fa-crown" style="color: yellow;"></i>
+                                            <span>RC Price: ₹195</span>
+                                        </span>
+                                    </div>
+                                    <p class="text-secondary mt-2" style="font-size: 12px;">
+                                        <i class="fa-solid fa-rotate-left border p-1 rounded-circle text-dark"
+                                            style="font-size: 8px;"></i>
+                                        <span class="text-dark font-weight-bold">14 days</span> return available
+                                    </p>
+                                    <p class="text-secondary mt-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-gift border p-1 rounded-circle text-dark"
+                                            style="font-size: 8px;"></i>
+                                        This product
+                                        <span class="text-dark font-weight-bold">cannot</span> be Gift wrapped
+                                    </p>
+                                    <p class="text-secondary mt-1 pl-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
+                                        Deliverd by
+                                        <span class="text-dark font-weight-bold">15 Aug, 2024</span>
+                                    </p>
+                                    <button class="closeBtn btn p-0"><i class="fa-solid fa-xmark"></i></button>
+                                    <dialog class="dialog closeProductDialogBtn" id="dialog">
+                                        <div>
+                                            <div class="d-flex">
+                                                <img src="./images/product-1.jpg" style="width: 60px;" alt="">
+                                                <div class="ml-3 text-left">
+                                                    <p class="m-0 p-0">Move from Cart</p>
+                                                    <p class="text-secondary" style="font-size: 14px;">Are you sure want
+                                                        to move this product from cart?</p>
+                                                </div>
+                                            </div>
+                                            <hr class="mt-4" />
+                                            <div class="d-flex" style="gap: 8px;">
+                                                <button class="btn w-100 text-secondary"
+                                                    style="font-size: 12px;">REMOVE</button>
+                                                <button class="btn w-100"
+                                                    style="color: var(--color2);font-size: 12px; white-space: nowrap;">MOVE
+                                                    TO WISHLIST</button>
+                                            </div>
+                                            <button id="closeModalBtn" aria-label="close"
+                                                class="x closeModalBtn">❌</button>
+                                        </div>
+                                    </dialog>
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                            </div>
+                            <div class="productCard">
+                                <div><img
+                                        src="https://www.jiomart.com/images/product/original/rvxqd4wmk4/eyebogler-light-green-tshirts-men-tshirt-tshirt-for-men-tshirt-mens-tshirt-men-s-polo-neck-regular-fit-half-sleeves-colorblocked-t-shirt-product-images-rvxqd4wmk4-1-202402121853.jpg?im=Resize=(500,630)"
+                                        style="width: 120px;" alt=""></div>
+                                <div>
+                                    <p class="font-weight-bold text-dark" style="font-style: 'League Spartan';">Levis's
+                                        Men's Slim Fit Shirt</p>
+                                    <p class="text-secondary" style="font-size: 12px;">T-Shirt</p>
+                                    <div class="mt-1">
+                                        <button class="btn px-1 py-0 font-weight-bold sizeSelectBtn"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Size: XL <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog sizeDialog" id="dialog">
+                                            <div>
+                                                <div class="d-flex">
+                                                    <img src="./images/product-1.jpg" style="width: 80px;" alt="">
+                                                    <div class="ml-3 text-left">
+                                                        <p class="m-0 p-0">Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0 text-secondary" style="font-size: 14px;">
+                                                            Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0">
+                                                            <span class="font-weight-bold text-dark"
+                                                                style="font-size: 15px;">₹ 1,999</span>
+                                                            <span class="text-secondary"
+                                                                style="text-decoration: line-through; font-size: 14px;">₹
+                                                                2,999</span>
+                                                            <span class="font-weight-bold text-danger"
+                                                                style="font-size: 14px;">35%</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <hr class="my-2" />
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT SIZE
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">XS</button>
+                                                    <button class="sizeBtn outOfStock">S</button>
+                                                    <button class="sizeBtn">M</button>
+                                                    <button class="sizeBtn">L</button>
+                                                    <button class="sizeBtn">XL</button>
+                                                    <button class="sizeBtn">XXL</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeSizeDialogBtn" aria-label="close"
+                                                    class="x closeSizeDialogBtn">❌</button>
+                                            </div>
+                                        </dialog>
+                                        <button class="btn px-1 py-0 font-weight-bold quantityBtn"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Quantity: 1 <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog quantityDialog" id="dialog">
+                                            <div>
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT
+                                                    QUANTITY
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">1</button>
+                                                    <button class="sizeBtn">2</button>
+                                                    <button class="sizeBtn">3</button>
+                                                    <button class="sizeBtn">4</button>
+                                                    <button class="sizeBtn">5</button>
+                                                    <button class="sizeBtn">6</button>
+                                                    <button class="sizeBtn">7</button>
+                                                    <button class="sizeBtn">8</button>
+                                                    <button class="sizeBtn">9</button>
+                                                    <button class="sizeBtn">10</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeQuantitiDialogBtn" aria-label="close"
+                                                    class="x closeQuantitiDialogBtn">❌</button>
+                                            </div>
+                                        </dialog>
+                                        <span class="border border-danger rounded-lg p-1 text-danger font-weight-bold"
+                                            style="font-size: 10px; white-space: nowrap;">2 left</span>
+                                    </div>
+                                    <div class="mt-1" style="font-size: 14px;">
+                                        <span class="font-weight-bold">₹200</span>
+                                        <span class="text-secondary ml-1"
+                                            style="text-decoration: line-through;">₹300</span>
+                                        <span class="text-danger font-weight-bold ml-1">35%</span>
+                                        <span class="font-weight-bold"
+                                            style="border: 1px solid rgb(0, 0, 0,0.15); padding: 2px 4px; border-radius: 100vh; font-size: 12px; white-space: nowrap;">
+                                            <i class="fa-solid fa-crown" style="color: yellow;"></i>
+                                            <span>RC Price: ₹195</span>
+                                        </span>
+                                    </div>
+                                    <p class="text-secondary mt-2" style="font-size: 12px;">
+                                        <i class="fa-solid fa-rotate-left border p-1 rounded-circle text-dark"
+                                            style="font-size: 8px;"></i>
+                                        <span class="text-dark font-weight-bold">14 days</span> return available
+                                    </p>
+                                    <p class="text-secondary mt-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-gift border p-1 rounded-circle text-dark"
+                                            style="font-size: 8px;"></i>
+                                        This product
+                                        <span class="text-dark font-weight-bold">cannot</span> be Gift wrapped
+                                    </p>
+                                    <p class="text-secondary mt-1 pl-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
+                                        Deliverd by
+                                        <span class="text-dark font-weight-bold">15 Aug, 2024</span>
+                                    </p>
+                                    <button class="closeBtn btn p-0"><i class="fa-solid fa-xmark"></i></button>
+                                    <dialog class="dialog closeProductDialogBtn" id="dialog">
+                                        <div>
+                                            <div class="d-flex">
+                                                <img src="./images/product-1.jpg" style="width: 60px;" alt="">
+                                                <div class="ml-3 text-left">
+                                                    <p class="m-0 p-0">Move from Cart</p>
+                                                    <p class="text-secondary" style="font-size: 14px;">Are you sure want
+                                                        to move this product from cart?</p>
+                                                </div>
+                                            </div>
+                                            <hr class="mt-4" />
+                                            <div class="d-flex" style="gap: 8px;">
+                                                <button class="btn w-100 text-secondary"
+                                                    style="font-size: 12px;">REMOVE</button>
+                                                <button class="btn w-100"
+                                                    style="color: var(--color2);font-size: 12px; white-space: nowrap;">MOVE
+                                                    TO WISHLIST</button>
+                                            </div>
+                                            <button id="closeModalBtn" aria-label="close"
+                                                class="x closeModalBtn">❌</button>
+                                        </div>
+                                    </dialog>
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                            </div>
                         </div>
                         <a href="#" class="btn btn-block text-left border mt-4 p-3 rounded-lg" style="font-size: 14px;">
-                            <img src="./images/wishlist.png" style="width: 18px;" alt="">
+                            <img src="<?=base_url('assets/new_website/img/wishlist.png')?>" style="width: 18px;" alt="">
                             <span class="font-weight-bold">Add more from wishlist</span>
                             <i class="fa-solid fa-chevron-right float-right mt-1"></i>
                         </a>
                     </div>
                 </div>
-                <div class="mt-lg-3 mt-md-3 mt-sm-0 mt-0">
+                <div class="mt-lg-3 mt-md-3 mt-sm-0 mt-0 borderStart">
                     <div class="card py-2 rounded-lg">
                         <div class="" id="headingOne">
                             <button class="btn btn-block text-left font-weight-bold text-dark align-items-center"
                                 style="font-size: 14px;" type="button" data-toggle="collapse" data-target="#collapseOne"
                                 aria-expanded="true" aria-controls="collapseOne">
-                                <img src="<?=base_url(); ?>assets/new_website/img/coupon.png" class="mr-1" style="width: 20px; margin-top: -2px;"
+                                <img src="<?=base_url('assets/new_website/img/coupon.png')?>" class="mr-1" style="width: 20px; margin-top: -2px;"
                                     alt="">
                                 <span class="font-weight-bold">Apply coupons</span>
                                 <i class="fa-solid fa-caret-down float-right mt-1"></i>
@@ -1108,7 +1557,7 @@
                             <button class="btn btn-block text-left font-weight-bold text-dark align-items-center"
                                 style="font-size: 14px;" type="button" data-toggle="collapse" data-target="#collapseTwo"
                                 aria-expanded="true" aria-controls="collapseTwo">
-                                <img src="./images/giftbox.png" class="mr-1" style="width: 18px; margin-top: -4px;"
+                                <img src="<?=base_url('assets/new_website/img/giftbox.png')?>" class="mr-1" style="width: 18px; margin-top: -4px;"
                                     alt="">
                                 Add Gift wrap
                                 <i class="fa-solid fa-caret-down float-right"></i>
@@ -1172,7 +1621,7 @@
                                 data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                                 <!-- <i class="fa-solid fa-crown"></i>
                                 <i class="fa-solid fa-indian-rupee-sign mr-1"></i> -->
-                                <img src="./images/crown.png" class="mr-1" style="width: 20px; margin-top: -2px;"
+                                <img src="<?=base_url('assets/new_website/img/crown.png')?>" class="mr-1" style="width: 20px; margin-top: -2px;"
                                     alt="">
                                 Use Royal Club cash <span class="font-weight-normal" style="font-size: 12px">(₹50
                                     available)</span>
@@ -1238,7 +1687,7 @@
                                 style="background-color: var(--color1); color: white;">Place Order</button>
                         </div>
                         <div class="d-flex justify-content-around mt-1 text-secondary"
-                            style="font-size: 14px; font-family: 'League Spartan';">
+                            style="font-size: 12px; font-family: 'League Spartan';">
                             <p class="m-0 p-0"><i class="fa-solid fa-circle-check mr-1"
                                     style="color: var(--color2);"></i>Genuine product</p>
                             <p class="m-0 p-0"><i class="fa-solid fa-circle-check mr-1"
@@ -1272,71 +1721,82 @@
         </section>
         <section>
             <div class="productsContainer">
-                <p>You may also like</p>
+                <p class="font-weight-bold text-dark">You may also like</p>
                 <hr>
                 <div class="products">
                     <div class="card">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxduoTgyySAWCuMfZRF2eSTqCJsD7svWU22g&s" class="card-img-top" alt="...">
-                        <div class="my-1 p-2" style="font-size: 14px">
+                        <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
                             <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-danger">10% off</span></p>
+                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO CART</button>
                     </div>
                     <div class="card">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxduoTgyySAWCuMfZRF2eSTqCJsD7svWU22g&s" class="card-img-top" alt="...">
-                        <div class="my-1 p-2" style="font-size: 14px">
+                        <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
                             <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-danger">10% off</span></p>
+                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO CART</button>
                     </div>
                     <div class="card">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxduoTgyySAWCuMfZRF2eSTqCJsD7svWU22g&s" class="card-img-top" alt="...">
-                        <div class="my-1 p-2" style="font-size: 14px">
+                        <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
                             <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-danger">10% off</span></p>
+                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO CART</button>
                     </div>
                     <div class="card">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxduoTgyySAWCuMfZRF2eSTqCJsD7svWU22g&s" class="card-img-top" alt="...">
-                        <div class="my-1 p-2" style="font-size: 14px">
+                        <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
                             <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-danger">10% off</span></p>
+                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO CART</button>
                     </div>
                     <div class="card">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxduoTgyySAWCuMfZRF2eSTqCJsD7svWU22g&s" class="card-img-top" alt="...">
-                        <div class="my-1 p-2" style="font-size: 14px">
+                        <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
                             <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-danger">10% off</span></p>
+                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO CART</button>
                     </div>
                     <div class="card">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxduoTgyySAWCuMfZRF2eSTqCJsD7svWU22g&s" class="card-img-top" alt="...">
-                        <div class="my-1 p-2" style="font-size: 14px">
+                        <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
                             <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-danger">10% off</span></p>
+                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
+                        </div>
+                        <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
+                            style="font-size: 14px; color: var(--color2);">ADD TO CART</button>
+                    </div>
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxduoTgyySAWCuMfZRF2eSTqCJsD7svWU22g&s" class="card-img-top" alt="...">
+                        <div class="my-1 p-2 text-center" style="font-size: 14px">
+                            <p class="font-weight-bold">Lorem, ipsum.</p>
+                            <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
+                            <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
+                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO CART</button>
@@ -1368,25 +1828,25 @@
         function openCouponSidebar() {
             document.getElementById("couponSidebar").style.width = "376px";
             document.getElementById("couponSidebar").style.boxShadow = "-2px 0px 4px 0px rgb(0, 0, 0,0.2)";
-            document.body.classList.toggle('modal-open');
+            document.body.classList.add('sidebar-open');
         }
 
         function closeCouponSidebar() {
             document.getElementById("couponSidebar").style.width = "0";
             document.getElementById("couponSidebar").style.boxShadow = "none";
-            document.body.classList.toggle('modal-open');
+            document.body.classList.remove('sidebar-open');
         }
 
         function openGiftSidebar() {
             document.getElementById("giftSidebar").style.width = "376px";
             document.getElementById("giftSidebar").style.boxShadow = "-2px 0px 4px 0px rgb(0, 0, 0,0.2)";
-            document.body.classList.toggle('modal-open');
+            document.body.classList.add('sidebar-open');
         }
 
         function closeGiftSidebar() {
             document.getElementById("giftSidebar").style.width = "0";
             document.getElementById("giftSidebar").style.boxShadow = "none";
-            document.body.classList.toggle('modal-open');
+            document.body.classList.remove('sidebar-open');
         }
 
         const sizeBtn = document.querySelectorAll('.sizeSelectBtn');

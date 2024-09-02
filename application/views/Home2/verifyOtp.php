@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Slick Pattern - Home </title>
+    <title> Slick Pattern - Verify </title>
     <?php include('include/cssLinks.php'); ?>
     <style>
         :root {
@@ -12,6 +12,33 @@
             --color2: #e83e8c;
             --color3: #068FFF;
             --color4: rgb(243 244 246);
+        }
+
+        main{
+            background-image: linear-gradient(127deg, #feedf4 0%, #fcf0e3 100%);
+            height: 80vh;
+        }
+
+        .redirectDialogContainer {
+            height: 100%;
+            width: 100%;
+            z-index: 100000;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .redirectDialog {
+            background-color: white;
+            padding: 16px;
+            border-radius: 4px;
+            text-align: center;
         }
 
         input::-webkit-outer-spin-button,
@@ -54,22 +81,45 @@
             color: white;
             margin-top: 16px;
         }
+
+        .resendBtn{
+            background:transparent;
+            border:none;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--color2);
+        }
+
+        @media (width < 568px) {
+            main{
+                background-image: none;
+            }
+        }
     </style>
 </head>
 
 <body>
     <?php include('include/header.php'); ?>
     <main class="d-flex align-items-center" style="min-height: 60vh;">
-        <div class="bg-white px-4 py-4 mx-auto shadow" style="width:30%; min-width: 360px; border-radius: 8px;">
+        <!-- <div class="redirectDialogContainer">
+            <div class="redirectDialog">
+                <img src="<?=base_url('assets/new_website/img/loader.gif')?>" style="width: 80px;" alt="">
+                <p class="font-weight-bold">Please wait</p>
+                <p>It will take some time</p>
+            </div>
+        </div> -->
+        <div class="bg-white px-4 py-4 mx-auto" style="width:30%; min-width: 360px; border-radius: 8px;">
             <!-- <a class="d-block mb-4" href="loginEmail.html">
                 <i class="fa-solid fa-arrow-left"></i>
             </a> -->
+            <img src="<?=base_url('assets/new_website/img/otpVerify.png')?>" class="mb-3" style="width: 80px;" alt="">
             <h1 class="my-2"
                 style="font-size: 24px; color: black;font-family: 'League Spartan', sans-serif; font-weight: 600;">
                 Verify with OTP
             </h1>
             <p class="mb-1" style="font-size: 14px; color: gray;">Enter the OTP sent to your mobile number/email</p>
-            <p class="mb-4 text-dark" style="font-size: 16px;font-weight: 600;">+91 9876543210</p>
+            <p class="mb-2 text-dark" style="font-size: 16px;font-weight: 600;">+91 9876543210</p>
             <form id="otpForm" onsubmit="onFormSubmit(event)">
                 <div class="inputs" id="inputs">
                     <input type="number" inputmode="numeric" class="otpField otpField1">
@@ -82,11 +132,14 @@
                 <!-- <p class="text-danger" id="otpErrorMsg" style="font-size: 12px;display: block;"><i
                         class="fa-solid fa-triangle-exclamation mr-1"></i>The
                     OTP does not match</p> -->
-                <!-- <button class="px-2 py-1 bg-transparent"
-                    style="font-family: 'League Spartan', sans-serif; font-size: 16px;border: 1px solid rgb(0, 0, 0, 0.2);">Resend
+                <!-- <button class="resendBtn">RESEND
                     OTP</button> -->
-                <p style="color: gray; font-size: 14px;">Resend OTP in <span id="time">00:00</span></p>
-                <p class="text-center mt-5 mb-0" style="font-size: 12px; color: gray;">Having Trouble? <a
+                <p class="mb-2" style="color: gray; font-size: 14px;">Resend OTP in <span id="time">00:00</span></p>
+                <p style="color: gray; font-size: 14px;">Login using 
+                    <span class="font-weight-bold" style="color: var(--color2);">Email</span>
+                    <!-- <span class="font-weight-bold" style="color: var(--color2);">Number</span> -->
+                </p>
+                <p class="text-center mb-0" style="font-size: 12px; color: gray;">Having Trouble? <a
                         href="mailto:me@example.com?subject=Me&body=HELP!!!"
                         style="color: var(--color1); font-weight: 600;">Get Help</a></p>
             </form>

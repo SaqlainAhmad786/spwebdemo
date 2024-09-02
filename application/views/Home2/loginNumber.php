@@ -46,14 +46,12 @@
             width: 100%;
         }
 
-        /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
 
-        /* Firefox */
         input[type=number] {
             -moz-appearance: textfield;
         }
@@ -62,7 +60,37 @@
             accent-color: var(--color2);
         }
 
-        .container {
+        .inputGroup .errorMsg{
+            display: none;
+            font-size:12px;
+        }
+
+        .inputFieldContainer{
+            border: 1px solid #d4d5d9;
+            padding-inline:8px;
+            margin-bottom: 16px;
+            transition: all 200ms ease-in-out;
+        }
+
+        .inputFieldContainer input{
+            border: none;
+            outline: none;
+            padding: 6px;
+        }
+
+        .inputFieldContainer input:focus .inputFieldContainer{
+            border-color: var(--color2);
+        }
+
+        .inputFieldContainer span{
+            color: rgb(150, 150, 150);
+        }
+
+        .inputFieldContainer input::placeholder{
+            color: rgb(150, 150, 150);
+        }
+
+        /* .container {
             height: 48px;
             position: relative;
             width: 100%;
@@ -111,7 +139,7 @@
             width: 100%;
             height: 100%;
             background-color: gray;
-            /* background: linear-gradient(90deg, #ff1b69, #ff0, #2196f3, #9c27b0, #ff1b69); */
+            background: linear-gradient(90deg, #ff1b69, #ff0, #2196f3, #9c27b0, #ff1b69);
             animation: animate 3s linear infinite;
         }
 
@@ -121,7 +149,7 @@
 
         .inputGroup :is(input:focus, input:valid) {
             border-color: rgb(150, 150, 200);
-        }
+        } */
 
         .loginBtn {
             width: 100%;
@@ -183,9 +211,12 @@
 <body>
     <?php include('include/header.php'); ?>
     <main>
+        <div class="text-center">
+            <p class="mb-0 text-dark d-inline px-2 py-1 rounded-bottom" style="background-color: #FFFAE8; font-size: 12px" ><i class="fa-regular fa-circle-xmark mr-1 text-danger"></i>Sorry your account is temporarily disabled for 00:30 min</p>
+        </div>
         <div class="loginContainer bg-white mx-auto mt-5 shadow my-lg-4 my-md-2" style="max-width: 400px;">
             <div>
-                <img src="https://static.vecteezy.com/system/resources/previews/005/405/595/non_2x/special-offer-sale-banner-besign-discount-label-and-sticker-for-media-promotion-product-free-vector.jpg" alt="">
+            <img src="<?=base_url('assets/new_website/img/login-cover.jpg')?>" alt="">
             </div>
             <div class="p-4">
                 <h1 class="mb-2" style="font-size: 20px; color: gray; font-family: 'League Spartan', sans-serif;">
@@ -193,8 +224,8 @@
                         style="font-size: 24px; color: black;;">Signup</span>
                 </h1>
                 <p class="mb-1" style="font-size: 12px; color: var(--color1);">Please enter your mobile number and verify with OTP</p>
-                <form>
-                <div class="container">
+                <form id="loginForm">
+                    <!-- <div class="container">
                         <input type="number" id="number" required="true">
                         <label>Mobile number</label>
                         <i></i>
@@ -203,8 +234,18 @@
                         <input type="text" id="referral" required>
                         <label>Referral code (optional)</label>
                         <i></i>
+                    </div> -->
+                    <div class="inputGroup">
+                        <p class="m-0 p-0 errorMsg text-danger"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid email address</p>
+                        <div class="inputFieldContainer container1">
+                            <span>+91 | </span>
+                            <input type="number" class="numberInput" id="number" required="true" maxlength="10" placeholder="Enter Mobile Number">
+                        </div>
+                        <div class="inputFieldContainer container2">
+                            <input type="text" class="referralInput" id="referral" placeholder="Referral code (optional)">
+                        </div>
                     </div>
-                    <div class="d-flex align-items-center mt-2 mb-4"
+                    <div class="d-flex align-items-center mb-4"
                         style="gap: 4px;font-size: 12px;font-weight: 500; color: var(--color1);">
                         <input type="checkbox" id="tandc">
                         <label class="m-0" for="tandc">I ACCEPT TERMS AND CONDITIONS</label>
@@ -225,18 +266,45 @@
     </main>
     <script>
         const number = document.getElementById('number')
+        const loginForm = document.getElementById('loginForm')
+        const errorMsg = document.querySelector('.errorMsg')
 
-        number.addEventListener('input', validate)
+        document.querySelector('.numberInput').addEventListener('focus', function () {
+            document.querySelector('.container1').style.borderColor = 'var(--color1)'
+        })
 
-        function validate() {
+        document.querySelector('.numberInput').addEventListener('blur', function () {
+            document.querySelector('.container1').style.borderColor = '#d4d5d9'
+        })
+
+        document.querySelector('.referralInput').addEventListener('focus', function () {
+            document.querySelector('.container2').style.borderColor = 'var(--color1)'
+        })
+
+        document.querySelector('.referralInput').addEventListener('blur', function () {
+            document.querySelector('.container2').style.borderColor = '#d4d5d9'
+        })
+
+        number.addEventListener('input', function validate() {
             if (number.value.length === 10) {
                 document.querySelector('.loginBtn').removeAttribute('disabled')
                 document.querySelector('.loginBtn').classList.remove('disabled')
             } else {
                 document.querySelector('.loginBtn').disabled = true
             }
-        }
-        validate()
+        })
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            if(number.value == 0000000000){
+                errorMsg.style.display = 'block'
+                document.querySelector('.container1').style.borderColor = 'red'
+            }else{
+                errorMsg.style.display = 'none'
+                document.querySelector('.container1').style.borderColor = '#d4d5d9'
+            }
+        })
+
     </script>
     <!-- <?php include('include/modal.php'); ?> -->
     <?php include('include/jsLinks.php'); ?>

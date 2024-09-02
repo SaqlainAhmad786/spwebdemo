@@ -62,7 +62,41 @@
             accent-color: var(--color2);
         }
 
-        .container {
+        .inputGroup .errorMsg{
+            display: none;
+            font-size:12px;
+        }
+
+        .inputFieldContainer{
+            /* border: 1px solid #d4d5d9; */
+            margin-bottom: 16px;
+            transition: all 200ms ease-in-out;
+        }
+
+        .inputFieldContainer input{
+            width: 100%;
+            border: 1px solid #d4d5d9;
+            outline: none;
+            padding: 6px;
+        }
+
+        .inputFieldContainer input:focus{
+            border-color: var(--color1);
+        }
+
+        .inputFieldContainer input:focus .inputFieldContainer{
+            border-color: var(--color2);
+        }
+
+        .inputFieldContainer span{
+            color: rgb(150, 150, 150);
+        }
+
+        .inputFieldContainer input::placeholder{
+            color: rgb(150, 150, 150);
+        }
+
+        /* .container {
             height: 48px;
             position: relative;
             width: 100%;
@@ -115,13 +149,13 @@
             width: 100%;
             height: 100%;
             background-color: gray;
-            /* background: linear-gradient(90deg, #ff1b69, #ff0, #2196f3, #9c27b0, #ff1b69); */
+            background: linear-gradient(90deg, #ff1b69, #ff0, #2196f3, #9c27b0, #ff1b69);
             animation: animate 3s linear infinite;
         }
 
         .container input:focus~i:before {
             background-color: var(--color1);
-        }
+        } */
 
         .loginBtn {
             width: 100%;
@@ -149,7 +183,7 @@
     <main>
         <div class="loginContainer bg-white mx-auto mt-5 shadow" style="max-width: 400px;">
             <div>
-                <img src="https://static.vecteezy.com/system/resources/previews/005/405/595/non_2x/special-offer-sale-banner-besign-discount-label-and-sticker-for-media-promotion-product-free-vector.jpg" alt="">
+                <img src="<?=base_url('assets/new_website/img/login-cover.jpg')?>" alt="">
             </div>
             <div class="p-4">
                 <h1 class="mb-2" style="font-size: 20px; color: gray; font-family: 'League Spartan', sans-serif;">
@@ -158,7 +192,7 @@
                 </h1>
                 <p class="mb-1" style="font-size: 12px; color: var(--color1);">Please enter your email address and verify with OTP</p>
                 <form id="loginForm">
-                    <div class="container">
+                    <!-- <div class="container">
                         <input type="email" id="email" required="true">
                         <label>Email address</label>
                         <i></i>
@@ -167,10 +201,19 @@
                         <input type="text" id="referral" required>
                         <label>Referral code (optional)</label>
                         <i></i>
+                    </div> -->
+                    <div class="inputGroup">
+                        <p class="m-0 p-0 errorMsg text-danger"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid mobile number</p>
+                        <div class="inputFieldContainer container1">
+                            <input type="text" class="emailInput" id="email" required="true" maxlength="10" placeholder="example@company.com">
+                        </div>
+                        <div class="inputFieldContainer container2">
+                            <input type="text" class="referralInput" id="referral" placeholder="Referral code (optional)">
+                        </div>
                     </div>
                     <p id="referralErrorMsg" class="text-danger mt-1" style="font-size: 12px; display: none;"><i
                             class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid referral code</p>
-                    <div class="d-flex align-items-center mt-2 mb-4"
+                    <div class="d-flex align-items-center mb-4"
                         style="gap: 4px;font-size: 12px;font-weight: 500; color: var(--color1);">
                         <input type="checkbox" id="tandc">
                         <label class="m-0" for="tandc">I ACCEPT TERMS AND CONDITIONS</label>
@@ -193,32 +236,39 @@
         const email = document.getElementById('email')
         const referral = document.getElementById('referral')
         const loginForm = document.getElementById('loginForm')
+        const errorMsg = document.querySelector('.errorMsg')
         const referralErrorMsg = document.getElementById('referralErrorMsg')
 
-        email.addEventListener('focus', () => {
-            email.setAttribute('placeholder', 'example@company.com')
-        })
+        // email.addEventListener('focus', () => {
+        //     email.setAttribute('placeholder', 'example@company.com')
+        // })
 
-        email.addEventListener('blur', () => {
-            email.setAttribute('placeholder', '')
-        })
+        // email.addEventListener('blur', () => {
+        //     email.setAttribute('placeholder', '')
+        // })
 
-        referral.addEventListener('focus', () => {
-            referral.setAttribute('placeholder', 'Referral code')
-            referralErrorMsg.style.display = 'none'
-        })
+        // referral.addEventListener('focus', () => {
+        //     referral.setAttribute('placeholder', 'Referral code')
+        //     referralErrorMsg.style.display = 'none'
+        // })
 
-        referral.addEventListener('blur', () => {
-            referral.setAttribute('placeholder', '')
+        // referral.addEventListener('blur', () => {
+        //     referral.setAttribute('placeholder', '')
+        // })
+
+        email.addEventListener('input', () => {
+            errorMsg.style.display = 'none'
+            email.style.borderColor = '#d4d5d9'
         })
+        
+        let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
 
         loginForm.addEventListener('submit', (e) => {
-            const regex = /^[A-Za-z0-9]+$/;
-            if (!regex.test(referral.value) || referral.value === '000000') {
-                referralErrorMsg.style.display = 'block'
-                e.preventDefault()
-            } else {
-                loginForm.submit()
+            e.preventDefault()
+            if (!email.value.match(pattern)) {
+                errorMsg.style.display = 'block'
+                email.style.borderColor = 'red'
+                return
             }
         })
 
