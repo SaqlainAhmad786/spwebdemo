@@ -85,6 +85,11 @@
             margin: 0;
         }
 
+        .inputDisabled {
+            background-color: #ccc !important;
+            border: none !important;
+        }
+
         .btn:focus,
         a:focus,
         input:focus,
@@ -228,6 +233,16 @@
             left: 6px;
         }
 
+        .productImg .outOfStock {
+            position: absolute;
+            top: 40px;
+            left: 24px;
+        }
+
+        .productImg .outOfStock img {
+            width: 80px;
+        }
+
         .royalMemberCard {
             background-image: linear-gradient(128deg, #e83e8c 0%, 12%, #8340a1 34% 100%);
         }
@@ -284,8 +299,8 @@
             border-radius: 6px;
             box-shadow: 3px 3px 4px rgba(0, 0, 0, .65);
             position: absolute;
-            top: -28px;
-            right: -170px;
+            top: 20px;
+            right: -6px;
             display: none;
         }
 
@@ -392,8 +407,7 @@
             overflow-y: scroll;
             transition: 0.3s;
             padding-top: 60px;
-            z-index: 1000;
-            /* box-shadow: -4px 0px 2px 4px rgb(0, 0, 0,0.5) ; */
+            z-index: 10000;
         }
 
         .sidebar::-webkit-scrollbar {
@@ -411,6 +425,14 @@
             gap: 8px;
             padding-inline: 16px;
             margin-bottom: 16px;
+        }
+
+        .sidebar-content.similarProducts{
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .weekendCheckbox {
+            display: none;
         }
 
         .coupon {
@@ -572,11 +594,21 @@
             border-color: var(--color2);
         }
 
+        .stockBtns {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            place-items: center;
+        }
+
         .stockBtns .outOfStock {
             position: relative;
             background-color: rgb(0, 0, 0, 0.35);
             pointer-events: none;
             cursor: not-allowed;
+        }
+
+        .sizeNotAvailable{
+            text-decoration: line-through!important;
         }
 
         .outOfStock::after {
@@ -683,9 +715,103 @@
                 min-width: 100%;
                 border-radius: 0;
             }
+
+            .placeOrderBtn {
+                position: fixed;
+                bottom: 0px;
+                left: 0;
+                width: 100%;
+                z-index: 100000;
+            }
+
+            .placeOrderBtn button {
+                border-radius: 0;
+                padding-block: 0.75rem!important;
+            }
         }
     </style>
     <main>
+        <div id="sidebar" class="sidebar similarSidebar">
+            <button onclick="closeSimilarSidebar()">
+            <span class="close-btn">×</span>
+            </button>
+            <p class="m-0 p-0 font-weight-bold text-dark text-center" >SIMILAR PRODUCTS</p>
+            <div class="sidebar-content similarProducts">
+                <div class="text-center text-decoration-none productCardSidebar">
+                    <a href="#" class="imageContainer">
+                        <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                    </a>
+                    <div class="pb-3">
+                        <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
+                        <p class="m-0 mt-1">
+                            <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                            <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                2,999</span>
+                            <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="text-center text-decoration-none productCardSidebar">
+                    <a href="#" class="imageContainer">
+                        <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                    </a>
+                    <div class="pb-3">
+                        <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
+                        <p class="m-0 mt-1">
+                            <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                            <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                2,999</span>
+                            <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="text-center text-decoration-none productCardSidebar">
+                    <a href="#" class="imageContainer">
+                        <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                    </a>
+                    <div class="pb-3">
+                        <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
+                        <p class="m-0 mt-1">
+                            <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                            <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                2,999</span>
+                            <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="text-center text-decoration-none productCardSidebar">
+                    <a href="#" class="imageContainer">
+                        <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                    </a>
+                    <div class="pb-3">
+                        <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
+                        <p class="m-0 mt-1">
+                            <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                            <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                2,999</span>
+                            <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="text-center text-decoration-none productCardSidebar">
+                    <a href="#" class="imageContainer">
+                        <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                    </a>
+                    <div class="pb-3">
+                        <p class="m-0 mt-1 font-weight-bold text-dark" style="font-size: 16px;">Lorem, ipsum.</p>
+                        <p class="m-0 mt-1">
+                            <span class="font-weight-bold text-dark" style="font-size: 15px;">₹ 1,999</span>
+                            <span class="text-secondary" style="text-decoration: line-through; font-size: 14px;">₹
+                                2,999</span>
+                            <span class="font-weight-bold text-danger" style="font-size: 14px;">35%</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="border d-flex justify-content-center align-items-center">
+                    <p class="m-0 p-0 text-center">No more products...</p>
+                </div>
+            </div>
+        </div>
         <div id="couponSidebar" class="sidebar">
             <button class="close-btn btn" onclick="closeCouponSidebar()">❌</button>
             <div class="sidebar-content">
@@ -869,8 +995,8 @@
                 </div>
             </div>
         </dialog>
-        <div id="addressSidebar" class="sidebar" style="z-index: 1000;">
-            <button class="close-btn btn" onclick="closeAddressSidebar()">❌</button>
+        <div id="addressSidebar" class="sidebar">
+            <button class="close-btn btn" onclick="closeAddressSidebar()"><i class="fa-solid fa-xmark"></i></button>
             <div class="sidebar-content">
                 <div>
                     <p class="font-weight-bold m-0" style="font-size: 20px"><i
@@ -881,27 +1007,37 @@
                     <div>
                         <label for="fullName" style="font-size: 12px;" class="m-0 font-weight-bold">CONTACT
                             DETAILS</label>
-                        <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Name*"
+                        <input type="text" class="form-control mb-2" id="fullName" name="fullName" placeholder="Name*"
                             style="font-size: 14px;" required>
-                        <input type="number" class="form-control mt-1" id="mobile" name="mobile"
+                        <input type="number" class="form-control mb-2 mt-1" id="mobile" name="mobile"
                             placeholder="Mobile number*" style="font-size: 14px;" required>
                     </div>
                     <div class="mt-2">
                         <label for="pincode" style="font-size: 12px;" class="m-0 font-weight-bold">ADDRESS</label>
-                        <input type="text" class="form-control" id="pincode" name="pincode" placeholder="Pincode*"
+                        <input type="text" class="form-control mb-2" id="pincode" name="pincode" placeholder="Pincode*"
                             style="font-size: 14px;" required>
-                        <input type="text" class="form-control mt-1" id="address" name="address"
+                        <input type="text" class="form-control mb-2 mt-1" id="address" name="address"
                             placeholder="Full Address*" style="font-size: 14px;" required>
-                        <input type="text" class="form-control mt-1" id="city" name="city" placeholder="City*"
+                        <input type="text" class="form-control mb-2 mt-1 inputDisabled" disabled id="city" name="city" placeholder="City*"
                             style="font-size: 14px;" required>
-                        <input type="text" class="form-control mt-1" id="state" name="state" placeholder="State*"
+                        <input type="text" class="form-control mt-1 inputDisabled" disabled id="state" name="state" placeholder="State*"
                             style="font-size: 14px;" required>
                     </div>
                     <div class="mt-2">
                         <label style="font-size: 12px;" class="m-0 font-weight-bold">SAVE ADDRESS AS</label>
                         <div class="mt-1">
-                            <input class="btn addressBtn" type="button" value="HOME">
-                            <input class="btn addressBtn" type="button" value="OFFICE">
+                            <input class="btn addressBtn homeButton" type="button" value="HOME">
+                            <input class="btn addressBtn officeBtn" type="button" value="OFFICE">
+                        </div>
+                        <div class="weekendCheckbox mt-3 text-dark">
+                            <div class="d-flex align-items-center" style="font-size: 14px;">
+                                <input type="checkbox" name="saturday" id="saturday">
+                                <label for="saturday" class="m-0 ml-1">Open on Saturday</label>
+                            </div>
+                            <div class="d-flex align-items-center" style="font-size: 14px;">
+                                <input type="checkbox" name="sunday" id="sunday">
+                                <label for="sunday" class="m-0 ml-1">Open on Sunday</label>
+                            </div>
                         </div>
                         <div class="my-3 d-flex align-items-center" style="font-size: 12px;">
                             <input type="checkbox" name="default" id="defaultAddress">
@@ -916,7 +1052,7 @@
                 </form>
             </div>
         </div>
-        <section class="d-lg-none d-md-none d-sm-block position-fixed top-0 w-100 bg-white" style="z-index: 10000;" >
+        <section class="d-lg-none d-md-none d-sm-block position-fixed top-0 w-100 bg-white" style="z-index: 999;" >
             <div class="d-flex justify-content-between align-items-center px-3 py-1 shadow-sm">
                 <div class="d-flex align-items-center text-dark">
                     <a href=""><span style="font-size: 20px;"><i class="fa-solid fa-arrow-left"></i></span></a>
@@ -985,15 +1121,20 @@
                         </div>
                         <div class="productList mt-2">
                             <div class="productCard">
-                                <div><img
+                                <div class="position-relative productImg">
+                                    <img
                                         src="https://www.jiomart.com/images/product/original/rvxqd4wmk4/eyebogler-light-green-tshirts-men-tshirt-tshirt-for-men-tshirt-mens-tshirt-men-s-polo-neck-regular-fit-half-sleeves-colorblocked-t-shirt-product-images-rvxqd4wmk4-1-202402121853.jpg?im=Resize=(500,630)"
-                                        style="width: 120px;" alt=""></div>
+                                        style="width: 120px;" alt="">
+                                        <div class="outOfStock">
+                                            <img src="<?=base_url('assets/new_website/img/out-of-stock.png')?>" alt="">
+                                        </div>
+                                    </div>
                                 <div>
                                     <p class="font-weight-bold text-dark" style="font-style: 'League Spartan';">Levis's
                                         Men's Slim Fit Shirt</p>
                                     <p class="text-secondary" style="font-size: 12px;">T-Shirt</p>
                                     <div class="mt-1">
-                                        <button class="btn px-1 py-0 font-weight-bold sizeSelectBtn"
+                                        <button class="btn px-1 py-0 font-weight-bold sizeSelectBtn sizeNotAvailable"
                                             style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Size: XL <i
                                                 class="fa-solid fa-caret-down ml-2"></i></button>
                                         <dialog class="dialog sizeDialog" id="dialog">
@@ -1070,22 +1211,32 @@
                                         <span class="text-danger font-weight-bold ml-1">35%</span>
                                         <span class="font-weight-bold"
                                             style="border: 1px solid rgb(0, 0, 0,0.15); padding: 2px 4px; border-radius: 100vh; font-size: 12px; white-space: nowrap;">
-                                            <i class="fa-solid fa-crown" style="color: yellow;"></i>
+                                            <i class="fa-solid fa-crown" style="color: #FFD700;"></i>
                                             <span>RC Price: ₹195</span>
                                         </span>
+                                    </div>
+                                    <div>
+                                        <button class="btn border similarBtn" onClick="openSimilarSidebar()" style="font-size: 12px;">
+                                            <img src="<?=base_url('assets/new_website/img/cards.png')?>" style="width: 20px;" alt="">
+                                            View Similar</button>
                                     </div>
                                     <p class="text-secondary mt-2" style="font-size: 12px;">
                                         <i class="fa-solid fa-rotate-left border p-1 rounded-circle text-dark"
                                             style="font-size: 8px;"></i>
                                         <span class="text-dark font-weight-bold">14 days</span> return available
                                     </p>
-                                    <p class="text-secondary mt-1" style="font-size: 12px;">
+                                    <p class="text-secondary" style="font-size: 12px;">
                                         <i class="fa-solid fa-gift border p-1 rounded-circle text-dark"
                                             style="font-size: 8px;"></i>
                                         This product
                                         <span class="text-dark font-weight-bold">cannot</span> be Gift wrapped
                                     </p>
-                                    <p class="text-secondary mt-1 pl-1" style="font-size: 12px;">
+                                    <p class="text-secondary" style="font-size: 12px;">
+                                        <i class="fa-solid fa-truck-fast text-dark"
+                                            style="font-size: 12px;"></i>
+                                        Order in
+                                        <span class="font-weight-bold" style="color: var(--color2);">5H:45M</span> for <span class="text-dark font-weight-bold">Same day delivery</span></p>
+                                    <p class="text-secondary pl-1" style="font-size: 12px;">
                                         <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
                                         Deliverd by
                                         <span class="text-dark font-weight-bold">15 Aug, 2024</span>
@@ -1682,7 +1833,7 @@
                                 You saved ₹99 on this purchase
                             </p>
                         </div>
-                        <div>
+                        <div class="placeOrderBtn">
                             <button class="btn w-100 py-1 mt-3 font-weight-bold"
                                 style="background-color: var(--color1); color: white;">Place Order</button>
                         </div>
@@ -1826,7 +1977,7 @@
         })
 
         function openCouponSidebar() {
-            document.getElementById("couponSidebar").style.width = "376px";
+            document.getElementById("couponSidebar").style.width = "360px";
             document.getElementById("couponSidebar").style.boxShadow = "-2px 0px 4px 0px rgb(0, 0, 0,0.2)";
             document.body.classList.add('sidebar-open');
         }
@@ -1838,7 +1989,7 @@
         }
 
         function openGiftSidebar() {
-            document.getElementById("giftSidebar").style.width = "376px";
+            document.getElementById("giftSidebar").style.width = "360px";
             document.getElementById("giftSidebar").style.boxShadow = "-2px 0px 4px 0px rgb(0, 0, 0,0.2)";
             document.body.classList.add('sidebar-open');
         }
@@ -1892,12 +2043,12 @@
 
         addressDialogBtn.addEventListener('click', () => {
             addressDialog.showModal();
-            document.body.classList.toggle('modal-open');
+            document.body.classList.add('sidebar-open');
         })
 
         closeAddressDialogBtn.addEventListener('click', () => {
             addressDialog.close();
-            document.body.classList.toggle('modal-open');
+            document.body.classList.remove('sidebar-open');
         })
 
         const addAddressBtn = document.querySelector('.addAddressBtn');
@@ -1906,7 +2057,7 @@
         function openAddressSidebar() {
             addressDialog.close();
             document.body.classList.toggle('modal-open');
-            document.getElementById("addressSidebar").style.width = "376px";
+            document.getElementById("addressSidebar").style.width = "360px";
             document.getElementById("addressSidebar").style.boxShadow = "-2px 0px 4px 0px rgb(0, 0, 0,0.2)";
             document.body.classList.toggle('modal-open');
         }
@@ -1922,6 +2073,33 @@
         function scrollToTop() {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
+        }
+
+        const officeBtn = document.querySelector('.officeBtn');
+        const homeButton = document.querySelector('.homeButton');
+        const weekendCheckbox = document.querySelector('.weekendCheckbox');
+
+        officeBtn.addEventListener('focus', () => {
+            weekendCheckbox.style.display = 'block'
+        })
+
+        homeButton.addEventListener('focus', () => {
+            weekendCheckbox.style.display = 'none'
+        })
+
+        const similarBtn = document.querySelectorAll('.similarBtn');
+        const similarSidebar = document.querySelector('.similarSidebar');
+
+        function openSimilarSidebar() {
+            similarSidebar.style.width = "360px";
+            similarSidebar.style.boxShadow = "-2px 0px 4px 0px rgb(0, 0, 0,0.2)";
+            document.body.classList.add('sidebar-open');
+        }
+
+        function closeSimilarSidebar() {
+            similarSidebar.style.width = "0";
+            similarSidebar.style.boxShadow = "none";
+            document.body.classList.remove('sidebar-open');
         }
 
     </script>
