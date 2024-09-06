@@ -27,11 +27,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-        }
-
-        main{
             background-image: linear-gradient(127deg, #feedf4 0%, #fcf0e3 100%);
-            height: 80vh;
         }
 
         ul {
@@ -96,67 +92,6 @@
             color: rgb(150, 150, 150);
         }
 
-        /* .container {
-            height: 48px;
-            position: relative;
-            width: 100%;
-            background-color: var(--color4);
-            border-top-left-radius: 6px;
-            border-top-right-radius: 6px;
-        }
-
-        .container input {
-            width: 100%;
-            background: transparent;
-            outline: none;
-            border: none;
-            color: #222;
-            padding-top: 18px;
-        }
-
-        .container input::placeholder {
-            color: rgba(105, 105, 105, 0.7);
-        }
-
-        .container label {
-            position: absolute;
-            left: 8px;
-            top: 12px;
-            color: rgba(105, 105, 105, 0.7);
-            pointer-events: none;
-            transition: .3s;
-        }
-
-        .container input:valid~label,
-        .container input:focus~label {
-            color: var(--color1);
-            transform: translateY(-12px);
-            font-size: .65rem;
-        }
-
-        .container i {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            background: #222;
-        }
-
-        .container i:before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: gray;
-            background: linear-gradient(90deg, #ff1b69, #ff0, #2196f3, #9c27b0, #ff1b69);
-            animation: animate 3s linear infinite;
-        }
-
-        .container input:focus~i:before {
-            background-color: var(--color1);
-        } */
-
         .loginBtn {
             width: 100%;
             background-color: var(--color1);
@@ -185,23 +120,13 @@
             <div>
                 <img src="<?=base_url('assets/new_website/img/login-cover.jpg')?>" alt="">
             </div>
-            <div class="p-4">
+            <div class="px-4 py-3">
                 <h1 class="mb-2" style="font-size: 20px; color: gray; font-family: 'League Spartan', sans-serif;">
                     <span style="font-size: 24px; color: black;;">Login</span> or <span
                         style="font-size: 24px; color: black;;">Signup</span>
                 </h1>
                 <p class="mb-1" style="font-size: 12px; color: var(--color1);">Please enter your email address and verify with OTP</p>
                 <form id="loginForm">
-                    <!-- <div class="container">
-                        <input type="email" id="email" required="true">
-                        <label>Email address</label>
-                        <i></i>
-                    </div>
-                    <div class="container" style="margin-top: 20px;">
-                        <input type="text" id="referral" required>
-                        <label>Referral code (optional)</label>
-                        <i></i>
-                    </div> -->
                     <div class="inputGroup">
                         <p class="m-0 p-0 errorMsg text-danger"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid mobile number</p>
                         <div class="inputFieldContainer container1">
@@ -225,7 +150,7 @@
                     <p class="text-center" style="font-size: 14px; color: gray;">Login via <a href="./loginNumber.html"
                             style="color: var(--color1); font-weight: 600;">Mobile number</a>
                     </p>
-                    <p class="text-center mt-4 mb-0" style="font-size: 12px; color: gray;">Having Trouble? <a
+                    <p class="text-center mb-0" style="font-size: 12px; color: gray;">Having Trouble? <a
                             href="mailto:me@example.com?subject=Me&body=HELP!!!"
                             style="color: var(--color1); font-weight: 600;">Get Help</a></p>
                 </form>

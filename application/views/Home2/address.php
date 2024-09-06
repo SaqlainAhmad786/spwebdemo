@@ -221,7 +221,7 @@
     </style>
     <main>
         <div id="addressSidebar" class="sidebar" style="z-index: 1000;">
-            <button class="close-btn btn" onclick="closeAddressSidebar()">❌</button>
+            <button class="close-btn btn" onclick="closeAddressSidebar()"><i class="fa-solid fa-xmark"></i></button>
             <div class="sidebar-content">
                 <div>
                     <p class="font-weight-bold m-0" style="font-size: 20px"><i

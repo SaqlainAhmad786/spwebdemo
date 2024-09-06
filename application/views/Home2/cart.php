@@ -80,7 +80,7 @@
         input[type="text"]:focus,
         input[type="number"]:focus,
         textarea:focus {
-            border-color: var(--color2) !important;
+            border-color: var(--color2);
         }
 
         input::-webkit-outer-spin-button,
@@ -90,7 +90,7 @@
         }
 
         .inputDisabled {
-            background-color: #ccc !important;
+            background-color: rgba(0, 0, 0, 0.05) !important;
             border: none !important;
         }
 
@@ -286,7 +286,7 @@
         a.toolTip {
             position: relative;
             font-size: 12px;
-            z-index: 999;
+            z-index: 100;
         }
 
         a.toolTip::after {
@@ -419,7 +419,7 @@
             overflow-x: hidden;
             overflow-y: scroll;
             transition: 0.3s;
-            padding-top: 60px;
+            padding-top: 22px;
             z-index: 10000;
         }
 
@@ -492,6 +492,12 @@
             right: -6px;
         }
 
+        .giftNameErrorMsg,
+        .giftMessageErrorMsg,
+        .giftSenderNameErrorMsg{
+            display: none;
+        }
+
         dialog {
             position: fixed;
             top: 50%;
@@ -511,6 +517,16 @@
             animation: fadeIn 300ms ease both;
             background: rgba(0, 0, 0, 0.5);
             z-index: 2;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         dialog .x {
@@ -683,7 +699,13 @@
             color: var(--color2);
         }
 
-        .addressBtn:focus {
+        .homeButton.active {
+            border-color: var(--color2);
+            color: var(--color2);
+            font-weight: 700;
+        }
+
+        .officeBtn.active {
             border-color: var(--color2);
             color: var(--color2);
             font-weight: 700;
@@ -708,14 +730,19 @@
             padding-left: 8px;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
+        .typewriter {
+            width: 40px;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #7E2EA0;
+            animation: typing 1s steps(4, end), cursor 1s steps(4, end) infinite;
+        }
 
-            to {
-                opacity: 1;
-            }
+        @keyframes typing {
+            from { width: 0 }
+        }
+        @keyframes cursor {
+            50% { border-color: transparent }
         }
 
         @media (width<1150px) {
@@ -786,16 +813,16 @@
             }
 
             .placeOrderBtn {
-                position: fixed;
+                position: sticky;
                 bottom: 0px;
                 left: 0;
                 width: 100%;
-                z-index: 9999;
             }
 
             .placeOrderBtn button {
                 border-radius: 0;
                 padding-block: 0.75rem!important;
+                width: 100%;
             }
 
             .addressSelectSection p:nth-child(1) {
@@ -828,6 +855,9 @@
         <div id="couponSidebar" class="sidebar">
             <button class="close-btn btn" onclick="closeCouponSidebar()"><i class="fa-solid fa-xmark"></i></button>
             <div class="sidebar-content">
+                <p class="font-weight-bold text-dark">COUPONS</p>
+                <hr class="m-0">
+                <p class="font-weight-bold">Top offers for you</p>
                 <div class="coupon">
                     <div class="circle1"></div>
                     <div class="circle2"></div>
@@ -841,6 +871,7 @@
                         <p class="btn promoCode">CART25</p>
                         <button type="button" class="btn bg-light font-weight-bold">APPLY</button>
                     </div>
+                    <p class="m-0 p-0 mt-2 text-center"><i class="fa-solid fa-circle-check text-success"></i> Coupon discount <span class="text-success"> ₹200 Applied!</span></p>
                     <div id="couponOne" class="collapse" aria-labelledby="headingOne" data-parent="">
                         <div class="card-body p-0 px-3 pb-2 mt-2"
                             style="font-size: 13px; color: rgb(0, 0, 0,0.75);">
@@ -859,38 +890,41 @@
             <button class="close-btn btn" onclick="closeGiftSidebar()"><i class="fa-solid fa-xmark"></i></button>
             <div class="sidebar-content">
                 <div>
-                    <p class="font-weight-bold m-0" style="font-size: 20px">Gift
+                    <p class="font-weight-bold m-0 text-dark" style="font-size: 20px">Gift
                         Wrap</p>
                     <p class="text-secondary" style="font-size: 12px;">Get personalized message added with
                         your gift.</p>
                 </div>
                 <hr class="m-0">
-                <form>
+                <form id="giftForm">
                     <div>
                         <label for="recepientName" style="font-size: 14px;" class="m-0 font-weight-bold">Recepient
                             name</label>
-                        <input type="text" class="form-control" id="recepientName" name="recepientName"
-                            placeholder="Enter recivers's name" style="font-size: 14px;" required>
-                            <p class="text-right" style="font-size: 12px;">0/60</p>
+                        <input type="text" class="form-control giftNameInput" id="recepientName" name="recepientName"
+                            placeholder="Enter receivers's name" style="font-size: 14px;">
+                        <p class="position-absolute text-danger giftNameErrorMsg" style="font-size: 12px; left: 16px;">This field is required</p>
+                        <p class="position-absolute" style="font-size: 12px; right: 16px;">0/60</p>
                     </div>
-                    <div class="mt-2">
+                    <div class="mt-3">
                         <label for="giftMessage" style="font-size: 14px;" class="m-0 font-weight-bold">Message</label>
-                        <textarea class="form-control" id="giftMessage" name="giftMessage" placeholder="Enter a message"
-                            style="font-size: 14px;" rows="5" required></textarea>
-                            <p class="text-right" style="font-size: 12px;">0/140</p>
+                        <textarea class="form-control giftMessageInput" id="giftMessage" name="giftMessage" placeholder="Enter a message"
+                            style="font-size: 14px;" rows="5"></textarea>
+                        <p class="position-absolute text-danger giftMessageErrorMsg" style="font-size: 12px; left: 16px;">This field is required</p>
+                        <p class="position-absolute" style="font-size: 12px; right: 16px;">0/140</p>
                     </div>
-                    <div class="mt-2">
+                    <div class="mt-3">
                         <label for="senderName" style="font-size: 14px;" class="m-0 font-weight-bold">Sender's
                             name</label>
-                        <input type="text" class="form-control" id="senderName" name="senderName"
-                            placeholder="Enter sender's name" style="font-size: 14px;" required>
-                            <p class="text-right" style="font-size: 12px;">0/60</p>
+                        <input type="text" class="form-control giftSenderNameInput" id="senderName" name="senderName"
+                            placeholder="Enter sender's name" style="font-size: 14px;">
+                        <p class="position-absolute text-danger giftSenderNameErrorMsg" style="font-size: 12px; left: 16px;">This field is required</p>
+                        <p class="position-absolute" style="font-size: 12px; right: 16px;">0/60</p>
                     </div>
-                    <div class="d-flex mt-3" style="gap: 8px;">
+                    <div class="d-flex" style="gap: 8px; margin-top: 28px;">
                         <button type="reset" onclick="closeGiftSidebar()" class="btn w-50"
-                            style="border: 1px solid rgb(0, 0, 0,0.2);">Cancel</button>
+                            style="border: 1px solid rgb(0, 0, 0,0.2);font-size: 14px;">CANCEL</button>
                         <button type="submit" class="btn w-50"
-                            style="background-color: var(--color2); color: white;">Save</button>
+                            style="background-color: var(--color1); color: white;font-size: 14px;">SAVE</button>
                     </div>
                 </form>
             </div>
@@ -969,7 +1003,7 @@
                         <!-- <p class="m-0 p-3 text-center" style="font-size: 12px;">No saved address</p> -->
                         <div class="singleAddress">
                             <div>
-                                <input type="radio" class="mr-2" name="address" id="address1">
+                                <input type="radio" checked class="mr-2" name="address" id="address1">
                             </div>
                             <label for="address1" style="flex: 1;">
                                 <p class="m-0 p-0 font-weight-bold">John Doe <span
@@ -980,7 +1014,7 @@
                                     <div>
                                         <button class="btn font-weight-bold deliveringBtn" style="background-color: rgb(0, 0, 0,0.15);" disabled>DELIVERING HERE</button>
                                         <button class="btn border font-weight-bold deliverBtn">DELIVER HERE</button>
-                                        <button class="btn border font-weight-bold editBtn">EDIT</button>
+                                        <button class="btn border font-weight-bold editBtn" onclick="openAddressSidebar()">EDIT</button>
                                         <button class="btn border font-weight-bold cancelBtn" onClick="cancelDeleteAddress()" style="display: none;">CANCEL</button>
                                         <button class="btn border font-weight-bold confirmBtn" style="background-color: var(--color2); color: white; display: none;">CONFIRM</button>
                                         <button class="btn border deleteBtn" ><img src="<?=base_url('assets/new_website/img/trash.png')?>" style="width: 18px;" alt=""></button>
@@ -1017,7 +1051,6 @@
                             </div>
                         </div>
                         <hr class="my-1 p-0">
-                        
                     </div>
                     <div class="addNewAddressBtn">
                         <button class="btn w-100 font-weight-bold" onclick="openAddressSidebar()">ADD NEW ADDRESS</button>
@@ -1062,7 +1095,7 @@
                     <div class="mt-2">
                         <label style="font-size: 12px;" class="m-0 font-weight-bold text-dark">SAVE ADDRESS AS</label>
                         <div class="mt-1">
-                            <input class="btn addressBtn homeButton" type="button" value="HOME">
+                            <button class="btn addressBtn homeButton active" type="button"> HOME</button>
                             <input class="btn addressBtn officeBtn" type="button" value="OFFICE">
                         </div>
                         <div class="weekendCheckbox mt-3 text-dark">
@@ -1083,7 +1116,7 @@
                     </div>
                     <div class="mt-2" role="group" aria-label="Basic example">
                         <button type="submit" class="btn w-100 font-weight-bold"
-                            style="background-color: var(--color2); color: white; font-size: 14px;">ADD ADDRESS</button>
+                            style="background-color: var(--color1); color: white; font-size: 14px;">ADD ADDRESS</button>
                     </div>
                 </form>
             </div>
@@ -1145,7 +1178,7 @@
         <hr class="m-0">
         <section class="paddingTop">
             <!-- <div class="d-flex flex-column justify-content-center align-items-center" style="height: 500px;">
-                <img src="./images/empty-cart.png" style="width: 200px;" alt="">
+                <img src="<?=base_url('assets/new_website/img/empty-cart.png')?>" style="width: 200px;" alt="">
                 <p class="text-dark font-weight-bold m-0" style="font-size: 20px;">"It feels so effortless!"</p>
                 <p class="text-secondary" style="font-size: 14px;">Your bag is empty. Let's add some items.</p>
                 <button class="btn rounded-0 mt-2" style="background-color: var(--color1); color: white; font-size: 14px;">ADD ITEMS FORM WISHLIST</button>
@@ -1163,9 +1196,9 @@
                             ADDRESS</button>
                         <button class="btn border-danger text-danger font-weight-bold addressDialogBtn addressSelectSectionBtnSm" style="font-size: 12px;">CHANGE</button>
                     </div>
-                    <div class="text-left border mt-2 p-3 rounded-lg" style="font-size: 14px;">
+                    <div class="d-flex align-items-center border mt-2 p-3 rounded-lg" style="font-size: 14px;">
                             <img src="<?=base_url('assets/new_website/img/rupee-drop.png')?>" style="width: 22px;" alt="">
-                            <span>The price of some items(s) might have changed.</span>
+                            <span class="ml-2" style="line-height: 1">The price of some items(s) might have changed.</span>
                     </div>
                     <div class="d-flex align-items-center border rounded-lg mt-2 p-2" style="background-color: #FFFAE8;">
                             <i class="fa-solid fa-triangle-exclamation text-danger mr-2"></i>
@@ -1284,15 +1317,15 @@
                                         <span class="text-success font-weight-bold ml-1">35%</span>
                                         <span class="font-weight-bold"
                                             style="border: 1px solid rgb(0, 0, 0,0.15); padding: 2px 4px; border-radius: 100vh; font-size: 12px; white-space: nowrap;">
-                                            <i class="fa-solid fa-crown" style="color: #FFD700;"></i>
+                                            <i class="fa-solid fa-crown blinkAnimation" style="color: #FFD700;"></i>
                                             <span>RC Price: ₹195</span>
                                         </span>
                                     </div>
                                     <p class="text-secondary p-0 m-0" style="font-size: 10px; line-height: 1;">MRP includes all taxes</p>
                                     <p class="text-dark font-weight-bold p-0 m-0 mt-1" style="font-size: 10px; line-height: 1;">NO RETURN</p>
                                     <div class="d-flex align-items-center mt-1">
-                                        <span class="mr-1">Color: </span>
                                         <div style="width: 16px; height: 16px; border-radius: 50%; background-color: blue;"></div>
+                                        <span class="ml-1 font-weight-bold typewriter">BLUE</span>
                                     </div>
                                     <p class="text-secondary mt-2" style="font-size: 12px;">
                                         <i class="fa-solid fa-rotate-left border p-1 rounded-circle text-dark"
@@ -1317,12 +1350,664 @@
                                     <p class="text-secondary pl-1" style="font-size: 12px;">
                                         <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
                                         Deliverd by
-                                        <span class="text-dark font-weight-bold">15 Aug, 2024</span>
+                                        <span class="text-dark font-weight-bold">Sat 15 Aug, 2024</span>
                                     </p>
                                     <p class="text-secondary pl-1" style="font-size: 12px;">
                                         <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
                                         Delivery between
-                                        <span class="text-dark font-weight-bold">15 Aug - 18 Aug</span>
+                                        <span class="text-dark font-weight-bold">Mon 15 Aug - Wed 18 Aug</span>
+                                    </p>
+                                    <!-- <p class="text-secondary pl-1" style="font-size: 12px;">
+                                        <i class="fa-regular fa-clock text-success mr-1" style="font-size: 12px;"></i>
+                                        Get it by
+                                        <span class="text-dark font-weight-bold">Tomorrow 8PM</span>
+                                    </p> -->
+                                    <button class="closeBtn btn p-0"><i class="fa-solid fa-xmark"></i></button>
+                                    <dialog class="dialog p-0 closeProductDialogBtn" id="dialog">
+                                        <div>
+                                            <div class="d-flex px-3 py-1 font-weight-bold justify-content-between align-items-center shadow-sm">
+                                                <p class="font-weight-bold">Move from Bag</p>
+                                                <button id="closeAddressDialogBtn" aria-label="close"
+                                                class="btn p-0 m-0 closeModalBtn font-weight-bold"><i class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                            <div class="px-3 pb-2 mt-2">
+                                                <p class="text-secondary mb-4" style="font-size: 14px;">Are you sure want to move this product from Bag?</p>
+                                                <hr class="m-0">
+                                                <div class="d-flex mt-1">
+                                                    <button class="btn w-50 text-secondary font-weight-bold" style="font-size: 12px;">REMOVE</button>
+                                                    <button class="btn w-50 font-weight-bold border-left ml-2" style="font-size: 12px; color: var(--color2);">MOVE TO WISHLIST</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dialog>
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                            </div>
+                            <div class="productCard">
+                                <a href="#" class="position-relative d-block productImg">
+                                    <img
+                                        src="https://www.jiomart.com/images/product/original/rvxqd4wmk4/eyebogler-light-green-tshirts-men-tshirt-tshirt-for-men-tshirt-mens-tshirt-men-s-polo-neck-regular-fit-half-sleeves-colorblocked-t-shirt-product-images-rvxqd4wmk4-1-202402121853.jpg?im=Resize=(500,630)"
+                                        style="width: 120px;" alt="">
+                                        <div class="outOfStock">
+                                            <img src="<?=base_url('assets/new_website/img/out-of-stock.png')?>" alt="">
+                                        </div>
+                                    </a>
+                                <div>
+                                    <p class="font-weight-bold text-dark" style="font-style: 'League Spartan';">Levis's
+                                        Men's Slim Fit Shirt</p>
+                                    <p class="text-secondary" style="font-size: 12px;">T-Shirt</p>
+                                    <div class="mt-1">
+                                        <button class="btn px-1 py-0 font-weight-bold sizeSelectBtn sizeNotAvailable"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Size: XL <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog sizeDialog" id="dialog">
+                                            <div>
+                                                <div class="d-flex">
+                                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" style="width: 60px;" alt="">
+                                                    <div class="ml-3 text-left">
+                                                        <p class="m-0 p-0">Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0 text-secondary" style="font-size: 14px;">
+                                                            Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0">
+                                                            <span class="font-weight-bold text-dark"
+                                                                style="font-size: 15px;">₹ 1,999</span>
+                                                            <span class="text-secondary"
+                                                                style="text-decoration: line-through; font-size: 14px;">₹
+                                                                2,999</span>
+                                                            <span class="font-weight-bold text-danger"
+                                                                style="font-size: 14px;">35%</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <hr class="my-2" />
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT SIZE
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">XS</button>
+                                                    <button class="sizeBtn outOfStock">S</button>
+                                                    <button class="sizeBtn">M</button>
+                                                    <button class="sizeBtn">L</button>
+                                                    <button class="sizeBtn">XL</button>
+                                                    <button class="sizeBtn">XXL</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeSizeDialogBtn" aria-label="close"
+                                                    class="x closeSizeDialogBtn"><i class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                        </dialog>
+                                        <button class="btn px-1 py-0 font-weight-bold quantityBtn"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Quantity: 1 <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog quantityDialog" id="dialog">
+                                            <div>
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT
+                                                    QUANTITY
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">1</button>
+                                                    <button class="sizeBtn">2</button>
+                                                    <button class="sizeBtn">3</button>
+                                                    <button class="sizeBtn">4</button>
+                                                    <button class="sizeBtn">5</button>
+                                                    <button class="sizeBtn">6</button>
+                                                    <button class="sizeBtn">7</button>
+                                                    <button class="sizeBtn">8</button>
+                                                    <button class="sizeBtn">9</button>
+                                                    <button class="sizeBtn">10</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeQuantitiDialogBtn" aria-label="close"
+                                                    class="x closeQuantitiDialogBtn"><i class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                        </dialog>
+                                        <span class="border border-danger rounded-lg p-1 ml-1 text-danger font-weight-bold"
+                                            style="font-size: 10px; white-space: nowrap;">2 left</span>
+                                        <span class="border border-danger rounded-lg p-1 ml-1 text-danger font-weight-bold"
+                                            style="font-size: 10px; white-space: nowrap;">Size not available</span>
+                                    </div>
+                                    <div class="mt-1" style="font-size: 14px;">
+                                        <span class="font-weight-bold">₹200</span>
+                                        <a href="#" class="toolTip priceTootip text-dark"
+                                            tip="Older price: ₹300 New price: ₹250">
+                                            <i class="fa-solid fa-info-circle text-dark"></i>
+                                        </a>
+                                        <span class="text-secondary ml-1"
+                                            style="text-decoration: line-through;">₹300</span>
+                                        <span class="text-success font-weight-bold ml-1">35%</span>
+                                        <span class="font-weight-bold"
+                                            style="border: 1px solid rgb(0, 0, 0,0.15); padding: 2px 4px; border-radius: 100vh; font-size: 12px; white-space: nowrap;">
+                                            <i class="fa-solid fa-crown" style="color: #FFD700;"></i>
+                                            <span>RC Price: ₹195</span>
+                                        </span>
+                                    </div>
+                                    <p class="text-secondary p-0 m-0" style="font-size: 10px; line-height: 1;">MRP includes all taxes</p>
+                                    <p class="text-dark font-weight-bold p-0 m-0 mt-1" style="font-size: 10px; line-height: 1;">NO RETURN</p>
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div style="width: 16px; height: 16px; border-radius: 50%; background-color: blue;"></div>
+                                        <span class="ml-1 font-weight-bold typewriter">BLUE</span>
+                                    </div>
+                                    <p class="text-secondary mt-2" style="font-size: 12px;">
+                                        <i class="fa-solid fa-rotate-left border p-1 rounded-circle text-dark"
+                                            style="font-size: 10px;"></i>
+                                        <span class="text-dark font-weight-bold">14 days</span> return available
+                                    </p>
+                                    <p class="text-secondary" style="font-size: 12px;">
+                                        <i class="fa-solid fa-gift border p-1 rounded-circle text-dark"
+                                            style="font-size: 10px;"></i>
+                                        This product
+                                        <span class="text-dark font-weight-bold">cannot</span> be Gift wrapped
+                                    </p>
+                                    <p class="pl-1 rounded-left" style="font-size: 12px;background-image:linear-gradient(to right, #8340a1 -7% -7%, #fff 50% 50%); color: var(--color1);">
+                                        <i class="fa-solid fa-arrow-trend-down border p-1 rounded-circle text-light"
+                                            style="font-size: 10px;"></i>
+                                        Lowest price in <span class="font-weight-bold">30 days</span></p>
+                                    <p class="text-secondary" style="font-size: 12px;">
+                                        <i class="fa-solid fa-truck-fast text-dark"
+                                            style="font-size: 12px;"></i>
+                                        Order in
+                                        <span class="font-weight-bold blinkAnimation" style="color: var(--color2);">5H:45M</span> for <span class="text-dark font-weight-bold">Same day </span>delivery</p>
+                                    <p class="text-secondary pl-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
+                                        Deliverd by
+                                        <span class="text-dark font-weight-bold">Sat 15 Aug, 2024</span>
+                                    </p>
+                                    <p class="text-secondary pl-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
+                                        Delivery between
+                                        <span class="text-dark font-weight-bold">Mon 15 Aug - Wed 18 Aug</span>
+                                    </p>
+                                    <!-- <p class="text-secondary pl-1" style="font-size: 12px;">
+                                        <i class="fa-regular fa-clock text-success mr-1" style="font-size: 12px;"></i>
+                                        Get it by
+                                        <span class="text-dark font-weight-bold">Tomorrow 8PM</span>
+                                    </p> -->
+                                    <button class="closeBtn btn p-0"><i class="fa-solid fa-xmark"></i></button>
+                                    <dialog class="dialog p-0 closeProductDialogBtn" id="dialog">
+                                        <div>
+                                            <div class="d-flex px-3 py-1 font-weight-bold justify-content-between align-items-center shadow-sm">
+                                                <p class="font-weight-bold">Move from Bag</p>
+                                                <button id="closeAddressDialogBtn" aria-label="close"
+                                                class="btn p-0 m-0 closeModalBtn font-weight-bold"><i class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                            <div class="px-3 pb-2 mt-2">
+                                                <p class="text-secondary mb-4" style="font-size: 14px;">Are you sure want to move this product from Bag?</p>
+                                                <hr class="m-0">
+                                                <div class="d-flex mt-1">
+                                                    <button class="btn w-50 text-secondary font-weight-bold" style="font-size: 12px;">REMOVE</button>
+                                                    <button class="btn w-50 font-weight-bold border-left ml-2" style="font-size: 12px; color: var(--color2);">MOVE TO WISHLIST</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dialog>
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                            </div>
+                            <div class="productCard">
+                                <a href="#" class="position-relative d-block productImg">
+                                    <img
+                                        src="https://www.jiomart.com/images/product/original/rvxqd4wmk4/eyebogler-light-green-tshirts-men-tshirt-tshirt-for-men-tshirt-mens-tshirt-men-s-polo-neck-regular-fit-half-sleeves-colorblocked-t-shirt-product-images-rvxqd4wmk4-1-202402121853.jpg?im=Resize=(500,630)"
+                                        style="width: 120px;" alt="">
+                                        <div class="outOfStock">
+                                            <img src="<?=base_url('assets/new_website/img/out-of-stock.png')?>" alt="">
+                                        </div>
+                                    </a>
+                                <div>
+                                    <p class="font-weight-bold text-dark" style="font-style: 'League Spartan';">Levis's
+                                        Men's Slim Fit Shirt</p>
+                                    <p class="text-secondary" style="font-size: 12px;">T-Shirt</p>
+                                    <div class="mt-1">
+                                        <button class="btn px-1 py-0 font-weight-bold sizeSelectBtn sizeNotAvailable"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Size: XL <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog sizeDialog" id="dialog">
+                                            <div>
+                                                <div class="d-flex">
+                                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" style="width: 60px;" alt="">
+                                                    <div class="ml-3 text-left">
+                                                        <p class="m-0 p-0">Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0 text-secondary" style="font-size: 14px;">
+                                                            Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0">
+                                                            <span class="font-weight-bold text-dark"
+                                                                style="font-size: 15px;">₹ 1,999</span>
+                                                            <span class="text-secondary"
+                                                                style="text-decoration: line-through; font-size: 14px;">₹
+                                                                2,999</span>
+                                                            <span class="font-weight-bold text-danger"
+                                                                style="font-size: 14px;">35%</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <hr class="my-2" />
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT SIZE
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">XS</button>
+                                                    <button class="sizeBtn outOfStock">S</button>
+                                                    <button class="sizeBtn">M</button>
+                                                    <button class="sizeBtn">L</button>
+                                                    <button class="sizeBtn">XL</button>
+                                                    <button class="sizeBtn">XXL</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeSizeDialogBtn" aria-label="close"
+                                                    class="x closeSizeDialogBtn"><i class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                        </dialog>
+                                        <button class="btn px-1 py-0 font-weight-bold quantityBtn"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Quantity: 1 <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog quantityDialog" id="dialog">
+                                            <div>
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT
+                                                    QUANTITY
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">1</button>
+                                                    <button class="sizeBtn">2</button>
+                                                    <button class="sizeBtn">3</button>
+                                                    <button class="sizeBtn">4</button>
+                                                    <button class="sizeBtn">5</button>
+                                                    <button class="sizeBtn">6</button>
+                                                    <button class="sizeBtn">7</button>
+                                                    <button class="sizeBtn">8</button>
+                                                    <button class="sizeBtn">9</button>
+                                                    <button class="sizeBtn">10</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeQuantitiDialogBtn" aria-label="close"
+                                                    class="x closeQuantitiDialogBtn"><i class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                        </dialog>
+                                        <span class="border border-danger rounded-lg p-1 ml-1 text-danger font-weight-bold"
+                                            style="font-size: 10px; white-space: nowrap;">2 left</span>
+                                        <span class="border border-danger rounded-lg p-1 ml-1 text-danger font-weight-bold"
+                                            style="font-size: 10px; white-space: nowrap;">Size not available</span>
+                                    </div>
+                                    <div class="mt-1" style="font-size: 14px;">
+                                        <span class="font-weight-bold">₹200</span>
+                                        <a href="#" class="toolTip priceTootip text-dark"
+                                            tip="Older price: ₹300 New price: ₹250">
+                                            <i class="fa-solid fa-info-circle text-dark"></i>
+                                        </a>
+                                        <span class="text-secondary ml-1"
+                                            style="text-decoration: line-through;">₹300</span>
+                                        <span class="text-success font-weight-bold ml-1">35%</span>
+                                        <span class="font-weight-bold"
+                                            style="border: 1px solid rgb(0, 0, 0,0.15); padding: 2px 4px; border-radius: 100vh; font-size: 12px; white-space: nowrap;">
+                                            <i class="fa-solid fa-crown" style="color: #FFD700;"></i>
+                                            <span>RC Price: ₹195</span>
+                                        </span>
+                                    </div>
+                                    <p class="text-secondary p-0 m-0" style="font-size: 10px; line-height: 1;">MRP includes all taxes</p>
+                                    <p class="text-dark font-weight-bold p-0 m-0 mt-1" style="font-size: 10px; line-height: 1;">NO RETURN</p>
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div style="width: 16px; height: 16px; border-radius: 50%; background-color: blue;"></div>
+                                        <span class="ml-1 font-weight-bold typewriter">BLUE</span>
+                                    </div>
+                                    <p class="text-secondary mt-2" style="font-size: 12px;">
+                                        <i class="fa-solid fa-rotate-left border p-1 rounded-circle text-dark"
+                                            style="font-size: 10px;"></i>
+                                        <span class="text-dark font-weight-bold">14 days</span> return available
+                                    </p>
+                                    <p class="text-secondary" style="font-size: 12px;">
+                                        <i class="fa-solid fa-gift border p-1 rounded-circle text-dark"
+                                            style="font-size: 10px;"></i>
+                                        This product
+                                        <span class="text-dark font-weight-bold">cannot</span> be Gift wrapped
+                                    </p>
+                                    <p class="pl-1 rounded-left" style="font-size: 12px;background-image:linear-gradient(to right, #8340a1 -7% -7%, #fff 50% 50%); color: var(--color1);">
+                                        <i class="fa-solid fa-arrow-trend-down border p-1 rounded-circle text-light"
+                                            style="font-size: 10px;"></i>
+                                        Lowest price in <span class="font-weight-bold">30 days</span></p>
+                                    <p class="text-secondary" style="font-size: 12px;">
+                                        <i class="fa-solid fa-truck-fast text-dark"
+                                            style="font-size: 12px;"></i>
+                                        Order in
+                                        <span class="font-weight-bold blinkAnimation" style="color: var(--color2);">5H:45M</span> for <span class="text-dark font-weight-bold">Same day </span>delivery</p>
+                                    <p class="text-secondary pl-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
+                                        Deliverd by
+                                        <span class="text-dark font-weight-bold">Sat 15 Aug, 2024</span>
+                                    </p>
+                                    <p class="text-secondary pl-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
+                                        Delivery between
+                                        <span class="text-dark font-weight-bold">Mon 15 Aug - Wed 18 Aug</span>
+                                    </p>
+                                    <!-- <p class="text-secondary pl-1" style="font-size: 12px;">
+                                        <i class="fa-regular fa-clock text-success mr-1" style="font-size: 12px;"></i>
+                                        Get it by
+                                        <span class="text-dark font-weight-bold">Tomorrow 8PM</span>
+                                    </p> -->
+                                    <button class="closeBtn btn p-0"><i class="fa-solid fa-xmark"></i></button>
+                                    <dialog class="dialog p-0 closeProductDialogBtn" id="dialog">
+                                        <div>
+                                            <div class="d-flex px-3 py-1 font-weight-bold justify-content-between align-items-center shadow-sm">
+                                                <p class="font-weight-bold">Move from Bag</p>
+                                                <button id="closeAddressDialogBtn" aria-label="close"
+                                                class="btn p-0 m-0 closeModalBtn font-weight-bold"><i class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                            <div class="px-3 pb-2 mt-2">
+                                                <p class="text-secondary mb-4" style="font-size: 14px;">Are you sure want to move this product from Bag?</p>
+                                                <hr class="m-0">
+                                                <div class="d-flex mt-1">
+                                                    <button class="btn w-50 text-secondary font-weight-bold" style="font-size: 12px;">REMOVE</button>
+                                                    <button class="btn w-50 font-weight-bold border-left ml-2" style="font-size: 12px; color: var(--color2);">MOVE TO WISHLIST</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dialog>
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                            </div>
+                            <div class="productCard">
+                                <a href="#" class="position-relative d-block productImg">
+                                    <img
+                                        src="https://www.jiomart.com/images/product/original/rvxqd4wmk4/eyebogler-light-green-tshirts-men-tshirt-tshirt-for-men-tshirt-mens-tshirt-men-s-polo-neck-regular-fit-half-sleeves-colorblocked-t-shirt-product-images-rvxqd4wmk4-1-202402121853.jpg?im=Resize=(500,630)"
+                                        style="width: 120px;" alt="">
+                                        <div class="outOfStock">
+                                            <img src="<?=base_url('assets/new_website/img/out-of-stock.png')?>" alt="">
+                                        </div>
+                                    </a>
+                                <div>
+                                    <p class="font-weight-bold text-dark" style="font-style: 'League Spartan';">Levis's
+                                        Men's Slim Fit Shirt</p>
+                                    <p class="text-secondary" style="font-size: 12px;">T-Shirt</p>
+                                    <div class="mt-1">
+                                        <button class="btn px-1 py-0 font-weight-bold sizeSelectBtn sizeNotAvailable"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Size: XL <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog sizeDialog" id="dialog">
+                                            <div>
+                                                <div class="d-flex">
+                                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" style="width: 60px;" alt="">
+                                                    <div class="ml-3 text-left">
+                                                        <p class="m-0 p-0">Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0 text-secondary" style="font-size: 14px;">
+                                                            Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0">
+                                                            <span class="font-weight-bold text-dark"
+                                                                style="font-size: 15px;">₹ 1,999</span>
+                                                            <span class="text-secondary"
+                                                                style="text-decoration: line-through; font-size: 14px;">₹
+                                                                2,999</span>
+                                                            <span class="font-weight-bold text-danger"
+                                                                style="font-size: 14px;">35%</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <hr class="my-2" />
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT SIZE
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">XS</button>
+                                                    <button class="sizeBtn outOfStock">S</button>
+                                                    <button class="sizeBtn">M</button>
+                                                    <button class="sizeBtn">L</button>
+                                                    <button class="sizeBtn">XL</button>
+                                                    <button class="sizeBtn">XXL</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeSizeDialogBtn" aria-label="close"
+                                                    class="x closeSizeDialogBtn"><i class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                        </dialog>
+                                        <button class="btn px-1 py-0 font-weight-bold quantityBtn"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Quantity: 1 <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog quantityDialog" id="dialog">
+                                            <div>
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT
+                                                    QUANTITY
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">1</button>
+                                                    <button class="sizeBtn">2</button>
+                                                    <button class="sizeBtn">3</button>
+                                                    <button class="sizeBtn">4</button>
+                                                    <button class="sizeBtn">5</button>
+                                                    <button class="sizeBtn">6</button>
+                                                    <button class="sizeBtn">7</button>
+                                                    <button class="sizeBtn">8</button>
+                                                    <button class="sizeBtn">9</button>
+                                                    <button class="sizeBtn">10</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeQuantitiDialogBtn" aria-label="close"
+                                                    class="x closeQuantitiDialogBtn"><i class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                        </dialog>
+                                        <span class="border border-danger rounded-lg p-1 ml-1 text-danger font-weight-bold"
+                                            style="font-size: 10px; white-space: nowrap;">2 left</span>
+                                        <span class="border border-danger rounded-lg p-1 ml-1 text-danger font-weight-bold"
+                                            style="font-size: 10px; white-space: nowrap;">Size not available</span>
+                                    </div>
+                                    <div class="mt-1" style="font-size: 14px;">
+                                        <span class="font-weight-bold">₹200</span>
+                                        <a href="#" class="toolTip priceTootip text-dark"
+                                            tip="Older price: ₹300 New price: ₹250">
+                                            <i class="fa-solid fa-info-circle text-dark"></i>
+                                        </a>
+                                        <span class="text-secondary ml-1"
+                                            style="text-decoration: line-through;">₹300</span>
+                                        <span class="text-success font-weight-bold ml-1">35%</span>
+                                        <span class="font-weight-bold"
+                                            style="border: 1px solid rgb(0, 0, 0,0.15); padding: 2px 4px; border-radius: 100vh; font-size: 12px; white-space: nowrap;">
+                                            <i class="fa-solid fa-crown" style="color: #FFD700;"></i>
+                                            <span>RC Price: ₹195</span>
+                                        </span>
+                                    </div>
+                                    <p class="text-secondary p-0 m-0" style="font-size: 10px; line-height: 1;">MRP includes all taxes</p>
+                                    <p class="text-dark font-weight-bold p-0 m-0 mt-1" style="font-size: 10px; line-height: 1;">NO RETURN</p>
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div style="width: 16px; height: 16px; border-radius: 50%; background-color: blue;"></div>
+                                        <span class="ml-1 font-weight-bold typewriter">BLUE</span>
+                                    </div>
+                                    <p class="text-secondary mt-2" style="font-size: 12px;">
+                                        <i class="fa-solid fa-rotate-left border p-1 rounded-circle text-dark"
+                                            style="font-size: 10px;"></i>
+                                        <span class="text-dark font-weight-bold">14 days</span> return available
+                                    </p>
+                                    <p class="text-secondary" style="font-size: 12px;">
+                                        <i class="fa-solid fa-gift border p-1 rounded-circle text-dark"
+                                            style="font-size: 10px;"></i>
+                                        This product
+                                        <span class="text-dark font-weight-bold">cannot</span> be Gift wrapped
+                                    </p>
+                                    <p class="pl-1 rounded-left" style="font-size: 12px;background-image:linear-gradient(to right, #8340a1 -7% -7%, #fff 50% 50%); color: var(--color1);">
+                                        <i class="fa-solid fa-arrow-trend-down border p-1 rounded-circle text-light"
+                                            style="font-size: 10px;"></i>
+                                        Lowest price in <span class="font-weight-bold">30 days</span></p>
+                                    <p class="text-secondary" style="font-size: 12px;">
+                                        <i class="fa-solid fa-truck-fast text-dark"
+                                            style="font-size: 12px;"></i>
+                                        Order in
+                                        <span class="font-weight-bold blinkAnimation" style="color: var(--color2);">5H:45M</span> for <span class="text-dark font-weight-bold">Same day </span>delivery</p>
+                                    <p class="text-secondary pl-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
+                                        Deliverd by
+                                        <span class="text-dark font-weight-bold">Sat 15 Aug, 2024</span>
+                                    </p>
+                                    <p class="text-secondary pl-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
+                                        Delivery between
+                                        <span class="text-dark font-weight-bold">Mon 15 Aug - Wed 18 Aug</span>
+                                    </p>
+                                    <!-- <p class="text-secondary pl-1" style="font-size: 12px;">
+                                        <i class="fa-regular fa-clock text-success mr-1" style="font-size: 12px;"></i>
+                                        Get it by
+                                        <span class="text-dark font-weight-bold">Tomorrow 8PM</span>
+                                    </p> -->
+                                    <button class="closeBtn btn p-0"><i class="fa-solid fa-xmark"></i></button>
+                                    <dialog class="dialog p-0 closeProductDialogBtn" id="dialog">
+                                        <div>
+                                            <div class="d-flex px-3 py-1 font-weight-bold justify-content-between align-items-center shadow-sm">
+                                                <p class="font-weight-bold">Move from Bag</p>
+                                                <button id="closeAddressDialogBtn" aria-label="close"
+                                                class="btn p-0 m-0 closeModalBtn font-weight-bold"><i class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                            <div class="px-3 pb-2 mt-2">
+                                                <p class="text-secondary mb-4" style="font-size: 14px;">Are you sure want to move this product from Bag?</p>
+                                                <hr class="m-0">
+                                                <div class="d-flex mt-1">
+                                                    <button class="btn w-50 text-secondary font-weight-bold" style="font-size: 12px;">REMOVE</button>
+                                                    <button class="btn w-50 font-weight-bold border-left ml-2" style="font-size: 12px; color: var(--color2);">MOVE TO WISHLIST</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dialog>
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                            </div>
+                            <div class="productCard">
+                                <a href="#" class="position-relative d-block productImg">
+                                    <img
+                                        src="https://www.jiomart.com/images/product/original/rvxqd4wmk4/eyebogler-light-green-tshirts-men-tshirt-tshirt-for-men-tshirt-mens-tshirt-men-s-polo-neck-regular-fit-half-sleeves-colorblocked-t-shirt-product-images-rvxqd4wmk4-1-202402121853.jpg?im=Resize=(500,630)"
+                                        style="width: 120px;" alt="">
+                                        <div class="outOfStock">
+                                            <img src="<?=base_url('assets/new_website/img/out-of-stock.png')?>" alt="">
+                                        </div>
+                                    </a>
+                                <div>
+                                    <p class="font-weight-bold text-dark" style="font-style: 'League Spartan';">Levis's
+                                        Men's Slim Fit Shirt</p>
+                                    <p class="text-secondary" style="font-size: 12px;">T-Shirt</p>
+                                    <div class="mt-1">
+                                        <button class="btn px-1 py-0 font-weight-bold sizeSelectBtn sizeNotAvailable"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Size: XL <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog sizeDialog" id="dialog">
+                                            <div>
+                                                <div class="d-flex">
+                                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" style="width: 60px;" alt="">
+                                                    <div class="ml-3 text-left">
+                                                        <p class="m-0 p-0">Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0 text-secondary" style="font-size: 14px;">
+                                                            Lorem, ipsum.</p>
+                                                        <p class="m-0 p-0">
+                                                            <span class="font-weight-bold text-dark"
+                                                                style="font-size: 15px;">₹ 1,999</span>
+                                                            <span class="text-secondary"
+                                                                style="text-decoration: line-through; font-size: 14px;">₹
+                                                                2,999</span>
+                                                            <span class="font-weight-bold text-danger"
+                                                                style="font-size: 14px;">35%</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <hr class="my-2" />
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT SIZE
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">XS</button>
+                                                    <button class="sizeBtn outOfStock">S</button>
+                                                    <button class="sizeBtn">M</button>
+                                                    <button class="sizeBtn">L</button>
+                                                    <button class="sizeBtn">XL</button>
+                                                    <button class="sizeBtn">XXL</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeSizeDialogBtn" aria-label="close"
+                                                    class="x closeSizeDialogBtn"><i class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                        </dialog>
+                                        <button class="btn px-1 py-0 font-weight-bold quantityBtn"
+                                            style="font-size: 12px; background-color: rgb(0, 0, 0,0.1);">Quantity: 1 <i
+                                                class="fa-solid fa-caret-down ml-2"></i></button>
+                                        <dialog class="dialog quantityDialog" id="dialog">
+                                            <div>
+                                                <p class="font-weight-bold text-left m-0 p-0"
+                                                    style="font-family: 'League Spartan'; font-size: 16px;">SELECT
+                                                    QUANTITY
+                                                </p>
+                                                <div class="text-left mt-2 stockBtns">
+                                                    <button class="sizeBtn">1</button>
+                                                    <button class="sizeBtn">2</button>
+                                                    <button class="sizeBtn">3</button>
+                                                    <button class="sizeBtn">4</button>
+                                                    <button class="sizeBtn">5</button>
+                                                    <button class="sizeBtn">6</button>
+                                                    <button class="sizeBtn">7</button>
+                                                    <button class="sizeBtn">8</button>
+                                                    <button class="sizeBtn">9</button>
+                                                    <button class="sizeBtn">10</button>
+                                                </div>
+                                                <button class="btn w-100 mt-4"
+                                                    style="background-color: var(--color1); color: white;">DONE</button>
+                                                <button id="closeQuantitiDialogBtn" aria-label="close"
+                                                    class="x closeQuantitiDialogBtn"><i class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                        </dialog>
+                                        <span class="border border-danger rounded-lg p-1 ml-1 text-danger font-weight-bold"
+                                            style="font-size: 10px; white-space: nowrap;">2 left</span>
+                                        <span class="border border-danger rounded-lg p-1 ml-1 text-danger font-weight-bold"
+                                            style="font-size: 10px; white-space: nowrap;">Size not available</span>
+                                    </div>
+                                    <div class="mt-1" style="font-size: 14px;">
+                                        <span class="font-weight-bold">₹200</span>
+                                        <a href="#" class="toolTip priceTootip text-dark"
+                                            tip="Older price: ₹300 New price: ₹250">
+                                            <i class="fa-solid fa-info-circle text-dark"></i>
+                                        </a>
+                                        <span class="text-secondary ml-1"
+                                            style="text-decoration: line-through;">₹300</span>
+                                        <span class="text-success font-weight-bold ml-1">35%</span>
+                                        <span class="font-weight-bold"
+                                            style="border: 1px solid rgb(0, 0, 0,0.15); padding: 2px 4px; border-radius: 100vh; font-size: 12px; white-space: nowrap;">
+                                            <i class="fa-solid fa-crown" style="color: #FFD700;"></i>
+                                            <span>RC Price: ₹195</span>
+                                        </span>
+                                    </div>
+                                    <p class="text-secondary p-0 m-0" style="font-size: 10px; line-height: 1;">MRP includes all taxes</p>
+                                    <p class="text-dark font-weight-bold p-0 m-0 mt-1" style="font-size: 10px; line-height: 1;">NO RETURN</p>
+                                    <div class="d-flex align-items-center mt-1">
+                                        <div style="width: 16px; height: 16px; border-radius: 50%; background-color: blue;"></div>
+                                        <span class="ml-1 font-weight-bold typewriter">BLUE</span>
+                                    </div>
+                                    <p class="text-secondary mt-2" style="font-size: 12px;">
+                                        <i class="fa-solid fa-rotate-left border p-1 rounded-circle text-dark"
+                                            style="font-size: 10px;"></i>
+                                        <span class="text-dark font-weight-bold">14 days</span> return available
+                                    </p>
+                                    <p class="text-secondary" style="font-size: 12px;">
+                                        <i class="fa-solid fa-gift border p-1 rounded-circle text-dark"
+                                            style="font-size: 10px;"></i>
+                                        This product
+                                        <span class="text-dark font-weight-bold">cannot</span> be Gift wrapped
+                                    </p>
+                                    <p class="pl-1 rounded-left" style="font-size: 12px;background-image:linear-gradient(to right, #8340a1 -7% -7%, #fff 50% 50%); color: var(--color1);">
+                                        <i class="fa-solid fa-arrow-trend-down border p-1 rounded-circle text-light"
+                                            style="font-size: 10px;"></i>
+                                        Lowest price in <span class="font-weight-bold">30 days</span></p>
+                                    <p class="text-secondary" style="font-size: 12px;">
+                                        <i class="fa-solid fa-truck-fast text-dark"
+                                            style="font-size: 12px;"></i>
+                                        Order in
+                                        <span class="font-weight-bold blinkAnimation" style="color: var(--color2);">5H:45M</span> for <span class="text-dark font-weight-bold">Same day </span>delivery</p>
+                                    <p class="text-secondary pl-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
+                                        Deliverd by
+                                        <span class="text-dark font-weight-bold">Sat 15 Aug, 2024</span>
+                                    </p>
+                                    <p class="text-secondary pl-1" style="font-size: 12px;">
+                                        <i class="fa-solid fa-check text-success mr-1" style="font-size: 12px;"></i>
+                                        Delivery between
+                                        <span class="text-dark font-weight-bold">Mon 15 Aug - Wed 18 Aug</span>
                                     </p>
                                     <!-- <p class="text-secondary pl-1" style="font-size: 12px;">
                                         <i class="fa-regular fa-clock text-success mr-1" style="font-size: 12px;"></i>
@@ -1372,9 +2057,16 @@
                         </div>
 
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="">
-                            <div class="card-body p-0 px-3 pb-2 mt-2"
-                                style="font-size: 13px; color: rgb(0, 0, 0,0.75);">
-                                <form>
+                            <div class="card-body p-0 px-3 pb-2 mt-2">
+                                <div class="d-flex align-items-center rounded-lg mb-2 p-2" style="border: 2px solid #28A745;">
+                                    <i class="fa-solid fa-circle-check text-success mr-2"></i>
+                                    <div class="flex-grow-1">
+                                        <p class="m-0 p-0">Promocode applied successfully!</p>
+                                        <p class="m-0 p-0 text-success">₹399 Saved</p>
+                                    </div>
+                                    <button class="btn p-0 m-0"><img src="<?=base_url('assets/new_website/img/trash.png')?>" style="width: 18px;" alt=""></button>
+                                </div>
+                                <form style="font-size: 13px; color: rgb(0, 0, 0,0.75);">
                                     <div class="d-flex align-items-center border rounded-lg">
                                         <input type="text" id="couponCode" name="couponCode" class="border-0 ml-2 outline-0 flex-grow-1"
                                         placeholder="Enter coupon code" style="font-size: 14px;">
@@ -1387,7 +2079,7 @@
                                             class="fa-solid fa-triangle-exclamation"></i> Invalid promocode!</span> -->
                                 </form>
                                 <button onclick="openCouponSidebar()" class="btn text-dark font-weight-bold m-0 p-0 float-right mt-3"
-                                    style="font-size: 12px;">Browse all coupons
+                                    style="font-size: 12px;">Coupon Hub
                                     <i class="fa-solid fa-chevron-right"></i></button>
                             </div>
                         </div>
@@ -1456,15 +2148,16 @@
                     </div>
                     <div class="card py-2 rounded-lg mt-2">
                         <div class="" id="headingThree">
-                            <button class="btn btn-block text-left font-weight-bold text-dark align-items-center"
+                            <button class="btn btn-block text-left d-flex align-items-center"
                                 style="font-size: 14px;" type="button" data-toggle="collapse"
                                 data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                <!-- <i class="fa-solid fa-crown"></i>
-                                <i class="fa-solid fa-indian-rupee-sign mr-1"></i> -->
-                                <img src="<?=base_url('assets/new_website/img/crown.png')?>" class="mr-1" style="width: 20px; margin-top: -2px;"
-                                    alt="">REDEEM YOUR ROYAL REWARDS <span class="font-weight-normal" style="font-size: 12px">(50
-                                    available)</span>
-                                <i class="fa-solid fa-caret-down float-right"></i>
+                                    <img src="<?=base_url('assets/new_website/img/crown.png')?>" class="mr-2" style="width: 20px; margin-top: -2px;"
+                                        alt="">
+                                    <div class="d-inline-block flex-grow-1">
+                                        <p class="p-0 m-0">REDEEM YOUR ROYAL REWARDS</p> 
+                                        <span class="font-weight-normal" style="font-size: 12px">(50 available)</span>
+                                    </div>
+                                    <i class="fa-solid fa-caret-down float-right"></i>
                             </button>
                         </div>
 
@@ -1515,7 +2208,6 @@
                                 <span>
                                     <i class="fa-solid fa-crown mr-1" style="color: #FFD700;"></i>
                                     Royal Club saving
-                                    <button class="btn p-0 m-0" onClick="openRoyalSidebar()"><i class="fa-solid fa-info-circle"></i></button>
                                 </span>
                                 <span
                                     class="float-right">-₹399
@@ -1812,7 +2504,7 @@
             document.body.classList.remove('sidebar-open');
         })
         
-        const moveDialogBtn = document.querySelector('.moveDialogBtn');
+        const moveDialogBtn = document.querySelectorAll('.moveDialogBtn');
         const moveDialog = document.querySelector('.moveDialog');
         const closeMoveDialogBtn = document.querySelectorAll('.closeMoveDialogBtn')
 
@@ -1860,10 +2552,14 @@
 
         officeBtn.addEventListener('focus', () => {
             weekendCheckbox.style.display = 'block'
+            officeBtn.classList.add('active')
+            homeButton.classList.remove('active')
         })
 
         homeButton.addEventListener('focus', () => {
             weekendCheckbox.style.display = 'none'
+            homeButton.classList.add('active')
+            officeBtn.classList.remove('active')
         })
 
         const pincodeErrorMsg = document.querySelector('.pincodeErrorMsg');
@@ -1993,6 +2689,50 @@
             }
         })
 
+        const giftNameErrorMsg = document.querySelector('.giftNameErrorMsg');
+        const giftMessageErrorMsg = document.querySelector('.giftMessageErrorMsg');
+        const giftSenderNameErrorMsg = document.querySelector('.giftSenderNameErrorMsg');
+
+        giftForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = new FormData(giftForm);
+            const recepientName = data.get('recepientName');
+            const giftMessage = data.get('giftMessage');
+            const senderName = data.get('senderName');
+        
+            if (recepientName == '') {
+                giftNameErrorMsg.style.display = 'inline';
+                document.querySelector('.giftNameInput').style.borderColor = 'red';
+            }else if (giftMessage == '') {
+                giftMessageErrorMsg.style.display = 'inline';
+                document.querySelector('.giftMessageInput').style.borderColor = 'red';
+            }else if (senderName == '') {
+                giftSenderNameErrorMsg.style.display = 'inline';
+                document.querySelector('.giftSenderNameInput').style.borderColor = 'red';
+            }
+        })
+
+        document.querySelector('.giftNameInput').addEventListener('focus', () => {
+            if(giftNameErrorMsg.style.display == 'inline'){
+                giftNameErrorMsg.style.display = 'none';
+                document.querySelector('.giftNameInput').style.borderColor = '#d4d5d9';
+            }
+        })
+
+        document.querySelector('.giftMessageInput').addEventListener('focus', () => {
+            if(giftMessageErrorMsg.style.display == 'inline'){
+                giftMessageErrorMsg.style.display = 'none';
+                document.querySelector('.giftMessageInput').style.borderColor = '#d4d5d9';
+            }
+        })
+
+        document.querySelector('.giftSenderNameInput').addEventListener('focus', () => {
+            if(giftSenderNameErrorMsg.style.display == 'inline'){
+                giftSenderNameErrorMsg.style.display = 'none';
+                document.querySelector('.giftSenderNameInput').style.borderColor = '#d4d5d9';
+            }
+        })
+        
         const royalSidebar = document.querySelector('#royalSidebar');
 
         function openRoyalSidebar() {

@@ -32,6 +32,21 @@
             font-family: 'Inter', sans-serif;
         }
 
+        body.sidebar-open{
+            overflow-y: hidden;
+        }
+
+        body.sidebar-open::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 5;
+        }
+
         main {
             max-width: 1560px;
             margin-inline: auto;
@@ -130,12 +145,10 @@
             opacity: 1;
         }
 
-        .productCard:hover .card-img {
-            display: none;
-        }
-
-        .productCard:hover .swiper {
-            display: block;
+        .productImgContainer{
+            max-width: 240px;
+            /* height: 320px; */
+            object-fit: contain;
         }
         
         .card-img{
@@ -802,9 +815,8 @@
         }
 
         .swiper {
-            display: none;
-            width: 280px;
-            height: 320px;
+            width: 100%;
+            height:100%;
         }
 
         .quickViewSwiper {
@@ -816,7 +828,6 @@
         .quickViewSwiper img{
             width: 60px;
             height: 80px;
-
         }
 
         .swiper-slide {
@@ -929,7 +940,7 @@
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                     <button id="closeModalBtn" aria-label="close" onClick="closeQuickViewDialog()" class="x closeSizeModalBtn">
-                        <span class="close-btn" id="close-popup">×</span>
+                        <i class="fa-solid fa-xmark"></i>
                     </button>
                     <p class="font-weight-bold fontLeague m-0 p-0" style="font-size: 20px;">Lorem ipsum dolor sit amet</p>
                     <p class="text-secondary m-0 p-0" style="font-size: 12px;">T-Shirt</p>
@@ -1078,8 +1089,8 @@
                 <span class="text-secondary" style="font-size: 13px;">(5)</span></button>
         </div>
         <div id="sidebar" class="sidebar">
-            <button onclick="closeSidebar()">
-                <span class="close-btn">×</span>
+            <button class="btn position-absolute" style="top: 0; right: 0;" onclick="closeSidebar()">
+                <i class="fa-solid fa-xmark"></i>
             </button>
             <div class="sidebar-content">
                 <div class="text-center text-decoration-none productCardSidebar">
@@ -1169,8 +1180,8 @@
             </div>
         </div>
         <div id="filterSidebar" class="sidebar" style="padding-top: 12px;">
-            <button onclick="closeFilterSidebar()">
-                <span class="close-btn">×</span>
+            <button class="btn position-absolute" style="top: 0; right: 0;" onclick="closeFilterSidebar()">
+                <i class="fa-solid fa-xmark"></i>
             </button>
             <div class="filterSidebarContent">
                 <p class="font-weight-bold m-0 p-0 text-dark" style="font-size: 18px;">FILTERS</p>
@@ -1712,31 +1723,34 @@
                             </div>
                             <a href="#" class="card border-0 text-decoration-none">
                                 <div class="position-relative">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
-                                        class="card-img" alt="">
-                                    <div class="swiper mySwiper">
-                                            <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
+                                    <!-- <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
+                                        class="card-img" alt=""> -->
+                                    <div class="productImgContainer">
+                                        <div class="swiper mySwiper">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-pagination"></div>
+                                                <div class="swiper-pagination"></div>
+                                        </div>    
                                     </div>
+                                    
                                     <div class="productCardHoverBtn">
                                         <!-- <div class="quickViewBtn">
                                             <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
@@ -1869,31 +1883,34 @@
                             </div>
                             <a href="#" class="card border-0 text-decoration-none">
                                 <div class="position-relative">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
-                                        class="card-img" alt="">
-                                    <div class="swiper mySwiper">
-                                            <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
+                                    <!-- <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
+                                        class="card-img" alt=""> -->
+                                    <div class="productImgContainer">
+                                        <div class="swiper mySwiper">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-pagination"></div>
+                                                <div class="swiper-pagination"></div>
+                                        </div>    
                                     </div>
+                                    
                                     <div class="productCardHoverBtn">
                                         <!-- <div class="quickViewBtn">
                                             <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
@@ -1944,7 +1961,7 @@
                                             <i class="fa-solid fa-circle-info text-dark"></i>
                                         </a>
                                     </p>
-                                    <p class="m-0 mt-1" style="font-size: 14px;">Get it by <span
+                                    <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
                                             class="font-weight-bold">Aug 31</span></p>
                                 </div>
                             </a>
@@ -2026,31 +2043,34 @@
                             </div>
                             <a href="#" class="card border-0 text-decoration-none">
                                 <div class="position-relative">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
-                                        class="card-img" alt="">
-                                    <div class="swiper mySwiper">
-                                            <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
+                                    <!-- <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
+                                        class="card-img" alt=""> -->
+                                    <div class="productImgContainer">
+                                        <div class="swiper mySwiper">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-pagination"></div>
+                                                <div class="swiper-pagination"></div>
+                                        </div>    
                                     </div>
+                                    
                                     <div class="productCardHoverBtn">
                                         <!-- <div class="quickViewBtn">
                                             <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
@@ -2101,792 +2121,7 @@
                                             <i class="fa-solid fa-circle-info text-dark"></i>
                                         </a>
                                     </p>
-                                    <p class="m-0 mt-1" style="font-size: 14px;">Get it by <span
-                                            class="font-weight-bold">Aug 31</span></p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="productCard">
-                            <!-- <div class="newTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white" style="font-size: 14px;">NEW</p>
-                            </div> -->
-                            <!-- <div class="saleTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white" style="font-size: 14px;">SALE</p>
-                            </div> -->
-                            <!-- <div class="hotLookTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 16px;">
-                                    <span style="letter-spacing: 1px;">HOT</span>
-                                    <span style="font-size: 12px;">LOOK</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="preBookTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 16px;">
-                                    <span style="letter-spacing: 1px;">PRE</span>
-                                    <span style="font-size: 12px;">BOOK</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="trendyTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">TRENDY</p>
-                            </div> -->
-                            <!-- <div class="summerTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">SUMMER</p>
-                            </div> -->
-                            <!-- <div class="royalTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 12px;">
-                                    <span>ROYAL</span>
-                                    <span style="font-size: 12px; letter-spacing: 3.5px;">CLUB</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="weekendTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 12px;">
-                                    <span>WEEKEND</span>
-                                    <span style="font-size: 12px; letter-spacing: 6px;">STYLE</span>
-                                </p>
-                            </div> -->
-                            <div class="discountTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 16px; line-height: 12px;">
-                                    <span>20%</span>
-                                    <span style="font-size: 12px; letter-spacing: 0px;">DISCOUNT</span>
-                                </p>
-                            </div>
-                            <a href="#" class="card border-0 text-decoration-none">
-                                <div class="position-relative">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
-                                        class="card-img" alt="">
-                                    <div class="swiper mySwiper">
-                                            <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-pagination"></div>
-                                    </div>
-                                    <div class="productCardHoverBtn">
-                                        <!-- <div class="quickViewBtn">
-                                            <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div> -->
-                                        <div>
-                                            <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
-                                        </div>
-                                    </div>
-                                    <div class="similarBtn">
-                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
-                                                class="similarText">Similar
-                                                Products</span></button>
-                                    </div>
-                                    <div class="quickViewBtn">
-                                        <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
-                                            QUICK VIEW
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="px-2 py-2 productInfo">
-                                    <p class="font-weight-bold text-dark m-0" style="font-family: 'League Spartan';">
-                                        Levi's T-Shirt Lorem lkj...</p>
-                                    <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
-                                    <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
-                                        <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
-                                    </p>
-                                    <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
-                                        style="width: 150px; font-size: 11px; white-space: nowrap;">
-                                        <span>Price dropped by ₹100</span>
-                                        <img src="<?=base_url('assets/new_website/img/price-down2.png')?>" class="blinkingText ml-1" style="width: 16px"
-                                            alt="">
-                                    </p>
-                                    <!-- <a href="#" class="text-dark d-block mt-1" style="font-size: 12px;">
-                                        <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
-                                        Club price:
-                                        <span class="text-secondary">₹190</span>
-                                        <i class="fa-solid fa-chevron-right ml-2"></i>
-                                    </a> -->
-                                    <p class="m-0">
-                                        <a href="#" class="toolTip text-dark"
-                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
-                                            Club price:
-                                            <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
-                                        </a>
-                                    </p>
-                                    <p class="m-0 mt-1" style="font-size: 14px;">Get it by <span
-                                            class="font-weight-bold">Aug 31</span></p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="productCard">
-                            <!-- <div class="newTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white" style="font-size: 14px;">NEW</p>
-                            </div> -->
-                            <!-- <div class="saleTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white" style="font-size: 14px;">SALE</p>
-                            </div> -->
-                            <!-- <div class="hotLookTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 16px;">
-                                    <span style="letter-spacing: 1px;">HOT</span>
-                                    <span style="font-size: 12px;">LOOK</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="preBookTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 16px;">
-                                    <span style="letter-spacing: 1px;">PRE</span>
-                                    <span style="font-size: 12px;">BOOK</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="trendyTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">TRENDY</p>
-                            </div> -->
-                            <!-- <div class="summerTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">SUMMER</p>
-                            </div> -->
-                            <!-- <div class="royalTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 12px;">
-                                    <span>ROYAL</span>
-                                    <span style="font-size: 12px; letter-spacing: 3.5px;">CLUB</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="weekendTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 12px;">
-                                    <span>WEEKEND</span>
-                                    <span style="font-size: 12px; letter-spacing: 6px;">STYLE</span>
-                                </p>
-                            </div> -->
-                            <div class="discountTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 16px; line-height: 12px;">
-                                    <span>20%</span>
-                                    <span style="font-size: 12px; letter-spacing: 0px;">DISCOUNT</span>
-                                </p>
-                            </div>
-                            <a href="#" class="card border-0 text-decoration-none">
-                                <div class="position-relative">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
-                                        class="card-img" alt="">
-                                    <div class="swiper mySwiper">
-                                            <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-pagination"></div>
-                                    </div>
-                                    <div class="productCardHoverBtn">
-                                        <!-- <div class="quickViewBtn">
-                                            <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div> -->
-                                        <div>
-                                            <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
-                                        </div>
-                                    </div>
-                                    <div class="similarBtn">
-                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
-                                                class="similarText">Similar
-                                                Products</span></button>
-                                    </div>
-                                    <div class="quickViewBtn">
-                                        <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
-                                            QUICK VIEW
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="px-2 py-2 productInfo">
-                                    <p class="font-weight-bold text-dark m-0" style="font-family: 'League Spartan';">
-                                        Levi's T-Shirt Lorem lkj...</p>
-                                    <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
-                                    <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
-                                        <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
-                                    </p>
-                                    <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
-                                        style="width: 150px; font-size: 11px; white-space: nowrap;">
-                                        <span>Price dropped by ₹100</span>
-                                        <img src="<?=base_url('assets/new_website/img/price-down2.png')?>" class="blinkingText ml-1" style="width: 16px"
-                                            alt="">
-                                    </p>
-                                    <!-- <a href="#" class="text-dark d-block mt-1" style="font-size: 12px;">
-                                        <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
-                                        Club price:
-                                        <span class="text-secondary">₹190</span>
-                                        <i class="fa-solid fa-chevron-right ml-2"></i>
-                                    </a> -->
-                                    <p class="m-0">
-                                        <a href="#" class="toolTip text-dark"
-                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
-                                            Club price:
-                                            <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
-                                        </a>
-                                    </p>
-                                    <p class="m-0 mt-1" style="font-size: 14px;">Get it by <span
-                                            class="font-weight-bold">Aug 31</span></p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="productCard">
-                            <!-- <div class="newTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white" style="font-size: 14px;">NEW</p>
-                            </div> -->
-                            <!-- <div class="saleTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white" style="font-size: 14px;">SALE</p>
-                            </div> -->
-                            <!-- <div class="hotLookTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 16px;">
-                                    <span style="letter-spacing: 1px;">HOT</span>
-                                    <span style="font-size: 12px;">LOOK</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="preBookTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 16px;">
-                                    <span style="letter-spacing: 1px;">PRE</span>
-                                    <span style="font-size: 12px;">BOOK</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="trendyTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">TRENDY</p>
-                            </div> -->
-                            <!-- <div class="summerTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">SUMMER</p>
-                            </div> -->
-                            <!-- <div class="royalTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 12px;">
-                                    <span>ROYAL</span>
-                                    <span style="font-size: 12px; letter-spacing: 3.5px;">CLUB</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="weekendTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 12px;">
-                                    <span>WEEKEND</span>
-                                    <span style="font-size: 12px; letter-spacing: 6px;">STYLE</span>
-                                </p>
-                            </div> -->
-                            <div class="discountTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 16px; line-height: 12px;">
-                                    <span>20%</span>
-                                    <span style="font-size: 12px; letter-spacing: 0px;">DISCOUNT</span>
-                                </p>
-                            </div>
-                            <a href="#" class="card border-0 text-decoration-none">
-                                <div class="position-relative">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
-                                        class="card-img" alt="">
-                                    <div class="swiper mySwiper">
-                                            <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-pagination"></div>
-                                    </div>
-                                    <div class="productCardHoverBtn">
-                                        <!-- <div class="quickViewBtn">
-                                            <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div> -->
-                                        <div>
-                                            <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
-                                        </div>
-                                    </div>
-                                    <div class="similarBtn">
-                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
-                                                class="similarText">Similar
-                                                Products</span></button>
-                                    </div>
-                                    <div class="quickViewBtn">
-                                        <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
-                                            QUICK VIEW
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="px-2 py-2 productInfo">
-                                    <p class="font-weight-bold text-dark m-0" style="font-family: 'League Spartan';">
-                                        Levi's T-Shirt Lorem lkj...</p>
-                                    <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
-                                    <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
-                                        <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
-                                    </p>
-                                    <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
-                                        style="width: 150px; font-size: 11px; white-space: nowrap;">
-                                        <span>Price dropped by ₹100</span>
-                                        <img src="<?=base_url('assets/new_website/img/price-down2.png')?>" class="blinkingText ml-1" style="width: 16px"
-                                            alt="">
-                                    </p>
-                                    <!-- <a href="#" class="text-dark d-block mt-1" style="font-size: 12px;">
-                                        <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
-                                        Club price:
-                                        <span class="text-secondary">₹190</span>
-                                        <i class="fa-solid fa-chevron-right ml-2"></i>
-                                    </a> -->
-                                    <p class="m-0">
-                                        <a href="#" class="toolTip text-dark"
-                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
-                                            Club price:
-                                            <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
-                                        </a>
-                                    </p>
-                                    <p class="m-0 mt-1" style="font-size: 14px;">Get it by <span
-                                            class="font-weight-bold">Aug 31</span></p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="productCard">
-                            <!-- <div class="newTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white" style="font-size: 14px;">NEW</p>
-                            </div> -->
-                            <!-- <div class="saleTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white" style="font-size: 14px;">SALE</p>
-                            </div> -->
-                            <!-- <div class="hotLookTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 16px;">
-                                    <span style="letter-spacing: 1px;">HOT</span>
-                                    <span style="font-size: 12px;">LOOK</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="preBookTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 16px;">
-                                    <span style="letter-spacing: 1px;">PRE</span>
-                                    <span style="font-size: 12px;">BOOK</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="trendyTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">TRENDY</p>
-                            </div> -->
-                            <!-- <div class="summerTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">SUMMER</p>
-                            </div> -->
-                            <!-- <div class="royalTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 12px;">
-                                    <span>ROYAL</span>
-                                    <span style="font-size: 12px; letter-spacing: 3.5px;">CLUB</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="weekendTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 12px;">
-                                    <span>WEEKEND</span>
-                                    <span style="font-size: 12px; letter-spacing: 6px;">STYLE</span>
-                                </p>
-                            </div> -->
-                            <div class="discountTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 16px; line-height: 12px;">
-                                    <span>20%</span>
-                                    <span style="font-size: 12px; letter-spacing: 0px;">DISCOUNT</span>
-                                </p>
-                            </div>
-                            <a href="#" class="card border-0 text-decoration-none">
-                                <div class="position-relative">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
-                                        class="card-img" alt="">
-                                    <div class="swiper mySwiper">
-                                            <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-pagination"></div>
-                                    </div>
-                                    <div class="productCardHoverBtn">
-                                        <!-- <div class="quickViewBtn">
-                                            <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div> -->
-                                        <div>
-                                            <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
-                                        </div>
-                                    </div>
-                                    <div class="similarBtn">
-                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
-                                                class="similarText">Similar
-                                                Products</span></button>
-                                    </div>
-                                    <div class="quickViewBtn">
-                                        <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
-                                            QUICK VIEW
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="px-2 py-2 productInfo">
-                                    <p class="font-weight-bold text-dark m-0" style="font-family: 'League Spartan';">
-                                        Levi's T-Shirt Lorem lkj...</p>
-                                    <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
-                                    <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
-                                        <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
-                                    </p>
-                                    <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
-                                        style="width: 150px; font-size: 11px; white-space: nowrap;">
-                                        <span>Price dropped by ₹100</span>
-                                        <img src="<?=base_url('assets/new_website/img/price-down2.png')?>" class="blinkingText ml-1" style="width: 16px"
-                                            alt="">
-                                    </p>
-                                    <!-- <a href="#" class="text-dark d-block mt-1" style="font-size: 12px;">
-                                        <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
-                                        Club price:
-                                        <span class="text-secondary">₹190</span>
-                                        <i class="fa-solid fa-chevron-right ml-2"></i>
-                                    </a> -->
-                                    <p class="m-0">
-                                        <a href="#" class="toolTip text-dark"
-                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
-                                            Club price:
-                                            <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
-                                        </a>
-                                    </p>
-                                    <p class="m-0 mt-1" style="font-size: 14px;">Get it by <span
-                                            class="font-weight-bold">Aug 31</span></p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="productCard">
-                            <!-- <div class="newTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white" style="font-size: 14px;">NEW</p>
-                            </div> -->
-                            <!-- <div class="saleTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white" style="font-size: 14px;">SALE</p>
-                            </div> -->
-                            <!-- <div class="hotLookTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 16px;">
-                                    <span style="letter-spacing: 1px;">HOT</span>
-                                    <span style="font-size: 12px;">LOOK</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="preBookTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 16px;">
-                                    <span style="letter-spacing: 1px;">PRE</span>
-                                    <span style="font-size: 12px;">BOOK</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="trendyTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">TRENDY</p>
-                            </div> -->
-                            <!-- <div class="summerTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">SUMMER</p>
-                            </div> -->
-                            <!-- <div class="royalTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 12px;">
-                                    <span>ROYAL</span>
-                                    <span style="font-size: 12px; letter-spacing: 3.5px;">CLUB</span>
-                                </p>
-                            </div> -->
-                            <!-- <div class="weekendTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 14px; line-height: 12px;">
-                                    <span>WEEKEND</span>
-                                    <span style="font-size: 12px; letter-spacing: 6px;">STYLE</span>
-                                </p>
-                            </div> -->
-                            <div class="discountTag">
-                                <div class="string"></div>
-                                <div class="circle"></div>
-                                <div class="tagCard"></div>
-                                <p class="font-weight-bold text-white text-center m-0"
-                                    style="font-size: 16px; line-height: 12px;">
-                                    <span>20%</span>
-                                    <span style="font-size: 12px; letter-spacing: 0px;">DISCOUNT</span>
-                                </p>
-                            </div>
-                            <a href="#" class="card border-0 text-decoration-none">
-                                <div class="position-relative">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>"
-                                        class="card-img" alt="">
-                                    <div class="swiper mySwiper">
-                                            <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" style="width: 100%; height: 100%; object-fit: cover" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div>
-                                                        <img src="https://assets.ajio.com/medias/sys_master/root/20231016/L6FL/652c5051afa4cf41f5466bdf/-473Wx593H-466711316-blue-MODEL.jpg"
-                                                            alt="" class="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-pagination"></div>
-                                    </div>
-                                    <div class="productCardHoverBtn">
-                                        <!-- <div class="quickViewBtn">
-                                            <button onClick="openQuickViewDialog()"><img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt=""></button>
-                                        </div> -->
-                                        <div>
-                                            <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
-                                        </div>
-                                    </div>
-                                    <div class="similarBtn">
-                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
-                                                class="similarText">Similar
-                                                Products</span></button>
-                                    </div>
-                                    <div class="quickViewBtn">
-                                        <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
-                                            QUICK VIEW
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="px-2 py-2 productInfo">
-                                    <p class="font-weight-bold text-dark m-0" style="font-family: 'League Spartan';">
-                                        Levi's T-Shirt Lorem lkj...</p>
-                                    <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
-                                    <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
-                                        <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
-                                    </p>
-                                    <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
-                                        style="width: 150px; font-size: 11px; white-space: nowrap;">
-                                        <span>Price dropped by ₹100</span>
-                                        <img src="<?=base_url('assets/new_website/img/price-down2.png')?>" class="blinkingText ml-1" style="width: 16px"
-                                            alt="">
-                                    </p>
-                                    <!-- <a href="#" class="text-dark d-block mt-1" style="font-size: 12px;">
-                                        <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
-                                        Club price:
-                                        <span class="text-secondary">₹190</span>
-                                        <i class="fa-solid fa-chevron-right ml-2"></i>
-                                    </a> -->
-                                    <p class="m-0">
-                                        <a href="#" class="toolTip text-dark"
-                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
-                                            Club price:
-                                            <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
-                                        </a>
-                                    </p>
-                                    <p class="m-0 mt-1" style="font-size: 14px;">Get it by <span
+                                    <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
                                             class="font-weight-bold">Aug 31</span></p>
                                 </div>
                             </a>
@@ -2943,19 +2178,23 @@
         }
 
         function openSidebar() {
-            document.getElementById("sidebar").style.width = "376px";
+            document.getElementById("sidebar").style.width = "360px";
+            document.body.classList.add('sidebar-open');
         }
 
         function closeSidebar() {
             document.getElementById("sidebar").style.width = "0";
+            document.body.classList.remove('sidebar-open');
         }
 
         function openFilterSidebar() {
-            document.getElementById("filterSidebar").style.width = "376px";
+            document.getElementById("filterSidebar").style.width = "360px";
+            document.body.classList.add('sidebar-open');
         }
 
         function closeFilterSidebar() {
             document.getElementById("filterSidebar").style.width = "0";
+            document.body.classList.remove('sidebar-open');
         }
 
         const pincodeBtn = document.querySelector('.pincodeBtn');
