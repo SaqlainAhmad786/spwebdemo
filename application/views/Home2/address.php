@@ -26,6 +26,21 @@
             overflow-y: hidden;
         }
 
+        body.sidebar-open{
+            overflow-y: hidden;
+        }
+
+        body.sidebar-open::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
         ul {
             list-style-type: none;
         }
@@ -78,16 +93,13 @@
             flex-direction: column;
             align-items: center;
             flex: 1;
-
-            @media (max-width: 768px) {
-                font-size: 12px;
-            }
+            font-weight: 600;
         }
 
         .stepper-item::before {
             position: absolute;
             content: "";
-            border-bottom: 2px solid #ccc;
+            border-bottom: 2px dashed #ccc;
             width: 100%;
             top: 20px;
             left: -50%;
@@ -97,7 +109,7 @@
         .stepper-item::after {
             position: absolute;
             content: "";
-            border-bottom: 2px solid #ccc;
+            border-bottom: 2px dashed #ccc;
             width: 100%;
             top: 20px;
             left: 50%;
@@ -118,7 +130,7 @@
         }
 
         .stepper-item.active {
-            font-weight: 500;
+            font-weight: 700;
             color: var(--color2);
         }
 
@@ -130,7 +142,7 @@
         .stepper-item.completed::after {
             position: absolute;
             content: "";
-            border-bottom: 2px solid var(--color2);
+            border-bottom: 2px solid black;
             width: 100%;
             top: 20px;
             left: 50%;
@@ -163,7 +175,7 @@
             overflow-x: hidden;
             overflow-y: scroll;
             transition: 0.3s;
-            padding-top: 60px;
+            padding-top: 22px;
             z-index: 1000;
             /* box-shadow: -4px 0px 2px 4px rgb(0, 0, 0,0.5) ; */
         }
@@ -201,6 +213,44 @@
             color: white;
         }
 
+        .weekendCheckbox {
+            display: none;
+        }
+
+        a.toolTip {
+            position: relative;
+            font-size: 12px;
+            z-index: 100;
+        }
+
+        a.toolTip::after {
+            content: attr(tip);
+            z-index: 999;
+            background-color: white;
+            color: black;
+            text-align: left;
+            font-size: 14;
+            font-weight: 500;
+            line-height: 1.25em;
+            width: 160px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            box-shadow: 3px 3px 4px rgba(0, 0, 0, .65);
+            position: absolute;
+            top: 0px;
+            left: 20px;
+            display: none;
+        }
+
+        a.toolTip:hover {
+            position: relative;
+        }
+
+        a.toolTip:hover:after {
+            display: block;
+            z-index: 999;
+        }
+
         @media (width<1150px) {
             .cartContainer {
                 width: 80%;
@@ -220,14 +270,13 @@
         }
     </style>
     <main>
-        <div id="addressSidebar" class="sidebar" style="z-index: 1000;">
+        <!-- <div id="addressSidebar" class="sidebar" style="z-index: 1000;">
             <button class="close-btn btn" onclick="closeAddressSidebar()"><i class="fa-solid fa-xmark"></i></button>
             <div class="sidebar-content">
                 <div>
-                    <p class="font-weight-bold m-0" style="font-size: 20px"><i
-                            class="fa-solid fa-location-dot mr-1"></i>Add new address</p>
+                    <p class="font-weight-bold m-0 text-dark" style="font-size: 20px">Add new address</p>
                 </div>
-                <hr class="m-0" style="border: 1px dashed var(--color2);">
+                <hr class="m-0">
                 <form>
                     <div>
                         <label for="fullName" style="font-size: 12px;" class="m-0 font-weight-bold">CONTACT
@@ -263,6 +312,69 @@
                     <div class="mt-2" role="group" aria-label="Basic example">
                         <button type="submit" class="btn w-100 font-weight-bold"
                             style="background-color: var(--color2); color: white;">Add address</button>
+                    </div>
+                </form>
+            </div>
+        </div> -->
+        <div id="addressSidebar" class="sidebar">
+            <button class="close-btn btn" onclick="closeAddressSidebar()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="sidebar-content">
+                <div>
+                    <p class="font-weight-bold m-0 text-dark" style="font-size: 20px">Add new address</p>
+                </div>
+                <hr class="m-0">
+                <form id="addAddressForm">
+                    <div>
+                        <label for="fullName" style="font-size: 12px;" class="m-0 d-block font-weight-bold text-dark">CONTACT
+                            DETAILS</label>
+                        <span class="text-danger nameErrorMsg" style="font-size: 12px; display:none;">Please enter your full name</span>
+                        <input type="text" class="form-control mb-2 fullName" id="fullName" name="fullName" placeholder="Name*"
+                            style="font-size: 14px; padding-block: 1.2rem;">
+                        <span class="text-danger mobileErrorMsg" style="font-size: 12px; display:none;">Please enter your mobile number</span>
+                        <input type="number" class="form-control mb-2 mt-1 mobile" id="mobile" name="mobile"
+                            placeholder="Mobile number*" style="font-size: 14px;padding-block: 1.2rem;">
+                    </div>
+                    <div class="mt-2">
+                        <label for="pinCode" style="font-size: 12px;" class="m-0 d-block font-weight-bold text-dark">ADDRESS</label>
+                        <span class="text-danger pinErrorMsg" style="font-size: 12px; display:none;">Please enter your pincode</span>
+                        <input type="text" class="form-control mb-2 pincdeInput" id="pinCode" name="pinCode" placeholder="Pincode*"
+                            style="font-size: 14px;padding-block: 1.2rem;">
+                        <span class="text-danger addressErrorMsg" style="font-size: 12px; display:none;">Please enter your address</span>
+                        <input type="text" class="form-control mb-2 mt-1 address" id="address" name="address"
+                            placeholder="Address (House no.,Building, Street, Area)*" style="font-size: 14px;padding-block: 1.2rem;">
+                        <span class="text-danger localityErrorMsg" style="font-size: 12px; display:none;">Please enter your locality/town</span>
+                        <input type="text" class="form-control mb-2 mt-1 localityInputField" id="locality" name="locality"
+                            placeholder="Locality/Town*" style="font-size: 14px;padding-block: 1.2rem;">
+                        <input type="text" class="form-control mb-2 mt-1 inputDisabled" disabled id="city" name="city" placeholder="City/District*"
+                            style="font-size: 14px;padding-block: 1.2rem;">
+                        <input type="text" class="form-control mt-1 inputDisabled" disabled id="state" name="state" placeholder="State*"
+                            style="font-size: 14px;padding-block: 1.2rem;">
+                    </div>
+                    <div class="mt-2">
+                        <label style="font-size: 12px;" class="m-0 font-weight-bold text-dark">SAVE ADDRESS AS</label>
+                        <div class="mt-1">
+                            <button class="btn addressBtn homeButton active" type="button"> HOME</button>
+                            <input class="btn addressBtn officeBtn" type="button" value="OFFICE">
+                        </div>
+                        <div class="weekendCheckbox mt-3 text-dark">
+                            <div class="d-flex align-items-center" style="font-size: 14px;">
+                                <input type="checkbox" name="saturday" id="saturday">
+                                <label for="saturday" class="m-0 ml-1">Open on Saturday</label>
+                            </div>
+                            <div class="d-flex align-items-center" style="font-size: 14px;">
+                                <input type="checkbox" name="sunday" id="sunday">
+                                <label for="sunday" class="m-0 ml-1">Open on Sunday</label>
+                            </div>
+                        </div>
+                        <div class="my-3 d-flex align-items-center" style="font-size: 12px;">
+                            <input type="checkbox" name="default" id="defaultAddress">
+                            <label for="defaultAddress" class="text-secondary m-0 ml-1">Make this my default
+                                address</label>
+                        </div>
+                    </div>
+                    <div class="mt-2" role="group" aria-label="Basic example">
+                        <button type="submit" class="btn w-100 font-weight-bold"
+                            style="background-color: var(--color1); color: white; font-size: 14px;">ADD ADDRESS</button>
                     </div>
                 </form>
             </div>
@@ -316,10 +428,12 @@
                                         available</p>
                                     <!-- <li>Pay on Delivery available</li> -->
                                     <div class="mt-2">
-                                        <button class="btn font-weight-bold"
+                                        <button class="btn font-weight-bold d-none d-lg-inline d-md-inline d-sm-inline d-xs-none"
                                             style="font-size: 14px; border: 1px solid black; font-family: 'League Spartan';">Remove</button>
-                                        <button onclick="openAddressSidebar()" class="btn font-weight-bold"
+                                        <button onclick="openAddressSidebar()" class="btn font-weight-bold d-none d-lg-inline d-md-inline d-sm-inline d-xs-none"
                                             style="font-size: 14px; border: 1px solid black; font-family: 'League Spartan';">Edit</button>
+                                        <button onclick="openAddressSidebar()" class="btn font-weight-bold d-inline d-lg-none d-md-none d-sm-none d-xs-inline"
+                                            style="font-size: 14px; border: 1px solid black; font-family: 'League Spartan';">CHANGE OR ADD ADDRESS</button>
                                     </div>
                                 </div>
                             </div>
@@ -360,16 +474,24 @@
                         </p>
                         <div class="mt-2" style="font-size: 14px;">
                             <p>Total MRP <span class="float-right">₹399</span></p>
-                            <p>Platform fee<i class="fa-solid fa-info-circle ml-1" style="color: var(--color2);"></i>
+                            <p>Platform fee
+                                <a href="#" class="toolTip text-dark"
+                                    tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                    <i class="fa-solid fa-info-circle ml-1" style="color: var(--color2);"></i>
+                                </a>
                                 <span class="float-right">₹399</span>
                             </p>
-                            <p>Delivery charges<i class="fa-solid fa-info-circle ml-1"
-                                    style="color: var(--color2);"></i> <span class="float-right">₹399</span></p>
+                            <p>Delivery charges
+                                <a href="#" class="toolTip text-dark"
+                                    tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                    <i class="fa-solid fa-info-circle ml-1" style="color: var(--color2);"></i>
+                                </a>
+                                <span class="float-right">₹399</span></p>
                             <hr>
                             <p class="font-weight-bold text-dark">Total Amount <span class="float-right">₹399</span></p>
                         </div>
-                        <button class="btn btn-block font-weight-bold text-light"
-                            style="font-size: 14px; background-color: var(--color2);">Continue</button>
+                        <button class="btn btn-block font-weight-bold text-light mt-1"
+                            style="font-size: 14px; background-color: var(--color2);">CONTINUE</button>
                     </div>
                 </div>
             </div>
@@ -380,18 +502,100 @@
         const addressSidebar = document.getElementById("addressSidebar");
 
         function openAddressSidebar() {
-            document.body.classList.toggle('modal-open');
-            document.getElementById("addressSidebar").style.width = "376px";
-            document.getElementById("addressSidebar").style.boxShadow = "-2px 0px 4px 0px rgb(0, 0, 0,0.2)";
-            document.body.classList.toggle('modal-open');
+            document.getElementById("addressSidebar").style.width = "360px";
+            document.body.classList.add('sidebar-open');
         }
 
         function closeAddressSidebar() {
-            document.body.classList.toggle('modal-open');
             document.getElementById("addressSidebar").style.width = "0";
-            document.getElementById("addressSidebar").style.boxShadow = "none";
-            document.body.classList.toggle('modal-open');
+            document.body.classList.remove('sidebar-open');
         }
+
+        const officeBtn = document.querySelector('.officeBtn');
+        const homeButton = document.querySelector('.homeButton');
+        const weekendCheckbox = document.querySelector('.weekendCheckbox');
+
+        officeBtn.addEventListener('focus', () => {
+            weekendCheckbox.style.display = 'block'
+            officeBtn.classList.add('active')
+            homeButton.classList.remove('active')
+        })
+
+        homeButton.addEventListener('focus', () => {
+            weekendCheckbox.style.display = 'none'
+            homeButton.classList.add('active')
+            officeBtn.classList.remove('active')
+        })
+
+        const addAddressForm = document.querySelector('#addAddressForm');
+        const nameErrorMsg = document.querySelector('.nameErrorMsg');
+        const mobileErrorMsg = document.querySelector('.mobileErrorMsg');
+        const pinErrorMsg = document.querySelector('.pinErrorMsg');
+        const addressErrorMsg = document.querySelector('.addressErrorMsg');
+        const localityErrorMsg = document.querySelector('.localityErrorMsg');
+
+        addAddressForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = new FormData(addAddressForm);
+            const name = data.get('fullName');
+            const mobile = data.get('mobile');
+            const pinCode = data.get('pinCode');
+            const address = data.get('address');
+            const locality = data.get('locality');
+        
+            if (name == '') {
+                nameErrorMsg.style.display = 'block';
+                document.querySelector('.fullName').style.borderColor = 'red';
+            }else if (mobile == '') {
+                mobileErrorMsg.style.display = 'block';
+                document.querySelector('.mobile').style.borderColor = 'red';
+            }else if (pinCode == '') {
+                pinErrorMsg.style.display = 'block';
+                document.querySelector('.pincdeInput').style.borderColor = 'red';
+            }else if (address == '') {
+                addressErrorMsg.style.display = 'block';
+                document.querySelector('.address').style.borderColor = 'red';
+            }else if (locality == '') {
+                localityErrorMsg.style.display = 'block';
+                document.querySelector('.localityInputField').style.borderColor = 'red';
+            }
+        })
+
+        document.querySelector('.fullName').addEventListener('focus', () => {
+            if(nameErrorMsg.style.display == 'block'){
+                nameErrorMsg.style.display = 'none';
+                document.querySelector('.fullName').style.borderColor = '#d4d5d9';
+            }
+        })
+
+        document.querySelector('.mobile').addEventListener('focus', () => {
+            if(mobileErrorMsg.style.display == 'block'){
+                mobileErrorMsg.style.display = 'none';
+                document.querySelector('.mobile').style.borderColor = '#d4d5d9';
+            }
+        })
+
+        document.querySelector('.pincdeInput').addEventListener('focus', () => {
+            if(pinErrorMsg.style.display == 'block'){
+                pinErrorMsg.style.display = 'none';
+                document.querySelector('.pincdeInput').style.borderColor = '#d4d5d9';
+            }
+        })
+
+        document.querySelector('.address').addEventListener('focus', () => {
+            if(addressErrorMsg.style.display == 'block'){
+                addressErrorMsg.style.display = 'none';
+                document.querySelector('.address').style.borderColor = '#d4d5d9';
+            }
+        })
+
+        document.querySelector('.localityInputField').addEventListener('focus', () => {
+            if(localityErrorMsg.style.display == 'block'){
+                localityErrorMsg.style.display = 'none';
+                document.querySelector('.locality').style.borderColor = '#d4d5d9';
+            }
+        })
+        
     </script>
     <?php include('include/footer.php'); ?>
     <!-- <?php include('include/modal.php'); ?> -->

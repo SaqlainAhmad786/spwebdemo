@@ -568,7 +568,6 @@
 
         .addressDialog {
             padding: 0;
-            /* max-width: 600px; */
             min-width: 40%;
             height: 500px;
         }
@@ -605,7 +604,9 @@
         .addNewAddressBtn {
             background-color: white;
             padding: 0.25rem;
+            position: fixed;
             bottom: 0;
+            width: 100%;
         }
 
         .addNewAddressBtn button {
@@ -813,10 +814,11 @@
             }
 
             .placeOrderBtn {
-                position: sticky;
+                position: fixed;
                 bottom: 0px;
                 left: 0;
                 width: 100%;
+                z-index: 9999;
             }
 
             .placeOrderBtn button {
@@ -1052,9 +1054,9 @@
                         </div>
                         <hr class="my-1 p-0">
                     </div>
-                    <div class="addNewAddressBtn">
-                        <button class="btn w-100 font-weight-bold" onclick="openAddressSidebar()">ADD NEW ADDRESS</button>
-                    </div>
+                </div>
+                <div class="addNewAddressBtn">
+                    <button class="btn w-100 font-weight-bold" onclick="openAddressSidebar()">ADD NEW ADDRESS</button>
                 </div>
             </div>
         </dialog>
