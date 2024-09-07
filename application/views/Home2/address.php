@@ -220,12 +220,11 @@
         a.toolTip {
             position: relative;
             font-size: 12px;
-            z-index: 100;
         }
 
         a.toolTip::after {
             content: attr(tip);
-            z-index: 999;
+            z-index: 9999;
             background-color: white;
             color: black;
             text-align: left;
@@ -248,7 +247,7 @@
 
         a.toolTip:hover:after {
             display: block;
-            z-index: 999;
+            z-index: 99999;
         }
 
         @media (width<1150px) {
