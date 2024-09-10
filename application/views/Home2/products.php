@@ -89,8 +89,8 @@
         }
 
         .saleTimerStrip {
-            background-color: var(--color4);
-            box-shadow: inset 0 0 4px 2px rgb(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.02);
+            box-shadow: inset 0 0 4px 2px rgb(0, 0, 0, 0.03);
             padding-block: 4px;
             font-weight: 500;
             text-align: center;
@@ -150,9 +150,14 @@
         .filtersContainer {
             background-color: #F8F9FA;
             position: sticky;
-            height: 100vh;
+            height: 100dvh;
+            overflow-y: scroll;
             top: 0;
             min-width: 255px;
+        }
+
+        .filtersContainer::-webkit-scrollbar {
+            display: none;
         }
 
         .productCard {
@@ -588,6 +593,17 @@
             left: 8px;
         }
 
+        .rating {
+            font-size: 12px;
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2px 4px;
+            border-radius: 4px;
+            z-index: 99999;
+        }
+
         .cartCounterBtn {
             position: relative;
         }
@@ -691,12 +707,12 @@
 
         #toaster {
             position: fixed;
-            top: 20px;
+            top: 100px;
             right: 20px;
             z-index: 1000;
         }
 
-        #toaster div:nth-child(1) {
+        #toaster div {
             display: flex;
         }
 
@@ -752,6 +768,40 @@
         }
 
         .toast.error {
+            background-color: #dc3545;
+        }
+
+        #toaster2 {
+            position: fixed;
+            top: 80px;
+            right: 50%;
+            transform: translateX(50%);
+            z-index: 1000;
+        }
+
+        .toast2 {
+            min-width: 250px;
+            margin-bottom: 10px;
+            padding: 15px;
+            color: #fff;
+            background-color: #333;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: transform 0.5s, opacity 0.5s;
+        }
+
+        .toast2.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast2.success {
+            background-color: #333333;
+        }
+
+        .toast2.error {
             background-color: #dc3545;
         }
 
@@ -851,6 +901,7 @@
             transform: translate(-50%, -50%);
             transition: all .2s ease-in-out;
             z-index: 999;
+            white-space: nowrap;
         }
 
         .quickViewBtn button{
@@ -860,7 +911,7 @@
             display: flex;
             align-items: center;
             padding: 4px 8px;
-            font-size: 14px;
+            font-size: 12px;
             background-color: #ffffff50;
         }
 
@@ -910,13 +961,13 @@
             background-color:rgba(255, 255, 255, 0.6);
             font-size: 16px;
             border-radius: 100vh;
-            padding: 0px 22px;
+            padding: 0px 14px;
         }
 
         .swiper-button-next::after,
         .swiper-button-prev::after{
             color: var(--color2);
-            font-size: 16px
+            font-size: 12px
         }
 
         .pincodeErrorMsg{
@@ -924,10 +975,32 @@
             font-size: 12px;
         }
 
+        .blinkingText {
+            animation: blink 1.5s linear infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
         @media (max-width: 1000px) {
 
             dialog{
                 width: 80%;
+            }
+
+            .quickViewBtn button{
+                font-size: 10px;
             }
         }
 
@@ -984,6 +1057,7 @@
     <?php include('include/header.php'); ?>
     <main>
         <div id="toaster"></div>
+        <div id="toaster2"></div>
         <dialog class="quickViewDialog" id="dialog">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12">
@@ -1130,9 +1204,10 @@
                 <span class="text-secondary" style="font-size: 13px;">(5)</span></button>
         </div>
         <div id="sidebar" class="sidebar">
-            <button class="btn position-absolute" style="top: 0; right: 0;" onclick="closeSidebar()">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+                <button class="btn position-absolute" style="top: 0; right: 0;" onclick="closeSidebar()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            <p class="font-weight-bold m-0 p-0 text-dark text-center" style="font-size: 16px;">SIMILAR PRODUCTS</p>
             <div class="sidebar-content">
                 <div class="text-center text-decoration-none productCardSidebar">
                     <a href="#" class="imageContainer">
@@ -1427,7 +1502,7 @@
                 <p class="m-0 p-0">Great news! Prices have dropped for one or more items since you wishlisted them.</p>
             </div>
         </section>
-        <section class="saleTimerStripContainer border" style="margin-top:1px;">
+        <section class="saleTimerStripContainer border" style="margin-top:8px;">
             <div class="saleTimerStrip">
                 <p class="m-0 text-secondary">Sale ends
                     in- <span>10</span>days:<span>10</span>hrs:<span>10</span>min:<span>10</span>sec
@@ -1448,23 +1523,33 @@
         </section>
         <section>
             <div class="px-4 mt-2 text-dark hideOnMobile">
-                <div class="d-flex justify-content-between align-items-center" style="font-size: 14px;">
-                    <div>
-                        <p class="font-weight-bold m-0">DELIVER TO PINCODE
-                            <button class="btn m-0 pincodeBtn" onClick="openPincodeForm()"
-                                style="font-size: 14px; color: var(--color1);">Check<i class="fa-solid fa-pen ml-1"></i></button>
-                        </p>
-                        <div class="pincodeFormContainer">
-                            <form id="pincodeForm" class="d-flex align-items-center">
-                                <input type="number" name="pincode" class="form-control pincodeInput" style="width: 150px; font-size: 14px" id=""
-                                placeholder="deliver to pincode">
-                                <button class="btn m-0 ml-1"
-                                style="font-size: 14px; background-color: var(--color1); color: white;">CHECK</button>
-                            </form>
-                            <p class="m-0 p-0 pincodeErrorMsg text-danger" style="">Please enter valid pincode</p>
+                <div class="d-flex align-items-center justify-content-between" style="font-size: 14px;">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="font-weight-bold m-0">DELIVER TO PINCODE
+                                <button class="btn p-0 pl-2 m-0 pincodeBtn" onClick="openPincodeForm()"
+                                    style="font-size: 14px; color: var(--color1);">Check<i class="fa-solid fa-pen ml-1"></i></button>
+                                    <a href="#" class="toolTip pincodeTooltip text-dark"
+                                        tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                        <i class="fa-solid fa-circle-question text-secondary"></i>
+                                    </a>
+                            </p>
+                            <div class="pincodeFormContainer pb-4">
+                                <form id="pincodeForm" class="d-flex align-items-center">
+                                    <input type="number" name="pincode" class="form-control pincodeInput" style="width: 150px; font-size: 14px" id=""
+                                    placeholder="deliver to pincode">
+                                    <button class="btn m-0 ml-1"
+                                    style="font-size: 14px; background-color: var(--color1); color: white;">CHECK</button>
+                                </form>
+                                <p class="m-0 p-0 pincodeErrorMsg text-danger position-absolute" style="">Please enter valid pincode</p>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <p class="m-0 p-0 font-weight-bold" style="font-size: 18px;">Lorem ipsum dolor sit amet.</p>
+                            <p class="m-0 p-0 font-weight-light" style="font-size: 14px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, eligendi?</p>
                         </div>
                     </div>
-                    <div>
+                    <div class="float-right">
                         <div class="dropdown border p-2 rounded-lg">
                             <span><i class="fa-solid fa-sort mr-2"></i>Sort by Recommended</span>
                             <div class="dropdown-content">
@@ -1824,9 +1909,14 @@
                                     </div>
                                     <div class="quickViewBtn">
                                         <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 16px;">
                                             QUICK VIEW
                                         </button>
+                                    </div>
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -1834,9 +1924,9 @@
                                         Levi's T-Shirt Lorem lkj...</p>
                                     <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
                                     <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
                                         <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
+                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px;">35% OFF</span>
                                     </p>
                                     <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
                                         style="width: 150px; font-size: 11px; white-space: nowrap;">
@@ -1847,10 +1937,164 @@
                                     <p class="m-0">
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
+                                            <i class="fa-solid fa-crown blinkingText" style="color: #FFC107;"></i>
                                             Club price:
                                             <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
+                                            <i class="fa-solid fa-circle-info text-secondary"></i>
+                                        </a>
+                                    </p>
+                                    <p class="m-0 mt-1" style="font-size: 12px; color: orange;">Only few left</p>
+                                    <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
+                                            class="font-weight-bold">Sat, Aug 31</span></p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="productCard col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-4 col-6">
+                            <!-- <div class="newTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white" style="font-size: 14px;">NEW</p>
+                            </div> -->
+                            <!-- <div class="saleTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white" style="font-size: 14px;">SALE</p>
+                            </div> -->
+                            <!-- <div class="hotLookTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 16px;">
+                                    <span style="letter-spacing: 1px;">HOT</span>
+                                    <span style="font-size: 12px;">LOOK</span>
+                                </p>
+                            </div> -->
+                            <!-- <div class="preBookTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 16px;">
+                                    <span style="letter-spacing: 1px;">PRE</span>
+                                    <span style="font-size: 12px;">BOOK</span>
+                                </p>
+                            </div> -->
+                            <!-- <div class="trendyTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">TRENDY</p>
+                            </div> -->
+                            <!-- <div class="summerTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">SUMMER</p>
+                            </div> -->
+                            <!-- <div class="royalTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 12px;">
+                                    <span>ROYAL</span>
+                                    <span style="font-size: 12px; letter-spacing: 3.5px;">CLUB</span>
+                                </p>
+                            </div> -->
+                            <!-- <div class="weekendTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 12px;">
+                                    <span>WEEKEND</span>
+                                    <span style="font-size: 12px; letter-spacing: 6px;">STYLE</span>
+                                </p>
+                            </div> -->
+                            <div class="discountTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 16px; line-height: 12px;">
+                                    <span>20%</span>
+                                    <span style="font-size: 12px; letter-spacing: 0px;">DISCOUNT</span>
+                                </p>
+                            </div>
+                            <a href="#" class="card border-0 text-decoration-none">
+                                <div class="position-relative">
+                                        <div class="swiper mySwiper">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-pagination"></div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div>
+                                        </div>    
+                                    <div class="productCardHoverBtn">
+                                        <div>
+                                            <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="similarBtn">
+                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
+                                                class="similarText">Similar
+                                                Products</span></button>
+                                    </div>
+                                    <div class="quickViewBtn">
+                                        <button onClick="openQuickViewDialog()">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 16px;">
+                                            QUICK VIEW
+                                        </button>
+                                    </div>
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
+                                    </div>
+                                </div>
+                                <div class="px-2 py-2 productInfo">
+                                    <p class="font-weight-bold text-dark m-0" style="font-family: 'League Spartan';">
+                                        Levi's T-Shirt Lorem lkj...</p>
+                                    <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
+                                    <p class="m-0" style="font-size: 15px;">
+                                        <span class="font-weight-bold text-dark">₹200</span>
+                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px;">35% OFF</span>
+                                    </p>
+                                    <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
+                                        style="width: 150px; font-size: 11px; white-space: nowrap;">
+                                        <span>Price dropped by ₹100</span>
+                                        <img src="<?=base_url('assets/new_website/img/price-down2.png')?>" class="blinkingText ml-1" style="width: 16px"
+                                            alt="">
+                                    </p>
+                                    <p class="m-0">
+                                        <a href="#" class="toolTip text-dark"
+                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                            <i class="fa-solid fa-crown blinkingText" style="color: #FFC107;"></i>
+                                            Club price:
+                                            <span class="text-secondary">₹190</span>
+                                            <i class="fa-solid fa-circle-info text-secondary"></i>
                                         </a>
                                     </p>
                                     <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
@@ -1972,9 +2216,14 @@
                                     </div>
                                     <div class="quickViewBtn">
                                         <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 16px;">
                                             QUICK VIEW
                                         </button>
+                                    </div>
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -1982,9 +2231,9 @@
                                         Levi's T-Shirt Lorem lkj...</p>
                                     <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
                                     <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
                                         <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
+                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px;">35% OFF</span>
                                     </p>
                                     <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
                                         style="width: 150px; font-size: 11px; white-space: nowrap;">
@@ -1995,10 +2244,10 @@
                                     <p class="m-0">
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
+                                            <i class="fa-solid fa-crown blinkingText" style="color: #FFC107;"></i>
                                             Club price:
                                             <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
+                                            <i class="fa-solid fa-circle-info text-secondary"></i>
                                         </a>
                                     </p>
                                     <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
@@ -2120,9 +2369,14 @@
                                     </div>
                                     <div class="quickViewBtn">
                                         <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 16px;">
                                             QUICK VIEW
                                         </button>
+                                    </div>
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -2130,9 +2384,9 @@
                                         Levi's T-Shirt Lorem lkj...</p>
                                     <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
                                     <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
                                         <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
+                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px;">35% OFF</span>
                                     </p>
                                     <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
                                         style="width: 150px; font-size: 11px; white-space: nowrap;">
@@ -2143,10 +2397,10 @@
                                     <p class="m-0">
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
+                                            <i class="fa-solid fa-crown blinkingText" style="color: #FFC107;"></i>
                                             Club price:
                                             <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
+                                            <i class="fa-solid fa-circle-info text-secondary"></i>
                                         </a>
                                     </p>
                                     <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
@@ -2268,9 +2522,14 @@
                                     </div>
                                     <div class="quickViewBtn">
                                         <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 16px;">
                                             QUICK VIEW
                                         </button>
+                                    </div>
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -2278,9 +2537,9 @@
                                         Levi's T-Shirt Lorem lkj...</p>
                                     <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
                                     <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
                                         <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
+                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px;">35% OFF</span>
                                     </p>
                                     <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
                                         style="width: 150px; font-size: 11px; white-space: nowrap;">
@@ -2291,10 +2550,10 @@
                                     <p class="m-0">
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
+                                            <i class="fa-solid fa-crown blinkingText" style="color: #FFC107;"></i>
                                             Club price:
                                             <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
+                                            <i class="fa-solid fa-circle-info text-secondary"></i>
                                         </a>
                                     </p>
                                     <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
@@ -2416,9 +2675,14 @@
                                     </div>
                                     <div class="quickViewBtn">
                                         <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 16px;">
                                             QUICK VIEW
                                         </button>
+                                    </div>
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -2426,9 +2690,9 @@
                                         Levi's T-Shirt Lorem lkj...</p>
                                     <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
                                     <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
                                         <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
+                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px;">35% OFF</span>
                                     </p>
                                     <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
                                         style="width: 150px; font-size: 11px; white-space: nowrap;">
@@ -2439,10 +2703,10 @@
                                     <p class="m-0">
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
+                                            <i class="fa-solid fa-crown blinkingText" style="color: #FFC107;"></i>
                                             Club price:
                                             <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
+                                            <i class="fa-solid fa-circle-info text-secondary"></i>
                                         </a>
                                     </p>
                                     <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
@@ -2564,9 +2828,14 @@
                                     </div>
                                     <div class="quickViewBtn">
                                         <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 16px;">
                                             QUICK VIEW
                                         </button>
+                                    </div>
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -2574,9 +2843,9 @@
                                         Levi's T-Shirt Lorem lkj...</p>
                                     <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
                                     <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
                                         <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
+                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px;">35% OFF</span>
                                     </p>
                                     <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
                                         style="width: 150px; font-size: 11px; white-space: nowrap;">
@@ -2587,10 +2856,10 @@
                                     <p class="m-0">
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
+                                            <i class="fa-solid fa-crown blinkingText" style="color: #FFC107;"></i>
                                             Club price:
                                             <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
+                                            <i class="fa-solid fa-circle-info text-secondary"></i>
                                         </a>
                                     </p>
                                     <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
@@ -2712,9 +2981,14 @@
                                     </div>
                                     <div class="quickViewBtn">
                                         <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 16px;">
                                             QUICK VIEW
                                         </button>
+                                    </div>
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -2722,9 +2996,9 @@
                                         Levi's T-Shirt Lorem lkj...</p>
                                     <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
                                     <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
                                         <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
+                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px;">35% OFF</span>
                                     </p>
                                     <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
                                         style="width: 150px; font-size: 11px; white-space: nowrap;">
@@ -2735,10 +3009,10 @@
                                     <p class="m-0">
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
+                                            <i class="fa-solid fa-crown blinkingText" style="color: #FFC107;"></i>
                                             Club price:
                                             <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
+                                            <i class="fa-solid fa-circle-info text-secondary"></i>
                                         </a>
                                     </p>
                                     <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
@@ -2860,9 +3134,14 @@
                                     </div>
                                     <div class="quickViewBtn">
                                         <button onClick="openQuickViewDialog()">
-                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 20px;">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 16px;">
                                             QUICK VIEW
                                         </button>
+                                    </div>
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
                                     </div>
                                 </div>
                                 <div class="px-2 py-2 productInfo">
@@ -2870,9 +3149,9 @@
                                         Levi's T-Shirt Lorem lkj...</p>
                                     <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
                                     <p class="m-0" style="font-size: 15px;">
-                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
                                         <span class="font-weight-bold text-dark">₹200</span>
-                                        <span class="font-weight-bold text-success">35%</span>
+                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px;">35% OFF</span>
                                     </p>
                                     <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
                                         style="width: 150px; font-size: 11px; white-space: nowrap;">
@@ -2883,10 +3162,469 @@
                                     <p class="m-0">
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                            <i class="fa-solid fa-crown" style="color: #FFC107;"></i>
+                                            <i class="fa-solid fa-crown blinkingText" style="color: #FFC107;"></i>
                                             Club price:
                                             <span class="text-secondary">₹190</span>
-                                            <i class="fa-solid fa-circle-info text-dark"></i>
+                                            <i class="fa-solid fa-circle-info text-secondary"></i>
+                                        </a>
+                                    </p>
+                                    <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
+                                            class="font-weight-bold">Sat, Aug 31</span></p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="productCard col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-4 col-6">
+                            <!-- <div class="newTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white" style="font-size: 14px;">NEW</p>
+                            </div> -->
+                            <!-- <div class="saleTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white" style="font-size: 14px;">SALE</p>
+                            </div> -->
+                            <!-- <div class="hotLookTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 16px;">
+                                    <span style="letter-spacing: 1px;">HOT</span>
+                                    <span style="font-size: 12px;">LOOK</span>
+                                </p>
+                            </div> -->
+                            <!-- <div class="preBookTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 16px;">
+                                    <span style="letter-spacing: 1px;">PRE</span>
+                                    <span style="font-size: 12px;">BOOK</span>
+                                </p>
+                            </div> -->
+                            <!-- <div class="trendyTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">TRENDY</p>
+                            </div> -->
+                            <!-- <div class="summerTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">SUMMER</p>
+                            </div> -->
+                            <!-- <div class="royalTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 12px;">
+                                    <span>ROYAL</span>
+                                    <span style="font-size: 12px; letter-spacing: 3.5px;">CLUB</span>
+                                </p>
+                            </div> -->
+                            <!-- <div class="weekendTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 12px;">
+                                    <span>WEEKEND</span>
+                                    <span style="font-size: 12px; letter-spacing: 6px;">STYLE</span>
+                                </p>
+                            </div> -->
+                            <div class="discountTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 16px; line-height: 12px;">
+                                    <span>20%</span>
+                                    <span style="font-size: 12px; letter-spacing: 0px;">DISCOUNT</span>
+                                </p>
+                            </div>
+                            <a href="#" class="card border-0 text-decoration-none">
+                                <div class="position-relative">
+                                        <div class="swiper mySwiper">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-pagination"></div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div>
+                                        </div>    
+                                    <div class="productCardHoverBtn">
+                                        <div>
+                                            <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="similarBtn">
+                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
+                                                class="similarText">Similar
+                                                Products</span></button>
+                                    </div>
+                                    <div class="quickViewBtn">
+                                        <button onClick="openQuickViewDialog()">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 16px;">
+                                            QUICK VIEW
+                                        </button>
+                                    </div>
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
+                                    </div>
+                                </div>
+                                <div class="px-2 py-2 productInfo">
+                                    <p class="font-weight-bold text-dark m-0" style="font-family: 'League Spartan';">
+                                        Levi's T-Shirt Lorem lkj...</p>
+                                    <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
+                                    <p class="m-0" style="font-size: 15px;">
+                                        <span class="font-weight-bold text-dark">₹200</span>
+                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px;">35% OFF</span>
+                                    </p>
+                                    <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
+                                        style="width: 150px; font-size: 11px; white-space: nowrap;">
+                                        <span>Price dropped by ₹100</span>
+                                        <img src="<?=base_url('assets/new_website/img/price-down2.png')?>" class="blinkingText ml-1" style="width: 16px"
+                                            alt="">
+                                    </p>
+                                    <p class="m-0">
+                                        <a href="#" class="toolTip text-dark"
+                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                            <i class="fa-solid fa-crown blinkingText" style="color: #FFC107;"></i>
+                                            Club price:
+                                            <span class="text-secondary">₹190</span>
+                                            <i class="fa-solid fa-circle-info text-secondary"></i>
+                                        </a>
+                                    </p>
+                                    <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
+                                            class="font-weight-bold">Sat, Aug 31</span></p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="productCard col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-4 col-6">
+                            <!-- <div class="newTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white" style="font-size: 14px;">NEW</p>
+                            </div> -->
+                            <!-- <div class="saleTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white" style="font-size: 14px;">SALE</p>
+                            </div> -->
+                            <!-- <div class="hotLookTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 16px;">
+                                    <span style="letter-spacing: 1px;">HOT</span>
+                                    <span style="font-size: 12px;">LOOK</span>
+                                </p>
+                            </div> -->
+                            <!-- <div class="preBookTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 16px;">
+                                    <span style="letter-spacing: 1px;">PRE</span>
+                                    <span style="font-size: 12px;">BOOK</span>
+                                </p>
+                            </div> -->
+                            <!-- <div class="trendyTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">TRENDY</p>
+                            </div> -->
+                            <!-- <div class="summerTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">SUMMER</p>
+                            </div> -->
+                            <!-- <div class="royalTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 12px;">
+                                    <span>ROYAL</span>
+                                    <span style="font-size: 12px; letter-spacing: 3.5px;">CLUB</span>
+                                </p>
+                            </div> -->
+                            <!-- <div class="weekendTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 12px;">
+                                    <span>WEEKEND</span>
+                                    <span style="font-size: 12px; letter-spacing: 6px;">STYLE</span>
+                                </p>
+                            </div> -->
+                            <div class="discountTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 16px; line-height: 12px;">
+                                    <span>20%</span>
+                                    <span style="font-size: 12px; letter-spacing: 0px;">DISCOUNT</span>
+                                </p>
+                            </div>
+                            <a href="#" class="card border-0 text-decoration-none">
+                                <div class="position-relative">
+                                        <div class="swiper mySwiper">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-pagination"></div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div>
+                                        </div>    
+                                    <div class="productCardHoverBtn">
+                                        <div>
+                                            <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="similarBtn">
+                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
+                                                class="similarText">Similar
+                                                Products</span></button>
+                                    </div>
+                                    <div class="quickViewBtn">
+                                        <button onClick="openQuickViewDialog()">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 16px;">
+                                            QUICK VIEW
+                                        </button>
+                                    </div>
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
+                                    </div>
+                                </div>
+                                <div class="px-2 py-2 productInfo">
+                                    <p class="font-weight-bold text-dark m-0" style="font-family: 'League Spartan';">
+                                        Levi's T-Shirt Lorem lkj...</p>
+                                    <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
+                                    <p class="m-0" style="font-size: 15px;">
+                                        <span class="font-weight-bold text-dark">₹200</span>
+                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px;">35% OFF</span>
+                                    </p>
+                                    <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
+                                        style="width: 150px; font-size: 11px; white-space: nowrap;">
+                                        <span>Price dropped by ₹100</span>
+                                        <img src="<?=base_url('assets/new_website/img/price-down2.png')?>" class="blinkingText ml-1" style="width: 16px"
+                                            alt="">
+                                    </p>
+                                    <p class="m-0">
+                                        <a href="#" class="toolTip text-dark"
+                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                            <i class="fa-solid fa-crown blinkingText" style="color: #FFC107;"></i>
+                                            Club price:
+                                            <span class="text-secondary">₹190</span>
+                                            <i class="fa-solid fa-circle-info text-secondary"></i>
+                                        </a>
+                                    </p>
+                                    <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
+                                            class="font-weight-bold">Sat, Aug 31</span></p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="productCard col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-4 col-6">
+                            <!-- <div class="newTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white" style="font-size: 14px;">NEW</p>
+                            </div> -->
+                            <!-- <div class="saleTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white" style="font-size: 14px;">SALE</p>
+                            </div> -->
+                            <!-- <div class="hotLookTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 16px;">
+                                    <span style="letter-spacing: 1px;">HOT</span>
+                                    <span style="font-size: 12px;">LOOK</span>
+                                </p>
+                            </div> -->
+                            <!-- <div class="preBookTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 16px;">
+                                    <span style="letter-spacing: 1px;">PRE</span>
+                                    <span style="font-size: 12px;">BOOK</span>
+                                </p>
+                            </div> -->
+                            <!-- <div class="trendyTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">TRENDY</p>
+                            </div> -->
+                            <!-- <div class="summerTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white m-0" style="font-size: 14px;">SUMMER</p>
+                            </div> -->
+                            <!-- <div class="royalTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 12px;">
+                                    <span>ROYAL</span>
+                                    <span style="font-size: 12px; letter-spacing: 3.5px;">CLUB</span>
+                                </p>
+                            </div> -->
+                            <!-- <div class="weekendTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 14px; line-height: 12px;">
+                                    <span>WEEKEND</span>
+                                    <span style="font-size: 12px; letter-spacing: 6px;">STYLE</span>
+                                </p>
+                            </div> -->
+                            <div class="discountTag">
+                                <div class="string"></div>
+                                <div class="circle"></div>
+                                <div class="tagCard"></div>
+                                <p class="font-weight-bold text-white text-center m-0"
+                                    style="font-size: 16px; line-height: 12px;">
+                                    <span>20%</span>
+                                    <span style="font-size: 12px; letter-spacing: 0px;">DISCOUNT</span>
+                                </p>
+                            </div>
+                            <a href="#" class="card border-0 text-decoration-none">
+                                <div class="position-relative">
+                                        <div class="swiper mySwiper">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>"
+                                                                alt="" class="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-pagination"></div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div>
+                                        </div>    
+                                    <div class="productCardHoverBtn">
+                                        <div>
+                                            <button onClick="addToWishList()"><img src="<?=base_url('assets/new_website/img/love-icon.png')?>" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="similarBtn">
+                                        <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
+                                                class="similarText">Similar
+                                                Products</span></button>
+                                    </div>
+                                    <div class="quickViewBtn">
+                                        <button onClick="openQuickViewDialog()">
+                                            <img src="<?=base_url('assets/new_website/img/eye-icon.png')?>" alt="" class="mr-1" style="width: 16px;">
+                                            QUICK VIEW
+                                        </button>
+                                    </div>
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
+                                    </div>
+                                </div>
+                                <div class="px-2 py-2 productInfo">
+                                    <p class="font-weight-bold text-dark m-0" style="font-family: 'League Spartan';">
+                                        Levi's T-Shirt Lorem lkj...</p>
+                                    <p class="text-secondary m-0" style="font-size: 12px;">T-Shirt</p>
+                                    <p class="m-0" style="font-size: 15px;">
+                                        <span class="font-weight-bold text-dark">₹200</span>
+                                        <span class="text-secondary" style="text-decoration: line-through;">₹300</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px;">35% OFF</span>
+                                    </p>
+                                    <p class="border m-0 border-success text-success rounded-sm px-1 d-flex align-items-center"
+                                        style="width: 150px; font-size: 11px; white-space: nowrap;">
+                                        <span>Price dropped by ₹100</span>
+                                        <img src="<?=base_url('assets/new_website/img/price-down2.png')?>" class="blinkingText ml-1" style="width: 16px"
+                                            alt="">
+                                    </p>
+                                    <p class="m-0">
+                                        <a href="#" class="toolTip text-dark"
+                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                            <i class="fa-solid fa-crown blinkingText" style="color: #FFC107;"></i>
+                                            Club price:
+                                            <span class="text-secondary">₹190</span>
+                                            <i class="fa-solid fa-circle-info text-secondary"></i>
                                         </a>
                                     </p>
                                     <p class="m-0 mt-1" style="font-size: 12px;">Get it by <span
@@ -2926,6 +3664,10 @@
                     prevEl: ".swiper-button-prev",
                 }
         });
+
+        window.onload = function() {
+            showToast2('Logged in successfully', 'success');
+        }
 
         function showToast(message, type) {
             const toaster = document.getElementById('toaster');
@@ -2978,6 +3720,29 @@
             }, 3000);
         }
 
+        function showToast2(message, type) {
+            const toaster = document.getElementById('toaster2');
+            const toast = document.createElement('div');
+            
+            toast.className = `toast2 ${type}`;
+            toast.textContent = message;
+
+            toaster.appendChild(toast);
+            
+            // Show the toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+
+            // Remove the toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toaster.removeChild(toast);
+                }, 500);
+            }, 3000);
+        }
+
         function openSidebar() {
             document.getElementById("sidebar").style.width = "360px";
             document.body.classList.add('sidebar-open');
@@ -3001,11 +3766,13 @@
         const pincodeBtn = document.querySelector('.pincodeBtn');
         const pincodeForm = document.querySelector('#pincodeForm');
         const pincodeInput = document.querySelector('.pincodeInput');
+        const pincodeTooltip = document.querySelector('.pincodeTooltip');
         const pincodeErrorMsg = document.querySelector('.pincodeErrorMsg');
         const pincodeFormContainer = document.querySelector('.pincodeFormContainer')
 
         function openPincodeForm() {
             pincodeFormContainer.style.display = 'block';
+            pincodeTooltip.style.display = 'block';
             pincodeInput.value = '';
             pincodeInput.focus();
         }
@@ -3021,6 +3788,7 @@
             }else{
                 pincodeBtn.innerHTML = `${pincode}<i class="fa-solid fa-pen ml-1"></i>`;
                 pincodeFormContainer.style.display = 'none';
+                pincodeTooltip.style.display = 'none';
             }
         })
 

@@ -146,6 +146,7 @@
 <body>
     <?php include('include/header.php'); ?>
     <main>
+        <!-- 30 second redirect popup -->
         <div class="text-center">
             <p class="mb-0 text-dark d-inline px-2 py-1 rounded-bottom" style="background-color: #FFFAE8; font-size: 12px" ><i class="fa-regular fa-circle-xmark mr-1 text-danger"></i>Sorry your account is temporarily disabled for 00:30 min</p>
         </div>

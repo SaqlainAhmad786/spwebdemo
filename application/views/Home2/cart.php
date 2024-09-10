@@ -166,7 +166,7 @@
         .stepper-item.completed::after {
             position: absolute;
             content: "";
-            border-bottom: 2px solid black;
+            border-bottom: 2px solid var(--color1);
             width: 100%;
             top: 20px;
             left: 50%;
@@ -871,10 +871,36 @@
                     <hr style="border: 1px dashed white;" />
                     <div class="btn-group w-100 py-1" role="group" aria-label="Basic example">
                         <p class="btn promoCode">CART25</p>
-                        <button type="button" class="btn bg-light font-weight-bold">APPLY</button>
+                        <button type="button" class="btn bg-light font-weight-bold">APPLIED</button>
                     </div>
                     <p class="m-0 p-0 mt-2 text-center"><i class="fa-solid fa-circle-check text-success"></i> Coupon discount <span class="text-success"> ₹200 Applied!</span></p>
                     <div id="couponOne" class="collapse" aria-labelledby="headingOne" data-parent="">
+                        <div class="card-body p-0 px-3 pb-2 mt-2"
+                            style="font-size: 13px; color: rgb(0, 0, 0,0.75);">
+                            <p class="m-0 p-0 text-dark text-center font-weight-bold" style="font-size: 12px">TERMS & CONDITIONS</p>
+                            <ul class="couponList" >
+                                <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.</li>
+                                <li>Lorem ipsum dolor sit amet Lorem, ipsum.</li>
+                                <li>Lorem ipsum dolor sit amet Lorem ipsum dolor, sit amet consectetur adipisicing.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="coupon">
+                    <div class="circle1"></div>
+                    <div class="circle2"></div>
+                    <div class="d-flex justify-content-between">
+                        <p class="m-0" style="font-size: 14px">Lorem ipsum dolor sit amet consectetur adipisicing?</p>
+                        <button class="btn p-0 m-0 font-weight-bold text-light" style="font-size: 12px; white-space: nowrap;" data-toggle="collapse" data-target="#coupon2"
+                        aria-expanded="true" aria-controls="coupon2">See more</button>
+                    </div>
+                    <hr style="border: 1px dashed white;" />
+                    <div class="btn-group w-100 py-1" role="group" aria-label="Basic example">
+                        <p class="btn promoCode">CART25</p>
+                        <button type="button" class="btn bg-light font-weight-bold">APPLY</button>
+                    </div>
+                    <!-- <p class="m-0 p-0 mt-2 text-center"><i class="fa-solid fa-circle-check text-success"></i> Coupon discount <span class="text-success"> ₹200 Applied!</span></p> -->
+                    <div id="coupon2" class="collapse" aria-labelledby="headingOne" data-parent="">
                         <div class="card-body p-0 px-3 pb-2 mt-2"
                             style="font-size: 13px; color: rgb(0, 0, 0,0.75);">
                             <p class="m-0 p-0 text-dark text-center font-weight-bold" style="font-size: 12px">TERMS & CONDITIONS</p>
@@ -1390,9 +1416,9 @@
                                     <img
                                         src="https://www.jiomart.com/images/product/original/rvxqd4wmk4/eyebogler-light-green-tshirts-men-tshirt-tshirt-for-men-tshirt-mens-tshirt-men-s-polo-neck-regular-fit-half-sleeves-colorblocked-t-shirt-product-images-rvxqd4wmk4-1-202402121853.jpg?im=Resize=(500,630)"
                                         style="width: 120px;" alt="">
-                                        <div class="outOfStock">
+                                        <!-- <div class="outOfStock">
                                             <img src="<?=base_url('assets/new_website/img/out-of-stock.png')?>" alt="">
-                                        </div>
+                                        </div> -->
                                     </a>
                                 <div>
                                     <p class="font-weight-bold text-dark" style="font-style: 'League Spartan';">Levis's
@@ -2058,7 +2084,7 @@
                             </button>
                         </div>
 
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="">
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="">
                             <div class="card-body p-0 px-3 pb-2 mt-2">
                                 <div class="d-flex align-items-center rounded-lg mb-2 p-2" style="border: 2px solid #28A745;">
                                     <i class="fa-solid fa-circle-check text-success mr-2"></i>
@@ -2081,7 +2107,7 @@
                                             class="fa-solid fa-triangle-exclamation"></i> Invalid promocode!</span> -->
                                 </form>
                                 <button onclick="openCouponSidebar()" class="btn text-dark font-weight-bold m-0 p-0 float-right mt-3"
-                                    style="font-size: 12px;">Coupon Hub
+                                    style="font-size: 12px;">All Coupons
                                     <i class="fa-solid fa-chevron-right"></i></button>
                             </div>
                         </div>
@@ -2233,7 +2259,7 @@
                             <p class="m-0 p-0"><i class="fa-solid fa-circle-check mr-1"
                                     style="color: var(--color2);"></i>Easy returns</p>
                         </div>
-                        <div class="mt-2 py-2 px-3 rounded-lg"
+                        <div class="mt-2 py-2 px-3 rounded-lg d-lg-block d-md-block d-sm-none d-none"
                             style="background-image: linear-gradient(128deg, #e83e8c 0%, 12%, #8340a1 34% 100%); font-family: 'League Spartan';">
                             <div class="d-flex align-items-center mt-2">
                                 <img src="./images/rupee.png" style="width: 30px; position: relative; left: 6px;"
@@ -2270,8 +2296,10 @@
                         <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold text-dark">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
-                            <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
+                            <p>
+                                <span>₹1,999</span> 
+                                <span class="text-secondary" style="text-decoration: line-through">₹2,999</span>
+                                <span class="font-weight-bold text-success" style="font-size: 12px; white-space: nowrap">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO BAG</button>
@@ -2281,8 +2309,10 @@
                         <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold text-dark">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
-                            <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
+                            <p>
+                                <span>₹1,999</span> 
+                                <span class="text-secondary" style="text-decoration: line-through">₹2,999</span>
+                                <span class="font-weight-bold text-success" style="font-size: 12px; white-space: nowrap">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO BAG</button>
@@ -2292,8 +2322,10 @@
                         <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold text-dark">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
-                            <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
+                            <p>
+                                <span>₹1,999</span> 
+                                <span class="text-secondary" style="text-decoration: line-through">₹2,999</span>
+                                <span class="font-weight-bold text-success" style="font-size: 12px; white-space: nowrap">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO BAG</button>
@@ -2303,8 +2335,10 @@
                         <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold text-dark">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
-                            <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
+                            <p>
+                                <span>₹1,999</span> 
+                                <span class="text-secondary" style="text-decoration: line-through">₹2,999</span>
+                                <span class="font-weight-bold text-success" style="font-size: 12px; white-space: nowrap">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO BAG</button>
@@ -2314,8 +2348,10 @@
                         <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold text-dark">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
-                            <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
+                            <p>
+                                <span>₹1,999</span> 
+                                <span class="text-secondary" style="text-decoration: line-through">₹2,999</span>
+                                <span class="font-weight-bold text-success" style="font-size: 12px; white-space: nowrap">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO BAG</button>
@@ -2325,8 +2361,10 @@
                         <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold text-dark">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
-                            <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
+                            <p>
+                                <span>₹1,999</span> 
+                                <span class="text-secondary" style="text-decoration: line-through">₹2,999</span>
+                                <span class="font-weight-bold text-success" style="font-size: 12px; white-space: nowrap">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO BAG</button>
@@ -2336,8 +2374,10 @@
                         <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold text-dark">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
-                            <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
+                            <p>
+                                <span>₹1,999</span> 
+                                <span class="text-secondary" style="text-decoration: line-through">₹2,999</span>
+                                <span class="font-weight-bold text-success" style="font-size: 12px; white-space: nowrap">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO BAG</button>
@@ -2347,30 +2387,10 @@
                         <div class="my-1 p-2 text-center" style="font-size: 14px">
                             <p class="font-weight-bold text-dark">Lorem, ipsum.</p>
                             <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
-                            <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
-                        </div>
-                        <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
-                            style="font-size: 14px; color: var(--color2);">ADD TO BAG</button>
-                    </div>
-                    <div class="card">
-                        <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" class="card-img-top" alt="...">
-                        <div class="my-1 p-2 text-center" style="font-size: 14px">
-                            <p class="font-weight-bold text-dark">Lorem, ipsum.</p>
-                            <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
-                            <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
-                        </div>
-                        <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
-                            style="font-size: 14px; color: var(--color2);">ADD TO BAG</button>
-                    </div>
-                    <div class="card">
-                        <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" class="card-img-top" alt="...">
-                        <div class="my-1 p-2 text-center" style="font-size: 14px">
-                            <p class="font-weight-bold text-dark">Lorem, ipsum.</p>
-                            <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
-                            <p>₹ 1,999 <span class="text-secondary" style="text-decoration: line-through">₹
-                                    2,999</span> <span class="font-weight-bold text-success">10% off</span></p>
+                            <p>
+                                <span>₹1,999</span> 
+                                <span class="text-secondary" style="text-decoration: line-through">₹2,999</span>
+                                <span class="font-weight-bold text-success" style="font-size: 12px; white-space: nowrap">10% off</span></p>
                         </div>
                         <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
                             style="font-size: 14px; color: var(--color2);">ADD TO BAG</button>

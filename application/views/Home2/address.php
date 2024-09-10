@@ -142,7 +142,7 @@
         .stepper-item.completed::after {
             position: absolute;
             content: "";
-            border-bottom: 2px solid black;
+            border-bottom: 2px solid var(--color1);
             width: 100%;
             top: 20px;
             left: 50%;
@@ -176,7 +176,7 @@
             overflow-y: scroll;
             transition: 0.3s;
             padding-top: 22px;
-            z-index: 1000;
+            z-index: 10000;
             /* box-shadow: -4px 0px 2px 4px rgb(0, 0, 0,0.5) ; */
         }
 
@@ -250,6 +250,108 @@
             z-index: 99999;
         }
 
+        .borderStart {
+            border-left: 1px solid rgb(0, 0, 0, 0.1);
+            padding-left: 8px;
+        }
+
+        dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 2rem;
+            background: white;
+            max-width: 400px;
+            min-width: 360px;
+            border-radius: 4px;
+            border: 0;
+            box-shadow: 0 5px 30px 0 #000;
+            animation: fadeIn 300ms ease both;
+        }
+
+        dialog::backdrop {
+            animation: fadeIn 300ms ease both;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        dialog .x {
+            filter: grayscale(1);
+            border: none;
+            background: none;
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            transition: ease filter, transform 0.3s;
+            cursor: pointer;
+            transform-origin: center;
+        }
+
+        dialog .x:focus {
+            outline: none;
+        }
+
+        dialog .x:hover {
+            filter: grayscale(0);
+            transform: scale(1.1);
+        }
+
+        dialog h2 {
+            font-weight: 600;
+            font-size: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        dialog p {
+            font-size: 1rem;
+            line-height: 1.3rem;
+            padding: 0.5rem 0;
+        }
+
+        dialog p a:visited {
+            color: #000;
+        }
+
+        .royalMemberCard {
+            background-image: linear-gradient(128deg, #e83e8c 0%, 12%, #8340a1 34% 100%);
+            display: none;
+        }
+
+        .royalMemberCard .body {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            padding: 12px;
+        }
+
+        .royalMemberCard .body button {
+            background-color: var(--color2);
+            color: white;
+            border-radius: 0;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .royalMemberCard .body div {
+            transition: all .2s ease-in-out;
+        }
+
+        .royalMemberCard .body div:hover {
+            scale: 1.05;
+            box-shadow: 0 0 8px 0 white;
+        }
+
         @media (width<1150px) {
             .cartContainer {
                 width: 80%;
@@ -265,6 +367,42 @@
         @media (width<900px) {
             .cartContainer {
                 grid-template-columns: 1fr;
+            }
+
+            .borderStart {
+                border-left: none;
+                padding-left: 0;
+            }
+        }
+
+        @media (width<768px) {
+            .cartContainer {
+                padding-top: 68px;
+            }
+        }
+
+        @media (width<600px) {
+            .dialog {
+                top: 100%;
+                left: 0;
+                transform: translateY(-100%);
+                min-width: 100%;
+                border-radius: 0;
+            }
+
+            .placeOrderBtn {
+                position: fixed;
+                bottom: 0px;
+                left: 0;
+                width: 100%;
+                z-index: 9999;
+                border-radius: 0;
+                padding-block: 0.75rem!important;
+                width: 100%;
+            }
+
+            .royalMemberCard {
+                display: block;
             }
         }
     </style>
@@ -319,7 +457,7 @@
             <button class="close-btn btn" onclick="closeAddressSidebar()"><i class="fa-solid fa-xmark"></i></button>
             <div class="sidebar-content">
                 <div>
-                    <p class="font-weight-bold m-0 text-dark" style="font-size: 20px">Add new address</p>
+                    <p class="font-weight-bold m-0 text-dark" style="font-size: 18px">ADD NEW ADDRESS</p>
                 </div>
                 <hr class="m-0">
                 <form id="addAddressForm">
@@ -378,7 +516,36 @@
                 </form>
             </div>
         </div>
-        <section>
+        <dialog class="dialog removeDialog p-0" id="dialog" style="z-index: 1;">
+            <div>
+                <div class="d-flex px-3 py-1 font-weight-bold justify-content-between align-items-center shadow-sm">
+                    <p class="font-weight-bold p-0 m-0 my-1">Remove 20 items</p>
+                    <button id="closeAddressDialogBtn" aria-label="close"
+                    class="btn p-0 m-0 closeRemoveDialogBtn font-weight-bold"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="px-3 pb-2 mt-2">
+                    <p class="text-secondary" style="font-size: 14px;">Are you sure you want to remove this address from your list?</p>
+                    <hr class="m-0">
+                    <div class="d-flex mt-1">
+                        <button class="btn w-50 text-secondary font-weight-bold" style="font-size: 12px;">CANCEL</button>
+                        <button class="btn w-50 font-weight-bold border-left ml-2" style="font-size: 12px; color: var(--color2);">REMOVE</button>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+        <section class="d-lg-none d-md-none d-sm-block position-fixed top-0 w-100 bg-white" style="z-index: 999;" >
+            <div class="d-flex justify-content-between align-items-center px-3 py-1 shadow-sm">
+                <div class="d-flex align-items-center py-2">
+                    <a href=""><span style="font-size: 20px;"><i class="fa-solid fa-arrow-left"></i></span></a>
+                    <span class="ml-2" style="font-size: 16px;">ADDRESS
+                    </span>
+                </div>
+                <div>
+                    <p>STEP 2/3</p>
+                </div>
+            </div>
+        </section>
+        <section class="d-lg-block d-md-block d-sm-none d-none">
             <div class="stepper-wrapper">
                 <div class="stepper-item completed">
                     <div class="step-counter">1</div>
@@ -394,18 +561,18 @@
                 </div>
             </div>
         </section>
+        <hr class="m-0">
         <section>
             <div class="cartContainer mb-2">
                 <div class="mt-lg-3 mt-md-3 mt-sm-0 mt-0">
                     <div>
                         <div class="d-flex align-items-center justify-content-between">
                             <div style="font-family: 'League Spartan', sans-serif';">
-                                <p class="text-secondary m-0 p-0 text-dark font-weight-bold">Select delivery
+                                <p class="text-secondary m-0 p-0 text-dark font-weight-bold" style="font-size:16px;">Select delivery
                                     address</p>
                             </div>
                             <button onclick="openAddressSidebar()" class="btn font-weight-bold"
-                                style="font-size: 12px; border: 1px solid black">Add
-                                new address</button>
+                                style="font-size: 12px; border: 1px solid black">ADD NEW ADDRESS</button>
                         </div>
                         <div class="mt-4">
                             <p class="text-secondary m-0 p-0 font-weight-bold" style="font-size: 12px;">DEFAULT ADDRESS
@@ -419,15 +586,15 @@
                                     </p>
                                 </div>
                                 <div class="text-secondary mt-2 ml-3" style="font-size: 14px;">
-                                    <p class="m-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
+                                    <p class="m-1 w-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
                                         dolor.</p>
-                                    <p class="m-1">Mobile: <span class="font-weight-bold text-dark">+91 123456789</span>
+                                    <p class="ml-1 my-2">Mobile: <span class="font-weight-bold text-dark">+91 123456789</span>
                                     </p>
-                                    <p class="m-1"><i class="fa-solid fa-caret-right mr-1"></i>Pay on Delivery not
+                                    <p class="ml-1 my-2"><i class="fa-solid fa-caret-right mr-1"></i>Pay on Delivery not
                                         available</p>
                                     <!-- <li>Pay on Delivery available</li> -->
                                     <div class="mt-2">
-                                        <button class="btn font-weight-bold d-none d-lg-inline d-md-inline d-sm-inline d-xs-none"
+                                        <button class="btn font-weight-bold d-none d-lg-inline d-md-inline d-sm-inline d-xs-none addressRemoveBtn"
                                             style="font-size: 14px; border: 1px solid black; font-family: 'League Spartan';">Remove</button>
                                         <button onclick="openAddressSidebar()" class="btn font-weight-bold d-none d-lg-inline d-md-inline d-sm-inline d-xs-none"
                                             style="font-size: 14px; border: 1px solid black; font-family: 'League Spartan';">Edit</button>
@@ -443,8 +610,48 @@
                                 ADDRESS</p>
                         </button>
                     </div>
+                    <div class="royalMemberCard mt-2 rounded-lg">
+                        <p class="font-weight-bold text-center text-white pt-2" style="letter-spacing: 2px; font-size: 16px; font-family: 'League Spartan';">UNLOCK BENEFITS</p>
+                        <div class="text-white text-center">
+                            <i class="fa-solid fa-crown mr-1 blinkAnimation" style="color: yellow;"></i>
+                            <span style="font-family: 'League Spartan';">Join Royal Club & save ₹ with this order</span>
+                            <a href="#" class="toolTip text-dark"
+                                tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                <i class="fa-solid fa-info-circle ml-1" style="color: var(--color4);"></i>
+                            </a>
+                        </div>
+                        <div class="body">
+                            <div class="bg-white pt-2 rounded-lg text-center">
+                                <p class="mb-2" style="font-family: 'League Spartan';">3 MONTHS</p>
+                                <p class="font-weight-bold">₹299</p>
+                                <p class="text-secondary m-0" style="font-size: 12px;"><span
+                                        style="text-decoration: line-through;">₹399</span> <span
+                                        class="text-danger">(30% OFF)</span></p>
+                                <button class="btn font-weight-bold mt-2 w-100" style="font-size: 12px;">ADD
+                                    NOW</button>
+                            </div>
+                            <div class="bg-white pt-2 rounded-lg text-center">
+                                <p class="mb-2" style="font-family: 'League Spartan';">3 MONTHS</p>
+                                <p class="font-weight-bold">₹299</p>
+                                <p class="text-secondary m-0" style="font-size: 12px;"><span
+                                        style="text-decoration: line-through;">₹399</span> <span
+                                        class="text-danger">(30% OFF)</span></p>
+                                <button class="btn font-weight-bold mt-2 w-100" style="font-size: 12px;">ADD
+                                    NOW</button>
+                            </div>
+                            <div class="bg-white pt-2 rounded-lg text-center">
+                                <p class="mb-2" style="font-family: 'League Spartan';">3 MONTHS</p>
+                                <p class="font-weight-bold">₹299</p>
+                                <p class="text-secondary m-0" style="font-size: 12px;"><span
+                                        style="text-decoration: line-through;">₹399</span> <span
+                                        class="text-danger">(30% OFF)</span></p>
+                                <button class="btn font-weight-bold mt-2 w-100" style="font-size: 12px;">ADD
+                                    NOW</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mt-lg-3 mt-md-3 mt-sm-0 mt-0">
+                <div class="mt-lg-3 mt-md-3 mt-sm-0 mt-0 borderStart">
                     <p class="text-secondary m-0 p-0 font-weight-bold" style="font-size: 12px;">DELIVERY ESTIMATES
                     </p>
                     <div class="d-flex flex-column" style="gap: 8px;">
@@ -455,10 +662,10 @@
                                     class="font-weight-bold text-dark">2 Aug - 30 Aug</span></p>
                         </div>
                         <div class="d-flex align-items-center mt-2">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwqIMSS6cTq7wi1c08k5ZHrGiyQ0tepv1bfg&s"
+                            <img src="https://veirdo.in/cdn/shop/files/b_0119493a-9927-4550-8323-baefe5f625c0.jpg?v=1724147309"
                                 alt="" style="width: 40px;">
-                            <p class="m-0 p-0 ml-2 text-secondary" style="font-size: 14px;">Delivery between <span
-                                    class="font-weight-bold text-dark">2 Aug - 30 Aug</span></p>
+                            <p class="m-0 p-0 ml-2 text-secondary" style="font-size: 14px;">Estimated delivery by <span
+                                    class="font-weight-bold text-dark">tomorrow</span></p>
                         </div>
                         <div class="d-flex align-items-center mt-2">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwqIMSS6cTq7wi1c08k5ZHrGiyQ0tepv1bfg&s"
@@ -472,27 +679,34 @@
                             <span>(1 item)</span>
                         </p>
                         <div class="mt-2" style="font-size: 14px;">
-                            <p>Total MRP <span class="float-right">₹399</span></p>
-                            <p>Platform fee
+                            <p class="mb-1">Total MRP <span class="float-right">₹399</span></p>
+                            <p class="mb-1">Discount on MRP <span class="float-right text-success">-₹399</span></p>
+                            <p class="mb-1">Platform fee
                                 <a href="#" class="toolTip text-dark"
                                     tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                    <i class="fa-solid fa-info-circle ml-1" style="color: var(--color2);"></i>
+                                    <i class="fa-solid fa-info-circle ml-1 text-secondary"></i>
                                 </a>
                                 <span class="float-right">₹399</span>
                             </p>
-                            <p>Delivery charges
+                            <p class="mb-1">Delivery charges
                                 <a href="#" class="toolTip text-dark"
                                     tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                    <i class="fa-solid fa-info-circle ml-1" style="color: var(--color2);"></i>
+                                    <i class="fa-solid fa-info-circle ml-1 text-secondary"></i>
                                 </a>
                                 <span class="float-right">₹399</span></p>
-                            <hr>
+                                <p class="mb-1">Cash/Pay on delivery charges<i class="fa-solid fa-info-circle text-secondary ml-1"></i> <span class="float-right">₹399</span></p>
+                                <hr>
                             <p class="font-weight-bold text-dark">Total Amount <span class="float-right">₹399</span></p>
                         </div>
-                        <button class="btn btn-block font-weight-bold text-light mt-1"
-                            style="font-size: 14px; background-color: var(--color2);">CONTINUE</button>
+                        <button class="btn btn-block font-weight-bold text-light mt-1 placeOrderBtn"
+                            style="font-size: 14px; background-color: var(--color1);">CONTINUE</button>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section>
+            <div class="bottomFooter position-relative text-center w-100 py-2 border-top mt-4" style="bottom: 0;">
+                <a href="#" class="text-dark font-weight-" style="font-size: 14px;">Need Help? Contact us</a>
             </div>
         </section>
     </main>
@@ -594,9 +808,26 @@
                 document.querySelector('.locality').style.borderColor = '#d4d5d9';
             }
         })
+
+        const addressRemoveBtn = document.querySelectorAll('.addressRemoveBtn');
+        const removeDialog = document.querySelector('.removeDialog');
+        const closeRemoveDialogBtn = document.querySelectorAll('.closeRemoveDialogBtn')
+
+        addressRemoveBtn.forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                removeDialog.showModal();
+                document.body.classList.add('sidebar-open');
+            })
+        })
+
+        closeRemoveDialogBtn.forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                removeDialog.close();
+                document.body.classList.remove('sidebar-open');
+            })
+        })
         
     </script>
-    <?php include('include/footer.php'); ?>
     <!-- <?php include('include/modal.php'); ?> -->
     <?php include('include/jsLinks.php'); ?>
 </body>

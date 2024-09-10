@@ -560,6 +560,20 @@
             animation: blink 1.5s linear infinite;
         }
 
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+        
         .cartCounterBtn {
             position: relative;
         }
@@ -573,20 +587,6 @@
             font-size: 10px;
             padding-inline:6px;
             border-radius: 100vh;
-        }
-
-        @keyframes blink {
-            0% {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
         }
 
         #toaster {
