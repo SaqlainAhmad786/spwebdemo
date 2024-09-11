@@ -519,7 +519,7 @@
         <dialog class="dialog removeDialog p-0" id="dialog" style="z-index: 1;">
             <div>
                 <div class="d-flex px-3 py-1 font-weight-bold justify-content-between align-items-center shadow-sm">
-                    <p class="font-weight-bold p-0 m-0 my-1">Remove 20 items</p>
+                    <p class="font-weight-bold p-0 m-0 my-1">Remove this address?</p>
                     <button id="closeAddressDialogBtn" aria-label="close"
                     class="btn p-0 m-0 closeRemoveDialogBtn font-weight-bold"><i class="fa-solid fa-xmark"></i></button>
                 </div>
@@ -693,9 +693,16 @@
                                     tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
                                     <i class="fa-solid fa-info-circle ml-1 text-secondary"></i>
                                 </a>
-                                <span class="float-right">₹399</span></p>
-                                <p class="mb-1">Cash/Pay on delivery charges<i class="fa-solid fa-info-circle text-secondary ml-1"></i> <span class="float-right">₹399</span></p>
-                                <hr>
+                                <span class="float-right">₹399</span>
+                            </p>
+                            <p class="mb-1">Cash/Pay on delivery charges
+                                <a href="#" class="toolTip text-dark"
+                                    tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                    <i class="fa-solid fa-info-circle ml-1 text-secondary"></i>
+                                </a> 
+                                <span class="float-right">₹399</span>
+                            </p>
+                            <hr>
                             <p class="font-weight-bold text-dark">Total Amount <span class="float-right">₹399</span></p>
                         </div>
                         <button class="btn btn-block font-weight-bold text-light mt-1 placeOrderBtn"

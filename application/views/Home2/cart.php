@@ -726,6 +726,12 @@
             display: none;
         }
 
+        .outOfStockDialogProductList {
+            height: 80px;
+            overflow-y: scroll;
+            padding: 16px;
+        }
+
         .borderStart {
             border-left: 1px solid rgb(0, 0, 0, 0.1);
             padding-left: 8px;
@@ -967,6 +973,41 @@
                 <div class="px-3 pb-2 mt-2">
                     <p class="text-success">Fee charged by Slick Pattern to support efficient operations and continuous platform improvements, ensuring a hassle-free experience.</p>
                     <p class="text-secondary" style="font-size: 14px;">Have any query? Refer <a href="#" style="color: var(--color2);">FAQ's</a> or read our <a href="#" style="color: var(--color2);">T&Cs</a></p>
+                </div>
+            </div>
+        </dialog>
+        <dialog class="dialog outOfStockDialog p-0" id="dialog" style="z-index: 1;">
+            <div>
+                <div class="d-flex px-3 py-1 font-weight-bold justify-content-between align-items-center shadow-sm">
+                    <p class="font-weight-bold">
+                        <img src="<?=base_url('assets/new_website/img/out-of-stock2.png')?>" style="width: 20px" alt="">
+                        Move out of stock items
+                    </p>
+                    <button aria-label="close"
+                    class="btn p-0 m-0 closeoutOfStockDialogBtn font-weight-bold"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="px-3 pb-2 mt-2">
+                    <p style="font-size: 12px;">Few item(s) in your bag are out of stock. Please move them from the bag to proceed.</p>
+                    <div class="outOfStockDialogProductList">
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" style="height: 40px" alt="">
+                            <div class="ml-2">
+                                <p class="m-0 p-0">Lorem ipsum dolor sit amet.</p>
+                                <p class="text-secondary p-0 m-0" style="font-size: 12px;">T-shirt</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" style="height: 40px" alt="">
+                            <div class="ml-2">
+                                <p class="m-0 p-0">Lorem ipsum dolor sit amet.</p>
+                                <p class="text-secondary p-0 m-0" style="font-size: 12px;">T-shirt</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex mt-4 pt-1 border-top">
+                        <button class="btn w-50 text-secondary font-weight-bold" style="font-size: 12px;">UNSELECT ITEMS</button>
+                        <button class="btn w-50 font-weight-bold border-left ml-2" style="font-size: 12px; color: var(--color2);">MOVE TO WISHLIST</button>
+                    </div>
                 </div>
             </div>
         </dialog>
@@ -2247,7 +2288,7 @@
                             </p>
                         </div>
                         <div class="placeOrderBtn">
-                            <button class="btn w-100 py-1 mt-3 font-weight-bold"
+                            <button class="btn w-100 py-1 mt-3 font-weight-bold outOfStockBtn"
                                 style="background-color: var(--color1); color: white;">PLACE ORDER</button>
                         </div>
                         <div class="d-flex justify-content-around mt-2 text-secondary"
@@ -2478,6 +2519,20 @@
                 document.body.classList.toggle('modal-open');
                 console.log(i)
             })
+        })
+
+        const outOfStockDialog = document.querySelector('.outOfStockDialog');
+        const outOfStockBtn = document.querySelector('.outOfStockBtn');
+        const closeoutOfStockDialogBtn = document.querySelector('.closeoutOfStockDialogBtn')
+
+        outOfStockBtn.addEventListener('click', () => {
+            outOfStockDialog.showModal();
+            document.body.classList.add('modal-open');
+        })
+
+        closeoutOfStockDialogBtn.addEventListener('click', () => {
+            outOfStockDialog.close();
+            document.body.classList.remove('modal-open');
         })
 
         const addressDialogBtn = document.querySelectorAll('.addressDialogBtn');
