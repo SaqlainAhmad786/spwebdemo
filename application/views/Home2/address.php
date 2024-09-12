@@ -323,35 +323,6 @@
             color: #000;
         }
 
-        .royalMemberCard {
-            background-image: linear-gradient(128deg, #e83e8c 0%, 12%, #8340a1 34% 100%);
-            display: none;
-        }
-
-        .royalMemberCard .body {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 8px;
-            padding: 12px;
-        }
-
-        .royalMemberCard .body button {
-            background-color: var(--color2);
-            color: white;
-            border-radius: 0;
-            border-bottom-left-radius: 4px;
-            border-bottom-right-radius: 4px;
-        }
-
-        .royalMemberCard .body div {
-            transition: all .2s ease-in-out;
-        }
-
-        .royalMemberCard .body div:hover {
-            scale: 1.05;
-            box-shadow: 0 0 8px 0 white;
-        }
-
         @media (width<1150px) {
             .cartContainer {
                 width: 80%;
@@ -400,59 +371,9 @@
                 padding-block: 0.75rem!important;
                 width: 100%;
             }
-
-            .royalMemberCard {
-                display: block;
-            }
         }
     </style>
     <main>
-        <!-- <div id="addressSidebar" class="sidebar" style="z-index: 1000;">
-            <button class="close-btn btn" onclick="closeAddressSidebar()"><i class="fa-solid fa-xmark"></i></button>
-            <div class="sidebar-content">
-                <div>
-                    <p class="font-weight-bold m-0 text-dark" style="font-size: 20px">Add new address</p>
-                </div>
-                <hr class="m-0">
-                <form>
-                    <div>
-                        <label for="fullName" style="font-size: 12px;" class="m-0 font-weight-bold">CONTACT
-                            DETAILS</label>
-                        <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Name*"
-                            style="font-size: 14px;" required>
-                        <input type="number" class="form-control mt-1" id="mobile" name="mobile"
-                            placeholder="Mobile number*" style="font-size: 14px;" required>
-                    </div>
-                    <div class="mt-2">
-                        <label for="pincode" style="font-size: 12px;" class="m-0 font-weight-bold">ADDRESS</label>
-                        <input type="text" class="form-control" id="pincode" name="pincode" placeholder="Pincode*"
-                            style="font-size: 14px;" required>
-                        <input type="text" class="form-control mt-1" id="address" name="address"
-                            placeholder="Full Address*" style="font-size: 14px;" required>
-                        <input type="text" class="form-control mt-1" id="city" name="city" placeholder="City*"
-                            style="font-size: 14px;" required>
-                        <input type="text" class="form-control mt-1" id="state" name="state" placeholder="State*"
-                            style="font-size: 14px;" required>
-                    </div>
-                    <div class="mt-2">
-                        <label style="font-size: 12px;" class="m-0 font-weight-bold">SAVE ADDRESS AS</label>
-                        <div class="mt-1">
-                            <input class="btn addressBtn" type="button" value="HOME">
-                            <input class="btn addressBtn" type="button" value="OFFICE">
-                        </div>
-                        <div class="my-3 d-flex align-items-center" style="font-size: 12px;">
-                            <input type="checkbox" name="default" id="defaultAddress">
-                            <label for="defaultAddress" class="text-secondary m-0 ml-1">Make this my default
-                                address</label>
-                        </div>
-                    </div>
-                    <div class="mt-2" role="group" aria-label="Basic example">
-                        <button type="submit" class="btn w-100 font-weight-bold"
-                            style="background-color: var(--color2); color: white;">Add address</button>
-                    </div>
-                </form>
-            </div>
-        </div> -->
         <div id="addressSidebar" class="sidebar">
             <button class="close-btn btn" onclick="closeAddressSidebar()"><i class="fa-solid fa-xmark"></i></button>
             <div class="sidebar-content">
@@ -609,46 +530,6 @@
                             <p class="m-0 p-0 font-weight-bold" style="font-size: 12px; color: var(--color2);">+ADD NEW
                                 ADDRESS</p>
                         </button>
-                    </div>
-                    <div class="royalMemberCard mt-2 rounded-lg">
-                        <p class="font-weight-bold text-center text-white pt-2" style="letter-spacing: 2px; font-size: 16px; font-family: 'League Spartan';">UNLOCK BENEFITS</p>
-                        <div class="text-white text-center">
-                            <i class="fa-solid fa-crown mr-1 blinkAnimation" style="color: yellow;"></i>
-                            <span style="font-family: 'League Spartan';">Join Royal Club & save ₹ with this order</span>
-                            <a href="#" class="toolTip text-dark"
-                                tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
-                                <i class="fa-solid fa-info-circle ml-1" style="color: var(--color4);"></i>
-                            </a>
-                        </div>
-                        <div class="body">
-                            <div class="bg-white pt-2 rounded-lg text-center">
-                                <p class="mb-2" style="font-family: 'League Spartan';">3 MONTHS</p>
-                                <p class="font-weight-bold">₹299</p>
-                                <p class="text-secondary m-0" style="font-size: 12px;"><span
-                                        style="text-decoration: line-through;">₹399</span> <span
-                                        class="text-danger">(30% OFF)</span></p>
-                                <button class="btn font-weight-bold mt-2 w-100" style="font-size: 12px;">ADD
-                                    NOW</button>
-                            </div>
-                            <div class="bg-white pt-2 rounded-lg text-center">
-                                <p class="mb-2" style="font-family: 'League Spartan';">3 MONTHS</p>
-                                <p class="font-weight-bold">₹299</p>
-                                <p class="text-secondary m-0" style="font-size: 12px;"><span
-                                        style="text-decoration: line-through;">₹399</span> <span
-                                        class="text-danger">(30% OFF)</span></p>
-                                <button class="btn font-weight-bold mt-2 w-100" style="font-size: 12px;">ADD
-                                    NOW</button>
-                            </div>
-                            <div class="bg-white pt-2 rounded-lg text-center">
-                                <p class="mb-2" style="font-family: 'League Spartan';">3 MONTHS</p>
-                                <p class="font-weight-bold">₹299</p>
-                                <p class="text-secondary m-0" style="font-size: 12px;"><span
-                                        style="text-decoration: line-through;">₹399</span> <span
-                                        class="text-danger">(30% OFF)</span></p>
-                                <button class="btn font-weight-bold mt-2 w-100" style="font-size: 12px;">ADD
-                                    NOW</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="mt-lg-3 mt-md-3 mt-sm-0 mt-0 borderStart">

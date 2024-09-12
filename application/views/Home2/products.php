@@ -1949,6 +1949,9 @@
                                 </div>
                             </a>
                         </div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-4 col-6">
+                            <img src="<?= base_url('assets/new_website/img/appPoster.png') ?>" style="object-fit: cover;" alt="">
+                        </div>
                         <div class="productCard col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-4 col-6">
                             <!-- <div class="newTag">
                                 <div class="string"></div>
