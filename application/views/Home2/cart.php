@@ -734,7 +734,7 @@
 
         .borderStart {
             border-left: 1px solid rgb(0, 0, 0, 0.1);
-            padding-left: 8px;
+            padding-left: 16px;
         }
 
         .typewriter {
@@ -1232,7 +1232,7 @@
             <div class="stepper-wrapper">
                 <div class="stepper-item active">
                     <div class="step-counter">1</div>
-                    <div class="step-name">CART</div>
+                    <div class="step-name"><h1 style="all: unset">CART</h1></div>
                 </div>
                 <div class="stepper-item ">
                     <div class="step-counter">2</div>
@@ -2261,7 +2261,7 @@
                                     class="float-right font-weight-normal">+
                                     ₹399</span></p>
                             <p class="py-1 px-3" >
-                                <span>Platform convinience fee <button class="btn p-0 m-0 platformDialogBtn"><i class="fa-solid fa-info-circle"></i></button></span> <span
+                                <span>Platform convinience fee <button class="btn text-secondary p-0 m-0 platformDialogBtn"><i class="fa-solid fa-info-circle"></i></button></span> <span
                                     class="float-right font-weight-normal">+₹399</span>
                             </p>
                             <p class="py-1 px-3"><span>Delivery charges</span> <span

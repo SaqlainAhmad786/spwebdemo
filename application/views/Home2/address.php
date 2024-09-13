@@ -41,6 +41,11 @@
             z-index: 999;
         }
 
+        main {
+            max-width: 1560px;
+            margin-inline: auto;
+        }
+
         ul {
             list-style-type: none;
         }
@@ -252,7 +257,7 @@
 
         .borderStart {
             border-left: 1px solid rgb(0, 0, 0, 0.1);
-            padding-left: 8px;
+            padding-left: 16px;
         }
 
         dialog {
@@ -454,6 +459,12 @@
                 </div>
             </div>
         </dialog>
+        <div class="d-none d-lg-block d-md-block d-sm-none position-absolute" style="top: 20px; right: 28px; z-index: 999;">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="<?=base_url('assets/new_website/img/secure.png')?>" style="width: 40px;" alt="">
+                <p class="m-0 ml-2">100% SECURE</p>
+            </div>
+        </div>
         <section class="d-lg-none d-md-none d-sm-block position-fixed top-0 w-100 bg-white" style="z-index: 999;" >
             <div class="d-flex justify-content-between align-items-center px-3 py-1 shadow-sm">
                 <div class="d-flex align-items-center py-2">
@@ -468,10 +479,10 @@
         </section>
         <section class="d-lg-block d-md-block d-sm-none d-none">
             <div class="stepper-wrapper">
-                <div class="stepper-item completed">
+                <a href="#" class="stepper-item completed" style="font-size: 12px; font-weight: 700;">
                     <div class="step-counter">1</div>
                     <div class="step-name">CART</div>
-                </div>
+                </a>
                 <div class="stepper-item active">
                     <div class="step-counter">2</div>
                     <div class="step-name">ADDRESS</div>
@@ -488,9 +499,9 @@
                 <div class="mt-lg-3 mt-md-3 mt-sm-0 mt-0">
                     <div>
                         <div class="d-flex align-items-center justify-content-between">
-                            <div style="font-family: 'League Spartan', sans-serif';">
-                                <p class="text-secondary m-0 p-0 text-dark font-weight-bold" style="font-size:16px;">Select delivery
-                                    address</p>
+                            <div>
+                                <h1 class="text-secondary m-0 p-0 text-dark font-weight-bold" style="font-size:16px; font-family: 'League Spartan', sans-serif">Select delivery
+                                    address</h1>
                             </div>
                             <button onclick="openAddressSidebar()" class="btn font-weight-bold"
                                 style="font-size: 12px; border: 1px solid black">ADD NEW ADDRESS</button>
@@ -536,24 +547,27 @@
                     <p class="text-secondary m-0 p-0 font-weight-bold" style="font-size: 12px;">DELIVERY ESTIMATES
                     </p>
                     <div class="d-flex flex-column" style="gap: 8px;">
-                        <div class="d-flex align-items-center mt-2">
+                        <div class="d-flex align-items-center">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwqIMSS6cTq7wi1c08k5ZHrGiyQ0tepv1bfg&s"
                                 alt="" style="width: 40px;">
                             <p class="m-0 p-0 ml-2 text-secondary" style="font-size: 14px;">Delivery between <span
                                     class="font-weight-bold text-dark">2 Aug - 30 Aug</span></p>
                         </div>
-                        <div class="d-flex align-items-center mt-2">
+                        <hr class="m-0">
+                        <div class="d-flex align-items-center">
                             <img src="https://veirdo.in/cdn/shop/files/b_0119493a-9927-4550-8323-baefe5f625c0.jpg?v=1724147309"
                                 alt="" style="width: 40px;">
                             <p class="m-0 p-0 ml-2 text-secondary" style="font-size: 14px;">Estimated delivery by <span
                                     class="font-weight-bold text-dark">tomorrow</span></p>
                         </div>
-                        <div class="d-flex align-items-center mt-2">
+                        <hr class="m-0">
+                        <div class="d-flex align-items-center">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwqIMSS6cTq7wi1c08k5ZHrGiyQ0tepv1bfg&s"
                                 alt="" style="width: 40px;">
                             <p class="m-0 p-0 ml-2 text-secondary" style="font-size: 14px;">Delivery between <span
                                     class="font-weight-bold text-dark">2 Aug - 30 Aug</span></p>
                         </div>
+                        <hr class="m-0">
                     </div>
                     <div class="mt-4">
                         <p class="text-secondary m-0 p-0 font-weight-bold" style="font-size: 12px;">PRICE DETAILS

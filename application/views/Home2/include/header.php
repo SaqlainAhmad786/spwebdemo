@@ -1,3 +1,22 @@
+<style>
+    .fs10 {
+        font-size: 10px;
+    }
+    .royalClubBtn {
+        background-color: #F5F5F6;
+        border-radius: 100vh;
+        margin-inline: 8px!important;
+        transition: 0.2s all;
+    }
+
+    .royalClubBtn:hover {
+        background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    .royalClubBtn:hover img{
+        scale: 1.2;
+    }
+</style>
 <header class="header_area" id="header-sticky">
     <div class="header_top">
         <div class="container-fluid">
@@ -62,7 +81,7 @@
             <div class="container-fluid">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12">
                     <a class="navbar-brand header_logo_here" href="<?= base_url() ?>">
-                        <img src="<?= !empty($this->webLogo) ? base_url('uploads/logo/' . $this->webLogo['web_header_logo']) : '' ?>" alt="<?= !empty($this->webLogo) ? $this->webLogo['web_header_logo_alt'] : '' ?>" title="<?= !empty($this->webLogo) ? $this->webLogo['web_header_logo_title'] : '' ?>">
+                        <img src="<?=base_url('assets/new_website/img/memberLogo.png') ?>">
                     </a>
                 </div>
                 <!-- <div class="col-xl-6 col-lg-6 col-md-2 col-sm-1 col-2"> -->
@@ -135,30 +154,48 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                         <div id="autocomplete"></div>
                         <ul class="navbar-nav mb-2 mb-lg-0 shopping_Btn">
+                            <li class="nav-item border-right">
+                                <a class="nav-link royalClubBtn" href="#" title="Royal Club">
+                                    <!-- <i class=' bx bx-crown'></i> -->
+                                     <img src="<?=base_url('assets/new_website/img/crown2.png') ?>" style="min-width: 24px; max-width: 24px" alt="">
+                                    <!-- Royal Club -->
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" aria-current="page" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link text-nowrap dropdown-toggle" aria-current="page" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class=' bx bx-user'></i> Account
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item dropdown-item2 " href="#"> <i class="fa-regular fa-user"></i> Profile</a>
-                                    <a class="dropdown-item dropdown-item2" href="#"> <i class="fa-solid fa-clock-rotate-left"></i> Order History</a>
-                                    <a class="dropdown-item dropdown-item2" href="#"> <i class="fa-solid fa-table-columns"></i> Club Dashboard</a>
-                                    <a class="dropdown-item dropdown-item2" href="#"> <i class="fa-solid fa-wallet"></i> Wallet</a>
-                                    <a class="dropdown-item dropdown-item2" href="#"><i class="fa-solid fa-share"></i> Share A Friend</a>
-                                    <a class="dropdown-item dropdown-item2" href="#"> <i class="fa-solid fa-mobile-screen-button"></i> Share App With
+                                    <a class="dropdown-item px-3 dropdown-item2 d-flex align-items-center" href="#">
+                                        <i class="fa-regular fa-user"></i>
+                                        <div class="d-flex flex-column ml-2" style="line-height: 1.1;">
+                                            <span>
+                                                Hello,
+                                                <span class="font-weight-bold">Khushi</span>
+                                            </span>
+                                            <span class="text-secondary fs10">khushi@gmail.com</span>
+                                        </div>
+                                    </a>
+                                    <hr class="my-1 mx-2 mt-2">
+                                    <a class="dropdown-item px-3 dropdown-item2" href="#"><i class="fa-solid fa-clock-rotate-left mr-2"></i> Order History</a>
+                                    <a class="dropdown-item px-3 dropdown-item2" href="#"><i class="fa-solid fa-table-columns mr-2"></i> Club Dashboard</a>
+                                    <a class="dropdown-item px-3 dropdown-item2" href="#"><i class="fa-solid fa-wallet mr-2"></i> Wallet</a>
+                                    <a class="dropdown-item px-3 dropdown-item2" href="#"><i class="fa-solid fa-share mr-2"></i> Share A Friend</a>
+                                    <a class="dropdown-item px-3 dropdown-item2" href="#"><i class="fa-solid fa-mobile-screen-button mr-2"></i> Share App With
                                         Friend</a>
-                                    <a class="dropdown-item dropdown-item2" href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                                    <hr class="my-1 mx-2 mt-2">
+                                    <a class="dropdown-item px-3 dropdown-item2" href="#"><i class="fa-solid fa-right-from-bracket mr-2"></i> Logout</a>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link text-nowrap" href="#">
                                     <i class=' bx bx-heart'></i>
                                     Wishlist
                                     <span class="badge badge-pill badge-danger" id="wishlist-count">2</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link text-nowrap" href="#">
                                     <i class=' bx bx-shopping-bag'></i>
                                     Cart
                                     <span class="badge badge-pill badge-danger" id="cart-count">3</span>
@@ -429,6 +466,10 @@
                             <ul>
                                 <!-- <li><a href="#" class="search-toggle"><i class="fa-solid fa-magnifying-glass"></i>
                                     </a></li> -->
+                                <li><a href="javascript:void(0);" class="cart">
+                                    <img src="<?=base_url('assets/new_website/img/crown2.png') ?>" class="pb-2" style="min-width: 22px; max-width: 22px" alt="">
+                                </a>
+                                </li>
                                 <li><a href="javascript:void(0);" class="cart"><i class="bx bx-shopping-bag"></i>
                                         <span class="badge badge-pill badge-danger" id="mobile_cart-count">3</span> </a>
                                 </li>
@@ -553,15 +594,21 @@
 
 <section class="extra__info transition-3">
     <div class="extra__info-inner">
-        <div class="extra__info-close text-right">
+        <!-- <div class="extra__info-close text-right">
             <i class="bx bx-user"></i>
             <a href="javascript:void(0);" class="extra__info-close-btn"><i class="fal fa-times"></i></a>
-        </div>
+        </div> -->
         <div class="UserName_here">
             <nav class="side-mobile-menu d-block d-lg-none p-0">
                 <ul id="mobile-menu">
-                    <li class=" has-dropdown">
-                        <a href="#">khushi</a>
+                    <li>
+                        <a href="#" class="d-flex align-items-center">
+                            <img src="<?=base_url() ?>assets/new_website/img/user.png" class="rounded-lg" style="width: 34px; height: 34px;" alt="">
+                            <div class="ml-2 d-flex flex-column" style="line-height: 1.2">
+                                <span>Hello, <span class="font-weight-bold">Khushi</span></span>
+                                <span class="text-light fs10">View Profile</span>
+                            </div>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -687,3 +734,4 @@
         </div>
     </div>
 </div>
+

@@ -37,6 +37,11 @@
             overflow-y: hidden;
         }
 
+        main {
+            max-width: 1560px;
+            margin-inline: auto;
+        }
+
         ul {
             list-style-type: none;
         }
@@ -169,11 +174,6 @@
             font-size: 14px;
         }
 
-        .recommendPayments:hover {
-            scale: 1.01;
-            box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
-        }
-
         .paymentTabs button{
             background-color: var(--color4);
             color: black;
@@ -214,8 +214,8 @@
 
         .borderStart {
             border-left: 1px solid rgb(0, 0, 0, 0.1);
-            padding-left: 8px;
-            margin-left: 8px;
+            padding-left: 16px;
+            margin-left: 16px;
         }
 
         a.toolTip {
@@ -253,6 +253,10 @@
 
         .paymentList {
             font-size: 14px;
+        }
+
+        .placeOrderBtn button {
+            display: none;
         }
 
         .placeOrderBtn p {
@@ -349,6 +353,7 @@
             .borderStart {
                 border-left: none;
                 padding-left: 0;
+                margin-left:0;
             }
         }
 
@@ -374,6 +379,7 @@
             }
 
             .placeOrderBtn button {
+                display: block;
                 border-radius: 0;
                 padding-block: 0.75rem!important;
                 width: 100%;
@@ -381,6 +387,10 @@
 
             .placeOrderBtn p {
                 font-size: 10px;
+            }
+
+            .placeOrderBtn2 {
+                display: none;
             }
 
             .paymentList {
@@ -421,6 +431,12 @@
                 </div>
             </div>
         </dialog>
+        <div class="d-none d-lg-block d-md-block d-sm-none position-absolute" style="top: 20px; right: 28px; z-index: 999;">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="<?=base_url('assets/new_website/img/secure.png')?>" style="width: 40px;" alt="">
+                <p class="m-0 ml-2">100% SECURE</p>
+            </div>
+        </div>
         <section class="d-lg-none d-md-none d-sm-block position-fixed top-0 w-100 bg-white" style="z-index: 999;" >
             <div class="d-flex justify-content-between align-items-center px-3 py-1 shadow-sm">
                 <div class="d-flex align-items-center py-2">
@@ -435,14 +451,14 @@
         </section>
         <section class="d-lg-block d-md-block d-sm-none d-none">
             <div class="stepper-wrapper">
-                <div class="stepper-item completed">
+                <a href="#" class="stepper-item completed" style="font-size: 12px; font-weight: 700;">
                     <div class="step-counter">1</div>
                     <div class="step-name">CART</div>
-                </div>
-                <div class="stepper-item completed">
+                </a>
+                <a href="#" class="stepper-item completed" style="font-size: 12px; font-weight: 700;">
                     <div class="step-counter">2</div>
                     <div class="step-name">ADDRESS</div>
-                </div>
+                </a>
                 <div class="stepper-item active">
                     <div class="step-counter">3</div>
                     <div class="step-name">PAYMENT</div>
@@ -454,8 +470,7 @@
             <div class="cartContainer mb-2">
                 <div class="mt-lg-3 mt-md-3 mt-sm-0 mt-0">
                     <div class="d-lg-block d-md-block d-sm-none d-none">
-                        <!-- <p class="text-secondary m-0 p-0 text-dark font-weight-bold" style="font-family: 'League Spartan', sans-serif';">Choose payment mode</p> -->
-                        <p class="text-secondary text-dark font-weight-bold" style="font-family: 'League Spartan', sans-serif'; font-size: 16px;">CHOOSE PAYMENT MODE</p>
+                        <h1 class="text-secondary text-dark font-weight-bold" style="font-family: 'League Spartan', sans-serif; font-size: 16px;">CHOOSE PAYMENT MODE</h1>
                         <div class="row border rounded overflow-hidden paymentWrapper">
                             <div class="col-4 d-flex flex-column paymentTabs pl-0">
                                 <button data-id="recommendPaymentsSection" class="btn p-3 tab-button active"><i class="fa-regular fa-star mr-1"></i>Recommended</button>
@@ -469,12 +484,12 @@
                                 </button>
                                 <button data-id="card" class="btn p-3 tab-button"><i class="fa-regular fa-credit-card mr-1"></i>Credit/Debit card</button>
                                 <button data-id="wallet" class="btn p-3 tab-button"><i class="fa-solid fa-wallet mr-1"></i>Wallets</button>
+                                <button data-id="netbanking" class="btn p-3 tab-button"><i class="fa-solid fa-building-columns mr-1"></i>Net Banking</button>
                                 <!-- <button data-id="paylater" class="btn p-3 tab-button"><i class="fa-regular fa-clock mr-1"></i>Pay later</button>
-                                <button data-id="emi" class="btn p-3 tab-button"><i class="fa-solid fa-money-bill-transfer mr-1"></i>EMI</button>
-                                <button data-id="netbanking" class="btn p-3 tab-button"><i class="fa-solid fa-building-columns mr-1"></i>Net Banking</button> -->
+                                <button data-id="emi" class="btn p-3 tab-button"><i class="fa-solid fa-money-bill-transfer mr-1"></i>EMI</button> -->
                             </div>
                             <div class="col-8 p-0 contentWrapper">
-                                <div id="recommendPaymentsSection" class="pt-4 content active">
+                                <div id="recommendPaymentsSection" class="pt-4 mr-2 content active">
                                     <p class="font-weight-bold text-dark">Recommended Payment Mode</p>
                                     <div>
                                         <label for="pod"
@@ -496,54 +511,31 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div id="cod" class="pt-4 content">
+                                <div id="cod" class="pt-4 mr-2 content">
                                     <p class="font-weight-bold text-dark">Cash on Delivery</p>
                                     <label for="cod"
-                                            class="d-flex align-items-center justify-content-between px-2 py-3 mb-0 recommendPayments">
-                                            <div class="d-flex align-items-center">
-                                                <input type="radio" name="cod" id="cod" value="cod" />
-                                                <p class="m-0 p-0 ml-2 font-weight-bold">Cash on delivery (Cash/UPI)</p>
-                                            </div>
-                                            <i class="fa-solid fa-money-bill-wave"></i>
-                                    </label>
-                                </div>
-                                <div id="upi" class="pt-4 content">
-                                    <p class="font-weight-bold text-dark">Pay using UPI</p>
-                                    <!-- <label for="gpay"
-                                            class="d-flex align-items-center px-2 py-3 mb-0 recommendPayments">
-                                            <div class="d-flex align-items-center">
-                                                <input type="radio" class="upi" name="upi" id="gpay" value="gpay" />
-                                                <img src="<?= base_url('assets/new_website/img/gpay.png')?>" class="mx-1" style="width:20px;" alt="">
-                                                <p class="m-0 p-0 font-weight-bold">Google pay</p>
-                                            </div>
-                                    </label>
-                                    <div class="px-2" id="gpaySection">
-                                        <div class="d-flex">
-                                            <input type="text" class="form-control" id="upiId" name="upiId" placeholder="Enter UPI ID*" style="font-size: 14px;">
-                                            <select name="upiType" id="" class="form-control ml-1">
-                                                <option value="paytm">@oksbi</option>
-                                                <option value="phonepe">@okhdfcbank</option>
-                                            </select>
+                                        class="d-flex align-items-center justify-content-between px-2 py-3 mb-0 recommendPayments">
+                                        <div class="d-flex align-items-center">
+                                            <input type="radio" name="cod" id="cod" value="cod" />
+                                            <p class="m-0 p-0 ml-2 font-weight-bold">Cash on delivery (Cash/UPI)</p>
                                         </div>
-                                        <button class="btn w-100 mt-2 text-white" type="button" style="background-color: var(--color1);">Pay</button>
+                                        <i class="fa-solid fa-money-bill-wave"></i>
+                                    </label>
+                                    <div class="mt-2 bg-light border p-2 rounded-lg">
+                                        <p class="text-warning m-0"><i class="fa-solid fa-triangle-exclamation"></i> Cash on delivery</p>
+                                        <p class="text-secondary m-0 font-weight-light" style="font-size: 12px;">Pay on deliver is available only for a purchase between of Rs. 1 to Rs. 10000</p>
                                     </div>
-                                    <label for="phonepe"
-                                            class="d-flex align-items-center px-2 py-3 mb-0 recommendPayments">
-                                            <div class="d-flex align-items-center">
-                                                <input type="radio" name="upi" id="phonepe" value="phonepe" />
-                                                <img src="<?= base_url('assets/new_website/img/phonepe.png')?>" class="mx-1" style="width:20px;" alt="">
-                                                <p class="m-0 p-0 font-weight-bold">PhonePe</p>
-                                            </div>
-                                    </label> -->
+                                </div>
+                                <div id="upi" class="pt-4 mr-2 content">
+                                    <p class="font-weight-bold text-dark">Pay using UPI</p>
                                     <form class="px-2">
                                         <div class="d-flex align-items-center">
                                             <input type="text" class="form-control" id="upiId" name="upiId" placeholder="Enter UPI ID*" style="font-size: 14px;">
                                             <button type="button" class="btn w-25 ml-2 btn-outline-success">VERIFY</button>
                                         </div>
-                                        <button class="btn w-100 mt-2 text-white" type="submit" style="background-color: var(--color1);">PAY</button>
                                     </form>
                                 </div>
-                                <div id="card" class="pt-4 pr-2 content">
+                                <div id="card" class="pt-4 mr-2 pr-2 content">
                                     <p class="font-weight-bold text-dark mb-0">Credit/Debit card</p>
                                     <p class=" text-secondary" style="font-size: 12px;">Please ensure that your card can be used for online payments</p>
                                     <form>
@@ -555,19 +547,18 @@
                                         <div class="d-flex" style="gap: 8px;">
                                             <input type="text" class="form-control mt-2" id="validThru"
                                                 name="validThru" placeholder="Valid thru (MM/YY)*"
-                                                style="font-size: 14px;" required>
+                                                style="font-size: 14px;" oninput="formatExpiryDate(this)" onkeydown="handleBackspace(event, this)" required>
                                             <div class="d-flex align-items-center">
                                                 <input type="number" class="form-control mt-2" id="cvv" name="cvv"
-                                                    placeholder="CVV*" style="font-size: 14px;" required>
+                                                    placeholder="CVV*" style="font-size: 14px;" required max="9999">
                                                 <button type="button" class="btn p-0 m-0 cvvDialogBtn">
                                                     <img src="<?= base_url('assets/new_website/img/cvv.png')?>" style="width:40px;" class="ml-1 mt-2" alt="">
                                                 </button>
                                             </div>
                                         </div>
-                                        <button class="btn w-100 mt-2 text-white" type="submit" style="background-color: var(--color2);">PAY NOW</button>
                                     </form>
                                 </div>
-                                <div id="wallet" class="pt-4 content">
+                                <div id="wallet" class="pt-4 mr-2 content">
                                     <p class="font-weight-bold text-dark">Select your wallet</p>
                                     <label for="airtel"
                                         class="d-flex align-items-center px-2 py-3 mb-0 recommendPayments">
@@ -586,15 +577,25 @@
                                         </div>
                                     </label>
                                 </div>
+                                <div id="netbanking" class="pt-4 mr-2 content">
+                                    <p class="font-weight-bold text-dark">Net Banking</p>
+                                    <label for="airtel"
+                                        class="d-flex align-items-center px-2 py-3 mb-0 recommendPayments">
+                                        <div class="d-flex align-items-center">
+                                            <input type="radio" name="wallet" id="airtel" value="airtel" />
+                                            <img src="<?= base_url('assets/new_website/img/sbi.png')?>" class="mx-1" style="width:20px;" alt="">
+                                            <p class="m-0 p-0 font-weight-bold">State Bank of India</p>
+                                        </div>
+                                    </label>
+                                </div>
                                 <!-- <div id="paylater" class="pt-4 content">
                                     <p class="font-weight-bold text-dark">Cash on delivery</p>
                                 </div>
                                 <div id="emi" class="pt-4 content">
-                                    <p class="font-weight-bold text-dark">Cash on delivery</p>
-                                </div>
-                                <div id="netbanking" class="pt-4 content">
-                                    <p class="font-weight-bold text-dark">Cash on delivery</p>
+                                    <p class="font-weight-bold text-dark">Net Banking</p>
                                 </div> -->
+                                <button class="btn w-100 font-weight-bold text-light position-absolute placeOrderBtn2"
+                                    style="font-size: 14px; background-color: var(--color1); bottom: 8px;">PAY NOW</button>
                             </div>
                         </div>
                     </div>
@@ -685,7 +686,7 @@
                                             <div class="d-flex" style="gap: 8px;">
                                                 <input type="text" class="form-control mt-2" id="validThru"
                                                     name="validThru" placeholder="Valid thru (MM/YY)*"
-                                                    style="font-size: 14px;" required>
+                                                    style="font-size: 14px;" oninput="formatExpiryDate(this)" onkeydown="handleBackspace(event, this)" required>
                                                 <div class="d-flex align-items-center">
                                                     <input type="number" class="form-control mt-2" id="cvv" name="cvv"
                                                         placeholder="CVV*" style="font-size: 14px;" required>
@@ -832,6 +833,24 @@
             cvvDialog.close();
             document.body.classList.remove('modal-open');
         })
+
+        function formatExpiryDate(input) {
+            let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+            
+            if (value.length >= 2) {
+                // Add a slash after the second character
+                input.value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            } else {
+                input.value = value; // No slash if less than 2 digits
+            }
+        }
+        
+        function handleBackspace(event, input) {
+            if (event.key === "Backspace" && input.value.length === 3) {
+                // If backspace is pressed after the slash, remove the slash
+                input.value = input.value.slice(0, 2);
+            }
+        }
         
     </script>
     <!-- <?php include('include/modal.php'); ?> -->

@@ -975,9 +975,10 @@ ul {
 
 .side-mobile-menu ul li ul li a {
     position: relative;
+    padding-block: 10px;
     padding-left: 15px;
     text-transform: capitalize;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .side-mobile-menu ul li ul li a:before {
@@ -1347,7 +1348,7 @@ nav .wrapper {
     top: 40px;
     opacity: 1;
     visibility: visible;
-    display:block;
+    display: block;
 }
 
 .drop-menu li a {
@@ -3238,12 +3239,13 @@ img {
 
 @media (max-width: 575px) {
     .section__title h2 {
-        font-size: 28px;
+        font-size: 24px;
         padding: 0 15px;
     }
 
     .section__sub-title p {
-        font-size: 14px;
+        font-size: 12px;
+        line-height: 1.25;
     }
 }
 
@@ -8574,7 +8576,7 @@ only screen and (min-width: 576px) and (max-width: 767px) {
     }
 
     .header__action.header__action-2 ul li {
-        margin-left: 9px;
+        margin-left: 4px;
     }
 
     .desktopfooter {
@@ -8780,7 +8782,7 @@ only screen and (min-width: 576px) and (max-width: 767px) {
     }
 
     .slider_area {
-        height: 400px;
+        height: 280px;
     }
 
     .slider_Image_here .slider_img img {
@@ -9022,7 +9024,7 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 
 
     .side-mobile-menu {
-        padding: 10px 20px 20px 40px;
+        padding: 8px 12px 0px 36px;
     }
 
     .extra__info-close-btn i {
@@ -9034,7 +9036,7 @@ only screen and (min-width: 576px) and (max-width: 767px) {
         padding: 13px 0;
         display: block;
         border-bottom: 1px solid rgba(50, 50, 50, 0.09);
-        font-size: 16px;
+        font-size: 14px;
         color: #323232;
         font-weight: 500;
         text-transform: capitalize;
@@ -9058,7 +9060,7 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 
 .UserName_here {
     background: var(--maincolor);
-    padding: 6px 22px 0px 38px;
+    padding: 8px 38px;
 }
 
 .UserName_here nav ul li a {
