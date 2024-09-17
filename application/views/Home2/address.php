@@ -101,6 +101,10 @@
             font-weight: 600;
         }
 
+        .stepper-item:hover {
+            color: black;
+        }
+
         .stepper-item::before {
             position: absolute;
             content: "";

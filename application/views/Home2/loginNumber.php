@@ -7,7 +7,7 @@
     <title> Slick Pattern - Login </title>
     <?php include('include/cssLinks.php'); ?>
     <style>
-:root {
+        :root {
             --color1: #8340A1;
             --color2: #e83e8c;
             --color3: #068FFF;

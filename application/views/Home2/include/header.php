@@ -16,6 +16,23 @@
     .royalClubBtn:hover img{
         scale: 1.2;
     }
+
+    .loginSignupBtn{
+        border: 1px solid var(--pinkcolor);
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 12px!important;
+        font-weight: 600;
+        color: var(--pinkcolor)!important;
+        transition: 0.2s all;
+        margin-top: 8px;
+    }
+
+    .loginSignupBtn:hover{
+        background-color: var(--pinkcolor);
+        color: white!important;
+    }
+    
 </style>
 <header class="header_area" id="header-sticky">
     <div class="header_top">
@@ -165,8 +182,8 @@
                                 <a class="nav-link text-nowrap dropdown-toggle" aria-current="page" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class=' bx bx-user'></i> Account
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item px-3 dropdown-item2 d-flex align-items-center" href="#">
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 200px;">
+                                    <!-- <a class="dropdown-item px-3 dropdown-item2 d-flex align-items-center" href="#">
                                         <i class="fa-regular fa-user"></i>
                                         <div class="d-flex flex-column ml-2" style="line-height: 1.1;">
                                             <span>
@@ -175,16 +192,24 @@
                                             </span>
                                             <span class="text-secondary fs10">khushi@gmail.com</span>
                                         </div>
-                                    </a>
+                                    </a> -->
+                                    <div class="p-2">
+                                        <p class="mb-2 p-0 font-weight-light fs12" style="line-height: 1.1;">Welcome! Manage your account and orders easily</p>
+                                        <a href="#" class="loginSignupBtn">LOGIN/SIGNUP</a>
+                                    </div>
                                     <hr class="my-1 mx-2 mt-2">
-                                    <a class="dropdown-item px-3 dropdown-item2" href="#"><i class="fa-solid fa-clock-rotate-left mr-2"></i> Order History</a>
-                                    <a class="dropdown-item px-3 dropdown-item2" href="#"><i class="fa-solid fa-table-columns mr-2"></i> Club Dashboard</a>
-                                    <a class="dropdown-item px-3 dropdown-item2" href="#"><i class="fa-solid fa-wallet mr-2"></i> Wallet</a>
-                                    <a class="dropdown-item px-3 dropdown-item2" href="#"><i class="fa-solid fa-share mr-2"></i> Share A Friend</a>
-                                    <a class="dropdown-item px-3 dropdown-item2" href="#"><i class="fa-solid fa-mobile-screen-button mr-2"></i> Share App With
-                                        Friend</a>
+                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Order History</a>
+                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Wishlist</a>
+                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Pre Order</a>
+                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Royal Club</a>
                                     <hr class="my-1 mx-2 mt-2">
-                                    <a class="dropdown-item px-3 dropdown-item2" href="#"><i class="fa-solid fa-right-from-bracket mr-2"></i> Logout</a>
+                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Saved Cards</a>
+                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Saved Address</a>
+                                    <hr class="my-1 mx-2 mt-2">
+                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Coupons</a>
+                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Invites & Credits</a>
+                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Contact us</a>
+                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Logout</a>
                                 </div>
                             </li>
                             <li class="nav-item">

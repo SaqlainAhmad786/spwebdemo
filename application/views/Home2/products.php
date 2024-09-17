@@ -610,13 +610,14 @@
 
         .cartCounter {
             position: absolute;
-            top: -18px;
+            top: -8px;
             right: -10px;
             background-color: var(--color1);
             color: white;
             font-size: 10px;
-            padding-inline:6px;
+            padding:4px;
             border-radius: 100vh;
+            line-height: 1;
         }
 
         .newsStrip {
@@ -1054,7 +1055,6 @@
             }
         }
     </style>
-    <?php include('include/header.php'); ?>
     <main>
         <div id="toaster"></div>
         <div id="toaster2"></div>
@@ -1095,7 +1095,7 @@
                         </div>
                     </div>
                     <div class="dialogBtns">
-                        <button class="btn" style="border:2px solid var(--color1); color: black;">ADD TO CART</button>
+                        <button class="btn" style="border:2px solid var(--color1); color: black;">ADD TO BAG</button>
                         <button class="btn" style="background-color: var(--color1); color: white;">BUY NOW</button>
                     </div>
                 </div>
@@ -1175,10 +1175,10 @@
                 </div>
                 <div class="d-flex align-items-center">
                     <a class="cartCounterBtn ml-3" href="">
-                        <img src="<?= base_url('assets/new_website/img/heart.png') ?>" style="width: 20px;" alt="">
+                        <img src="<?= base_url('assets/new_website/img/search.png') ?>" style="width: 18px;" alt="">
                     </a>
                     <a class="cartCounterBtn ml-3" href="">
-                        <img src="<?= base_url('assets/new_website/img/search.png') ?>" style="width: 18px;" alt="">
+                        <img src="<?= base_url('assets/new_website/img/heart.png') ?>" style="width: 20px;" alt="">
                     </a>
                     <a class="cartCounterBtn ml-3" href="">
                         <img src="<?= base_url('assets/new_website/img/bag.png') ?>" style="width: 20px;" alt="">

@@ -25,6 +25,7 @@
     --mainfont: "Inter", sans-serif;
 }
 
+
 html {
     height: 100%;
     border: none;
@@ -1853,7 +1854,7 @@ nav input {
 
 .shopping_Btn .dropdown .dropdown-menu a {
     color: #000;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .dropdown-toggle::after {

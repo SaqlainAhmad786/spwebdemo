@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Slick Pattern - Address </title>
+    <title> Slick Pattern - Order Placed </title>
     <?php include('include/cssLinks.php'); ?>
 </head>
 
@@ -39,6 +39,7 @@
             color: white;
             text-transform: uppercase;
             font-size: 14px;
+            font-weight: 600;
         }
 
         .continueBtn:hover{
@@ -48,7 +49,7 @@
         
     </style>
     <main>
-        <div class="bg-white rounded-lg p-4 text-center">
+        <div class="bg-white rounded-lg p-4 text-center" style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;">
             <img src="<?=base_url('assets/new_website/img/orderPlaced.png') ?>" style="width: 160px;" alt="orderPlaced">
             <p class="font-weight-bold m-0 mt-3 fs20">Your order has been placed</p>
             <p class="text-secondary">Thank you...</p>

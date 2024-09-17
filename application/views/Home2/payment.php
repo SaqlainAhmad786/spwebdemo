@@ -97,6 +97,10 @@
             font-weight: 600;
         }
 
+        .stepper-item:hover {
+            color: black;
+        }
+
         .stepper-item::before {
             position: absolute;
             content: "";
@@ -333,6 +337,10 @@
             color: #000;
         }
 
+        .cardErrorMsgLg {
+            display: block;
+        }
+
         @media (width<1150px) {
             .cartContainer {
                 width: 80%;
@@ -538,7 +546,7 @@
                                 <div id="card" class="pt-4 mr-2 pr-2 content">
                                     <p class="font-weight-bold text-dark mb-0">Credit/Debit card</p>
                                     <p class=" text-secondary" style="font-size: 12px;">Please ensure that your card can be used for online payments</p>
-                                    <form>
+                                    <form id="cardFormLg">
                                         <input type="number" class="form-control mt-2" id="cardNumber"
                                             name="cardNumber" placeholder="Card number*" style="font-size: 14px;"
                                             required>
@@ -557,6 +565,9 @@
                                             </div>
                                         </div>
                                     </form>
+                                    <div class="mt-2 bg-light border p-2 rounded-lg cardErrorMsgLg">
+                                        <p class="text-danger" style="font-size: 12px;"><i class="fa-solid fa-triangle-exclamation"></i> Please fill all the card details to proceed</p>
+                                    </div>
                                 </div>
                                 <div id="wallet" class="pt-4 mr-2 content">
                                     <p class="font-weight-bold text-dark">Select your wallet</p>
