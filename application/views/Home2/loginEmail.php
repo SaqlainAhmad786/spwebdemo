@@ -58,9 +58,11 @@
             accent-color: var(--color2);
         }
 
-        .inputGroup .errorMsg{
+        .errorMsg{
             display: none;
             font-size:12px;
+            position: absolute;
+            top: 36px;
         }
 
         .inputFieldContainer{
@@ -127,14 +129,11 @@
                 </h1>
                 <p class="mb-1" style="font-size: 12px; color: var(--color1);">Please enter your email address and verify with OTP</p>
                 <form id="loginForm">
-                    <div class="inputGroup">
-                        <p class="m-0 p-0 errorMsg text-danger"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid mobile number</p>
+                    <div class="inputGroup position-relative">
                         <div class="inputFieldContainer container1">
-                            <input type="text" class="emailInput" id="email" required="true" maxlength="10" placeholder="example@company.com">
+                            <input type="text" class="emailInput" id="email" placeholder="example@company.com">
                         </div>
-                        <div class="inputFieldContainer container2">
-                            <input type="text" class="referralInput" id="referral" placeholder="Referral code (optional)">
-                        </div>
+                        <p class="m-0 p-0 errorMsg text-danger position-absolute"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid email address</p>
                     </div>
                     <p id="referralErrorMsg" class="text-danger mt-1" style="font-size: 12px; display: none;"><i
                             class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid referral code</p>
@@ -163,23 +162,6 @@
         const loginForm = document.getElementById('loginForm')
         const errorMsg = document.querySelector('.errorMsg')
         const referralErrorMsg = document.getElementById('referralErrorMsg')
-
-        // email.addEventListener('focus', () => {
-        //     email.setAttribute('placeholder', 'example@company.com')
-        // })
-
-        // email.addEventListener('blur', () => {
-        //     email.setAttribute('placeholder', '')
-        // })
-
-        // referral.addEventListener('focus', () => {
-        //     referral.setAttribute('placeholder', 'Referral code')
-        //     referralErrorMsg.style.display = 'none'
-        // })
-
-        // referral.addEventListener('blur', () => {
-        //     referral.setAttribute('placeholder', '')
-        // })
 
         email.addEventListener('input', () => {
             errorMsg.style.display = 'none'

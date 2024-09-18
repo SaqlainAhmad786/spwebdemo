@@ -60,11 +60,11 @@
             position: relative;
         }
 
-        .inputGroup .errorMsg, .errorMsg2{
+        .inputGroup .errorMsg{
             display: none;
             font-size:12px;
             position: absolute;
-            top: 34px;
+            top: 36px;
         }
 
         .inputFieldContainer{
@@ -168,16 +168,6 @@
                 </h1>
                 <p class="mb-1" style="font-size: 12px; color: var(--color1);">Please enter your mobile number and verify with OTP</p>
                 <form id="loginForm">
-                    <!-- <div class="container">
-                        <input type="number" id="number" required="true">
-                        <label>Mobile number</label>
-                        <i></i>
-                    </div>
-                    <div class="container" style="margin-top: 20px;">
-                        <input type="text" id="referral" required>
-                        <label>Referral code (optional)</label>
-                        <i></i>
-                    </div> -->
                     <div class="inputGroup">
                         
                         <div class="inputFieldContainer container1">
@@ -185,10 +175,6 @@
                             <input type="number" class="numberInput" id="number" oninput="this.value = this.value.slice(0, 10);" placeholder="Enter Mobile Number">
                         </div>
                         <p class="m-0 p-0 errorMsg text-danger"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid mobile number</p>
-                        <span class="text-danger errorMsg2" style="font-size: 12px;"><i class="fa-solid fa-triangle-exclamation mr-1"></i>This field is required</span>
-                        <div class="inputFieldContainer container2">
-                            <input type="text" class="referralInput" id="referral" placeholder="Referral code (optional)">
-                        </div>
                     </div>
                     <div class="d-flex align-items-center mb-4"
                         style="gap: 4px;font-size: 12px;font-weight: 500; color: var(--color1);">
@@ -222,21 +208,10 @@
             document.querySelector('.container1').style.borderColor = '#d4d5d9'
         })
 
-        document.querySelector('.referralInput').addEventListener('focus', function () {
-            document.querySelector('.container2').style.borderColor = 'var(--color1)'
-        })
-
-        document.querySelector('.referralInput').addEventListener('blur', function () {
-            document.querySelector('.container2').style.borderColor = '#d4d5d9'
-        })
-
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault()
             if(number.value == 0000000000){
                 errorMsg.style.display = 'block'
-                document.querySelector('.container1').style.borderColor = 'red'
-            }else if(number.value.length != 10){
-                document.querySelector('.errorMsg2').style.display = 'block'
                 document.querySelector('.container1').style.borderColor = 'red'
             }else{
                 errorMsg.style.display = 'none'
@@ -246,7 +221,6 @@
 
         number.addEventListener('input', () => {
             errorMsg.style.display = 'none'
-            errorMsg2.style.display = 'none'
             number.style.borderColor = '#d4d5d9'
         })
 
