@@ -1374,52 +1374,29 @@ nav .wrapper {
 
 .mega-box .content {
     background: #fff;
-    padding: 25px 20px;
-    display: flex;
     width: 100%;
-    justify-content: space-between;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-.mega-box .content .row {
-    padding-left: 10px;
-    width: calc(25% - 30px);
-    line-height: 45px;
+.mega-box .content p {
+    color: var(--pinkcolor);
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+}
+
+.mega-box .content ul li {
+    margin: -16px;
+}
+
+.mega-box .content ul li a {
+    font-weight: 300;
 }
 
 .content .row img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.content .row header {
-    color: #000;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.content .row .mega-links {
-    margin-left: -40px;
-    border-left: 1px solid rgba(255, 255, 255, 0.09);
-}
-
-.row .mega-links li {
-    padding: 0 20px;
-    font-size: 15px;
-    margin-top: -15px;
-}
-
-.row .mega-links li a {
-    padding: 0px;
-    padding: 0 20px;
-    color: #000;
-    font-size: 15px;
-    display: block;
-}
-
-.row .mega-links li a:hover {
-    color: var(--maincolor);
 }
 
 .wrapper .btn {

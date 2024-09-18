@@ -194,22 +194,23 @@
                                         </div>
                                     </a> -->
                                     <div class="p-2">
-                                        <p class="mb-2 p-0 font-weight-light fs12" style="line-height: 1.1;">Welcome! Manage your account and orders easily</p>
+                                        <p class="mb-0 p-0 font-weight-bold">Welcome</p>
+                                        <p class="mb-2 p-0 font-weight-light fs10" style="line-height: 1.1;">Welcome! Manage your account and orders easily</p>
                                         <a href="#" class="loginSignupBtn">LOGIN/SIGNUP</a>
                                     </div>
                                     <hr class="my-1 mx-2 mt-2">
-                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Order History</a>
-                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Wishlist</a>
-                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Pre Order</a>
-                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Royal Club</a>
+                                    <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Order History</a>
+                                    <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Wishlist</a>
+                                    <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Pre Order</a>
+                                    <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Royal Club</a>
                                     <hr class="my-1 mx-2 mt-2">
-                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Saved Cards</a>
-                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Saved Address</a>
+                                    <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Saved Cards</a>
+                                    <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Saved Address</a>
                                     <hr class="my-1 mx-2 mt-2">
-                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Coupons</a>
-                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Invites & Credits</a>
-                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Contact us</a>
-                                    <a class="dropdown-item px-2 py-0 dropdown-item2" href="#">Logout</a>
+                                    <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Coupons</a>
+                                    <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Invites & Credits</a>
+                                    <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Contact us</a>
+                                    <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Logout</a>
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -236,7 +237,7 @@
         <nav>
             <div class="wrapper d-flex justify-content-center">
                 <ul class="nav-links text-center"> 
-                    <?php
+                    <!-- <?php
                     foreach ($this->getTitleCategory as $cindex => $catData) {
 
                     ?>
@@ -285,57 +286,107 @@
                         </li>
                     <?php
                     }
-                    ?>
+                    ?> -->
 
-                    <!-- <li>
+                    <li>
                         <a href="#" class="desktop-item">Women <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i> </a>
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Women </label>
                         <div class="mega-box">
-                            <div class="content">
-                                <div class="row">
-                                    <img src="<?= base_url('assets/new_website/img/categoryone.webp') ?>" class="img-fluid w-100 " style="object-fit: contain;" alt="">
+                        <div class="content row align-items-center">
+                                <div class="col-3 p-4">
+                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
-                                <div class="row">
-                                    <header>Shop By Category</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">dress material</a></li>
-
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row">
-                                    <header>Email Services</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">Personal Email</a></li>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row"></div>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </li> -->
-                    <!-- <li>
+                    </li>
+                    <li>
                         <a href="#" class="desktop-item">Men <i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i> </a>
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Men </label>
                         <div class="mega-box">
-                            <div class="content">
-                                <div class="row">
-                                    <img src="<?= base_url('assets/new_website/img/categoryone.webp') ?>" class="img-fluid w-100 " style="object-fit: contain;" alt="">
+                            <div class="content row align-items-center">
+                                <div class="col-3 p-4">
+                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
-                                <div class="row">
-                                    <header>Shop By Category</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">dress material</a></li>
-
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row">
-                                    <header>Email Services</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">Personal Email</a></li>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row"></div>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -344,24 +395,49 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Kids </label>
                         <div class="mega-box">
-                            <div class="content">
-                                <div class="row">
-                                    <img src="<?= base_url('assets/new_website/img/categoryone.webp') ?>" class="img-fluid w-100 " style="object-fit: contain;" alt="">
+                            <div class="content row align-items-center">
+                                <div class="col-3 p-4">
+                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
-                                <div class="row">
-                                    <header>Shop By Category</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">dress material</a></li>
-
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row">
-                                    <header>Email Services</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">Personal Email</a></li>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row"></div>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -370,24 +446,49 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">All Brands </label>
                         <div class="mega-box">
-                            <div class="content">
-                                <div class="row">
-                                    <img src="<?= base_url('assets/new_website/img/categoryone.webp') ?>" class="img-fluid w-100 " style="object-fit: contain;" alt="">
+                            <div class="content row align-items-center">
+                                <div class="col-3 p-4">
+                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
-                                <div class="row">
-                                    <header>Shop By Category</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">dress material</a></li>
-
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row">
-                                    <header>Email Services</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">Personal Email</a></li>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row"></div>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -396,24 +497,49 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Indian & Fusion Wear </label>
                         <div class="mega-box">
-                            <div class="content">
-                                <div class="row">
-                                    <img src="<?= base_url('assets/new_website/img/categoryone.webp') ?>" class="img-fluid w-100 " style="object-fit: contain;" alt="">
+                            <div class="content row align-items-center">
+                                <div class="col-3 p-4">
+                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
-                                <div class="row">
-                                    <header>Shop By Category</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">dress material</a></li>
-
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row">
-                                    <header>Email Services</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">Personal Email</a></li>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row"></div>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -422,24 +548,49 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Indian & Fusion Wear </label>
                         <div class="mega-box">
-                            <div class="content">
-                                <div class="row">
-                                    <img src="<?= base_url('assets/new_website/img/categoryone.webp') ?>" class="img-fluid w-100 " style="object-fit: contain;" alt="">
+                            <div class="content row align-items-center">
+                                <div class="col-3 p-4">
+                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
-                                <div class="row">
-                                    <header>Shop By Category</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">dress material</a></li>
-
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row">
-                                    <header>Email Services</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">Personal Email</a></li>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row"></div>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -448,27 +599,52 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Indian & Fusion Wear </label>
                         <div class="mega-box">
-                            <div class="content">
-                                <div class="row">
-                                    <img src="<?= base_url('assets/new_website/img/categoryone.webp') ?>" class="img-fluid w-100 " style="object-fit: contain;" alt="">
+                            <div class="content row align-items-center">
+                                <div class="col-3 p-4">
+                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
-                                <div class="row">
-                                    <header>Shop By Category</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">dress material</a></li>
-
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row">
-                                    <header>Email Services</header>
-                                    <ul class="mega-links">
-                                        <li><a href="#">Personal Email</a></li>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="row"></div>
+                                <div class="col-3 py-3">
+                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
+                                    <ul>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </li> -->
+                    </li>
 
                 </ul>
                 <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
@@ -482,7 +658,8 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6  col-6">
                         <div class="header__right p-relative">
                             <div class="mobile-menu-btn text-center d-lg-none d-flex justify-content-between">
-                                <a href="<?= base_url() ?>"><img src="<?= !empty($this->webLogo) ? base_url('uploads/logo/' . $this->webLogo['web_header_logo']) : '' ?>" class="mobile_header" alt="<?= !empty($this->webLogo) ? $this->webLogo['web_header_logo_alt'] : '' ?>" title="<?= !empty($this->webLogo) ? $this->webLogo['web_header_logo_title'] : '' ?>"></a>
+                                <!-- <a href="<?= base_url() ?>"><img src="<?= !empty($this->webLogo) ? base_url('uploads/logo/' . $this->webLogo['web_header_logo']) : '' ?>" class="mobile_header" alt="<?= !empty($this->webLogo) ? $this->webLogo['web_header_logo_alt'] : '' ?>" title="<?= !empty($this->webLogo) ? $this->webLogo['web_header_logo_title'] : '' ?>"></a> -->
+                                 <a href=""><img src="<?=base_url('assets/new_website/img/memberLogo.png') ?>" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -502,25 +679,27 @@
                                         <span class="badge badge-pill badge-danger" id="mobile_cart-count">3</span> </a>
                                 </li>
                                 <li> <a href="javascript:void(0);"><i class="bx bx-user"></i></a>
-                                    <ul class="extra-info">
+                                    <ul class="extra-info p-0">
                                         <li>
                                             <div class="my-account">
-                                                <ul>
-                                                    <li><a href="#"> <i class="fa-regular fa-user"></i>
-                                                            Profile</a></li>
-                                                    <li><a href="#"> <i class="fa-solid fa-clock-rotate-left"></i> Order
-                                                            History</a></li>
-                                                    <li><a href="#"> <i class="fa-solid fa-table-columns"></i>
-                                                            Club Dashboard</a></li>
-                                                    <li><a href="#"> <i class="fa-solid fa-wallet"></i>
-                                                            Wallet</a></li>
-                                                    <li><a href="#"> <i class="fa-solid fa-share"></i> Share A
-                                                            Friend</a></li>
-                                                    <li><a href="#"> <i class="fa-solid fa-mobile-screen-button"></i>
-                                                            Share App With Friend</a></li>
-                                                    <li><a href="#"> <i class="fa-solid fa-right-from-bracket"></i>
-                                                            Logout</a></li>
-                                                </ul>
+                                                <div class="p-2">
+                                                    <p class="mb-0 p-0 font-weight-bold">Welcome</p>
+                                                    <p class="mb-2 p-0 font-weight-light fs10" style="line-height: 1.1;">Welcome! Manage your account and orders easily</p>
+                                                    <a href="#" class="loginSignupBtn">LOGIN/SIGNUP</a>
+                                                </div>
+                                                <hr class="my-1 mx-2 mt-2">
+                                                <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Order History</a>
+                                                <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Wishlist</a>
+                                                <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Pre Order</a>
+                                                <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Royal Club</a>
+                                                <hr class="my-1 mx-2 mt-2">
+                                                <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Saved Cards</a>
+                                                <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Saved Address</a>
+                                                <hr class="my-1 mx-2 mt-2">
+                                                <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Coupons</a>
+                                                <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Invites & Credits</a>
+                                                <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Contact us</a>
+                                                <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Logout</a>
                                             </div>
                                         </li>
                                     </ul>

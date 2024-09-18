@@ -56,15 +56,21 @@
             accent-color: var(--color2);
         }
 
-        .inputGroup .errorMsg{
+        .inputGroup{
+            position: relative;
+        }
+
+        .inputGroup .errorMsg, .errorMsg2{
             display: none;
             font-size:12px;
+            position: absolute;
+            top: 34px;
         }
 
         .inputFieldContainer{
             border: 1px solid #d4d5d9;
             padding-inline:8px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             transition: all 200ms ease-in-out;
         }
 
@@ -72,6 +78,7 @@
             border: none;
             outline: none;
             padding: 6px;
+            width: 80%;
         }
 
         .inputFieldContainer input:focus .inputFieldContainer{
@@ -172,11 +179,13 @@
                         <i></i>
                     </div> -->
                     <div class="inputGroup">
-                        <p class="m-0 p-0 errorMsg text-danger"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid email address</p>
+                        
                         <div class="inputFieldContainer container1">
                             <span>+91 | </span>
-                            <input type="number" class="numberInput" id="number" required="true" maxlength="10" placeholder="Enter Mobile Number">
+                            <input type="number" class="numberInput" id="number" oninput="this.value = this.value.slice(0, 10);" placeholder="Enter Mobile Number">
                         </div>
+                        <p class="m-0 p-0 errorMsg text-danger"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid mobile number</p>
+                        <span class="text-danger errorMsg2" style="font-size: 12px;"><i class="fa-solid fa-triangle-exclamation mr-1"></i>This field is required</span>
                         <div class="inputFieldContainer container2">
                             <input type="text" class="referralInput" id="referral" placeholder="Referral code (optional)">
                         </div>
@@ -189,7 +198,7 @@
                     <p class="mb-2" style="font-size: 12px;">By continuing, I agree to the <a href="#"
                             style="color: var(--color1); font-weight: 600;">Terms of Use</a>
                         and <a href="#" style="color: var(--color1); font-weight: 600;">Privacy Policy</a></p>
-                    <button type="submit" class="loginBtn disabled" disabled>LOGIN</button>
+                    <button type="submit" class="loginBtn">LOGIN</button>
                     <p class="text-center" style="font-size: 14px; color: gray;">Login via <a href="./loginEmail.html"
                             style="color: var(--color1); font-weight: 600;">Email</a>
                     </p>
@@ -221,24 +230,24 @@
             document.querySelector('.container2').style.borderColor = '#d4d5d9'
         })
 
-        number.addEventListener('input', function validate() {
-            if (number.value.length === 10) {
-                document.querySelector('.loginBtn').removeAttribute('disabled')
-                document.querySelector('.loginBtn').classList.remove('disabled')
-            } else {
-                document.querySelector('.loginBtn').disabled = true
-            }
-        })
-
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault()
             if(number.value == 0000000000){
                 errorMsg.style.display = 'block'
                 document.querySelector('.container1').style.borderColor = 'red'
+            }else if(number.value.length != 10){
+                document.querySelector('.errorMsg2').style.display = 'block'
+                document.querySelector('.container1').style.borderColor = 'red'
             }else{
                 errorMsg.style.display = 'none'
                 document.querySelector('.container1').style.borderColor = '#d4d5d9'
             }
+        })
+
+        number.addEventListener('input', () => {
+            errorMsg.style.display = 'none'
+            errorMsg2.style.display = 'none'
+            number.style.borderColor = '#d4d5d9'
         })
 
     </script>
