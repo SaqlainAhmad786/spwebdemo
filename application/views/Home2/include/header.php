@@ -2,6 +2,10 @@
     .fs10 {
         font-size: 10px;
     }
+
+    .fs12 {
+        font-size: 12px;
+    }
     .royalClubBtn {
         background-color: #F5F5F6;
         border-radius: 100vh;
@@ -29,7 +33,7 @@
     }
 
     .loginSignupBtn:hover{
-        background-color: var(--pinkcolor);
+        background-color: var(--pinkcolor)!important;
         color: white!important;
     }
     
@@ -57,7 +61,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 d-flex justify-content-end text-end">
                     <div class="top_right text-right show_left right_top_conetnt">
                         <ul class="main_ul">
-                            <li><i class="bx bx-user-circle"></i> Miss. khushi </li>
+                            <!-- <li><i class="bx bx-user-circle"></i> Miss. khushi </li> -->
                             <li><a href="<?= base_url() ?>/Home/appDownload">
                                     <i class="bx bx-mobile-alt"></i>
                                     App Download</a></li>
@@ -179,10 +183,11 @@
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-nowrap dropdown-toggle" aria-current="page" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class=' bx bx-user'></i> Account
+                                <a class="nav-link text-nowrap dropdown-toggle d-flex align-items-center fs12" aria-current="page" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class=' bx bx-user'></i>
+                                    <span class="ml-1">Account</span>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 200px;">
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 208px;">
                                     <!-- <a class="dropdown-item px-3 dropdown-item2 d-flex align-items-center" href="#">
                                         <i class="fa-regular fa-user"></i>
                                         <div class="d-flex flex-column ml-2" style="line-height: 1.1;">
@@ -195,7 +200,7 @@
                                     </a> -->
                                     <div class="p-2">
                                         <p class="mb-0 p-0 font-weight-bold">Welcome</p>
-                                        <p class="mb-2 p-0 font-weight-light fs10" style="line-height: 1.1;">Welcome! Manage your account and orders easily</p>
+                                        <p class="mb-2 p-0 font-weight-light fs10" style="line-height: 1.1;">Manage your account and orders easily</p>
                                         <a href="#" class="loginSignupBtn">LOGIN/SIGNUP</a>
                                     </div>
                                     <hr class="my-1 mx-2 mt-2">
@@ -210,21 +215,26 @@
                                     <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Coupons</a>
                                     <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Invites & Credits</a>
                                     <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Contact us</a>
+                                    <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Edit Profile</a>
                                     <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Logout</a>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-nowrap" href="#">
+                                <a class="nav-link text-nowrap d-flex align-items-center" href="#">
                                     <i class=' bx bx-heart'></i>
-                                    Wishlist
-                                    <span class="badge badge-pill badge-danger" id="wishlist-count">2</span>
+                                    <div class="ml-1">
+                                        Wishlist
+                                        <span class="badge badge-pill badge-danger" id="wishlist-count">2</span>
+                                    </div>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-nowrap" href="#">
+                                <a class="nav-link text-nowrap d-flex align-items-center" href="#">
                                     <i class=' bx bx-shopping-bag'></i>
-                                    Cart
-                                    <span class="badge badge-pill badge-danger" id="cart-count">3</span>
+                                    <div class="ml-1">
+                                        Bag
+                                        <span class="badge badge-pill badge-danger" id="cart-count">3</span>
+                                    </div>
                                 </a>
                             </li>
                         </ul>
@@ -293,7 +303,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Women </label>
                         <div class="mega-box">
-                        <div class="content row align-items-center">
+                            <div class="content row text-left">
                                 <div class="col-3 p-4">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
@@ -344,22 +354,12 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Men </label>
                         <div class="mega-box">
-                            <div class="content row align-items-center">
+                            <div class="content row text-left">
                                 <div class="col-3 p-4">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
-                                <div class="col-3 py-3">
-                                    <p class="font-weight-bold">Lorem, ipsum dolor.</p>
-                                    <ul>
-                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
-                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
-                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
-                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
-                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
-                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
-                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
-                                        <li><a href="#">Lorem, ipsum dolor.</a></li>
-                                    </ul>
+                                <div class="col-3 p-4">
+                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
                                 <div class="col-3 py-3">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
@@ -395,7 +395,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Kids </label>
                         <div class="mega-box">
-                            <div class="content row align-items-center">
+                            <div class="content row text-left">
                                 <div class="col-3 p-4">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
@@ -446,7 +446,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">All Brands </label>
                         <div class="mega-box">
-                            <div class="content row align-items-center">
+                            <div class="content row text-left">
                                 <div class="col-3 p-4">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
@@ -497,7 +497,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Indian & Fusion Wear </label>
                         <div class="mega-box">
-                            <div class="content row align-items-center">
+                            <div class="content row text-left">
                                 <div class="col-3 p-4">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
@@ -548,7 +548,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Indian & Fusion Wear </label>
                         <div class="mega-box">
-                            <div class="content row align-items-center">
+                            <div class="content row text-left">
                                 <div class="col-3 p-4">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
@@ -599,7 +599,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Indian & Fusion Wear </label>
                         <div class="mega-box">
-                            <div class="content row align-items-center">
+                            <div class="content row text-left">
                                 <div class="col-3 p-4">
                                     <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
                                 </div>
@@ -651,7 +651,7 @@
             </div>
         </nav>
     </div>
-    <div class="mobile_Header">
+    <div class="mobile_Header bg-white">
         <div class="header__area ">
             <div class="container-fluid ">
                 <div class="row align-items-center">
@@ -659,7 +659,7 @@
                         <div class="header__right p-relative">
                             <div class="mobile-menu-btn text-center d-lg-none d-flex justify-content-between">
                                 <!-- <a href="<?= base_url() ?>"><img src="<?= !empty($this->webLogo) ? base_url('uploads/logo/' . $this->webLogo['web_header_logo']) : '' ?>" class="mobile_header" alt="<?= !empty($this->webLogo) ? $this->webLogo['web_header_logo_alt'] : '' ?>" title="<?= !empty($this->webLogo) ? $this->webLogo['web_header_logo_title'] : '' ?>"></a> -->
-                                 <a href=""><img src="<?=base_url('assets/new_website/img/memberLogo.png') ?>" alt=""></a>
+                                 <a href=""><img style="max-width: 170px;" src="<?=base_url('assets/new_website/img/memberLogo.png') ?>" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -684,7 +684,7 @@
                                             <div class="my-account">
                                                 <div class="p-2">
                                                     <p class="mb-0 p-0 font-weight-bold">Welcome</p>
-                                                    <p class="mb-2 p-0 font-weight-light fs10" style="line-height: 1.1;">Welcome! Manage your account and orders easily</p>
+                                                    <p class="mb-2 p-0 font-weight-light fs10" style="line-height: 1.1;">Manage your account and orders easily</p>
                                                     <a href="#" class="loginSignupBtn">LOGIN/SIGNUP</a>
                                                 </div>
                                                 <hr class="my-1 mx-2 mt-2">
@@ -699,6 +699,7 @@
                                                 <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Coupons</a>
                                                 <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Invites & Credits</a>
                                                 <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Contact us</a>
+                                                <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Edit Profile</a>
                                                 <a class="dropdown-item px-3 py-0 dropdown-item2" href="#">Logout</a>
                                             </div>
                                         </li>
@@ -731,7 +732,7 @@
         </div>
 </header>
 
-<section class="category_section">
+<section class="category_section bg-white">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 pr-0">
@@ -802,7 +803,7 @@
             <i class="bx bx-user"></i>
             <a href="javascript:void(0);" class="extra__info-close-btn"><i class="fal fa-times"></i></a>
         </div> -->
-        <div class="UserName_here">
+        <!-- <div class="UserName_here">
             <nav class="side-mobile-menu d-block d-lg-none p-0">
                 <ul id="mobile-menu">
                     <li>
@@ -816,10 +817,13 @@
                     </li>
                 </ul>
             </nav>
+        </div> -->
+        <div>
+            <img src="<?=base_url() ?>assets/new_website/img/login-cover.jpg" alt="">
         </div>
         <nav class="side-mobile-menu d-block d-lg-none">
             <ul id="mobile-menu-active">
-                <?php
+                <!-- <?php
                 foreach ($this->getTitleCategory as $cindex => $catData) {
 
                 ?>
@@ -842,14 +846,14 @@
                     </li>
                 <?php
                 }
-                ?>
-                <!-- <li class="active has-dropdown"><a href="<?= base_url() ?>">Women </a>
+                ?> -->
+                <li class="active has-dropdown"><a href="<?= base_url() ?>">Men </a>
                     <ul class="submenu transition-3">
                         <li><a href="#">dress material</a></li>
                         <li><a href="#">Personal Email</a></li>
                     </ul>
                 </li>
-                <li class="active has-dropdown"><a href="<?= base_url() ?>">Men </a>
+                <li class="active has-dropdown"><a href="<?= base_url() ?>">Women </a>
                     <ul class="submenu transition-3">
                         <li><a href="#">dress material</a></li>
                         <li><a href="#">Personal Email</a></li>
@@ -878,9 +882,19 @@
                         <li><a href="#">dress material</a></li>
                         <li><a href="#">Personal Email</a></li>
                     </ul>
-                </li> -->
+                </li>
             </ul>
+            <hr class="m-0"> 
+            <div class="d-flex flex-column">
+                <a href="#" class="fs12 py-2" style="font-weight:300;">Gift card</a>
+                <a href="#" class="fs12 py-2" style="font-weight:300;">Contact us</a>
+                <a href="#" class="fs12 py-2" style="font-weight:300;">FAQs</a>
+                <a href="#" class="fs12 py-2" style="font-weight:300;">Legal</a>
+            </div>
         </nav>
+        <div>
+            <img src="<?=base_url() ?>assets/new_website/img/appPoster2.png" alt="">
+        </div>
     </div>
 </section>
 <div class="body-overlay transition-3"></div>

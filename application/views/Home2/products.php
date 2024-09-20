@@ -1929,9 +1929,6 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-6 col-6 p-1">
-                            <img src="<?= base_url('assets/new_website/img/appPoster.png') ?>" style="object-fit: cover;" alt="">
-                        </div>
                         <div class="productCard col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-6 col-6 p-1">
                             <!-- <div class="newTag">
                                 <div class="string"></div>
@@ -2084,6 +2081,11 @@
                                     <p class="m-0" style="font-size: 12px;">Get it by <span
                                             class="font-weight-bold">Sat, Aug 31</span></p>
                                 </div>
+                            </a>
+                        </div>
+                        <div class="d-lg-none d-md-none d-sm-none d-xs-block d-block col-12 p-1">
+                            <a href="#">
+                                <img src="<?= base_url('assets/new_website/img/appPoster2.png') ?>" style="object-fit: cover;" alt="">
                             </a>
                         </div>
                         <div class="productCard col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-6 col-6 p-1">

@@ -14,9 +14,8 @@
             --color4: rgb(243 244 246);
         }
 
-        main{
+        body{
             background-image: linear-gradient(127deg, #feedf4 0%, #fcf0e3 100%);
-            height: 80vh;
         }
 
         .redirectDialogContainer {
@@ -101,7 +100,7 @@
 
 <body>
     <?php include('include/header.php'); ?>
-    <main class="d-flex align-items-center" style="min-height: 60vh;">
+    <main class="d-flex align-items-center">
         <!-- <div class="redirectDialogContainer">
             <div class="redirectDialog">
                 <img src="<?=base_url('assets/new_website/img/loader.gif')?>" style="width: 80px;" alt="">
@@ -109,7 +108,7 @@
                 <p>It will take some time</p>
             </div>
         </div> -->
-        <div class="bg-white px-4 py-4 mx-auto" style="width:30%; min-width: 360px; border-radius: 8px;">
+        <div class="bg-white p-4 mx-auto rounded-lg mt-sm-2 mt-md-4 mt-lg-4 mt-0">
             <!-- <a class="d-block mb-4" href="loginEmail.html">
                 <i class="fa-solid fa-arrow-left"></i>
             </a> -->

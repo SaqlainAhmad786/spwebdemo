@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Slick Pattern - Cart </title>
     <?php include('include/cssLinks.php'); ?>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
 </head>
 
 <body>
@@ -750,6 +754,49 @@
         }
         @keyframes cursor {
             50% { border-color: transparent }
+        }
+
+        .mobileSwiperContainer{
+            width:90%;
+            background-color: #FCE7F1;
+            margin-inline: auto;
+        }
+
+        .mobileSwiperContainer p:nth-child(1){
+            font-size: 16px;
+        }
+
+        .swiper {
+            height: 440px;
+            width: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* padding-inline: 40px; */
+            position: relative;
+        }
+
+        .swiper-slide img {
+            display: block;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev{
+            background-color:rgba(0,0,0,0.15);
+            font-size: 16px;
+            border-radius: 100vh;
+            padding: 0px 14px;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after{
+            color: var(--pinkcolor);
+            font-size: 16px
         }
 
         @media (width<1150px) {
@@ -2327,7 +2374,7 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section class="d-lg-block d-md-block d-sm-block d-xs-block d-none">
             <div class="productsContainer">
                 <p class="font-weight-bold text-dark" style="font-size: 18px;">You may also like</p>
                 <hr class="mt-1 mb-3">
@@ -2439,7 +2486,51 @@
                 </div>
             </div>
         </section>
+        <section class="d-lg-none d-md-none d-sm-none d-xs-none d-block">
+            <div class="my-4 p-3 rounded-lg mobileSwiperContainer">
+                <p class="font-weight-bold text-dark">You may also like</p>
+                <hr>
+                <div class="swiper productSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" class="card-img-top" style="width:240px; height: 280px; object-fit: cover" alt="...">
+                                <div class="my-1 p-2 text-center" style="font-size: 14px">
+                                    <p class="font-weight-bold text-dark">Lorem, ipsum.</p>
+                                    <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
+                                    <p>
+                                        <span>₹1,999</span>
+                                        <span class="text-secondary" style="text-decoration: line-through">₹2,999</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px; white-space: nowrap">10% off</span></p>
+                                </div>
+                                <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
+                                    style="font-size: 14px; color: var(--color2);">ADD TO BAG</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" class="card-img-top" style="width:240px; height: 280px; object-fit: cover" alt="...">
+                                <div class="my-1 p-2 text-center" style="font-size: 14px">
+                                    <p class="font-weight-bold text-dark">Lorem, ipsum.</p>
+                                    <p class="text-secondary" style="font-size: 12px">T-Shirt</p>
+                                    <p>
+                                        <span>₹1,999</span>
+                                        <span class="text-secondary" style="text-decoration: line-through">₹2,999</span>
+                                        <span class="font-weight-bold text-success" style="font-size: 12px; white-space: nowrap">10% off</span></p>
+                                </div>
+                                <button onclick="scrollToTop()" class="btn font-weight-bold border-top rounded-0"
+                                    style="font-size: 14px; color: var(--color2);">ADD TO BAG</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         const closeBtn = document.querySelectorAll('.closeBtn');
         const modal = document.querySelectorAll('.closeProductDialogBtn')
@@ -2823,6 +2914,16 @@
             royalSidebar.style.boxShadow = "none";
             document.body.classList.remove('sidebar-open');
         }
+
+        var swiper = new Swiper('.productSwiper', {
+                slidesPerView: 1,
+                spaceBetween: 0,
+                autoplay:false,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                }
+        });
 
     </script>
     <?php include('include/footer.php'); ?>

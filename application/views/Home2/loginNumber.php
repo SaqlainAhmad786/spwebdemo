@@ -42,6 +42,10 @@
             width: 100%;
         }
 
+        .loginContainer{
+            margin-top: 60px;
+        }
+
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -147,17 +151,26 @@
         .ytp-title {
             display: none !important;
         }
+
+        @media (width< 568px) {
+            body{
+                background-image: none;
+            }
+
+            .loginContainer{
+                margin-top: 0;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <?php include('include/header.php'); ?>
     <main>
         <!-- 30 second redirect popup -->
-        <div class="text-center">
-            <p class="mb-0 text-dark d-inline px-2 py-1 rounded-bottom" style="background-color: #FFFAE8; font-size: 12px" ><i class="fa-regular fa-circle-xmark mr-1 text-danger"></i>Sorry your account is temporarily disabled for 00:30 min</p>
+        <div class="text-center mb-2">
+            <p class="mb-0 text-dark d-inline px-2 py-1 rounded-bottom shadow-sm" style="background-color: #FFFAE8; font-size: 12px" ><i class="fa-regular fa-circle-xmark mr-1 text-danger"></i>Sorry your account is temporarily disabled for 00:30 min</p>
         </div>
-        <div class="loginContainer bg-white mx-auto mt-5 shadow my-lg-4 my-md-2" style="max-width: 400px;">
+        <div class="loginContainer bg-white mx-auto my-lg-4 my-md-2" style="max-width: 400px;">
             <div>
             <img src="<?=base_url('assets/new_website/img/login-cover.jpg')?>" alt="">
             </div>

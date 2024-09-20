@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Slick Pattern - Home </title>
     <?php include('include/cssLinks.php'); ?>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <style>
         .fs10{
             font-size: 10px;
@@ -13,7 +17,314 @@
         .fs12{
             font-size: 12px;
         }
+        .fs16{
+            font-size: 16px;
+        }
+
+        .homePageSlider .carousel-item {
+            max-height: 600px;
+        }
+
+        .homePageSlider .carousel-item img {
+            max-height: 600px;
+            object-fit: cover;
+        }
+
+        .carousel-text{
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            color: white;
+            text-align: center;
+            width: 80%;
+        }
+
+        .carousel-text p:nth-child(1){
+            font-size: 12px;
+            line-height: 1.2;
+        }
+
+        .carousel-text p:nth-child(2){
+            font-size: 40px;
+            line-height: 1.2;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-family: var(--heading_font);
+        }
+
+        .carousel-text p:nth-child(3){
+            width: 80%;
+            line-height: 1;
+            font-size: 16px;
+            margin-inline: auto;
+            margin-bottom: 40px;
+        }
+
+        .carousel-text a{
+            border: 2px solid white;
+            color: white;
+            padding: 8px 16px;
+            font-size: 18px;
+            font-family: var(--heading_font);
+        }
+
+        .carousel-indicators {
+            margin-bottom: 0.5rem;
+        }
         
+        .swiper {
+            width: 100%;
+        }
+
+        .offerSwiper{
+            height: 192px;
+        }
+
+        .welcomeSwiper{
+            height: 260px;
+        }
+
+        .fourthSwiper{
+            height:480px;
+        }
+
+        .latestSwiper{
+            height: 440px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* padding-inline: 40px; */
+            position: relative;
+        }
+
+        .swiper-slide img {
+            display: block;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev{
+            background-color:rgba(0,0,0,0.15);
+            font-size: 16px;
+            border-radius: 100vh;
+            padding: 0px 14px;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after{
+            color: var(--pinkcolor);
+            font-size: 16px
+        }
+
+        .productSliderCard{
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }
+
+        .productSliderCard p{
+            font-family: var(--heading_font)!important;
+            color: var(--maincolor);
+        }
+
+        .productSliderCard a:hover{
+            color: var(--pinkcolor);
+        }
+        
+        .productSliderCard .img-container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .productSliderCard .img-card{
+            height: 72px;
+            width: 120px;
+        }
+
+        .productSliderCard .img-card img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .prebookTag h2{
+            font-family: var(--heading_font);
+            color: white;
+            z-index: 5;
+            position: absolute;
+            font-size: 16px;
+            transform: rotate(-45deg);
+            line-height: 1;
+            margin-top: 20px;
+            margin-left: 8px;
+        }
+
+        .triangle_top_left {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 100px 100px 0 0;
+            border-color: var(--maincolor) transparent transparent transparent;
+        }
+
+        /* From Uiverse.io by vinodjangid07 */ 
+        /* The switch - the box around the speaker*/
+        .toggleSwitch {
+        width: 50px;
+        height: 50px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(39, 39, 39);
+        border-radius: 50%;
+        cursor: pointer;
+        transition-duration: .3s;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.13);
+        overflow: hidden;
+        }
+
+        /* Hide default HTML checkbox */
+        #checkboxInput {
+        display: none;
+        }
+
+        .bell {
+        width: 18px;
+        }
+
+        .bell path {
+        fill: white;
+        }
+
+        .speaker {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        transition-duration: .3s;
+        }
+
+        .speaker svg {
+        width: 18px;
+        }
+
+        .mute-speaker {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        z-index: 3;
+        transition-duration: .3s;
+        }
+
+        .mute-speaker svg {
+        width: 18px;
+        }
+
+        #checkboxInput:checked +.toggleSwitch .speaker {
+        opacity: 0;
+        transition-duration: .3s;
+        }
+
+        #checkboxInput:checked +.toggleSwitch .mute-speaker {
+        opacity: 1;
+        transition-duration: .3s;
+        }
+
+        #checkboxInput:active + .toggleSwitch {
+        transform: scale(0.7);
+        }
+
+        #checkboxInput:hover + .toggleSwitch {
+        background-color: rgb(61, 61, 61);
+        }
+
+        .welcomeSliderCard{
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .welcomeSliderCard img{
+            transition-duration: 3s;
+        }
+
+        .welcomeSliderCard:hover{
+            color: black;
+        }
+
+        .welcomeSliderCard:hover img{
+            scale: 1.2;
+        }
+
+        .welcomeSliderCardText{
+            background-image: url("<?=base_url('assets/new_website/img/pinkTexture.jpg') ?>");
+            position: absolute;
+            width:95%;
+            border-radius: 4px;
+            bottom: 6px; 
+            left: 50%;
+            transform: translateX(-50%); 
+        }
+
+        .welcomeSliderCardText p{
+            font-family: var(--heading_font)!important;
+        }
+
+        .latestSliderCard{
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            text-decoration:none;
+        }
+
+        .latestSliderCard:hover{
+            color:black;
+        }
+
+        .latestSliderCard .imgCont{
+            height: 280px;
+            width: 100%;
+        }
+
+        .latestSliderCard .imgCont img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .latestSliderCardText{
+            background-color:rgba(0,0,0,0.05);
+        }
+
+        .latestSliderCardText p{
+            font-family: var(--heading_font)!important;
+        }
+
+        .latestSliderCardText p:first-child{
+            line-height:1;
+        }
+
+        .latestSliderCardText .price{
+            color: var(--maincolor);
+            font-weight:500;
+            font-size: 18px;
+        }
+
         .youtube-embed-container {
             position: relative;
             width: 800px;
@@ -49,25 +360,118 @@
         .ytp-title {
             display: none !important;
         }
+
+        @media (width< 768px) {
+            .carousel-text p:nth-child(2){
+                font-size: 28px;
+            }
+
+            .fourthSwiper{
+                height:320px;
+            }
+        }
+
+        @media (width< 576px) {
+            .offerSwiper{
+                height: 102px;
+            }
+            
+            .carousel-text p:nth-child(2){
+                font-size: 20px;
+            }
+
+            .carousel-text p:nth-child(3){
+                font-size: 12px;
+                margin-bottom: 16px;
+            }
+
+            .carousel-text a, .carousel-text button{
+                font-size: 14px;
+            }
+
+            .welcomeSwiper{
+                height: 208px;
+            }
+
+            .fourthSwiper{
+                height:160px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <?php include('include/header.php'); ?>
     <main>
+        <div id="carouselExampleIndicators" class="carousel slide homePageSlider" data-ride="carousel">
+            <ol class="carousel-indicators"> 
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D" class="d-block w-100" alt="...">
+                    <div class="carousel-text d-block position-absolute">
+                        <p class="animate__animated animate__fadeInUp">Good Morning</p>
+                        <p class="animate__animated animate__fadeInUp animate__delay-1s">Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                        <p class="animate__animated animate__fadeInUp animate__delay-2s">Lorem ipsum dolor sit, amet consectetur adipisicing elit. A tempora obcaecati facere voluptate distinctio, adipisci nemo vero minus harum iure.</p>
+                        <a href="#">SHOP NOW</a>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <!-- <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D" class="d-block w-100" alt="..."> -->
+                    <video width="100%" height="100%" controls autoplay="autoplay" loop muted id="myVideo">
+                        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="carousel-text d-block position-absolute" style="bottom: 0;">
+                        <div class="d-flex justify-content-center">
+                            <input type="checkbox" id="checkboxInput" class="muteBtn" checked>
+                            <label for="checkboxInput" class="toggleSwitch">
+                                <div class="speaker"><svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 75 75">
+                                <path d="M39.389,13.769 L22.235,28.606 L6,28.606 L6,47.699 L21.989,47.699 L39.389,62.75 L39.389,13.769z" style="stroke:#fff;stroke-width:5;stroke-linejoin:round;fill:#fff;"></path>
+                                <path d="M48,27.6a19.5,19.5 0 0 1 0,21.4M55.1,20.5a30,30 0 0 1 0,35.6M61.6,14a38.8,38.8 0 0 1 0,48.6" style="fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round"></path>
+                                </svg></div>
+
+                                <div class="mute-speaker"><svg version="1.0" viewBox="0 0 75 75" stroke="#fff" stroke-width="5">
+                                <path d="m39,14-17,15H6V48H22l17,15z" fill="#fff" stroke-linejoin="round"></path>
+                                <path d="m49,26 20,24m0-24-20,24" fill="#fff" stroke-linecap="round"></path>
+                                </svg></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>               
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D" class="d-block w-100" alt="...">
+                    <div class="carousel-text d-block position-absolute">
+                        <p class="animate__animated animate__fadeInUp">Good Morning</p>
+                        <p class="animate__animated animate__fadeInUp animate__delay-1s">Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                        <p class="animate__animated animate__fadeInUp animate__delay-2s">Lorem ipsum dolor sit, amet consectetur adipisicing elit. A tempora obcaecati facere voluptate distinctio, adipisci nemo vero minus harum iure.</p>
+                        <a href="#">SHOP NOW</a>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        
         <!-- __________slider_____section_____ -->
-        <section class="slider_area" id="slider_section">
+
+        <!-- <section class="slider_area" id="slider_section">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="slider_Image_here slider">
                             <div class="contain slides_all">
                                 <div id="topSlider" class="owl-carousel owl-theme">
-                                    <div class="item"><img src="https://img.freepik.com/free-photo/top-view-model-covered-with-clothes_23-2149704522.jpg" alt="Image 1"></div>
-                                    <div class="item"><img src="https://img.freepik.com/free-photo/top-view-model-covered-with-clothes_23-2149704522.jpg" alt="Image 2"></div>
-                                    <div class="item"><img src="https://img.freepik.com/free-photo/top-view-model-covered-with-clothes_23-2149704522.jpg" alt="Image 3"></div>
-
-                                    <!-- <?php
+                                    <?php
                                     foreach ($sliders as $slider) {
 
                                         if (!empty($slider['video_url'])) {
@@ -101,14 +505,14 @@
                                             }
                                         }
                                     }
-                                    ?> -->
+                                    ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- _______offersection___________ -->
 
@@ -130,38 +534,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="banner__area-2 ">
-                        <div class="container-fluid">
-                            <div class="contain">
-                                <div id="offer_owl" class="owl-carousel owl-theme">
-                                    <div class="item">
-                                        <div class="banner__item-2 banner-right p-relative mb-30 pr-15">
-                                            <div class="banner__thumb fix">
-                                                <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/bn1.avif') ?>" alt="banner"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="banner__item-2 banner-left p-relative mb-30 pl-15">
-                                            <div class="banner__thumb fix">
-                                                <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/bn1.avif') ?>" alt="banner"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="banner__item-2 banner-left p-relative mb-30 pl-15">
-                                            <div class="banner__thumb fix">
-                                                <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/bn1.avif') ?>" alt="banner"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="banner__item-2 banner-left p-relative mb-30 pl-15">
-                                            <div class="banner__thumb fix">
-                                                <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/bn1.avif') ?>" alt="banner"></a>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="swiper offerSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div>
+                                    <img src="<?= base_url('assets/new_website/img/bn1.avif') ?>" alt="">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div>
+                                    <img src="<?= base_url('assets/new_website/img/bn1.avif') ?>" alt="">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div>
+                                    <img src="<?= base_url('assets/new_website/img/bn1.avif') ?>" alt="">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div>
+                                    <img src="<?= base_url('assets/new_website/img/bn1.avif') ?>" alt="">
                                 </div>
                             </div>
                         </div>
@@ -185,7 +577,7 @@
                     <div class="container-fluid pb-30">
                         <div class="row">
                             <div class="col-xl-12">
-                                <div class="welcome__slider owl-carousel">
+                                <!-- <div class="welcome__slider owl-carousel">
                                     <?php
                                     // var_dump($getWelcomeStoreProducts[0]);
                                     foreach ($getWelcomeStoreProducts as $eachStoreProducts) {
@@ -203,6 +595,97 @@
                                             </div>
                                         </div>
                                     <?php } ?>
+                                    <div class="blog__item">
+                                        <div class="blog__thumb fix ">
+                                            <a href="#" class="w-img"><img class="image-placeholder" src="https://i.pinimg.com/474x/8c/a1/2b/8ca12b1cddece82596cfbbb42f85147b.jpg" alt="img"></a>
+                                        </div>
+                                        <div class="blog__content">
+                                            <h4><a href="#"><?= $eachStoreProducts->title ?></a></h4>
+                                            <div class="blog__meta ">
+                                                <span>Min.50%off</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="blog__item">
+                                        <div class="blog__thumb fix ">
+                                            <a href="#" class="w-img"><img class="image-placeholder" src="https://i.pinimg.com/474x/8c/a1/2b/8ca12b1cddece82596cfbbb42f85147b.jpg" alt="img"></a>
+                                        </div>
+                                        <div class="blog__content">
+                                            <h4><a href="#"><?= $eachStoreProducts->title ?></a></h4>
+                                            <div class="blog__meta ">
+                                                <span>Min.50%off</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="blog__item">
+                                        <div class="blog__thumb fix ">
+                                            <a href="#" class="w-img"><img class="image-placeholder" src="https://i.pinimg.com/474x/8c/a1/2b/8ca12b1cddece82596cfbbb42f85147b.jpg" alt="img"></a>
+                                        </div>
+                                        <div class="blog__content">
+                                            <h4><a href="#"><?= $eachStoreProducts->title ?></a></h4>
+                                            <div class="blog__meta ">
+                                                <span>Min.50%off</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="swiper welcomeSwiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <a href="#" class="welcomeSliderCard">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="height: 100%; width: 100%; object-fit: cover" alt="">
+                                                <div class="p-2 welcomeSliderCardText text-center" style=" ">
+                                                    <p class="m-0">MENS WEAR</p>
+                                                    <p class="fs12">Starts from Rs. 999</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="welcomeSliderCard">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="height: 100%; width: 100%; object-fit: cover" alt="">
+                                                <div class="p-2 welcomeSliderCardText text-center" style=" ">
+                                                    <p class="m-0">MENS WEAR</p>
+                                                    <p class="fs12">Starts from Rs. 999</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="welcomeSliderCard">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="height: 100%; width: 100%; object-fit: cover" alt="">
+                                                <div class="p-2 welcomeSliderCardText text-center" style=" ">
+                                                    <p class="m-0">MENS WEAR</p>
+                                                    <p class="fs12">Starts from Rs. 999</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="welcomeSliderCard">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="height: 100%; width: 100%; object-fit: cover" alt="">
+                                                <div class="p-2 welcomeSliderCardText text-center" style=" ">
+                                                    <p class="m-0">MENS WEAR</p>
+                                                    <p class="fs12">Starts from Rs. 999</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="welcomeSliderCard">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="height: 100%; width: 100%; object-fit: cover" alt="">
+                                                <div class="p-2 welcomeSliderCardText text-center" style=" ">
+                                                    <p class="m-0">MENS WEAR</p>
+                                                    <p class="fs12">Starts from Rs. 999</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="welcomeSliderCard">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" style="height: 100%; width: 100%; object-fit: cover" alt="">
+                                                <div class="p-2 welcomeSliderCardText text-center" style=" ">
+                                                    <p class="m-0">MENS WEAR</p>
+                                                    <p class="fs12">Starts from Rs. 999</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -213,10 +696,24 @@
         <!-- ___seller___banner_____ -->
         <section class="offerSection_startHere SaleBannerSectionhere">
             <div class="banner__area-2 ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="section__title-wrapper text-center mb-40">
+                                <div class="section__title wow fadeInDown" data-wow-duration="1s">
+                                    <h2 class="m-0 text-dark">Heading</h2>
+                                </div>
+                                <div class="section__sub-title  wow fadeInDown" data-wow-duration="2s">
+                                    <p class="text-secondary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor earum consequatur quam alias suscipit! Ratione.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="container-fluid ">
                     <div class="row ">
-                        <div class="col-lg-12  mx-0 px-0">
-                            <div id="sellerBanner_owl" class="owl-carousel owl-theme">
+                        <div class="col-lg-12 mx-0 px-0">
+                            <!-- <div id="sellerBanner_owl" class="owl-carousel owl-theme">
                                 <div class="item">
                                     <div class="banner__item-2 banner-right p-relative mb-30 pr-15">
                                         <div class="banner__thumb fix">
@@ -245,14 +742,37 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div> -->
+                            <div class="swiper fourthSwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div>
+                                            <img src="<?= base_url('assets/new_website/img/banner1.png') ?>" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div>
+                                            <img src="<?= base_url('assets/new_website/img/banner1.png') ?>" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div>
+                                            <img src="<?= base_url('assets/new_website/img/banner1.png') ?>" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div>
+                                            <img src="<?= base_url('assets/new_website/img/banner1.png') ?>" alt="">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="box-25">
+        <div class="box-25 mt-3">
 
             <!-- ____combo____product____ -->
             <section class="product__area comboProductArea pt-30 pb-50" id="view_Third_popup">
@@ -261,10 +781,10 @@
                         <div class="col-xl-12">
                             <div class="section__title-wrapper text-center mb-55">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                    <h2>New And Core Collection </h2>
+                                    <h2 class="m-0 text-dark">New And Core Collection </h2>
                                 </div>
                                 <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
-                                    <p>Our one-stop destination for every style, trend, occasion you're shopping
+                                    <p class="text-secondary">Our one-stop destination for every style, trend, occasion you're shopping
                                     </p>
                                 </div>
                             </div>
@@ -706,16 +1226,16 @@
                 </div>
             </section>
             <!-- ______Latest Collections______ -->
-            <section class="sale__area">
+            <section class="sale__area mb-4">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="section__title-wrapper text-center mb-40">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                    <h2>Latest Collections </h2>
+                                    <h2 class="text-dark m-0">Latest Collections</h2>
                                 </div>
                                 <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
-                                    <p>Our one-stop destination for every style, trend, occasion you're shopping
+                                    <p class="text-secondary">Our one-stop destination for every style, trend, occasion you're shopping
                                     </p>
                                 </div>
                             </div>
@@ -725,7 +1245,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-12">
-                            <div class="sale__area-slider-2 owl-carousel latest_collection">
+                            <!-- <div class="sale__area-slider-2 owl-carousel latest_collection">
                                 <div class="sale__item">
                                     <div class="product__wrapper mb-60">
                                         <div class="product__thumb">
@@ -845,6 +1365,108 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div> -->
+                            <div class="swiper latestSwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <a href="#" class="latestSliderCard">
+                                            <div class="imgCont">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                            </div>
+                                            <div class="p-3 text-left latestSliderCardText">
+                                                <p class="m-0">MENS WEAR</p>
+                                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                                    <span class="fs12 text-secondary" style="line-height:1.1;">Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+                                                    <span class="fs16 price">₹299</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#" class="latestSliderCard">
+                                            <div class="imgCont">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                            </div>
+                                            <div class="p-3 text-left latestSliderCardText">
+                                                <p class="m-0">MENS WEAR</p>
+                                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                                    <span class="fs12 text-secondary" style="line-height:1.1;">Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+                                                    <span class="fs16 price">₹299</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#" class="latestSliderCard">
+                                            <div class="imgCont">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                            </div>
+                                            <div class="p-3 text-left latestSliderCardText">
+                                                <p class="m-0">MENS WEAR</p>
+                                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                                    <span class="fs12 text-secondary" style="line-height:1.1;">Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+                                                    <span class="fs16 price">₹299</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#" class="latestSliderCard">
+                                            <div class="imgCont">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                            </div>
+                                            <div class="p-3 text-left latestSliderCardText">
+                                                <p class="m-0">MENS WEAR</p>
+                                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                                    <span class="fs12 text-secondary" style="line-height:1.1;">Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+                                                    <span class="fs16 price">₹299</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#" class="latestSliderCard">
+                                            <div class="imgCont">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                            </div>
+                                            <div class="p-3 text-left latestSliderCardText">
+                                                <p class="m-0">MENS WEAR</p>
+                                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                                    <span class="fs12 text-secondary" style="line-height:1.1;">Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+                                                    <span class="fs16 price">₹299</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#" class="latestSliderCard">
+                                            <div class="imgCont">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                            </div>
+                                            <div class="p-3 text-left latestSliderCardText">
+                                                <p class="m-0">MENS WEAR</p>
+                                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                                    <span class="fs12 text-secondary" style="line-height:1.1;">Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+                                                    <span class="fs16 price">₹299</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#" class="latestSliderCard">
+                                            <div class="imgCont">
+                                                <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                            </div>
+                                            <div class="p-3 text-left latestSliderCardText">
+                                                <p class="m-0">MENS WEAR</p>
+                                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                                    <span class="fs12 text-secondary" style="line-height:1.1;">Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+                                                    <span class="fs16 price">₹299</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -852,7 +1474,7 @@
             </section>
         </div>
         <!-- ____banner_img____ -->
-        <section class="banner_one_section">
+        <section class="banner_one_section mt-4">
             <div class="show_banner banner__area-2">
                 <div class="onLayer  pb-30">
                     <div class="conatiner px-0 m-0">
@@ -875,10 +1497,10 @@
                         <div class="col-xl-12">
                             <div class="section__title-wrapper text-center mb-40">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                    <h2>Our Combo's </h2>
+                                    <h2 class="m-0 text-dark">Our Combo's</h2>
                                 </div>
                                 <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
-                                    <p>Our one-stop destination for every style, trend, occasion you're shopping
+                                    <p class="text-secondary">Our one-stop destination for every style, trend, occasion you're shopping
                                     </p>
                                 </div>
                             </div>
@@ -889,9 +1511,9 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="combos__slider add_combo_imgcss owl-carousel">
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                                <div class="blog__item">
+                                    <div class="blog__thumb">
+                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
                                     </div>
                                     <div class="overlay_add">
                                         <div class="lastText">
@@ -899,33 +1521,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://m.media-amazon.com/images/I/41FyQlqVCKL._AC_UF480,600_SR480,600_.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="overlay_add">
-                                        <div class="lastText">
-                                            <p>Shirt</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img 
-                                                src="https://m.media-amazon.com/images/I/814vRRc5JcL._AC_UL480_FMwebp_QL65_.jpg"
-                                                alt="img"></a>
-                                    </div>
-                                    <div class="overlay_add">
-                                        <div class="lastText">
-                                            <p>Long tshirts </p>
-                                            <p></p>
-                                            <p></p>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                                <div class="blog__item">
+                                    <div class="blog__thumb">
+                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
                                     </div>
                                     <div class="overlay_add">
                                         <div class="lastText">
@@ -933,64 +1531,53 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://m.media-amazon.com/images/I/81uufWYCZtL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                                <div class="blog__item">
+                                    <div class="blog__thumb">
+                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
                                     </div>
                                     <div class="overlay_add">
                                         <div class="lastText">
-                                            <p> Fairness Cream </p>
+                                            <p>Women Kurta</p>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://m.media-amazon.com/images/I/619hoZs6saL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                                <div class="blog__item">
+                                    <div class="blog__thumb">
+                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
                                     </div>
                                     <div class="overlay_add">
                                         <div class="lastText">
-                                            <p> Leather Wallet </p>
+                                            <p>Women Kurta</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/shirt.avif') ?>" alt="img"></a>
+                                <div class="blog__item">
+                                    <div class="blog__thumb">
+                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
                                     </div>
                                     <div class="overlay_add">
                                         <div class="lastText">
-                                            <p>Shirt</p>
+                                            <p>Women Kurta</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/shirt.avif') ?>" alt="img"></a>
+                                <div class="blog__item">
+                                    <div class="blog__thumb">
+                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
                                     </div>
                                     <div class="overlay_add">
                                         <div class="lastText">
-                                            <p>Shirt</p>
+                                            <p>Women Kurta</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/shirt.avif') ?>" alt="img"></a>
+                                <div class="blog__item">
+                                    <div class="blog__thumb">
+                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
                                     </div>
                                     <div class="overlay_add">
                                         <div class="lastText">
-                                            <p>Shirt</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/shirt.avif') ?>" alt="img"></a>
-                                    </div>
-                                    <div class="overlay_add">
-                                        <div class="lastText">
-                                            <p>Shirt</p>
+                                            <p>Women Kurta</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1006,17 +1593,17 @@
                         <div class="col-xl-12">
                             <div class="section__title-wrapper text-center mb-40">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                    <h2 style="background: #ededf9 !important;">Our Products </h2>
+                                    <h2 class="m-0 text-dark" style="background: #ededf9 !important;">Our Products </h2>
                                 </div>
                                 <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
-                                    <p>Our one-stop destination for every style, trend, occasion you're shopping
+                                    <p class="text-secondary">Our one-stop destination for every style, trend, occasion you're shopping
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid">
+                <!-- <div class="container-fluid">
                     <div class="row our_productSection">
                         <div class="productslider add_combo_imgcss owl-carousel">
                             <div class="blog__item">
@@ -1145,7 +1732,155 @@
                             </div>
                         </div>
                     </div>
+                </div> -->
+                
+                <div class="swiper productSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background: transparent">
+                            <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
+                                <p>Revamp your style</p>
+                                <div class="img-container mb-2">
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                </div>
+                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" style="background: transparent">
+                            <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
+                                <p>Revamp your style</p>
+                                <div class="img-container mb-2">
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                </div>
+                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" style="background: transparent">
+                            <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
+                                <p>Revamp your style</p>
+                                <div class="img-container mb-2">
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                </div>
+                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" style="background: transparent">
+                            <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
+                                <p>Revamp your style</p>
+                                <div class="img-container mb-2">
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                </div>
+                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" style="background: transparent">
+                            <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
+                                <p>Revamp your style</p>
+                                <div class="img-container mb-2">
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                </div>
+                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" style="background: transparent">
+                            <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
+                                <p>Revamp your style</p>
+                                <div class="img-container mb-2">
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                </div>
+                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" style="background: transparent">
+                            <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
+                                <p>Revamp your style</p>
+                                <div class="img-container mb-2">
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                    <div class="img-card">
+                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                    </div>
+                                </div>
+                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
+
             </section>
             <section class="sale__area  our_storesSection pt-60">
                 <div class="container">
@@ -1153,10 +1888,10 @@
                         <div class="col-xl-12">
                             <div class="section__title-wrapper text-center mb-40">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                    <h2>Our Stores </h2>
+                                    <h2 class="m-0 text-dark">Our Stores</h2>
                                 </div>
                                 <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
-                                    <p>Find everything for your every need</p>
+                                    <p class="m-0">Find everything for your every need</p>
                                 </div>
                             </div>
                         </div>
@@ -1165,7 +1900,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-12 ">
-                            <div class="bagProduct__slider   owl-carousel">
+                            <div class="bagProduct__slider owl-carousel">
                                 <div class="blog__item mb-30">
                                     <div class="blog__thumb fix">
                                         <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/b1.webp') ?>" alt="img">
@@ -1197,7 +1932,6 @@
                                         <div class="blog__meta ">
                                             <span>Solid Purse Clutch</span>
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="blog__item mb-30">
@@ -1316,10 +2050,10 @@
                         <div class="col-xl-12">
                             <div class="section__title-wrapper text-center mb-40">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                    <h2>Pre Book </h2>
+                                    <h2 class="text-dark m-0">Pre Book</h2>
                                 </div>
                                 <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
-                                    <p>Our one-stop destination for every style, trend, occasion
+                                    <p class="text-secondary">Our one-stop destination for every style, trend, occasion
                                         you're shopping
                                     </p>
                                 </div>
@@ -1332,20 +2066,26 @@
                         <div class="row prebook-row pre_book_showing">
                             <div class="col-md-6">
                                 <figure class="position-relative">
-                                    <h2 class="position-absolute top-50 start-50 translate-middle text-center newarrivals-textaboveimg">
-                                        <span class="story-hero__hed-number">515</span> New Arrivals
-                                    </h2>
-
-                                    <img src="https://is4.revolveassets.com/images/up/2024/May/050424_f_na_1x.jpg" alt="" class="img-fluid">
+                                    <div class="prebookTag">
+                                        <div class="triangle_top_left"></div>
+                                        <h2>
+                                            <div>515 New</div>
+                                            <div>Arrivals</div>
+                                        </h2>
+                                    </div>
+                                    <img class="prebookimg" src="https://is4.revolveassets.com/images/up/2024/May/050424_f_na_1x.jpg" alt="" class="img-fluid">
                                 </figure>
                             </div>
                             <div class="col-md-6">
                                 <figure class="position-relative">
-                                    <h2 class="position-absolute top-50 start-50 translate-middle text-center newarrivals-textaboveimg">
-                                        Dresses To Preorder <br> Now
-                                    </h2>
-
-                                    <img src="https://is4.revolveassets.com/images/up/2024/May/051624_f_longweekend_02.jpg" alt="" class="img-fluid">
+                                    <div class="prebookTag">
+                                        <div class="triangle_top_left"></div>
+                                        <h2 style="margin-top: 20px;margin-left: -8px;">
+                                            <div class="text-center">Dress to</div>
+                                            <div>Pre order now</div>
+                                        </h2>
+                                    </div>
+                                    <img class="prebookimg" src="https://is4.revolveassets.com/images/up/2024/May/051624_f_longweekend_02.jpg" alt="" class="img-fluid">
                                 </figure>
                             </div>
                             <div class="col-md-6">
@@ -1515,10 +2255,10 @@
                         <div class="col-xl-12">
                             <div class="section__title-wrapper text-center mb-40">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                    <h2>New On Slick Pattern</h2>
+                                    <h2 class="text-dark m-0">New On Slick Pattern</h2>
                                 </div>
                                 <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
-                                    <p>Our one-stop destination for every style, trend, occasion you're shopping
+                                    <p class="text-secondary">Our one-stop destination for every style, trend, occasion you're shopping
                                     </p>
                                 </div>
                             </div>
@@ -1991,6 +2731,120 @@
         </section>
         <!--footer area end-->
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper1 = new Swiper('.offerSwiper', {
+                slidesPerView: 1,
+                spaceBetween: 24,
+                autoplay:true,
+                loop: true,
+                breakpoints: {
+                    300: {
+                        slidesPerView: 1,
+                    },
+                    768: {
+                        slidesPerView: 2
+                    },
+                    1024: {
+                        slidesPerView: 2
+                    }
+                }
+        });
+
+        var swiper2 = new Swiper('.welcomeSwiper', {
+                slidesPerView: 1,
+                spaceBetween: 18,
+                autoplay:true,
+                loop: true,
+                breakpoints: {
+                    300: {
+                        slidesPerView: 2,
+                    },
+                    500: {
+                        slidesPerView: 2
+                    },
+                    700: {
+                        slidesPerView: 3
+                    },
+                    900: {
+                        slidesPerView: 4
+                    },
+                    1100: {
+                        slidesPerView: 5
+                    }
+                }
+        });
+
+        var swiper3 = new Swiper('.fourthSwiper', {
+            slidesPerView: 1,
+                spaceBetween: 40,
+                autoplay:true,
+                loop: true,
+        });
+
+        var swiper4 = new Swiper('.latestSwiper', {
+                slidesPerView: 1,
+                spaceBetween: 18,
+                autoplay:false,
+                loop: true,
+                breakpoints: {
+                    300: {
+                        slidesPerView: 1,
+                    },
+                    500: {
+                        slidesPerView: 2
+                    },
+                    700: {
+                        slidesPerView: 3
+                    },
+                    900: {
+                        slidesPerView: 4
+                    },
+                    1100: {
+                        slidesPerView: 5
+                    }
+                }
+        });
+
+        var swiper5 = new Swiper('.productSwiper', {
+                slidesPerView: 1,
+                spaceBetween: 18,
+                autoplay:false,
+                loop: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    650: {
+                        slidesPerView: 1
+                    },
+                    700: {
+                        slidesPerView: 2
+                    },
+                    950: {
+                        slidesPerView: 2
+                    },
+                    1100: {
+                        slidesPerView: 3
+                    },
+                    1260: {
+                        slidesPerView: 4
+                    }
+                }
+        });
+
+        const video = document.querySelector('#myVideo');
+        const muteBtn = document.querySelector('.muteBtn');
+
+        muteBtn.addEventListener('click', () => {
+            if (video.muted) {
+                video.muted = false;
+            } else {
+                video.muted = true;
+            }
+        });
+    </script>
     <?php include('include/footer.php'); ?>
     <!-- <?php include('include/modal.php'); ?> -->
     <?php include('include/jsLinks.php'); ?>

@@ -869,6 +869,11 @@ ul {
     -moz-box-shadow: -5px 0 20px -5px rgba(0, 0, 0, 0.5);
     box-shadow: -5px 0 20px -5px rgba(0, 0, 0, 0.5);
     z-index: 9999;
+    overflow-y: scroll;
+}
+
+.extra__info-inner::-webkit-scrollbar {
+    display: none;
 }
 
 .extra__info-logo {
@@ -979,7 +984,7 @@ ul {
     padding-block: 10px;
     padding-left: 15px;
     text-transform: capitalize;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .side-mobile-menu ul li ul li a:before {
@@ -1000,6 +1005,7 @@ ul {
 }
 
 .side-mobile-menu ul li.has-dropdown>a:after {
+    color: rgba(0, 0, 0, 0.25);
     position: absolute;
     content: "";
     width: 8px;
@@ -1275,7 +1281,7 @@ ul.dropdown-content {
 }
 
 .right_top_conetnt .main_ul li a {
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .show_left p {
@@ -1317,11 +1323,16 @@ nav .wrapper {
     list-style: none;
 }
 
+.nav-links li a:hover {
+    color: var(--pinkcolor);
+}
+
 .nav-links li a {
     color: #000;
     text-decoration: none;
-    font-size: 14.5px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
     padding: 1px 15px;
     border-radius: 5px;
     transition: all 0.3s ease;
@@ -1391,6 +1402,12 @@ nav .wrapper {
 
 .mega-box .content ul li a {
     font-weight: 300;
+    transition: all 0.1s ease;
+}
+
+.mega-box .content ul li a:hover {
+    font-weight: 600;
+    color: black;
 }
 
 .content .row img {
@@ -1780,7 +1797,7 @@ nav input {
 
 .nav-link {
     font-weight: 500;
-    font-size: 15px !important;
+    font-size: 13px !important;
     color: #000 !important;
     font-family: var(--mainfont);
     position: relative;
@@ -1790,7 +1807,7 @@ nav input {
 #cart-count {
     position: absolute;
     top: -4px;
-    right: 36px;
+    right: 28px;
     padding: 3px 6px;
     border-radius: 50%;
     background-color: var(--maincolor);
@@ -1801,7 +1818,7 @@ nav input {
 #wishlist-count {
     position: absolute;
     top: -4px;
-    right: 60px;
+    right: 52px;
     padding: 3px 6px;
     border-radius: 50%;
     background-color: var(--maincolor);
@@ -1832,6 +1849,12 @@ nav input {
 .shopping_Btn .dropdown .dropdown-menu a {
     color: #000;
     font-size: 12px;
+    transition: 0.1s;
+}
+
+.shopping_Btn .dropdown .dropdown-menu a:hover {
+    font-weight: 700;
+    background-color: white;
 }
 
 .dropdown-toggle::after {
@@ -1857,6 +1880,10 @@ nav input {
 
 .search-product span:hover {
     color: var(--pinkcolor);
+}
+
+.my-account {
+    font-size: 12px !important;
 }
 
 /* __________________bottom_header_______________________________ */
@@ -2215,12 +2242,14 @@ img {
     background-position: top;
     background-size: cover;
     background-attachment: fixed;
-
 }
 
 .show_banner .onLayer {
     height: 400px;
-    background-image: linear-gradient(to left, rgba(10, 9, 102, .2) 100%, transparent);
+    background-image: url('https://assets.vogue.com/photos/65f8604e619fe40d5e1b0301/master/pass/western_Trends_001.jpg');
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
 }
 
 .show_banner_two {
@@ -2318,6 +2347,7 @@ img {
 .banner_one_section .os-btn {
     border-color: #fff !important;
     color: #fff !important;
+    white-space: nowrap;
 }
 
 .banner_one_section .os-btn:hover {
@@ -2396,11 +2426,14 @@ img {
     margin-top: 30px;
 }
 
-.prebook-row h2 {
+/* .prebook-row h2 {
+    color: white;
     font-size: 20px;
     font-family: var(--mainfont) !important;
     margin: 30px;
-}
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+} */
 
 .pre_order_slider .blog__item {
     background: #e6eef6 !important;
@@ -2567,7 +2600,7 @@ img {
 
 .scroll-up-btn {
     position: fixed;
-    bottom: 20px;
+    bottom: 60px;
     z-index: 999;
     right: 20px;
     background-color: var(--maincolor);
@@ -4882,10 +4915,10 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 
 .overlay_add {
     position: absolute;
-    bottom: 20px;
+    bottom: 0px;
     top: 0;
     background-color: rgba(0, 0, 0, .1);
-    background-image: linear-gradient(rgba(0, 0, 0, .1) 30%, rgba(0, 0, 0, 1));
+    background-image: linear-gradient(rgba(0, 0, 0, .1) 75%, rgba(0, 0, 0, 1));
     color: #f1f1f1;
     width: 100%;
     transition: .5s ease;
@@ -4904,7 +4937,9 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 
 .overlay_add .lastText p {
     color: #fff;
-    font-size: 18px !important;
+    font-family: var(--heading_font)!important;
+    letter-spacing: 1px;
+    font-size: 20px !important;
 }
 
 .sale__item .product__content .product__content-inner {
@@ -6511,9 +6546,14 @@ html .ui-button.ui-state-disabled:active {
     color: #ffffff;
 }
 
+.blog__item {
+    height: 250px;
+    overflow: hidden;
+}
+
 .blog__item .blog__thumb img {
-    /* height: 250px; */
     width: 100%;
+    height: 100%;
     /* width: 100%; */
     object-fit: cover;
     object-position: top;
@@ -8554,7 +8594,7 @@ only screen and (min-width: 576px) and (max-width: 767px) {
     }
 
     .header__action.header__action-2 ul li {
-        margin-left: 4px;
+        margin-left: 0px;
     }
 
     .desktopfooter {
@@ -8739,7 +8779,7 @@ only screen and (min-width: 576px) and (max-width: 767px) {
     }
 
     .header__action ul li>a:last-child {
-        margin-right: 15px;
+        margin-right: 12px;
     }
 
     .welcome_startingSection .container-fluid {
@@ -8789,7 +8829,7 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 
     .overlay_add .lastText p {
         color: #fff;
-        font-size: 12px !important;
+        font-size: 16px !important;
     }
 
     .our_productSection .gap-2 {
@@ -8825,11 +8865,11 @@ only screen and (min-width: 576px) and (max-width: 767px) {
         padding-bottom: 8px !important;
     }
 
-    .prebook-row h2 {
+    /* .prebook-row h2 {
         font-size: 15px;
         font-family: var(--mainfont) !important;
         margin: 14px;
-    }
+    } */
 
     .desktop_view_newONSlickPattern {
         display: none;
@@ -9014,9 +9054,9 @@ only screen and (min-width: 576px) and (max-width: 767px) {
         padding: 13px 0;
         display: block;
         border-bottom: 1px solid rgba(50, 50, 50, 0.09);
-        font-size: 14px;
+        font-size: 12px;
         color: #323232;
-        font-weight: 500;
+        font-weight: 600;
         text-transform: capitalize;
         position: relative;
     }

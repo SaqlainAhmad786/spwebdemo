@@ -30,6 +30,10 @@
             background-image: linear-gradient(127deg, #feedf4 0%, #fcf0e3 100%);
         }
 
+        .loginContainer{
+            margin-top: 60px;
+        }
+
         ul {
             list-style-type: none;
         }
@@ -112,13 +116,22 @@
             background-color: gray;
             cursor: not-allowed;
         }
+
+        @media (width< 568px) {
+            body{
+                background-image: none;
+            }
+
+            .loginContainer{
+                margin-top: 0;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <?php include('include/header.php'); ?>
     <main>
-        <div class="loginContainer bg-white mx-auto mt-5 shadow" style="max-width: 400px;">
+        <div class="loginContainer bg-white mx-auto" style="max-width: 400px;">
             <div>
                 <img src="<?=base_url('assets/new_website/img/login-cover.jpg')?>" alt="">
             </div>
