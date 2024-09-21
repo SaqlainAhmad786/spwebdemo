@@ -21,6 +21,11 @@
             font-size: 16px;
         }
 
+        a:hover{
+            text-decoration: none;
+            color: black;
+        }
+
         .homePageSlider .carousel-item {
             max-height: 600px;
         }
@@ -323,6 +328,67 @@
             color: var(--maincolor);
             font-weight:500;
             font-size: 18px;
+        }
+
+        .storeSliderCard .imgCont{
+            height: 320px;
+            width: 100%;
+        }
+
+        .storeSliderCard .imgCont img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .prebookSliderCard{
+            border: 14px solid #FEF0F0;
+        }
+
+        .prebookSliderCard img{
+            height: 240px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .prebookSliderCard button{
+            background-color: var(--maincolor);
+            color: white;
+        }
+
+        .prebookSliderCard button:hover{
+            color: var(--maincolor);
+            background-color: white;
+            border: 1px solid var(--maincolor);
+        }
+
+        .newOnSlick-btn{
+            width: 100%;
+            border: 2px solid #000;
+        }
+
+        .newOnSlick-btn:hover{
+            border-color: var(--maincolor);
+            background-color: var(--maincolor);
+            color: white;
+        }
+
+        .brochureCard img{
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .brochureCard span{
+            font-family: var(--heading_font)!important;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .brochureCard .downloadBtn{
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            z-index: 5;
         }
 
         .youtube-embed-container {
@@ -1901,7 +1967,7 @@
                     <div class="row">
                         <div class="col-xl-12 ">
                             <div class="bagProduct__slider owl-carousel">
-                                <div class="blog__item mb-30">
+                                <!-- <div class="blog__item mb-30">
                                     <div class="blog__thumb fix">
                                         <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/b1.webp') ?>" alt="img">
                                     </div>
@@ -2037,6 +2103,17 @@
                                             <span>Gossamer Grace</span>
                                         </div>
                                     </div>
+                                </div> -->
+                                <div class="swiper-slide">
+                                    <a href="#" class="storeSliderCard border rounded-lg overflow-hidden text-decoration-none">
+                                        <div class="imgCont">
+                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                        </div>
+                                        <div class="p-3 text-left">
+                                            <p class="m-0">MENS WEAR</p>
+                                            <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -2073,7 +2150,7 @@
                                             <div>Arrivals</div>
                                         </h2>
                                     </div>
-                                    <img class="prebookimg" src="https://is4.revolveassets.com/images/up/2024/May/050424_f_na_1x.jpg" alt="" class="img-fluid">
+                                    <img class="prebookimg" src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg" alt="" class="img-fluid">
                                 </figure>
                             </div>
                             <div class="col-md-6">
@@ -2085,7 +2162,7 @@
                                             <div>Pre order now</div>
                                         </h2>
                                     </div>
-                                    <img class="prebookimg" src="https://is4.revolveassets.com/images/up/2024/May/051624_f_longweekend_02.jpg" alt="" class="img-fluid">
+                                    <img class="prebookimg" src="https://images.pexels.com/photos/7505254/pexels-photo-7505254.jpeg?cs=srgb&dl=pexels-rnthlcueto-7505254.jpg&fm=jpg" alt="" class="img-fluid">
                                 </figure>
                             </div>
                             <div class="col-md-6">
@@ -2103,7 +2180,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class=" pre_order_slider  owl-carousel">
-                                <div class="blog__item mb-30">
+                                <!-- <div class="blog__item mb-30">
                                     <div class="blog__thumb fix">
                                         <a href="#" class="w-img"><img src="https://img.freepik.com/premium-vector/photo-icon-picture-icon-image-sign-symbol-vector-illustration_64749-4409.jpg" alt="img"></a>
                                     </div>
@@ -2241,6 +2318,16 @@
                                                 Pre-Order</a>
                                         </div>
 
+                                    </div>
+                                </div> -->
+                                <div class="prebookSliderCard">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                        <div class="p-3">
+                                            <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                            <p class="m-0 fs12">Gossamer Grace</p>
+                                            <button class="btn mt-2 fs12">PRE-ORDER</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -2269,63 +2356,59 @@
                     <div class="products-area desktop_view_newONSlickPattern">
                         <!-- desktop view -->
                         <div class="row prebook-row newOnSlick-col weekend_style">
-                            <div class="col-12 col-md-4">
-                                <figure class="newOn_sp">
-                                    <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="" class="img-fluid">
-                                    <figcaption class="story-hero__cta">
-                                        <h3 class="mb-2">Weekend Style</h3>
-                                        <a href="#" class="os-btn os-btn-2">Shop Now</a>
-                                    </figcaption>
-                                </figure>
+                            <div class="col-12 col-md-4 mt-4">
+                                <div class="position-relative">
+                                    <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="">
+                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-12 col-md-4">
-                                <figure class="newOn_sp">
-                                    <img src="https://images.meesho.com/images/products/343616323/lcbl1_512.webp" alt="" class="img-fluid">
-                                    <figcaption class="story-hero__cta">
-                                        <h3 class="mb-2">Weekend Style</h3>
-                                        <a href="#" class="os-btn os-btn-2">Shop Now</a>
-                                    </figcaption>
-                                </figure>
+                            <div class="col-12 col-md-4 mt-4">
+                                <div class="position-relative">
+                                    <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="">
+                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-12 col-md-4">
-                                <figure class="newOn_sp">
-                                    <img src="https://assets.ajio.com/medias/sys_master/root/20230602/heGu/6479573d42f9e729d7112552/-473Wx593H-462076821-maroon-MODEL4.jpg" alt="" class="img-fluid">
-                                    <figcaption class="story-hero__cta">
-                                        <h3 class="mb-2">Weekend Style</h3>
-                                        <a href="#" class="os-btn os-btn-2">Shop Now</a>
-                                    </figcaption>
-                                </figure>
+                            <div class="col-12 col-md-4 mt-4">
+                                <div class="position-relative">
+                                    <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="">
+                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="col-12 col-md-4">
-                                <figure class="newOn_sp">
-                                    <img src="<?= base_url('assets/new_website/img/img.png') ?>" alt="" class="img-fluid">
-                                    <figcaption class="story-hero__cta">
-                                        <h3 class="mb-2">Weekend Style</h3>
-                                        <a href="#" class="os-btn os-btn-2">Shop Now</a>
-                                    </figcaption>
-                                </figure>
+                            <div class="col-12 col-md-4 mt-4">
+                                <div class="position-relative">
+                                    <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="">
+                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="col-12 col-md-4">
-                                <figure class="newOn_sp">
-
-                                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="" class="img-fluid">
-                                    <figcaption class="story-hero__cta">
-                                        <h3 class="mb-2">Weekend Style</h3>
-                                        <a href="#" class="os-btn os-btn-2">Shop Now</a>
-                                    </figcaption>
-                                </figure>
+                            <div class="col-12 col-md-4 mt-4">
+                                <div class="position-relative">
+                                    <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="">
+                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-12 col-md-4">
-                                <figure class="newOn_sp">
-
-                                    <img src="https://assets.panashindia.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/4/8/4858sr06-22406_1.jpg" alt="" class="img-fluid">
-                                    <figcaption class="story-hero__cta">
-                                        <h3 class="mb-2">Weekend Style</h3>
-                                        <a href="#" class="os-btn os-btn-2">Shop Now</a>
-                                    </figcaption>
-                                </figure>
+                            <div class="col-12 col-md-4 mt-4">
+                                <div class="position-relative">
+                                    <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="">
+                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2334,7 +2417,21 @@
                     <div class="row mobileViewNEWOnSlickPattern">
                         <div class="col-xl-12">
                             <div class=" pre_order_slider  owl-carousel">
-                                <div class="blog__item ">
+                                <div class="position-relative">
+                                    <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" style="height: 280px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    </div>
+                                </div>
+                                <div class="position-relative">
+                                    <img src="https://images.meesho.com/images/products/343616323/lcbl1_512.webp" style="height: 280px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    </div>
+                                </div>
+                                <!-- <div class="blog__item ">
                                     <figure class="newOn_sp">
                                         <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="" class="img-fluid">
                                         <figcaption class="story-hero__cta">
@@ -2378,23 +2475,23 @@
                                             <a href="#" class="os-btn os-btn-2">Shop Now</a>
                                         </figcaption>
                                     </figure>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- ____our Catelog_____ -->
-            <section class="sale__area catelog_lookbook ">
+            <section class="sale__area catelog_lookbook mt-4">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="section__title-wrapper text-center mb-40">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                    <h2>Download Lookbook </h2>
+                                    <h2 class="m-0 text-dark">Download Lookbook </h2>
                                 </div>
                                 <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
-                                    <p>Our one-stop destination for every style, trend, occasion you're shopping
+                                    <p class="text-secondary">Our one-stop destination for every style, trend, occasion you're shopping
                                     </p>
                                 </div>
                             </div>
@@ -2405,100 +2502,123 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="catelog__slider   owl-carousel mt-10 catelog_section">
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://cdn.shopify.com/s/files/1/0106/4897/7444/files/02_01.jpg?v=1634485608" alt="img"></a>
-                                    </div>
+                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
                                     <div class="blog__content">
-                                        <h4> Brocher Name </h4>
-                                        <span class="badge ">
-                                            <i class="fa-regular fa-thumbs-up thumbs-up-icon"></i>&nbsp; <span> 122K
-                                            </span> &emsp;
-                                            <!-- <i class="fa-regular fa-circle-down"></i> &nbsp;<span> 500K </span> -->
-                                        </span>
-                                        <span class="badge" id="download-btn">
-                                            <i class="fa fa-circle-down download-icon"></i>&nbsp;<span> 500K </span>
-                                        </span>
+                                        <h4>Brocher Name</h4>
+                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
+                                            <div>
+                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                            </div>
+                                            <div class="ml-2">
+                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="downloadBtn">
+                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://cdn.shopify.com/s/files/1/0106/4897/7444/files/02_01.jpg?v=1634485608" alt="img"></a>
-                                    </div>
+                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
                                     <div class="blog__content">
-                                        <h4> Brocher Name </h4>
-                                        <span class="badge ">
-                                            <i class="fa-regular fa-thumbs-up thumbs-up-icon"></i>&nbsp; <span> 122K
-                                            </span> &emsp;
-                                            <!-- <i class="fa-regular fa-circle-down"></i> &nbsp;<span> 500K </span> -->
-                                        </span>
-                                        <span class="badge" id="download-btn">
-                                            <i class="fa fa-circle-down download-icon"></i>&nbsp;<span> 500K </span>
-                                        </span>
+                                        <h4>Brocher Name</h4>
+                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
+                                            <div>
+                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                            </div>
+                                            <div class="ml-2">
+                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="downloadBtn">
+                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://cdn.shopify.com/s/files/1/0106/4897/7444/files/02_01.jpg?v=1634485608" alt="img"></a>
-                                    </div>
+                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
                                     <div class="blog__content">
-                                        <h4> Brocher Name </h4>
-                                        <span class="badge ">
-                                            <i class="fa-regular fa-thumbs-up thumbs-up-icon"></i>&nbsp; <span> 122K
-                                            </span> &emsp;
-                                            <!-- <i class="fa-regular fa-circle-down"></i> &nbsp;<span> 500K </span> -->
-                                        </span>
-                                        <span class="badge" id="download-btn">
-                                            <i class="fa fa-circle-down download-icon"></i>&nbsp;<span> 500K </span>
-                                        </span>
+                                        <h4>Brocher Name</h4>
+                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
+                                            <div>
+                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                            </div>
+                                            <div class="ml-2">
+                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="downloadBtn">
+                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://cdn.shopify.com/s/files/1/0106/4897/7444/files/02_01.jpg?v=1634485608" alt="img"></a>
-                                    </div>
+                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
                                     <div class="blog__content">
-                                        <h4> Brocher Name </h4>
-                                        <span class="badge ">
-                                            <i class="fa-regular fa-thumbs-up thumbs-up-icon"></i>&nbsp; <span> 122K
-                                            </span> &emsp;
-                                            <!-- <i class="fa-regular fa-circle-down"></i> &nbsp;<span> 500K </span> -->
-                                        </span>
-                                        <span class="badge" id="download-btn">
-                                            <i class="fa fa-circle-down download-icon"></i>&nbsp;<span> 500K </span>
-                                        </span>
+                                        <h4>Brocher Name</h4>
+                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
+                                            <div>
+                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                            </div>
+                                            <div class="ml-2">
+                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="downloadBtn">
+                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://cdn.shopify.com/s/files/1/0106/4897/7444/files/02_01.jpg?v=1634485608" alt="img"></a>
-                                    </div>
+                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
                                     <div class="blog__content">
-                                        <h4> Brocher Name </h4>
-                                        <span class="badge ">
-                                            <i class="fa-regular fa-thumbs-up thumbs-up-icon"></i>&nbsp; <span> 122K
-                                            </span> &emsp;
-                                            <!-- <i class="fa-regular fa-circle-down"></i> &nbsp;<span> 500K </span> -->
-                                        </span>
-                                        <span class="badge" id="download-btn">
-                                            <i class="fa fa-circle-down download-icon"></i>&nbsp;<span> 500K </span>
-                                        </span>
+                                        <h4>Brocher Name</h4>
+                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
+                                            <div>
+                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                            </div>
+                                            <div class="ml-2">
+                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="downloadBtn">
+                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://cdn.shopify.com/s/files/1/0106/4897/7444/files/02_01.jpg?v=1634485608" alt="img"></a>
-                                    </div>
+                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
                                     <div class="blog__content">
-                                        <h4> Brocher Name </h4>
-                                        <span class="badge ">
-                                            <i class="fa-regular fa-thumbs-up thumbs-up-icon"></i>&nbsp; <span> 122K
-                                            </span> &emsp;
-                                            <!-- <i class="fa-regular fa-circle-down"></i> &nbsp;<span> 500K </span> -->
-                                        </span>
-                                        <span class="badge" id="download-btn">
-                                            <i class="fa fa-circle-down download-icon"></i>&nbsp;<span> 500K </span>
-                                        </span>
+                                        <h4>Brocher Name</h4>
+                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
+                                            <div>
+                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                            </div>
+                                            <div class="ml-2">
+                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="downloadBtn">
+                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
+                                    <div class="blog__content">
+                                        <h4>Brocher Name</h4>
+                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
+                                            <div>
+                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                            </div>
+                                            <div class="ml-2">
+                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="downloadBtn">
+                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -2517,11 +2637,11 @@
                                 <div class="content_here">
                                     <div class="position-absolute sf-hero__content pt-lg-5">
                                         <span class=" text-white sf-hero__subtitle">BRAND STORY</span><br><br>
-                                        <h2 class="sf-hero__title text-white">Launched in 2006, Vanilla Moon is an ode
+                                        <h2 class="sf-hero__title text-white font-weight-bold">Launched in 2006, Vanilla Moon is an ode
                                             to <br> quality and
                                             craftsmanship.</h2>
                                         <div class="sf-hero__text ">
-                                            <span class="text-white lh-md">Our vision is to provide luxury yet
+                                            <span class="text-white lh-md fs12">Our vision is to provide luxury yet
                                                 affordable footwear to modern women
                                                 while
                                                 paving the way for
@@ -2542,10 +2662,10 @@
                         <div class="col-xl-12">
                             <div class="section__title-wrapper text-center mb-40">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                    <h2>Our Clients </h2>
+                                    <h2 class="text-dark m-0">Our Clients</h2>
                                 </div>
                                 <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
-                                    <p>Our one-stop destination for every style, trend, occasion you're shopping
+                                    <p class="text-scondary">Our one-stop destination for every style, trend, occasion you're shopping
                                     </p>
                                 </div>
                             </div>
@@ -2556,115 +2676,68 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="catelog__slider   owl-carousel mt-10 client_section">
-                                <div class="blog__item mb-30">
-                                    <figure class="clientInstaFigureContainer">
-                                        <div class="position-relative">
-                                            <a href="" class="">
-                                                <figcaption class="videoViews d-none">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                    <div class="">2L</div>
-
-                                                </figcaption>
-                                                <video id="clientVideo" height="100%" width="100%" muted autoplay loop class="product m-0">
-                                                    <source src="https://dev.slickpattern.com/public/uploads/sample.mp4" type="video/mp4">
-                                                </video>
-                                                <figcaption class="clientInstaFigureCaption">
-                                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" alt="" class="img-fluid" style="max-width: 45px;border-radius: 6px;object-fit: contain !important;">
-                                                    <div class="clientHeading">
-                                                        Maroon
-                                                        Blush Embroidered Georgette Suit Set</div>
-                                                </figcaption>
-                                            </a>
+                                <div class="rounded-lg overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                        <div class="pl-2">
+                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
                                         </div>
-                                    </figure>
+                                    </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <figure class="clientInstaFigureContainer">
-                                        <div class="position-relative">
-                                            <a href="" class="">
-                                                <figcaption class="videoViews d-none">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                    <div class="">2L</div>
-
-                                                </figcaption>
-                                                <video id="clientVideo" height="100%" width="100%" muted autoplay loop class="product m-0">
-                                                    <source src="https://dev.slickpattern.com/public/uploads/sample.mp4" type="video/mp4">
-                                                </video>
-                                                <figcaption class="clientInstaFigureCaption">
-                                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" alt="" class="img-fluid" style="max-width: 45px;border-radius: 6px;object-fit: contain !important;">
-                                                    <div class="clientHeading">
-                                                        Maroon
-                                                        Blush Embroidered Georgette Suit Set</div>
-                                                </figcaption>
-                                            </a>
+                                <div class="rounded-lg overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                        <div class="pl-2">
+                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
                                         </div>
-                                    </figure>
+                                    </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <figure class="clientInstaFigureContainer">
-                                        <div class="position-relative">
-                                            <a href="" class="">
-                                                <figcaption class="videoViews d-none">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                    <div class="">2L</div>
-
-                                                </figcaption>
-                                                <video id="clientVideo" height="100%" width="100%" muted autoplay loop class="product m-0">
-                                                    <source src="https://dev.slickpattern.com/public/uploads/sample.mp4" type="video/mp4">
-                                                </video>
-                                                <figcaption class="clientInstaFigureCaption">
-                                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" alt="" class="img-fluid" style="max-width: 45px;border-radius: 6px;object-fit: contain !important;">
-                                                    <div class="clientHeading">
-                                                        Maroon
-                                                        Blush Embroidered Georgette Suit Set</div>
-                                                </figcaption>
-                                            </a>
+                                <div class="rounded-lg overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                        <div class="pl-2">
+                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
                                         </div>
-                                    </figure>
+                                    </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <figure class="clientInstaFigureContainer">
-                                        <div class="position-relative">
-                                            <a href="" class="">
-                                                <figcaption class="videoViews d-none">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                    <div class="">2L</div>
-
-                                                </figcaption>
-                                                <video id="clientVideo" height="100%" width="100%" muted autoplay loop class="product m-0">
-                                                    <source src="https://dev.slickpattern.com/public/uploads/sample.mp4" type="video/mp4">
-                                                </video>
-                                                <figcaption class="clientInstaFigureCaption">
-                                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" alt="" class="img-fluid" style="max-width: 45px;border-radius: 6px;object-fit: contain !important;">
-                                                    <div class="clientHeading">
-                                                        Maroon
-                                                        Blush Embroidered Georgette Suit Set</div>
-                                                </figcaption>
-                                            </a>
+                                <div class="rounded-lg overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                        <div class="pl-2">
+                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
                                         </div>
-                                    </figure>
+                                    </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <figure class="clientInstaFigureContainer">
-                                        <div class="position-relative">
-                                            <a href="" class="">
-                                                <figcaption class="videoViews d-none">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                    <div class="">2L</div>
-
-                                                </figcaption>
-                                                <video id="clientVideo" height="100%" width="100%" muted autoplay loop class="product m-0">
-                                                    <source src="https://dev.slickpattern.com/public/uploads/sample.mp4" type="video/mp4">
-                                                </video>
-                                                <figcaption class="clientInstaFigureCaption">
-                                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" alt="" class="img-fluid" style="max-width: 45px;border-radius: 6px;object-fit: contain !important;">
-                                                    <div class="clientHeading">
-                                                        Maroon
-                                                        Blush Embroidered Georgette Suit Set</div>
-                                                </figcaption>
-                                            </a>
+                                <div class="rounded-lg overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                        <div class="pl-2">
+                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
                                         </div>
-                                    </figure>
+                                    </div>
+                                </div>
+                                <div class="rounded-lg overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                        <div class="pl-2">
+                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rounded-lg overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                        <div class="pl-2">
+                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2678,10 +2751,10 @@
                         <div class="col-xl-12">
                             <div class="section__title-wrapper text-center mb-40">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                    <h2>Our Promise</h2>
+                                    <h2 class="text-dark m-0">Our Promise</h2>
                                 </div>
                                 <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
-                                    <p>Our one-stop destination for every style, trend, occasion you're shopping
+                                    <p class="text-scondary">Our one-stop destination for every style, trend, occasion you're shopping
                                     </p>
                                 </div>
                             </div>
@@ -2692,18 +2765,18 @@
                     <div class="row justify-content-center">
                         <div class="col-md-4 col-sm-4 col-4 text-center">
                             <figure>
-                                <div class=""><img class=" lazy promise-img" src="https://static-00.iconduck.com/assets.00/shopping-cart-icon-512x462-yrde1eu0.png" alt="" style="width: 15%;"></div>
-                                <figcaption class="text-capitalize mt-2 fw-bold">A Look you love</figcaption>
+                                <div class=""><img class=" lazy promise-img" src="<?=base_url('assets/new_website/img/shopping-cart.png') ?>" alt="" style="width: 15%;"></div>
+                                <figcaption class="text-capitalize mt-2 font-weight-bold">A Look you love</figcaption>
                             </figure>
                         </div>
                         <div class="col-md-4  col-sm-4 col-4 text-center">
-                            <img class="img-fluid  lazy promise-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM-uNfDYK5mHtJzUcvSlRzW2zYjbzweG4Reklw21tJp_8hj-iJc_pq6iHpRkJZ4FGpU1E&usqp=CAU" alt="" style="width: 15%;">
-                            <figcaption class="text-capitalize mt-2 fw-bold">Easy Return</figcaption>
+                            <img class="img-fluid  lazy promise-img" src="<?=base_url('assets/new_website/img/return.png') ?>" alt="" style="width: 15%;">
+                            <figcaption class="text-capitalize mt-2 font-weight-bold">Easy Return</figcaption>
 
                         </div>
                         <div class="col-md-4  col-sm-4 col-4 text-center">
-                            <img class="img-fluid  lazy promise-img" src="https://dev.slickpattern.com/public/images/promise/fast-delivery.png" alt="" style="width: 18%;">
-                            <figcaption class="text-capitalize mt-2 fw-bold ">Speedy delivery</figcaption>
+                            <img class="img-fluid  lazy promise-img" src="<?=base_url('assets/new_website/img/delivery.png') ?>" alt="" style="width: 18%;">
+                            <figcaption class="text-capitalize mt-2 font-weight-bold ">Speedy delivery</figcaption>
 
                         </div>
                     </div>
@@ -2715,8 +2788,8 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-12">
                         <div class="pro-heading-title text-light pt-4 pb-3">
-                            <h2 class="text-center ">Stay Connected</h2>
-                            <p class="text-center">Follow us on our social media accounts to get even more <br> tasty
+                            <h2 class="text-center m-0 font-weight-bold">Stay Connected</h2>
+                            <p class="text-center fs12">Follow us on our social media accounts to get even more tasty
                                 content. </p>
                             <div class="social_icons pt-3 pb-4">
                                 <a href="" class="text-white fs-2"><i class="fa-brands fa-facebook-f"></i></a>
