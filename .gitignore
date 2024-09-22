@@ -3,7 +3,6 @@
 /application/config/database.php
 /.github/workflows/publish.yml
 
-/uploads
 
 # Ignore cache files
 /application/cache/* 

@@ -2,6 +2,7 @@
 
 use Algolia\AlgoliaSearch\SearchClient;
 
+
 class Product_model extends CI_Model
 {
     protected $algolia, $index, $search_index, $apiKey = "K4UCSTA5PW", $appId = "5d3389f78b1ae8f73a1377b48e519820";
