@@ -170,9 +170,10 @@
         <div class="text-center mb-2">
             <p class="mb-0 text-dark d-inline px-2 py-1 rounded-bottom shadow-sm" style="background-color: #FFFAE8; font-size: 12px" ><i class="fa-regular fa-circle-xmark mr-1 text-danger"></i>Sorry your account is temporarily disabled for 00:30 min</p>
         </div>
-        <div class="loginContainer bg-white mx-auto my-lg-4 my-md-2" style="max-width: 400px;">
+        <div class="loginContainer bg-white mx-auto my-lg-4 my-md-2 position-relative" style="max-width: 400px;">
+            <a href="#" class="text-dark position-absolute" style="top: 12px; left: 14px;"><i class="fa-solid fa-arrow-left-long"></i></a>
             <div>
-            <img src="<?=base_url('assets/new_website/img/login-cover.jpg')?>" alt="">
+                <img src="<?=base_url('assets/new_website/img/login-cover.jpg')?>" alt="">
             </div>
             <div class="px-4 py-3">
                 <h1 class="mb-2" style="font-size: 20px; color: gray; font-family: 'League Spartan', sans-serif;">

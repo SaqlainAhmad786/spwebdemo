@@ -21,6 +21,11 @@
             font-size: 16px;
         }
 
+        main {
+            max-width: 1560px;
+            margin-inline: auto;
+        }
+
         a:hover{
             text-decoration: none;
             color: black;
@@ -42,6 +47,12 @@
             color: white;
             text-align: center;
             width: 80%;
+        }
+
+        .muteBtnCont{
+            bottom:28px;
+            left:50%;
+            transform: translateX(-50%);
         }
 
         .carousel-text p:nth-child(1){
@@ -90,7 +101,7 @@
         }
 
         .fourthSwiper{
-            height:480px;
+            height:360px;
         }
 
         .latestSwiper{
@@ -114,16 +125,17 @@
 
         .swiper-button-next,
         .swiper-button-prev{
-            background-color:rgba(0,0,0,0.15);
+            background-color:var(--maincolor);
             font-size: 16px;
             border-radius: 100vh;
-            padding: 0px 14px;
+            padding: 0px 22px;
         }
 
         .swiper-button-next::after,
         .swiper-button-prev::after{
-            color: var(--pinkcolor);
-            font-size: 16px
+            color: white;
+            font-size: 12px;
+            font-weight: 900;
         }
 
         .productSliderCard{
@@ -133,6 +145,15 @@
         .productSliderCard p{
             font-family: var(--heading_font)!important;
             color: var(--maincolor);
+        }
+
+        .productSliderCard span{
+            font-family: var(--heading_font)!important;
+            color: white;
+            position: absolute;
+            bottom: 0;
+            left: 8px;
+            font-size: 12px;
         }
 
         .productSliderCard a:hover{
@@ -146,14 +167,23 @@
         }
 
         .productSliderCard .img-card{
-            height: 72px;
-            width: 120px;
+            height: 140px;
+            width: 140px;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
         }
 
         .productSliderCard .img-card img{
             height: 100%;
             width: 100%;
             object-fit: cover;
+        }
+
+        .shopNowBtn:hover{
+            background-color: var(--maincolor);
+            color: white;
+            border-color: var(--maincolor);
         }
 
         .prebookTag h2{
@@ -362,9 +392,15 @@
             border: 1px solid var(--maincolor);
         }
 
+        .newOnSlickInner{
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 8px 8px 0 0;
+        }
+
         .newOnSlick-btn{
             width: 100%;
-            border: 2px solid #000;
+            color: whitesmoke;
+            border: 1px solid rgba(255,255,255,0.7);
         }
 
         .newOnSlick-btn:hover{
@@ -378,10 +414,11 @@
             object-fit: cover;
         }
 
-        .brochureCard span{
+        .brochureCard button{
             font-family: var(--heading_font)!important;
-            font-weight: 700;
+            font-weight: 500;
             font-size: 12px;
+            transition: scale .2s ease-in;
         }
 
         .brochureCard .downloadBtn{
@@ -389,6 +426,27 @@
             bottom: 16px;
             right: 16px;
             z-index: 5;
+            transition: scale .2s ease-in;
+        }
+
+        .brochureCard button:hover, .brochureCard .downloadBtn:hover{
+            scale: 1.1;
+        }
+
+        .showcaseSection{
+            background-image: url('<?=base_url('assets/new_website/img/slider2.webp')?>');
+            height:400px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: grid;
+            place-items: center;
+        }
+
+        .showcaseSection a{
+            border: 2px solid white;
+            color: white;
+            padding: 6px 20px;
         }
 
         .youtube-embed-container {
@@ -427,6 +485,10 @@
             display: none !important;
         }
 
+        .scroll-up-btn, .feedback-btn {
+            display: none!important;
+        }
+
         @media (width< 768px) {
             .carousel-text p:nth-child(2){
                 font-size: 28px;
@@ -442,8 +504,13 @@
                 height: 102px;
             }
             
+            .carousel-text p:nth-child(1){
+                margin-bottom: 4px;
+            }
+
             .carousel-text p:nth-child(2){
                 font-size: 20px;
+                margin-bottom: 6px;
             }
 
             .carousel-text p:nth-child(3){
@@ -452,7 +519,7 @@
             }
 
             .carousel-text a, .carousel-text button{
-                font-size: 14px;
+                font-size: 10px;
             }
 
             .welcomeSwiper{
@@ -461,6 +528,25 @@
 
             .fourthSwiper{
                 height:160px;
+            }
+
+            .showcaseSection{
+                height: 280px;
+            }
+
+            .toggleSwitch{
+                width: 30px;
+                height: 30px;
+            }
+
+            .speaker, .mute-speaker{
+                width: 14px;
+            }
+        }
+
+        @media (width< 400px){
+            .showcaseSection{
+                height: 240px;
             }
         }
     </style>
@@ -482,19 +568,19 @@
                         <p class="animate__animated animate__fadeInUp">Good Morning</p>
                         <p class="animate__animated animate__fadeInUp animate__delay-1s">Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                         <p class="animate__animated animate__fadeInUp animate__delay-2s">Lorem ipsum dolor sit, amet consectetur adipisicing elit. A tempora obcaecati facere voluptate distinctio, adipisci nemo vero minus harum iure.</p>
-                        <a href="#">SHOP NOW</a>
+                        <a href="#" class="shopNowBtn">SHOP NOW</a>
                     </div>
                 </div>
-                <div class="carousel-item ">
+                <div class="carousel-item">
                     <!-- <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D" class="d-block w-100" alt="..."> -->
-                    <video width="100%" height="100%" controls autoplay="autoplay" loop muted id="myVideo">
+                    <video width="100%" height="100%" autoplay="autoplay" loop muted id="myVideo">
                         <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <div class="carousel-text d-block position-absolute" style="bottom: 0;">
-                        <div class="d-flex justify-content-center">
+                    <div class="muteBtnCont d-block position-absolute">
+                        <div>
                             <input type="checkbox" id="checkboxInput" class="muteBtn" checked>
-                            <label for="checkboxInput" class="toggleSwitch">
+                            <label for="checkboxInput m-0" class="toggleSwitch">
                                 <div class="speaker"><svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 75 75">
                                 <path d="M39.389,13.769 L22.235,28.606 L6,28.606 L6,47.699 L21.989,47.699 L39.389,62.75 L39.389,13.769z" style="stroke:#fff;stroke-width:5;stroke-linejoin:round;fill:#fff;"></path>
                                 <path d="M48,27.6a19.5,19.5 0 0 1 0,21.4M55.1,20.5a30,30 0 0 1 0,35.6M61.6,14a38.8,38.8 0 0 1 0,48.6" style="fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round"></path>
@@ -514,7 +600,7 @@
                         <p class="animate__animated animate__fadeInUp">Good Morning</p>
                         <p class="animate__animated animate__fadeInUp animate__delay-1s">Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                         <p class="animate__animated animate__fadeInUp animate__delay-2s">Lorem ipsum dolor sit, amet consectetur adipisicing elit. A tempora obcaecati facere voluptate distinctio, adipisci nemo vero minus harum iure.</p>
-                        <a href="#">SHOP NOW</a>
+                        <a href="#" class="shopNowBtn">SHOP NOW</a>
                     </div>
                 </div>
             </div>
@@ -1540,7 +1626,7 @@
             </section>
         </div>
         <!-- ____banner_img____ -->
-        <section class="banner_one_section mt-4">
+        <!-- <section class="banner_one_section mt-4">
             <div class="show_banner banner__area-2">
                 <div class="onLayer  pb-30">
                     <div class="conatiner px-0 m-0">
@@ -1553,6 +1639,11 @@
                         </dirv>
                     </div>
                 </div>
+            </div>
+        </section> -->
+        <section>
+            <div class="showcaseSection">
+                <a href="#" class="shopNowBtn">SHOP NOW</a>
             </div>
         </section>
 
@@ -1653,13 +1744,13 @@
                 </div>
             </section>
             <!-- ______our_productSection_____ -->
-            <section class="sale__area productsSection_Start pt-40 pb-50" style="background: #ededf9 !important;">
+            <section class="sale__area productsSection_Start pt-40 pb-50">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="section__title-wrapper text-center mb-40">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                    <h2 class="m-0 text-dark" style="background: #ededf9 !important;">Our Products </h2>
+                                    <h2 class="m-0 text-dark">Our Products </h2>
                                 </div>
                                 <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
                                     <p class="text-secondary">Our one-stop destination for every style, trend, occasion you're shopping
@@ -1807,16 +1898,22 @@
                                 <p>Revamp your style</p>
                                 <div class="img-container mb-2">
                                     <div class="img-card">
-                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                        <a href="#">
+                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                        </a>
+                                        <span>Bestsellers</span>
                                     </div>
                                     <div class="img-card">
-                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                        <a href="#"><img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt=""></a>
+                                        <span>Bestsellers</span>
                                     </div>
                                     <div class="img-card">
-                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                        <a href="#"><img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt=""></a>
+                                        <span>Bestsellers</span>
                                     </div>
                                     <div class="img-card">
-                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                        <a href="#"><img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt=""></a>
+                                        <span>Bestsellers</span>
                                     </div>
                                 </div>
                                 <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
@@ -2141,7 +2238,7 @@
                 <div class="container-fluid">
                     <div class="products-area ">
                         <div class="row prebook-row pre_book_showing">
-                            <div class="col-md-6">
+                            <div class="col-6 p-1">
                                 <figure class="position-relative">
                                     <div class="prebookTag">
                                         <div class="triangle_top_left"></div>
@@ -2153,7 +2250,7 @@
                                     <img class="prebookimg" src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg" alt="" class="img-fluid">
                                 </figure>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-6 p-1">
                                 <figure class="position-relative">
                                     <div class="prebookTag">
                                         <div class="triangle_top_left"></div>
@@ -2163,12 +2260,6 @@
                                         </h2>
                                     </div>
                                     <img class="prebookimg" src="https://images.pexels.com/photos/7505254/pexels-photo-7505254.jpeg?cs=srgb&dl=pexels-rnthlcueto-7505254.jpg&fm=jpg" alt="" class="img-fluid">
-                                </figure>
-                            </div>
-                            <div class="col-md-6">
-                                <figure>
-
-
                                 </figure>
                             </div>
                         </div>
@@ -2336,7 +2427,7 @@
                 </div>
             </section>
             <!-- new on slick pattern -->
-            <section class="pro-content pro-tab-content ">
+            <section class="pro-content pro-tab-content my-4">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -2359,54 +2450,54 @@
                             <div class="col-12 col-md-4 mt-4">
                                 <div class="position-relative">
                                     <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="">
-                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
-                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
-                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 newOnSlick-btn">SHOP NOW</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 mt-4">
                                 <div class="position-relative">
                                     <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="">
-                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
-                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
-                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 newOnSlick-btn">SHOP NOW</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 mt-4">
                                 <div class="position-relative">
                                     <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="">
-                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
-                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
-                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 newOnSlick-btn">SHOP NOW</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 mt-4">
                                 <div class="position-relative">
                                     <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="">
-                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
-                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
-                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 newOnSlick-btn">SHOP NOW</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 mt-4">
                                 <div class="position-relative">
                                     <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="">
-                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
-                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
-                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 newOnSlick-btn">SHOP NOW</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 mt-4">
                                 <div class="position-relative">
                                     <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="">
-                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
-                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
-                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 newOnSlick-btn">SHOP NOW</button>
                                     </div>
                                 </div>
                             </div>
@@ -2419,76 +2510,31 @@
                             <div class=" pre_order_slider  owl-carousel">
                                 <div class="position-relative">
                                     <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" style="height: 280px; object-fit: cover;" alt="">
-                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
-                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
+                                    <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
                                         <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
                                     </div>
                                 </div>
                                 <div class="position-relative">
                                     <img src="https://images.meesho.com/images/products/343616323/lcbl1_512.webp" style="height: 280px; object-fit: cover;" alt="">
-                                    <div class="position-absolute w-100 p-2" style="bottom: 0;">
-                                        <p class="m-0 pl-2 fs16 text-dark font-weight-bold">Weekend Style</p>
+                                    <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
                                         <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
                                     </div>
                                 </div>
-                                <!-- <div class="blog__item ">
-                                    <figure class="newOn_sp">
-                                        <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" alt="" class="img-fluid">
-                                        <figcaption class="story-hero__cta">
-                                            <h3 class="mb-2">Weekend Style</h3>
-                                            <a href="#" class="os-btn os-btn-2">Shop Now</a>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="blog__item">
-                                    <figure class="newOn_sp">
-                                        <img src="https://images.meesho.com/images/products/343616323/lcbl1_512.webp" alt="" class="img-fluid">
-                                        <figcaption class="story-hero__cta">
-                                            <h3 class="mb-2">Weekend Style</h3>
-                                            <a href="#" class="os-btn os-btn-2">Shop Now</a>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="blog__item">
-                                    <figure class="newOn_sp">
-                                        <img src="https://assets.ajio.com/medias/sys_master/root/20230602/heGu/6479573d42f9e729d7112552/-473Wx593H-462076821-maroon-MODEL4.jpg" alt="" class="img-fluid">
-                                        <figcaption class="story-hero__cta">
-                                            <h3 class="mb-2">Weekend Style</h3>
-                                            <a href="#" class="os-btn os-btn-2">Shop Now</a>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="blog__item">
-                                    <figure class="newOn_sp">
-                                        <img src="<?= base_url('assets/new_website/img/img.png') ?>" alt="" class="img-fluid">
-                                        <figcaption class="story-hero__cta">
-                                            <h3 class="mb-2">Weekend Style</h3>
-                                            <a href="#" class="os-btn os-btn-2">Shop Now</a>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="blog__item">
-                                    <figure class="newOn_sp">
-                                        <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="" class="img-fluid">
-                                        <figcaption class="story-hero__cta">
-                                            <h3 class="mb-2">Weekend Style</h3>
-                                            <a href="#" class="os-btn os-btn-2">Shop Now</a>
-                                        </figcaption>
-                                    </figure>
-                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- ____our Catelog_____ -->
-            <section class="sale__area catelog_lookbook mt-4">
+            <section class="sale__area catelog_lookbook my-4">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="section__title-wrapper text-center mb-40">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                    <h2 class="m-0 text-dark">Download Lookbook </h2>
+                                    <h2 class="m-0 text-dark">Download Lookbook</h2>
                                 </div>
                                 <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
                                     <p class="text-secondary">Our one-stop destination for every style, trend, occasion you're shopping
@@ -2508,10 +2554,10 @@
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
                                             <div>
-                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
                                             </div>
                                             <div class="ml-2">
-                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2525,10 +2571,10 @@
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
                                             <div>
-                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
                                             </div>
                                             <div class="ml-2">
-                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2542,10 +2588,10 @@
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
                                             <div>
-                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
                                             </div>
                                             <div class="ml-2">
-                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2559,10 +2605,10 @@
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
                                             <div>
-                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
                                             </div>
                                             <div class="ml-2">
-                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2576,10 +2622,10 @@
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
                                             <div>
-                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
                                             </div>
                                             <div class="ml-2">
-                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2593,10 +2639,10 @@
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
                                             <div>
-                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
                                             </div>
                                             <div class="ml-2">
-                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2610,10 +2656,10 @@
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
                                             <div>
-                                                <span><i class="fa-regular fa-thumbs-up thumbs-up-icon"></i> 122k</span>
+                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
                                             </div>
                                             <div class="ml-2">
-                                                <span<i class="fa fa-circle-down"></i> <span>500k</span></span>
+                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2629,6 +2675,21 @@
         </div>
         <!-- ____banner_img____ -->
         <section class="banner_one_section pb-40 ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="section__title-wrapper text-center mb-40">
+                            <div class="section__title wow fadeInDown" data-wow-duration="1s">
+                                <h2 class="m-0 text-dark">Download Lookbook</h2>
+                            </div>
+                            <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
+                                <p class="text-secondary">Our one-stop destination for every style, trend, occasion you're shopping
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="show_banner_two banner__area-2">
                 <div class="onLayer  pb-30">
                     <div class="container-fluid  px-0 m-0">
@@ -2856,13 +2917,13 @@
         });
 
         var swiper4 = new Swiper('.latestSwiper', {
-                slidesPerView: 1,
+                slidesPerView: 1.5,
                 spaceBetween: 18,
                 autoplay:false,
                 loop: true,
                 breakpoints: {
                     300: {
-                        slidesPerView: 1,
+                        slidesPerView: 1.5,
                     },
                     500: {
                         slidesPerView: 2

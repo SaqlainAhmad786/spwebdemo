@@ -131,7 +131,8 @@
 
 <body>
     <main>
-        <div class="loginContainer bg-white mx-auto" style="max-width: 400px;">
+        <div class="loginContainer bg-white mx-auto position-relative" style="max-width: 400px;">
+        <a href="#" class="text-dark position-absolute" style="top: 12px; left: 14px;"><i class="fa-solid fa-arrow-left-long"></i></a>
             <div>
                 <img src="<?=base_url('assets/new_website/img/login-cover.jpg')?>" alt="">
             </div>

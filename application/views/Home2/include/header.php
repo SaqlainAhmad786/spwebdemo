@@ -36,6 +36,20 @@
         background-color: var(--pinkcolor)!important;
         color: white!important;
     }
+
+    .typewriter {
+        font-family: var(--mainfont);
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0; /* Initially hidden */
+        border-right: none; /* No cursor */
+        animation: typing 3s steps(80, end) forwards;
+    }
+
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
     
 </style>
 <header class="header_area" id="header-sticky">
@@ -304,7 +318,7 @@
                         <label for="showMega" class="mobile-item">Women </label>
                         <div class="mega-box">
                             <div class="content row text-left">
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -317,7 +331,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -330,7 +344,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -355,7 +369,7 @@
                         <label for="showMega" class="mobile-item">Men </label>
                         <div class="mega-box">
                             <div class="content row text-left">                            
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -368,7 +382,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -396,7 +410,7 @@
                         <label for="showMega" class="mobile-item">Kids </label>
                         <div class="mega-box">
                             <div class="content row text-left">
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -409,7 +423,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -422,7 +436,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -447,7 +461,7 @@
                         <label for="showMega" class="mobile-item">All Brands </label>
                         <div class="mega-box">
                             <div class="content row text-left">
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -460,7 +474,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -473,7 +487,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -498,7 +512,7 @@
                         <label for="showMega" class="mobile-item">Indian & Fusion Wear </label>
                         <div class="mega-box">
                             <div class="content row text-left">
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -511,7 +525,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -524,7 +538,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -549,7 +563,7 @@
                         <label for="showMega" class="mobile-item">Indian & Fusion Wear </label>
                         <div class="mega-box">
                             <div class="content row text-left">
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -562,7 +576,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -575,7 +589,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -600,7 +614,7 @@
                         <label for="showMega" class="mobile-item">Indian & Fusion Wear </label>
                         <div class="mega-box">
                             <div class="content row text-left">
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -613,7 +627,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -626,7 +640,7 @@
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-3 py-3">
+                                <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
                                         <li><a href="#">Lorem, ipsum dolor.</a></li>
@@ -710,21 +724,22 @@
                     </div>
                 </div>
             </div>
-            <hr class="Add_horizontal_line_here">
-            <div class="container-fluid secondHrLine">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-3 pt-1">
-                        <div class="mobile-menu-btn text-center d-lg-none d-flex justify-content-between">
-                            <a href="javascript:void(0);" class="mobile-menu-toggle"><i class="fas fa-bars"></i> <span class="menu_name">Menu</span> </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-9 col-9 pl-0">
+            <div class="container-fluid">
+                <div class="row px-2 pb-2">
+                    <div class="flex-grow-1">
                         <div class="mobile_search">
                             <div class="search_group" onclick="openNav()">
                                 <div>
-                                    <p>Search for products, brand and more <i class="fa fa-search"></i></p>
+                                    <p class="typewriter"><i class="fa fa-search mr-1"></i>Search for products, brand and more</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="mobile-menu-btn text-center d-lg-none d-flex justify-content-between">
+                            <a href="javascript:void(0);" class="mobile-menu-toggle">
+                                <img src="<?=base_url('assets/new_website/img/bars.svg') ?>" style="max-width: 30px;" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>
