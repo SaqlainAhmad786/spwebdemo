@@ -47,7 +47,7 @@
 
         searchInput.addEventListener('click', function () {
             searchSuggestions.classList.add('show');
-            overlay.style.display = 'block';    
+            overlay.style.display = 'block';
         });
 
         document.addEventListener('click', function (event) {
@@ -81,14 +81,17 @@
     $(".mobile-menu-toggle").on("click", function () {
         $(".extra__info").addClass("info-opened");
         $(".body-overlay").addClass("opened");
+        $("body").addClass("scrollDisable");
     });
     $(".extra__info-close-btn").on("click", function () {
         $(".extra__info").removeClass("info-opened");
         $(".body-overlay").removeClass("opened");
+        $("body").removeClass("scrollDisable");
     });
     $(".body-overlay").on("click", function () {
         $(".extra__info").removeClass("info-opened");
         $(".body-overlay").removeClass("opened");
+        $("body").removeClass("scrollDisable");
     });
 
     //    ((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))
@@ -1197,7 +1200,7 @@
                 } else {
                     window.addEventListener('scroll', checkScroll);
                 }
-            }, 4000); 
+            }, 4000);
         });
 
         // Close third popup

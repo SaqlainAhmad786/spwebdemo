@@ -91,7 +91,7 @@
         }
 
         @media (width < 568px) {
-            main{
+            body{
                 background-image: none;
             }
         }

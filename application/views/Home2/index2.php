@@ -138,13 +138,18 @@
             font-weight: 900;
         }
 
+        .swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled{
+            display: none;
+        }
+
         .productSliderCard{
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
         }
 
         .productSliderCard p{
             font-family: var(--heading_font)!important;
-            color: var(--maincolor);
+            color: rgba(0, 0, 0, 0.5);
+            font-weight: 600;
         }
 
         .productSliderCard span{
@@ -153,7 +158,7 @@
             position: absolute;
             bottom: 0;
             left: 8px;
-            font-size: 12px;
+            font-size: 13px;
         }
 
         .productSliderCard a:hover{
@@ -178,6 +183,11 @@
             height: 100%;
             width: 100%;
             object-fit: cover;
+            transition: all .4s ease-in-out;
+        }
+
+        .productSliderCard .img-card img:hover{
+            scale: 1.1;
         }
 
         .shopNowBtn:hover{
@@ -417,8 +427,13 @@
         .brochureCard button{
             font-family: var(--heading_font)!important;
             font-weight: 500;
-            font-size: 12px;
+            font-size: 13px;
             transition: scale .2s ease-in;
+        }
+
+        .brochureCard label{
+            font-family: var(--mainfont)!important;
+            font-weight: 500;
         }
 
         .brochureCard .downloadBtn{
@@ -447,6 +462,130 @@
             border: 2px solid white;
             color: white;
             padding: 6px 20px;
+        }
+
+        .heart-container {
+        --heart-color: rgb(255, 91, 137);
+        position: relative;
+        width: 16px;
+        height: 16px;
+        transition: .3s;
+        }
+
+        .heart-container .checkbox {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 20;
+        cursor: pointer;
+        }
+
+        .heart-container .svg-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .heart-container .svg-outline,
+                .heart-container .svg-filled {
+        fill: var(--heart-color);
+        position: absolute;
+        }
+
+        .heart-container .svg-filled {
+        animation: keyframes-svg-filled 1s;
+        display: none;
+        }
+
+        .heart-container .svg-celebrate {
+        position: absolute;
+        animation: keyframes-svg-celebrate .5s;
+        animation-fill-mode: forwards;
+        display: none;
+        stroke: var(--heart-color);
+        fill: var(--heart-color);
+        stroke-width: 2px;
+        }
+
+        .heart-container .checkbox:checked~.svg-container .svg-filled {
+        display: block
+        }
+
+        .heart-container .checkbox:checked~.svg-container .svg-celebrate {
+        display: block
+        }
+
+        @keyframes keyframes-svg-filled {
+            0% {
+                transform: scale(0);
+            }
+
+            25% {
+                transform: scale(1.2);
+            }
+
+            50% {
+                transform: scale(1);
+                filter: brightness(1.5);
+            }
+        }
+
+        @keyframes keyframes-svg-celebrate {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                filter: brightness(1.5);
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+                display: none;
+            }
+        }
+
+        .animatedArrow {
+            transform: translate(-50%, -50%) rotate(-90deg);
+            cursor: pointer;
+        }
+
+        .animatedArrow span {
+            display: block;
+            width: 14px;
+            height: 14px;
+            border-bottom: 5px solid rgba(0,0,0,0.3);
+            border-right: 5px solid rgba(0,0,0,0.3);
+            transform: rotate(45deg);
+            margin: -10px;
+            animation: animate 2s infinite;
+        }
+
+        .animatedArrow span:nth-child(2) {
+            animation-delay: -0.2s;
+        }
+
+        .animatedArrow span:nth-child(3) {
+            animation-delay: -0.4s;
+        }
+
+        @keyframes animate {
+            0% {
+                opacity: 0;
+                transform: rotate(45deg) translate(-20px, -20px);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: rotate(45deg) translate(20px, 20px);
+            }
         }
 
         .youtube-embed-container {
@@ -526,8 +665,12 @@
                 height: 208px;
             }
 
+            .latestSwiper{
+                height:400px;
+            }
+
             .fourthSwiper{
-                height:160px;
+                height:130px;
             }
 
             .showcaseSection{
@@ -541,6 +684,11 @@
 
             .speaker, .mute-speaker{
                 width: 14px;
+            }
+
+            .swiper-button-next,
+            .swiper-button-prev{
+                display: none;
             }
         }
 
@@ -726,7 +874,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container-fluid pb-30">
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-xl-12">
                                 <!-- <div class="welcome__slider owl-carousel">
@@ -846,7 +994,7 @@
             </div>
         <?php } ?>
         <!-- ___seller___banner_____ -->
-        <section class="offerSection_startHere SaleBannerSectionhere">
+        <section class="offerSection_startHere SaleBannerSectionhere my-5">
             <div class="banner__area-2 ">
                 <div class="container">
                     <div class="row">
@@ -924,10 +1072,10 @@
                 </div>
             </div>
         </section>
-        <div class="box-25 mt-3">
+        <div class="box-25">
 
             <!-- ____combo____product____ -->
-            <section class="product__area comboProductArea pt-30 pb-50" id="view_Third_popup">
+            <section class="product__area comboProductArea my-5" id="view_Third_popup">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -1134,7 +1282,7 @@
                                                     <div class="product__content p-relative mb-10">
                                                         <div class="product__content-inner">
                                                             <h4><a href="#"> Ava Casual Chain Loafers</a></h4>
-                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success">(60% Off)</span>
+                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success text-nowrap">(60% Off)</span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1148,7 +1296,7 @@
                                                     <div class="product__content p-relative">
                                                         <div class="product__content-inner">
                                                             <h4><a href="#"> Ava Casual Chain Loafers</a></h4>
-                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success">(60% Off)</span>
+                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success text-nowrap">(60% Off)</span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1177,7 +1325,7 @@
                                                     <div class="product__content p-relative mb-10">
                                                         <div class="product__content-inner">
                                                             <h4><a href="#"> Ava Casual Chain Loafers</a></h4>
-                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success">(60% Off)</span>
+                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success text-nowrap">(60% Off)</span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1191,7 +1339,7 @@
                                                     <div class="product__content p-relative">
                                                         <div class="product__content-inner">
                                                             <h4><a href="#"> Ava Casual Chain Loafers</a></h4>
-                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success">(60% Off)</span>
+                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success text-nowrap">(60% Off)</span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1220,7 +1368,7 @@
                                                     <div class="product__content p-relative mb-10">
                                                         <div class="product__content-inner">
                                                             <h4><a href="#"> Ava Casual Chain Loafers</a></h4>
-                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success">(60% Off)</span>
+                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success text-nowrap">(60% Off)</span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1234,7 +1382,7 @@
                                                     <div class="product__content p-relative">
                                                         <div class="product__content-inner">
                                                             <h4><a href="#"> Ava Casual Chain Loafers</a></h4>
-                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success">(60% Off)</span>
+                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success text-nowrap">(60% Off)</span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1263,7 +1411,7 @@
                                                     <div class="product__content p-relative mb-10">
                                                         <div class="product__content-inner">
                                                             <h4><a href="#"> Ava Casual Chain Loafers</a></h4>
-                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success">(60% Off)</span>
+                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success text-nowrap">(60% Off)</span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1277,7 +1425,7 @@
                                                     <div class="product__content p-relative">
                                                         <div class="product__content-inner">
                                                             <h4><a href="#"> Ava Casual Chain Loafers</a></h4>
-                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success">(60% Off)</span>
+                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success text-nowrap">(60% Off)</span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1306,7 +1454,7 @@
                                                     <div class="product__content p-relative mb-10">
                                                         <div class="product__content-inner">
                                                             <h4><a href="#"> Ava Casual Chain Loafers</a></h4>
-                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success">(60% Off)</span>
+                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success text-nowrap">(60% Off)</span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1320,7 +1468,7 @@
                                                     <div class="product__content p-relative">
                                                         <div class="product__content-inner">
                                                             <h4><a href="#"> Ava Casual Chain Loafers</a></h4>
-                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success">(60% Off)</span>
+                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success text-nowrap">(60% Off)</span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1349,7 +1497,7 @@
                                                     <div class="product__content p-relative mb-10">
                                                         <div class="product__content-inner">
                                                             <h4><a href="#"> Ava Casual Chain Loafers</a></h4>
-                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success">(60% Off)</span>
+                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success text-nowrap">(60% Off)</span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1363,7 +1511,7 @@
                                                     <div class="product__content p-relative">
                                                         <div class="product__content-inner">
                                                             <h4><a href="#"> Ava Casual Chain Loafers</a></h4>
-                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success">(60% Off)</span>
+                                                            <span class="old-price">₹ 4,995 </span><span>Sale price <span class="text-success text-nowrap">(60% Off)</span>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1373,6 +1521,16 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-lg-none d-md-block d-block">
+                    <div class="d-flex align-items-center justify-content-center mt-3">
+                        <span class="text-secondary font-weight-bold">SWIPE FOR MORE</span>
+                        <div class="animatedArrow">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
                     </div>
                 </div>
@@ -1619,6 +1777,8 @@
                                         </a>
                                     </div>
                                 </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
                             </div>
                         </div>
                     </div>
@@ -1648,7 +1808,7 @@
         </section>
 
         <div class="box-25">
-            <section class="sale__area pb-30 pt-50">
+            <section class="sale__area pt-50">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -1744,7 +1904,7 @@
                 </div>
             </section>
             <!-- ______our_productSection_____ -->
-            <section class="sale__area productsSection_Start pt-40 pb-50">
+            <section class="sale__area productsSection_Start my-5">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -1760,136 +1920,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="container-fluid">
-                    <div class="row our_productSection">
-                        <div class="productslider add_combo_imgcss owl-carousel">
-                            <div class="blog__item">
-                                <div class="card">
-                                    <h2 class="fs-5 fw-bold"> Revamp your home in style</h2>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="product-container ">
-                                            <figure>
-                                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_furnishings_2._SY116_CB555624324_.jpg" class="img-fluid" alt="">
-                                            </figure>
-                                            <a href="#" class="product-container">
-                                                <figure>
-                                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_decor_1._SY116_CB555624324_.jpg" class="img-fluid" alt="">
-                                                </figure>
-                                            </a>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="product-container">
-                                            <figure>
-                                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_storage_1._SY116_CB555624324_.jpg" class="img-fluid" alt="">
-
-                                            </figure>
-                                        </a>
-                                        <a href="#" class="product-container">
-                                            <figure>
-                                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_lighting_2._SY116_CB555624324_.jpg" class="img-fluid" alt="">
-
-                                            </figure>
-                                        </a>
-                                    </div>
-                                    <a href="#" class="explore-more-btn">Explore More</a>
-                                </div>
-                            </div>
-                            <div class="blog__item">
-                                <div class="card">
-                                    <h2 class="fs-5 fw-bold"> Up to 60% off | Top picks </h2>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="product-container ">
-                                            <figure>
-                                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Softlines_JWL_SH_GW_Assets/2024/July/BTF/1st/PC/Shoes-low._SY116_CB554442186_.jpg" class="img-fluid" alt="">
-                                            </figure>
-                                            <a href="#" class="product-container">
-                                                <figure>
-                                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Softlines_JWL_SH_GW_Assets/2024/July/BTF/1st/pcqc2-3-low._SY116_CB554637206_.jpg" class="img-fluid" alt="">
-                                                </figure>
-                                            </a>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="product-container">
-                                            <figure>
-                                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Softlines_JWL_SH_GW_Assets/2024/July/BTF/1st/Pcqc2-4-low._SY116_CB554637206_.jpg" class="img-fluid" alt="">
-
-                                            </figure>
-                                        </a>
-                                        <a href="#" class="product-container">
-                                            <figure>
-                                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Softlines_JWL_SH_GW_Assets/2024/July/BTF/1st/Pcqc-2-2-low._SY116_CB554637206_.jpg" class="img-fluid" alt="">
-
-                                            </figure>
-                                        </a>
-                                    </div>
-                                    <a href="#" class="explore-more-btn">Explore More</a>
-                                </div>
-                            </div>
-                            <div class="blog__item">
-                                <div class="card">
-                                    <h2 class="fs-5 fw-bold"> Pocket-friendly fashion </h2>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="product-container ">
-                                            <figure>
-                                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC-PFF/PFF-1-186-116._SY116_CB636055991_.jpg" class="img-fluid" alt="">
-                                            </figure>
-                                            <a href="#" class="product-container">
-                                                <figure>
-                                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC-PFF/PFF-3-186-116._SY116_CB636055991_.jpg" class="img-fluid" alt="">
-                                                </figure>
-                                            </a>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="product-container">
-                                            <figure>
-                                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC-PFF/PFF-2-186-116._SY116_CB636055991_.jpg" class="img-fluid" alt="">
-
-                                            </figure>
-                                        </a>
-                                        <a href="#" class="product-container">
-                                            <figure>
-                                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC-PFF/PFF-4-186-116._SY116_CB636055991_.jpg" class="img-fluid" alt="">
-
-                                            </figure>
-                                        </a>
-                                    </div>
-                                    <a href="#" class="explore-more-btn">Explore More</a>
-                                </div>
-                            </div>
-                            <div class="blog__item">
-                                <div class="card">
-                                    <h2 class="fs-5 fw-bold"> Brands in focus </h2>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="product-container ">
-                                            <figure>
-                                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/LaptopsPD24_Intel_Ascent/Intel_QuadCard_186x116._SY116_CB554215172_.jpg" class="img-fluid" alt="">
-                                            </figure>
-                                            <a href="#" class="product-container">
-                                                <figure>
-                                                    <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Wireless/tsahtany/PrimeDay/ASCENT/PC_QuadCard186x116._SY116_CB569818057_.jpg" class="img-fluid" alt="">
-                                                </figure>
-                                            </a>
-                                    </div>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="product-container">
-                                            <figure>
-                                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img24/COOP/ASCENT/PD24/GW_deskQC/Surf_1x._SY116_CB569797750_.jpg" class="img-fluid" alt="">
-
-                                            </figure>
-                                        </a>
-                                        <a href="#" class="product-container">
-                                            <figure>
-                                                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img24/COOP/ASCENT/PD24/GW_deskQC/Pampers_1x._SY116_CB569797750_.jpg" class="img-fluid" alt="">
-
-                                            </figure>
-                                        </a>
-                                    </div>
-                                    <a href="#" class="explore-more-btn">Explore More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 
                 <div class="swiper productSwiper">
                     <div class="swiper-wrapper">
@@ -2045,7 +2075,7 @@
                 </div>
 
             </section>
-            <section class="sale__area  our_storesSection pt-60">
+            <section class="sale__area  our_storesSection my-5">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -2267,7 +2297,7 @@
                 </div>
             </section>
             <section class="sale__area  pt-20">
-                <div class="container-fluid pb-30">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class=" pre_order_slider  owl-carousel">
@@ -2427,7 +2457,7 @@
                 </div>
             </section>
             <!-- new on slick pattern -->
-            <section class="pro-content pro-tab-content my-4">
+            <section class="pro-content pro-tab-content my-5">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -2528,7 +2558,7 @@
                 </div>
             </section>
             <!-- ____our Catelog_____ -->
-            <section class="sale__area catelog_lookbook my-4">
+            <section class="sale__area catelog_lookbook my-5">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -2544,7 +2574,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid pb-30">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="catelog__slider   owl-carousel mt-10 catelog_section">
@@ -2553,11 +2583,33 @@
                                     <div class="blog__content">
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div>
-                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
+                                            <div class="d-flex align-items-center">
+                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                <div class="heart-container" title="Like">
+                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                    <div class="svg-container">
+                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                            <polygon points="10,10 20,20"></polygon>
+                                                            <polygon points="10,50 20,50"></polygon>
+                                                            <polygon points="20,80 30,70"></polygon>
+                                                            <polygon points="90,10 80,20"></polygon>
+                                                            <polygon points="90,50 80,50"></polygon>
+                                                            <polygon points="80,80 70,70"></polygon>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
                                             <div class="ml-2">
-                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
+                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2570,11 +2622,33 @@
                                     <div class="blog__content">
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div>
-                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
+                                            <div class="d-flex align-items-center">
+                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                <div class="heart-container" title="Like">
+                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                    <div class="svg-container">
+                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                            <polygon points="10,10 20,20"></polygon>
+                                                            <polygon points="10,50 20,50"></polygon>
+                                                            <polygon points="20,80 30,70"></polygon>
+                                                            <polygon points="90,10 80,20"></polygon>
+                                                            <polygon points="90,50 80,50"></polygon>
+                                                            <polygon points="80,80 70,70"></polygon>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
                                             <div class="ml-2">
-                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
+                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2587,11 +2661,33 @@
                                     <div class="blog__content">
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div>
-                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
+                                            <div class="d-flex align-items-center">
+                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                <div class="heart-container" title="Like">
+                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                    <div class="svg-container">
+                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                            <polygon points="10,10 20,20"></polygon>
+                                                            <polygon points="10,50 20,50"></polygon>
+                                                            <polygon points="20,80 30,70"></polygon>
+                                                            <polygon points="90,10 80,20"></polygon>
+                                                            <polygon points="90,50 80,50"></polygon>
+                                                            <polygon points="80,80 70,70"></polygon>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
                                             <div class="ml-2">
-                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
+                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2604,11 +2700,33 @@
                                     <div class="blog__content">
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div>
-                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
+                                            <div class="d-flex align-items-center">
+                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                <div class="heart-container" title="Like">
+                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                    <div class="svg-container">
+                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                            <polygon points="10,10 20,20"></polygon>
+                                                            <polygon points="10,50 20,50"></polygon>
+                                                            <polygon points="20,80 30,70"></polygon>
+                                                            <polygon points="90,10 80,20"></polygon>
+                                                            <polygon points="90,50 80,50"></polygon>
+                                                            <polygon points="80,80 70,70"></polygon>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
                                             <div class="ml-2">
-                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
+                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2621,11 +2739,33 @@
                                     <div class="blog__content">
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div>
-                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
+                                            <div class="d-flex align-items-center">
+                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                <div class="heart-container" title="Like">
+                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                    <div class="svg-container">
+                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                            <polygon points="10,10 20,20"></polygon>
+                                                            <polygon points="10,50 20,50"></polygon>
+                                                            <polygon points="20,80 30,70"></polygon>
+                                                            <polygon points="90,10 80,20"></polygon>
+                                                            <polygon points="90,50 80,50"></polygon>
+                                                            <polygon points="80,80 70,70"></polygon>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
                                             <div class="ml-2">
-                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
+                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2638,11 +2778,33 @@
                                     <div class="blog__content">
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div>
-                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
+                                            <div class="d-flex align-items-center">
+                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                <div class="heart-container" title="Like">
+                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                    <div class="svg-container">
+                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                            <polygon points="10,10 20,20"></polygon>
+                                                            <polygon points="10,50 20,50"></polygon>
+                                                            <polygon points="20,80 30,70"></polygon>
+                                                            <polygon points="90,10 80,20"></polygon>
+                                                            <polygon points="90,50 80,50"></polygon>
+                                                            <polygon points="80,80 70,70"></polygon>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
                                             <div class="ml-2">
-                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
+                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2655,11 +2817,33 @@
                                     <div class="blog__content">
                                         <h4>Brocher Name</h4>
                                         <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div>
-                                                <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button>
+                                            <div class="d-flex align-items-center">
+                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                <div class="heart-container" title="Like">
+                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                    <div class="svg-container">
+                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                            </path>
+                                                        </svg>
+                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                            <polygon points="10,10 20,20"></polygon>
+                                                            <polygon points="10,50 20,50"></polygon>
+                                                            <polygon points="20,80 30,70"></polygon>
+                                                            <polygon points="90,10 80,20"></polygon>
+                                                            <polygon points="90,50 80,50"></polygon>
+                                                            <polygon points="80,80 70,70"></polygon>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
                                             <div class="ml-2">
-                                                <button class="btn m-0 p-0"><i class="fa fa-circle-down"></i> 500k</button>
+                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                             </div>
                                         </div>
                                     </div>
@@ -2674,7 +2858,7 @@
             </section>
         </div>
         <!-- ____banner_img____ -->
-        <section class="banner_one_section pb-40 ">
+        <section class="banner_one_section my-5">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -2691,7 +2875,7 @@
                 </div>
             </div>
             <div class="show_banner_two banner__area-2">
-                <div class="onLayer  pb-30">
+                <div class="onLayer">
                     <div class="container-fluid  px-0 m-0">
                         <dirv class="row px-0 m-0">
                             <div class="col-lg-12 text-center pt-4 px-0">
@@ -2717,7 +2901,7 @@
             </div>
         </section>
         <div class="box-25">
-            <section class="sale__area catelog_lookbook pt-50">
+            <section class="sale__area catelog_lookbook my-5">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -2733,7 +2917,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid pb-30">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="catelog__slider   owl-carousel mt-10 client_section">
@@ -2806,7 +2990,7 @@
                 </div>
             </section>
             <!-- ___our promises_section___ -->
-            <section class="pro-content testimonails-content pb-40">
+            <section class="pro-content testimonails-content my-5">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -2827,17 +3011,17 @@
                         <div class="col-md-4 col-sm-4 col-4 text-center">
                             <figure>
                                 <div class=""><img class=" lazy promise-img" src="<?=base_url('assets/new_website/img/shopping-cart.png') ?>" alt="" style="width: 15%;"></div>
-                                <figcaption class="text-capitalize mt-2 font-weight-bold">A Look you love</figcaption>
+                                <figcaption class="text-capitalize mt-2 font-weight-bold" style="line-height: 1.1;">Love this Look</figcaption>
                             </figure>
                         </div>
                         <div class="col-md-4  col-sm-4 col-4 text-center">
                             <img class="img-fluid  lazy promise-img" src="<?=base_url('assets/new_website/img/return.png') ?>" alt="" style="width: 15%;">
-                            <figcaption class="text-capitalize mt-2 font-weight-bold">Easy Return</figcaption>
+                            <figcaption class="text-capitalize mt-2 font-weight-bold" style="line-height: 1.1;">Easy Returns</figcaption>
 
                         </div>
                         <div class="col-md-4  col-sm-4 col-4 text-center">
                             <img class="img-fluid  lazy promise-img" src="<?=base_url('assets/new_website/img/delivery.png') ?>" alt="" style="width: 18%;">
-                            <figcaption class="text-capitalize mt-2 font-weight-bold ">Speedy delivery</figcaption>
+                            <figcaption class="text-capitalize mt-2 font-weight-bold " style="line-height: 1.1;">Quick Delivery</figcaption>
 
                         </div>
                     </div>
@@ -2920,7 +3104,10 @@
                 slidesPerView: 1.5,
                 spaceBetween: 18,
                 autoplay:false,
-                loop: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
                 breakpoints: {
                     300: {
                         slidesPerView: 1.5,
@@ -2944,7 +3131,6 @@
                 slidesPerView: 1,
                 spaceBetween: 18,
                 autoplay:false,
-                loop: true,
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',

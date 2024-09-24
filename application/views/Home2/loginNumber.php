@@ -165,6 +165,7 @@
 </head>
 
 <body>
+<?php include('include/header.php'); ?>
     <main>
         <!-- 30 second redirect popup -->
         <div class="text-center mb-2">

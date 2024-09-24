@@ -6,11 +6,20 @@
     .fs12 {
         font-size: 12px;
     }
+
     .royalClubBtn {
         background-color: #F5F5F6;
         border-radius: 100vh;
         margin-inline: 8px!important;
         transition: 0.2s all;
+    }
+
+    .royalClubBtn2{
+        background-color: #F5F5F7;
+        border-radius: 100vh;
+        transition: 0.2s all;
+        padding: 4px 7px!important;
+        margin-right: 8px!important;
     }
 
     .royalClubBtn:hover {
@@ -37,19 +46,28 @@
         color: white!important;
     }
 
-    .typewriter {
-        font-family: var(--mainfont);
+    
+    .text-container {
+        font-size: 12px;
         white-space: nowrap;
         overflow: hidden;
-        width: 0; /* Initially hidden */
-        border-right: none; /* No cursor */
-        animation: typing 3s steps(80, end) forwards;
+        font-family: var(--main_font);
+        color: rgba(0, 0, 0, 0.4);
+        font-weight: 600;
     }
 
-    @keyframes typing {
-        from { width: 0; }
-        to { width: 100%; }
+    .cursor {
+        display: inline-block;
+        width: 10px;
+        animation: blink 0.7s infinite;
     }
+
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
     
 </style>
 <header class="header_area" id="header-sticky">
@@ -116,7 +134,7 @@
             <div class="container-fluid">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12">
                     <a class="navbar-brand header_logo_here" href="<?= base_url() ?>">
-                        <img src="<?=base_url('assets/new_website/img/memberLogo.png') ?>">
+                        <img src="<?=base_url('assets/new_website/img/memberLogo.png') ?>" loading="lazy">
                     </a>
                 </div>
                 <!-- <div class="col-xl-6 col-lg-6 col-md-2 col-sm-1 col-2"> -->
@@ -192,7 +210,7 @@
                             <li class="nav-item border-right">
                                 <a class="nav-link royalClubBtn" href="#" title="Royal Club">
                                     <!-- <i class=' bx bx-crown'></i> -->
-                                     <img src="<?=base_url('assets/new_website/img/crown2.png') ?>" style="min-width: 24px; max-width: 24px" alt="">
+                                     <img src="<?=base_url('assets/new_website/img/crown2.png') ?>" style="min-width: 24px; max-width: 24px" alt="" loading="lazy">
                                     <!-- Royal Club -->
                                 </a>
                             </li>
@@ -206,7 +224,7 @@
                                         <i class="fa-regular fa-user"></i>
                                         <div class="d-flex flex-column ml-2" style="line-height: 1.1;">
                                             <span>
-                                                Hello,
+                                                <span>Good Morning,</span>
                                                 <span class="font-weight-bold">Khushi</span>
                                             </span>
                                             <span class="text-secondary fs10">khushi@gmail.com</span>
@@ -358,7 +376,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                                    <a href="#"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
                                 </div>
                             </div>
                         </div>
@@ -396,10 +414,10 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                                    <a href="#"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                                    <a href="#"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
                                 </div>
                             </div>
                         </div>
@@ -450,7 +468,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                                    <a href="#"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
                                 </div>
                             </div>
                         </div>
@@ -501,7 +519,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -552,7 +570,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -603,7 +621,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -654,7 +672,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="">
+                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -667,24 +685,23 @@
     </div>
     <div class="mobile_Header bg-white">
         <div class="header__area ">
-            <div class="container-fluid ">
+            <div class="container-fluid pb-2">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6  col-6">
                         <div class="header__right p-relative">
                             <div class="mobile-menu-btn text-center d-lg-none d-flex justify-content-between">
                                 <!-- <a href="<?= base_url() ?>"><img src="<?= !empty($this->webLogo) ? base_url('uploads/logo/' . $this->webLogo['web_header_logo']) : '' ?>" class="mobile_header" alt="<?= !empty($this->webLogo) ? $this->webLogo['web_header_logo_alt'] : '' ?>" title="<?= !empty($this->webLogo) ? $this->webLogo['web_header_logo_title'] : '' ?>"></a> -->
-                                 <a href="#" class="mt-2"><img style="max-width: 170px;" src="<?=base_url('assets/new_website/img/memberLogo.png') ?>" alt=""></a>
+                                 <a href="#" class="mt-2"><img style="max-width: 170px;" src="<?=base_url('assets/new_website/img/memberLogo.png') ?>" alt="" loading="lazy"></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pl-0">
                         <div class="header__action header__action-2 f-right">
                             <ul>
-                                <!-- <li><a href="#" class="search-toggle"><i class="fa-solid fa-magnifying-glass"></i>
-                                    </a></li> -->
-                                <li><a href="javascript:void(0);" class="cart">
-                                    <img src="<?=base_url('assets/new_website/img/crown2.png') ?>" class="pb-2" style="min-width: 22px; max-width: 22px" alt="">
-                                </a>
+                                <li>
+                                    <a href="javascript:void(0);" class="cart royalClubBtn2">
+                                        <img src="<?=base_url('assets/new_website/img/crown2.png') ?>" class="" style="min-width: 18px; max-width: 18px" alt="" loading="lazy">
+                                    </a>
                                 </li>
                                 <li><a href="javascript:void(0);" class="cart"><i class="bx bx-shopping-bag"></i>
                                         <span class="badge badge-pill badge-danger" id="mobile_cart-count">3</span> </a>
@@ -724,22 +741,26 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
-                <div class="row px-2 pb-2">
-                    <div class="flex-grow-1">
-                        <div class="mobile_search">
-                            <div class="search_group" onclick="openNav()">
-                                <div>
-                                    <p class="typewriter"><i class="fa fa-search mr-1"></i>Search for products, brand and more</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="container-fluid py-2">
+                <div class="row px-2">
                     <div class="d-flex align-items-center">
                         <div class="mobile-menu-btn text-center d-lg-none d-flex justify-content-between">
                             <a href="javascript:void(0);" class="mobile-menu-toggle">
-                                <img src="<?=base_url('assets/new_website/img/bars.svg') ?>" style="max-width: 30px;" alt="">
+                                <img src="<?=base_url('assets/new_website/img/bars.svg') ?>" style="max-width: 30px;" alt="" loading="lazy">
                             </a>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="mobile_search">
+                            <div class="search_group" onclick="openNav()">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-search mr-1 text-secondary"></i>
+                                    <div class="text-container">
+                                        <span id="typed-text"></span>
+                                        <span class="cursor">|</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -757,7 +778,7 @@
                             <div class="item">
                                 <div class="category_item active">
                                     <div class="category_img ">
-                                        <img src="https://images-static.nykaa.com/uploads/60090952-9d44-4719-9e16-2a595657752e.jpg?tr=w-300,cm-pad_resize" alt="">
+                                        <img src="https://images-static.nykaa.com/uploads/60090952-9d44-4719-9e16-2a595657752e.jpg?tr=w-300,cm-pad_resize" alt="" loading="lazy">
                                     </div>
                                     <div class="category_title_here">
                                         <p>View All</p>
@@ -767,7 +788,7 @@
                             <div class="item">
                                 <div class="category_item">
                                     <div class="category_img">
-                                        <img src="https://images-static.nykaa.com/uploads/18ade5f2-2977-45fa-98aa-4d855742a062.jpg?tr=w-300,cm-pad_resize" alt="">
+                                        <img src="https://images-static.nykaa.com/uploads/18ade5f2-2977-45fa-98aa-4d855742a062.jpg?tr=w-300,cm-pad_resize" alt="" loading="lazy">
                                     </div>
                                     <div class="category_title_here">
                                         <p>Westurnwear</p>
@@ -777,7 +798,7 @@
                             <div class="item">
                                 <div class="category_item">
                                     <div class="category_img">
-                                        <img src="https://images-static.nykaa.com/uploads/79a2c586-8b2b-4569-85ec-314513ab6851.jpg?tr=w-300,cm-pad_resize" alt="">
+                                        <img src="https://images-static.nykaa.com/uploads/79a2c586-8b2b-4569-85ec-314513ab6851.jpg?tr=w-300,cm-pad_resize" alt="" loading="lazy">
                                     </div>
                                     <div class="category_title_here">
                                         <p>Footwear</p>
@@ -787,7 +808,7 @@
                             <div class="item">
                                 <div class="category_item">
                                     <div class="category_img">
-                                        <img src="https://images-static.nykaa.com/uploads/c85e1a76-a8a7-495d-be0d-2717be8b6bfc.jpg?tr=w-300,cm-pad_resize" alt="">
+                                        <img src="https://images-static.nykaa.com/uploads/c85e1a76-a8a7-495d-be0d-2717be8b6bfc.jpg?tr=w-300,cm-pad_resize" alt="" loading="lazy">
                                     </div>
                                     <div class="category_title_here">
                                         <p>Men Store</p>
@@ -797,7 +818,7 @@
                             <div class="item">
                                 <div class="category_item">
                                     <div class="category_img">
-                                        <img src="https://images-static.nykaa.com/uploads/60090952-9d44-4719-9e16-2a595657752e.jpg?tr=w-300,cm-pad_resize" alt="">
+                                        <img src="https://images-static.nykaa.com/uploads/60090952-9d44-4719-9e16-2a595657752e.jpg?tr=w-300,cm-pad_resize" alt="" loading="lazy">
                                     </div>
                                     <div class="category_title_here">
                                         <p>Indianwear</p>
@@ -833,8 +854,11 @@
                 </ul>
             </nav>
         </div> -->
-        <div>
-            <a href="#"><img src="<?=base_url() ?>assets/new_website/img/login-cover.jpg" alt=""></a>
+        <div class="position-relative">
+            <a href="#"><img src="<?=base_url() ?>assets/new_website/img/login-cover.jpg" alt="" loading="lazy"></a>
+            <div class="position-absolute" style="bottom: 6px; right: 14px;">
+                <a href="#" class="font-weight-bold fs12" style="color: var(--pinkcolor);">SIGNUP/LOGIN</a>
+            </div>
         </div>
         <nav class="side-mobile-menu d-block d-lg-none">
             <ul id="mobile-menu-active">
@@ -908,7 +932,7 @@
             </div>
         </nav>
         <div>
-            <a href="#"><img src="<?=base_url() ?>assets/new_website/img/appPoster2.png" alt=""></a>
+            <a href="#"><img src="<?=base_url() ?>assets/new_website/img/appPoster2.png" alt="" loading="lazy"></a>
         </div>
     </div>
 </section>
@@ -933,38 +957,78 @@
             <div class="row">
                 <div class="col-4 col-sm-4 px-0">
                     <div class="search_img_here">
-                        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/3/28/0253fdda-4a02-4da7-8a20-5a87ab55dc541711628486708-Puma.jpg" alt="">
+                        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/3/28/0253fdda-4a02-4da7-8a20-5a87ab55dc541711628486708-Puma.jpg" alt="" loading="lazy">
                     </div>
                 </div>
                 <div class="col-4 col-sm-4 px-0">
                     <div class="search_img_here">
-                        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/3/28/c5ab7617-9a89-4211-9c0a-68389239b3bb1711628483515-Campus.jpg" alt="">
+                        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/3/28/c5ab7617-9a89-4211-9c0a-68389239b3bb1711628483515-Campus.jpg" alt="" loading="lazy">
                     </div>
                 </div>
                 <div class="col-4 col-sm-4 px-0">
                     <div class="search_img_here">
-                        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/3/28/ea4a2453-9f99-4df1-b26f-ca9d702eb6411711628487334-Roadster.jpg" alt="">
+                        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/3/28/ea4a2453-9f99-4df1-b26f-ca9d702eb6411711628487334-Roadster.jpg" alt="" loading="lazy">
                     </div>
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-4 col-sm-4 px-0">
                     <div class="search_img_here">
-                        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/3/28/0253fdda-4a02-4da7-8a20-5a87ab55dc541711628486708-Puma.jpg" alt="">
+                        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/3/28/0253fdda-4a02-4da7-8a20-5a87ab55dc541711628486708-Puma.jpg" alt="" loading="lazy">
                     </div>
                 </div>
                 <div class="col-4 col-sm-4 px-0">
                     <div class="search_img_here">
-                        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/3/28/c5ab7617-9a89-4211-9c0a-68389239b3bb1711628483515-Campus.jpg" alt="">
+                        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/3/28/c5ab7617-9a89-4211-9c0a-68389239b3bb1711628483515-Campus.jpg" alt="" loading="lazy">
                     </div>
                 </div>
                 <div class="col-4 col-sm-4 px-0">
                     <div class="search_img_here">
-                        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/3/28/ea4a2453-9f99-4df1-b26f-ca9d702eb6411711628487334-Roadster.jpg" alt="">
+                        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2024/3/28/ea4a2453-9f99-4df1-b26f-ca9d702eb6411711628487334-Roadster.jpg" alt="" loading="lazy">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    const textArray = [
+        "Welcome to our website!",
+        "Explore the best products.",
+        "Discover new services."
+    ];
+
+    let typingSpeed = 100; // Speed of typing in milliseconds
+    let deletingSpeed = 50; // Speed of deleting in milliseconds
+    let currentIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+    const typedText = document.getElementById("typed-text");
+    const currentText = textArray[currentIndex];
+
+    if (isDeleting) {
+        typedText.innerHTML = currentText.substring(0, charIndex--);
+    } else {
+        typedText.innerHTML = currentText.substring(0, charIndex++);
+    }
+
+    // Switching between typing and deleting
+    if (!isDeleting && charIndex === currentText.length) {
+        setTimeout(() => isDeleting = true, 1000); // Pause before starting to delete
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        currentIndex = (currentIndex + 1) % textArray.length; // Move to next text
+    }
+
+    setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
+    }
+
+    // Start typing
+    document.addEventListener("DOMContentLoaded", function () {
+    type();
+    });
+
+</script>
 
