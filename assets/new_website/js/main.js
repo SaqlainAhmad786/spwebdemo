@@ -636,9 +636,9 @@
     });
     // ____pre order___
     $('.pre_order_slider').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 30,
-        autoplay: false,
+        autoplay: true,
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
         smartSpeed: 500,
@@ -650,36 +650,31 @@
             0: {
                 margin: 10,
                 items: 1.5,
-                nav: false,
                 autoplay: true,
             },
             400: {
                 margin: 10,
                 items: 2,
-                nav: false,
                 autoplay: true,
             },
             576: {
                 margin: 10,
                 items: 2,
-                nav: false,
                 autoplay: true,
             },
             767: {
                 margin: 10,
                 items: 3,
-                nav: false,
                 autoplay: true,
             },
             992: {
                 items: 2,
-                nav: false,
             },
             1200: {
-                items: 5
+                items: 5,
             },
             1600: {
-                items: 5
+                items: 5,
             }
         }
     });
@@ -719,7 +714,7 @@
     });
     // ______
     $('.bagProduct__slider').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 30,
         autoplay: false,
         autoplayTimeout: 3000,
@@ -768,7 +763,6 @@
         autoplay: false,
         autoplayTimeout: 4000,
         autoplayHoverPause: true,
-        smartSpeed: 3000,
         items: 5,
         navText: ['<i class="fa-solid fa-angle-left"></i></i>', '<i class="fa-solid fa-angle-right"></i>'],
         nav: true,
@@ -812,7 +806,6 @@
         autoplay: false,
         autoplayTimeout: 2000,
         autoplayHoverPause: true,
-        smartSpeed: 3000,
         items: 5,
         navText: ['<i class="fa-solid fa-angle-left"></i></i>', '<i class="fa-solid fa-angle-right"></i>'],
         nav: true,

@@ -588,6 +588,105 @@
             }
         }
 
+        .cookiesCont {
+            width: 90%;
+            bottom: 0;
+            left:50%;
+            transform: translateX(-50%);
+            z-index: 99999;
+            display: none;
+        }
+
+        .cookiesCont .btnCont{
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: end;
+        }
+
+        .cookiesCont .btnCont button{
+            font-size: 14px;
+        }
+
+        .cookiesCont .acceptBtn{
+            background-color: var(--maincolor);
+            border: 1px solid var(--maincolor);
+            color: white;
+            border-radius: 100vh;
+            transition: .2s;
+        }
+
+        .cookiesCont .acceptBtn:hover{
+            background-color: white;
+            color: var(--maincolor);
+        }
+
+        .cookiesCont .declineBtn{
+            border: 1px solid black;
+            color: black;
+            border-radius: 100vh;
+        }
+
+        .cookiesCont .declineBtn:hover{
+            color: white;
+            background-color: black;
+        }
+
+        .cookiesCont a{
+            text-decoration: underline;
+            color: var(--pinkcolor);
+        }
+
+        .homeBottomNav {
+            background-color: white;
+            position:fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 99998;
+            box-shadow: 0px 6px 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .homeBottomNav ul{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .homeBottomNav ul li{
+            padding: 6px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .homeBottomNav ul li a.active::before{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: var(--pinkcolor);
+            bottom: 0;
+            left: 0;
+        }
+
+        .homeBottomNav ul li{
+            padding: 6px 0;
+            text-align: center;
+        }
+
+        .homeBottomNav img{
+            width: 24px;
+            margin-bottom: 4px;
+        }
+
+        .homeBottomNav p{
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
         .youtube-embed-container {
             position: relative;
             width: 800px;
@@ -690,6 +789,12 @@
             .swiper-button-prev{
                 display: none;
             }
+
+            .cookiesCont{
+                width: 95%;
+                font-size: 12px;
+                line-height: 1.5;
+            }
         }
 
         @media (width< 400px){
@@ -703,6 +808,49 @@
 <body>
     <?php include('include/header.php'); ?>
     <main>
+        <div class="d-lg-none d-md-none- d-sm-none d-xs-block d-block homeBottomNav">
+            <ul>
+                <li>
+                    <a href="#" class="active">
+                        <img src="<?= base_url('assets/new_website/img/favicon.png') ?>" alt="">
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" >
+                        <img src="<?= base_url('assets/new_website/img/crown2.png') ?>" alt="">
+                        <p>Royal Club</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="<?= base_url('assets/new_website/img/sale-tag.png') ?>" alt="">
+                        <p>Sale</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="<?= base_url('assets/new_website/img/coupon.png') ?>" alt="">
+                        <p>Offers</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="<?= base_url('assets/new_website/img/user2.png') ?>" alt="">
+                        <p>Profile</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="position-fixed bg-white p-4 rounded-lg cookiesCont shadow">
+            <p class="mb-1">This website uses cookies to enhance your browsing experience by improving site functionality and personalization. We respect your privacy and give you the choice to opt-out. If you opt-out, we will not track or store your activity or data, except for a single cookie that saves your preference not to be tracked.</p>
+            <p>For more information, visit our <a href="">Cookie Policy</a>.</p>
+            <div class="btnCont">
+                <a href="#">Cookies settings</a>
+                <button class="btn declineBtn">Decline</button>
+                <button class="btn acceptBtn">Accept</button>
+            </div>
+        </div>
         <div id="carouselExampleIndicators" class="carousel slide homePageSlider" data-ride="carousel">
             <ol class="carousel-indicators"> 
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -722,13 +870,13 @@
                 <div class="carousel-item">
                     <!-- <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D" class="d-block w-100" alt="..."> -->
                     <video width="100%" height="100%" autoplay="autoplay" loop muted id="myVideo">
-                        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div class="muteBtnCont d-block position-absolute">
                         <div>
                             <input type="checkbox" id="checkboxInput" class="muteBtn" checked>
-                            <label for="checkboxInput m-0" class="toggleSwitch">
+                            <label for="checkboxInput" class="toggleSwitch m-0">
                                 <div class="speaker"><svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 75 75">
                                 <path d="M39.389,13.769 L22.235,28.606 L6,28.606 L6,47.699 L21.989,47.699 L39.389,62.75 L39.389,13.769z" style="stroke:#fff;stroke-width:5;stroke-linejoin:round;fill:#fff;"></path>
                                 <path d="M48,27.6a19.5,19.5 0 0 1 0,21.4M55.1,20.5a30,30 0 0 1 0,35.6M61.6,14a38.8,38.8 0 0 1 0,48.6" style="fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round"></path>
@@ -986,6 +1134,8 @@
                                             </a>
                                         </div>
                                     </div>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
                                 </div>
                             </div>
                         </div>
@@ -1802,6 +1952,21 @@
             </div>
         </section> -->
         <section>
+            <div class="container mb-4">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="section__title-wrapper text-center ">
+                            <div class="section__title wow fadeInDown" data-wow-duration="1s">
+                                <h2 class="m-0 text-dark">Offers</h2>
+                            </div>
+                            <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
+                                <p class="text-secondary">Our one-stop destination for every style, trend, occasion you're shopping
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="showcaseSection">
                 <a href="#" class="shopNowBtn">SHOP NOW</a>
             </div>
@@ -1946,7 +2111,9 @@
                                         <span>Bestsellers</span>
                                     </div>
                                 </div>
-                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                <div class="text-right">
+                                    <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-slide" style="background: transparent">
@@ -1966,7 +2133,9 @@
                                         <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
                                     </div>
                                 </div>
-                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                <div class="text-right">
+                                    <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-slide" style="background: transparent">
@@ -1986,7 +2155,9 @@
                                         <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
                                     </div>
                                 </div>
-                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                <div class="text-right">
+                                    <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-slide" style="background: transparent">
@@ -2006,7 +2177,9 @@
                                         <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
                                     </div>
                                 </div>
-                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                <div class="text-right">
+                                    <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-slide" style="background: transparent">
@@ -2026,7 +2199,9 @@
                                         <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
                                     </div>
                                 </div>
-                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                <div class="text-right">
+                                    <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-slide" style="background: transparent">
@@ -2046,7 +2221,9 @@
                                         <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
                                     </div>
                                 </div>
-                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                <div class="text-right">
+                                    <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-slide" style="background: transparent">
@@ -2066,7 +2243,9 @@
                                         <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
                                     </div>
                                 </div>
-                                <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                <div class="text-right">
+                                    <a href="#" class="fs12">Explore more <i class="fas fa-arrow-right"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2094,143 +2273,72 @@
                     <div class="row">
                         <div class="col-xl-12 ">
                             <div class="bagProduct__slider owl-carousel">
-                                <!-- <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/b1.webp') ?>" alt="img">
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Street 9 </a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Solid Purse Clutch</span>
+                                <div class="swiper-slide">
+                                    <a href="#" class="storeSliderCard border rounded-lg overflow-hidden text-decoration-none">
+                                        <div class="imgCont">
+                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
                                         </div>
-                                    </div>
+                                        <div class="p-3 text-left">
+                                            <p class="m-0">MENS WEAR</p>
+                                            <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/b2.webp') ?>" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Street 9 </a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Solid Purse Clutch</span>
+                                <div class="swiper-slide">
+                                    <a href="#" class="storeSliderCard border rounded-lg overflow-hidden text-decoration-none">
+                                        <div class="imgCont">
+                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
                                         </div>
-                                    </div>
+                                        <div class="p-3 text-left">
+                                            <p class="m-0">MENS WEAR</p>
+                                            <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/b3.webp') ?>" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Street 9 </a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Solid Purse Clutch</span>
+                                <div class="swiper-slide">
+                                    <a href="#" class="storeSliderCard border rounded-lg overflow-hidden text-decoration-none">
+                                        <div class="imgCont">
+                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
                                         </div>
-                                    </div>
+                                        <div class="p-3 text-left">
+                                            <p class="m-0">MENS WEAR</p>
+                                            <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/b4.webp') ?>" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Street 9 </a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Solid Purse Clutch</span>
+                                <div class="swiper-slide">
+                                    <a href="#" class="storeSliderCard border rounded-lg overflow-hidden text-decoration-none">
+                                        <div class="imgCont">
+                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
                                         </div>
-
-                                    </div>
+                                        <div class="p-3 text-left">
+                                            <p class="m-0">MENS WEAR</p>
+                                            <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/b5.webp') ?>" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Street 9 </a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Solid Purse Clutch</span>
+                                <div class="swiper-slide">
+                                    <a href="#" class="storeSliderCard border rounded-lg overflow-hidden text-decoration-none">
+                                        <div class="imgCont">
+                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
                                         </div>
-
-                                    </div>
+                                        <div class="p-3 text-left">
+                                            <p class="m-0">MENS WEAR</p>
+                                            <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/f11.webp') ?>" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Street 9 </a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Solid Purse Clutch</span>
+                                <div class="swiper-slide">
+                                    <a href="#" class="storeSliderCard border rounded-lg overflow-hidden text-decoration-none">
+                                        <div class="imgCont">
+                                            <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
                                         </div>
-
-                                    </div>
+                                        <div class="p-3 text-left">
+                                            <p class="m-0">MENS WEAR</p>
+                                            <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/f12.webp') ?>" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Street 9 </a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Solid Purse Clutch</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/f13.webp') ?>" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Street 9 </a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Solid Purse Clutch</span>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/f14.webp') ?>" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Street 9 </a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Solid Purse Clutch</span>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/j4.webp') ?>" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Oomph</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Solid Purse Clutch</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/j2.webp') ?>" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Peora</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Solid Purse Clutch</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="<?= base_url('assets/new_website/img/j3.webp') ?>" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Armani</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Gossamer Grace</span>
-                                        </div>
-                                    </div>
-                                </div> -->
                                 <div class="swiper-slide">
                                     <a href="#" class="storeSliderCard border rounded-lg overflow-hidden text-decoration-none">
                                         <div class="imgCont">
@@ -2301,146 +2409,86 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class=" pre_order_slider  owl-carousel">
-                                <!-- <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://img.freepik.com/premium-vector/photo-icon-picture-icon-image-sign-symbol-vector-illustration_64749-4409.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Armani</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Gossamer Grace</span>
-                                            <a class="mb-0 d-flex  prebook-btn badge badge-secondary" href="#">
-                                                Pre-Order</a>
+                                <div class="prebookSliderCard">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                        <div class="p-3">
+                                            <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                            <p class="m-0 fs12">Gossamer Grace</p>
+                                            <button class="btn mt-2 fs12">PRE-ORDER</button>
                                         </div>
-
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://img.freepik.com/premium-vector/photo-icon-picture-icon-image-sign-symbol-vector-illustration_64749-4409.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Armani</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Gossamer Grace</span>
-                                            <a class="mb-0 d-flex  prebook-btn badge badge-secondary" href="#">
-                                                Pre-Order</a>
+                                <div class="prebookSliderCard">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                        <div class="p-3">
+                                            <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                            <p class="m-0 fs12">Gossamer Grace</p>
+                                            <button class="btn mt-2 fs12">PRE-ORDER</button>
                                         </div>
-
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://img.freepik.com/premium-vector/photo-icon-picture-icon-image-sign-symbol-vector-illustration_64749-4409.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Armani</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Gossamer Grace</span>
-                                            <a class="mb-0 d-flex  prebook-btn badge badge-secondary" href="#">
-                                                Pre-Order</a>
+                                <div class="prebookSliderCard">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                        <div class="p-3">
+                                            <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                            <p class="m-0 fs12">Gossamer Grace</p>
+                                            <button class="btn mt-2 fs12">PRE-ORDER</button>
                                         </div>
-
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://img.freepik.com/premium-vector/photo-icon-picture-icon-image-sign-symbol-vector-illustration_64749-4409.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Armani</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Gossamer Grace</span>
-                                            <a class="mb-0 d-flex  prebook-btn badge badge-secondary" href="#">
-                                                Pre-Order</a>
+                                <div class="prebookSliderCard">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                        <div class="p-3">
+                                            <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                            <p class="m-0 fs12">Gossamer Grace</p>
+                                            <button class="btn mt-2 fs12">PRE-ORDER</button>
                                         </div>
-
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://img.freepik.com/premium-vector/photo-icon-picture-icon-image-sign-symbol-vector-illustration_64749-4409.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Armani</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Gossamer Grace</span>
-                                            <a class="mb-0 d-flex  prebook-btn badge badge-secondary" href="#">
-                                                Pre-Order</a>
+                                <div class="prebookSliderCard">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                        <div class="p-3">
+                                            <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                            <p class="m-0 fs12">Gossamer Grace</p>
+                                            <button class="btn mt-2 fs12">PRE-ORDER</button>
                                         </div>
-
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://img.freepik.com/premium-vector/photo-icon-picture-icon-image-sign-symbol-vector-illustration_64749-4409.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Armani</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Gossamer Grace</span>
-                                            <a class="mb-0 d-flex  prebook-btn badge badge-secondary" href="#">
-                                                Pre-Order</a>
+                                <div class="prebookSliderCard">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                        <div class="p-3">
+                                            <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                            <p class="m-0 fs12">Gossamer Grace</p>
+                                            <button class="btn mt-2 fs12">PRE-ORDER</button>
                                         </div>
-
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://img.freepik.com/premium-vector/photo-icon-picture-icon-image-sign-symbol-vector-illustration_64749-4409.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Armani</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Gossamer Grace</span>
-                                            <a class="mb-0 d-flex  prebook-btn badge badge-secondary" href="#">
-                                                Pre-Order</a>
+                                <div class="prebookSliderCard">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                        <div class="p-3">
+                                            <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                            <p class="m-0 fs12">Gossamer Grace</p>
+                                            <button class="btn mt-2 fs12">PRE-ORDER</button>
                                         </div>
-
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://img.freepik.com/premium-vector/photo-icon-picture-icon-image-sign-symbol-vector-illustration_64749-4409.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Armani</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Gossamer Grace</span>
-                                            <a class="mb-0 d-flex  prebook-btn badge badge-secondary" href="#">
-                                                Pre-Order</a>
+                                <div class="prebookSliderCard">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                        <div class="p-3">
+                                            <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                            <p class="m-0 fs12">Gossamer Grace</p>
+                                            <button class="btn mt-2 fs12">PRE-ORDER</button>
                                         </div>
-
                                     </div>
                                 </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://img.freepik.com/premium-vector/photo-icon-picture-icon-image-sign-symbol-vector-illustration_64749-4409.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Armani</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Gossamer Grace</span>
-                                            <a class="mb-0 d-flex  prebook-btn badge badge-secondary" href="#">
-                                                Pre-Order</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="blog__item mb-30">
-                                    <div class="blog__thumb fix">
-                                        <a href="#" class="w-img"><img src="https://img.freepik.com/premium-vector/photo-icon-picture-icon-image-sign-symbol-vector-illustration_64749-4409.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="blog__content">
-                                        <h4><a href="#">Armani</a></h4>
-                                        <div class="blog__meta ">
-                                            <span>Gossamer Grace</span>
-                                            <a class="mb-0 d-flex  prebook-btn badge badge-secondary" href="#">
-                                                Pre-Order</a>
-                                        </div>
-
-                                    </div>
-                                </div> -->
                                 <div class="prebookSliderCard">
                                     <div>
                                         <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
@@ -3073,7 +3121,10 @@
                 slidesPerView: 1,
                 spaceBetween: 18,
                 autoplay:true,
-                loop: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
                 breakpoints: {
                     300: {
                         slidesPerView: 2,
@@ -3154,7 +3205,7 @@
                 }
         });
 
-        const video = document.querySelector('#myVideo');
+        const video = document.getElementById('myVideo');
         const muteBtn = document.querySelector('.muteBtn');
 
         muteBtn.addEventListener('click', () => {
@@ -3164,6 +3215,23 @@
                 video.muted = true;
             }
         });
+
+        const cookiesCont = document.querySelector('.cookiesCont');
+        const acceptBtn = document.querySelector('.acceptBtn');
+        const declineBtn = document.querySelector('.declineBtn');
+
+        window.addEventListener('load', () => {
+            cookiesCont.style.display = 'block';
+        });
+
+        acceptBtn.addEventListener('click', () => {
+            cookiesCont.style.display = 'none';
+        });
+
+        declineBtn.addEventListener('click', () => {
+            cookiesCont.style.display = 'none';
+        });
+        
     </script>
     <?php include('include/footer.php'); ?>
     <!-- <?php include('include/modal.php'); ?> -->

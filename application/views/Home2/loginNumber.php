@@ -43,7 +43,7 @@
         }
 
         .loginContainer{
-            margin-top: 60px;
+            margin-top: 28px;
         }
 
         input::-webkit-outer-spin-button,

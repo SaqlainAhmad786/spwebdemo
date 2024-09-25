@@ -31,7 +31,7 @@
         }
 
         .loginContainer{
-            margin-top: 60px;
+            margin-top: 28px;
         }
 
         ul {
@@ -130,6 +130,7 @@
 </head>
 
 <body>
+<?php include('include/header.php'); ?>
     <main>
         <div class="loginContainer bg-white mx-auto position-relative" style="max-width: 400px;">
         <a href="#" class="text-dark position-absolute" style="top: 12px; left: 14px;"><i class="fa-solid fa-arrow-left-long"></i></a>

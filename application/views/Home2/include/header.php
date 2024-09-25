@@ -7,11 +7,25 @@
         font-size: 12px;
     }
 
+    #autocomplete-0-input {
+        width: 300px;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    #autocomplete-0-input::placeholder {
+        animation: blinkCaret 0.7s step-end infinite;
+    }
+
     .royalClubBtn {
         background-color: #F5F5F6;
         border-radius: 100vh;
         margin-inline: 8px!important;
         transition: 0.2s all;
+    }
+    
+    .royalClubBtn:hover, .royalClubBtn2:hover {
+        background-color: rgba(0, 0, 0, 0.08);
     }
 
     .royalClubBtn2{
@@ -22,11 +36,7 @@
         margin-right: 8px!important;
     }
 
-    .royalClubBtn:hover {
-        background-color: rgba(0, 0, 0, 0.08);
-    }
-
-    .royalClubBtn:hover img{
+    .royalClubBtn:hover img, .royalClubBtn2:hover img{
         scale: 1.2;
     }
 
@@ -106,7 +116,6 @@
                                         <li>
                                             <span class="fw-bold"> Chat: </span>
                                             <a class="text-dark  text-nowrap" href="https://wa.me/<?= !empty($this->needHelp) ? $this->needHelp['whatsapp_no'] : '' ?>?text=Hello%20World!" target="_blank"> &emsp; Let's Chat </a>
-
                                         </li>
                                         <li><span class="fw-bold">Phone:</span>
                                             <a href="tel:91<?= !empty($this->needHelp) ? $this->needHelp['mobile'] : '' ?>" class="text-black text-nowrap" style="text-decoration: none;"> +91 <?= !empty($this->needHelp) ? $this->needHelp['mobile'] : '' ?> </a>
@@ -335,7 +344,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Women </label>
                         <div class="mega-box">
-                            <div class="content row text-left">
+                            <div class="content row text-left px-2">
                                 <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
@@ -376,7 +385,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <a href="#"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
+                                    <a href="#" class="p-0"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
                                 </div>
                             </div>
                         </div>
@@ -386,7 +395,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Men </label>
                         <div class="mega-box">
-                            <div class="content row text-left">                            
+                            <div class="content row text-left px-2">                            
                                 <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
@@ -414,10 +423,10 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <a href="#"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
+                                    <a href="#" class="p-0"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <a href="#"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
+                                    <a href="#" class="p-0"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
                                 </div>
                             </div>
                         </div>
@@ -427,7 +436,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Kids </label>
                         <div class="mega-box">
-                            <div class="content row text-left">
+                            <div class="content row text-left px-2">
                                 <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
@@ -468,7 +477,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <a href="#"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
+                                    <a href="#" class="p-0"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
                                 </div>
                             </div>
                         </div>
@@ -478,7 +487,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">All Brands </label>
                         <div class="mega-box">
-                            <div class="content row text-left">
+                            <div class="content row text-left px-2">
                                 <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
@@ -519,7 +528,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy">
+                                    <a href="#" class="p-0"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
                                 </div>
                             </div>
                         </div>
@@ -529,7 +538,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Indian & Fusion Wear </label>
                         <div class="mega-box">
-                            <div class="content row text-left">
+                            <div class="content row text-left px-2">
                                 <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
@@ -570,7 +579,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy">
+                                    <a href="#" class="p-0"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
                                 </div>
                             </div>
                         </div>
@@ -580,7 +589,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Indian & Fusion Wear </label>
                         <div class="mega-box">
-                            <div class="content row text-left">
+                            <div class="content row text-left px-2">
                                 <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
@@ -621,7 +630,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy">
+                                    <a href="#" class="p-0"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
                                 </div>
                             </div>
                         </div>
@@ -631,7 +640,7 @@
                         <input type="checkbox" id="showMega">
                         <label for="showMega" class="mobile-item">Indian & Fusion Wear </label>
                         <div class="mega-box">
-                            <div class="content row text-left">
+                            <div class="content row text-left px-2">
                                 <div class="col-3 p-4">
                                     <p class="font-weight-bold">Lorem, ipsum dolor.</p>
                                     <ul>
@@ -672,7 +681,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-3 p-4">
-                                    <img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy">
+                                    <a href="#" class="p-0"><img src="<?=base_url('assets/new_website/img/product-1.jpg')?>" alt="" loading="lazy"></a>
                                 </div>
                             </div>
                         </div>
@@ -1005,30 +1014,80 @@
     let isDeleting = false;
 
     function type() {
-    const typedText = document.getElementById("typed-text");
-    const currentText = textArray[currentIndex];
+        const typedText = document.getElementById("typed-text");
+        const currentText = textArray[currentIndex];
 
-    if (isDeleting) {
-        typedText.innerHTML = currentText.substring(0, charIndex--);
-    } else {
-        typedText.innerHTML = currentText.substring(0, charIndex++);
-    }
+        if (isDeleting) {
+            typedText.innerHTML = currentText.substring(0, charIndex--);
+        } else {
+            typedText.innerHTML = currentText.substring(0, charIndex++);
+        }
 
-    // Switching between typing and deleting
-    if (!isDeleting && charIndex === currentText.length) {
-        setTimeout(() => isDeleting = true, 1000); // Pause before starting to delete
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        currentIndex = (currentIndex + 1) % textArray.length; // Move to next text
-    }
+        // Switching between typing and deleting
+        if (!isDeleting && charIndex === currentText.length) {
+            setTimeout(() => isDeleting = true, 1000); // Pause before starting to delete
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            currentIndex = (currentIndex + 1) % textArray.length; // Move to next text
+        }
 
-    setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
+        setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
     }
 
     // Start typing
     document.addEventListener("DOMContentLoaded", function () {
-    type();
+        type();
     });
+
+
+
+
+
+
+    
+
+
+ 
+
+
+
+    const placeholderTexts = ["Type your name", "Type your email", "Type your message"];
+    let input = document.getElementById("autocomplete-0-input");
+    let placeholderIndex = 0;
+    let charIndex2 = 0;
+    let currentPlaceholder = '';
+    let typingDelay = 100; // Delay between each character
+    let erasingDelay = 100; // Delay when erasing
+    let newTextDelay = 1000; // Delay before starting to type new text
+
+    function typePlaceholder() {
+    if (charIndex2 < placeholderTexts[placeholderIndex].length) {
+        currentPlaceholder += placeholderTexts[placeholderIndex].charAt(charIndex2);
+        input.setAttribute("placeholder", currentPlaceholder);
+        charIndex2++;
+        setTimeout(typePlaceholder, typingDelay);
+    } else {
+        setTimeout(erasePlaceholder, newTextDelay);
+    }
+    }
+
+    function erasePlaceholder() {
+    if (charIndex2 > 0) {
+        currentPlaceholder = currentPlaceholder.substring(0, charIndex2 - 1);
+        input.setAttribute("placeholder", currentPlaceholder);
+        charIndex2--;
+        setTimeout(erasePlaceholder, erasingDelay);
+    } else {
+        placeholderIndex = (placeholderIndex + 1) % placeholderTexts.length;
+        setTimeout(typePlaceholder, typingDelay);
+    }
+    }
+
+    // Start the animation when the page loads
+    document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(typePlaceholder, newTextDelay);
+    });
+
 
 </script>
 
