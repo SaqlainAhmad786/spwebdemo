@@ -7,16 +7,6 @@
         font-size: 12px;
     }
 
-    #autocomplete-0-input {
-        width: 300px;
-        padding: 10px;
-        font-size: 18px;
-    }
-
-    #autocomplete-0-input::placeholder {
-        animation: blinkCaret 0.7s step-end infinite;
-    }
-
     .royalClubBtn {
         background-color: #F5F5F6;
         border-radius: 100vh;
@@ -707,18 +697,19 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pl-0">
                         <div class="header__action header__action-2 f-right">
                             <ul>
-                                <li>
+                                <li class="d-lg-inline d-md-inline d-sm-inline d-xs-none d-none">
                                     <a href="javascript:void(0);" class="cart royalClubBtn2">
                                         <img src="<?=base_url('assets/new_website/img/crown2.png') ?>" class="" style="min-width: 18px; max-width: 18px" alt="" loading="lazy">
                                     </a>
                                 </li>
-                                <li><a href="javascript:void(0);" class="cart"><i class="bx bx-shopping-bag"></i>
-                                        <span class="badge badge-pill badge-danger" id="mobile_cart-count">3</span> </a>
-                                </li>
                                 <li><a href="javascript:void(0);" class="cart"><i class="bx bx-heart"></i>
                                         <span class="badge badge-pill badge-danger" id="mobile_cart-count">3</span> </a>
                                 </li>
-                                <li> <a href="javascript:void(0);"><i class="bx bx-user"></i></a>
+                                <li><a href="javascript:void(0);" class="cart"><i class="bx bx-shopping-bag"></i>
+                                        <span class="badge badge-pill badge-danger" id="mobile_cart-count">3</span> </a>
+                                </li>
+                                <li class="d-lg-inline d-md-inline d-sm-inline d-xs-none d-none"> 
+                                    <a href="javascript:void(0);"><i class="bx bx-user"></i></a>
                                     <ul class="extra-info p-0">
                                         <li>
                                             <div class="my-account">
@@ -1038,56 +1029,5 @@
     document.addEventListener("DOMContentLoaded", function () {
         type();
     });
-
-
-
-
-
-
-    
-
-
- 
-
-
-
-    const placeholderTexts = ["Type your name", "Type your email", "Type your message"];
-    let input = document.getElementById("autocomplete-0-input");
-    let placeholderIndex = 0;
-    let charIndex2 = 0;
-    let currentPlaceholder = '';
-    let typingDelay = 100; // Delay between each character
-    let erasingDelay = 100; // Delay when erasing
-    let newTextDelay = 1000; // Delay before starting to type new text
-
-    function typePlaceholder() {
-    if (charIndex2 < placeholderTexts[placeholderIndex].length) {
-        currentPlaceholder += placeholderTexts[placeholderIndex].charAt(charIndex2);
-        input.setAttribute("placeholder", currentPlaceholder);
-        charIndex2++;
-        setTimeout(typePlaceholder, typingDelay);
-    } else {
-        setTimeout(erasePlaceholder, newTextDelay);
-    }
-    }
-
-    function erasePlaceholder() {
-    if (charIndex2 > 0) {
-        currentPlaceholder = currentPlaceholder.substring(0, charIndex2 - 1);
-        input.setAttribute("placeholder", currentPlaceholder);
-        charIndex2--;
-        setTimeout(erasePlaceholder, erasingDelay);
-    } else {
-        placeholderIndex = (placeholderIndex + 1) % placeholderTexts.length;
-        setTimeout(typePlaceholder, typingDelay);
-    }
-    }
-
-    // Start the animation when the page loads
-    document.addEventListener("DOMContentLoaded", function() {
-    setTimeout(typePlaceholder, newTextDelay);
-    });
-
-
 </script>
 

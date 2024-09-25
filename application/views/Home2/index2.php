@@ -645,6 +645,7 @@
             width: 100%;
             z-index: 99998;
             box-shadow: 0px 6px 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease-in-out;
         }
 
         .homeBottomNav ul{
@@ -3230,6 +3231,14 @@
 
         declineBtn.addEventListener('click', () => {
             cookiesCont.style.display = 'none';
+        });
+
+        window.addEventListener('scroll', function() {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                document.querySelector('.homeBottomNav').style.transform = 'translateY(100%)';
+            } else {
+                document.querySelector('.homeBottomNav').style.transform = 'translateY(0%)';
+            }
         });
         
     </script>

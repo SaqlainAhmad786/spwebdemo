@@ -41,7 +41,7 @@
     --aa-detached-modal-max-height: 500px;
     --aa-overlay-color-rgb: 115, 114, 129;
     --aa-overlay-color-alpha: 0.4;
-    --aa-panel-shadow: 0 0 0 1px rgba(35,38,59,0.1), 0 6px 16px -4px rgba(35,38,59,0.15);
+    --aa-panel-shadow: 0 0 0 1px rgba(35, 38, 59, 0.1), 0 6px 16px -4px rgba(35, 38, 59, 0.15);
     --aa-scrollbar-width: 13px;
     --aa-scrollbar-track-background-color-rgb: 234, 234, 234;
     --aa-scrollbar-track-background-color-alpha: 1;
@@ -95,12 +95,12 @@
 
 .mark,
 mark {
-    padding:0 ;
+    padding: 0;
     background-color: #fcf8e3;
 }
 
 
-#autocomplete-0-products-list{
+#autocomplete-0-products-list {
     display: flex;
     flex-wrap: wrap;
 }
@@ -123,15 +123,17 @@ mark {
     grid-auto-flow: row;
     line-height: unset;
 }
+
 #autocomplete-0-products-list .aa-ItemContent {
     grid-auto-flow: row;
 }
 
-#autocomplete-0-products-list .aa-ItemIcon{
+#autocomplete-0-products-list .aa-ItemIcon {
     text-align: start;
     align-items: start;
 }
-#autocomplete-0-products-list .aa-ItemContentDescription{
+
+#autocomplete-0-products-list .aa-ItemContentDescription {
     font-size: 1em;
 }
 
@@ -141,10 +143,12 @@ mark {
     width: 100%;
     padding: 0;
 }
+
 #autocomplete-0-products-list .aa-ItemContentBody {
     padding: 4px;
     height: 100px;
 }
+
 #autocomplete-0-products-list .aa-ItemIcon svg {
     height: 16px;
     width: 16px;
