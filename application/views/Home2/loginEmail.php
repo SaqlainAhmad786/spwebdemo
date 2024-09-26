@@ -30,10 +30,6 @@
             background-image: linear-gradient(127deg, #feedf4 0%, #fcf0e3 100%);
         }
 
-        .category_section, .marqueeContainer{
-            display: none!important;
-        }
-
         .loginContainer{
             margin-top: 28px;
         }

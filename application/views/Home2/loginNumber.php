@@ -42,10 +42,6 @@
             width: 100%;
         }
 
-        .category_section, .marqueeContainer{
-            display: none!important;
-        }
-
         .loginContainer{
             margin-top: 28px;
         }
