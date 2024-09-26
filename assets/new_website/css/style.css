@@ -971,10 +971,10 @@ ul {
     padding-left: 15px;
 }
 
-/* .side-mobile-menu ul li ul li:hover>a {
+.side-mobile-menu ul li ul li:hover>a {
     color: var(--pinkcolor);
     padding-left: 20px;
-} */
+}
 
 .side-mobile-menu ul li ul li:hover>a:before {
     background: #323232;
@@ -1002,9 +1002,9 @@ ul {
     display: none;
 }
 
-/* .side-mobile-menu ul li ul li a[aria-expanded=true] {
+.side-mobile-menu ul li ul li a[aria-expanded=true] {
     padding-left: 20px;
-} */
+}
 
 .side-mobile-menu ul li.has-dropdown>a:after {
     color: rgba(0, 0, 0, 0.25);

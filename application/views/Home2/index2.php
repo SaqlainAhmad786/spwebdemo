@@ -108,6 +108,10 @@
             height: 440px;
         }
 
+        .productSwiper{
+            height: 480px;
+        }
+
         .swiper-slide {
             text-align: center;
             font-size: 18px;
@@ -143,6 +147,22 @@
         }
 
         .swiper-pagination-bullet-active{
+            background-color: var(--pinkcolor)!important;
+        }
+
+        .owl-dots{
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .owl-carousel button.owl-dot{
+            padding: 4px!important;
+            background-color: rgba(0, 0, 0, 0.2)!important;
+            border-radius: 100vh;
+        }
+
+        .owl-carousel button.owl-dot.active{
             background-color: var(--pinkcolor)!important;
         }
 
@@ -562,44 +582,6 @@
                 transform: scale(1.2);
                 opacity: 0;
                 display: none;
-            }
-        }
-
-        .animatedArrow {
-            transform: translate(-50%, -50%) rotate(-90deg);
-            cursor: pointer;
-        }
-
-        .animatedArrow span {
-            display: block;
-            width: 14px;
-            height: 14px;
-            border-bottom: 5px solid rgba(0,0,0,0.3);
-            border-right: 5px solid rgba(0,0,0,0.3);
-            transform: rotate(45deg);
-            margin: -10px;
-            animation: animate 2s infinite;
-        }
-
-        .animatedArrow span:nth-child(2) {
-            animation-delay: -0.2s;
-        }
-
-        .animatedArrow span:nth-child(3) {
-            animation-delay: -0.4s;
-        }
-
-        @keyframes animate {
-            0% {
-                opacity: 0;
-                transform: rotate(45deg) translate(-20px, -20px);
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                transform: rotate(45deg) translate(20px, 20px);
             }
         }
 
@@ -1690,16 +1672,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-lg-none d-md-block d-block">
-                    <div class="d-flex align-items-center justify-content-center mt-3">
-                        <span class="text-secondary font-weight-bold">SWIPE FOR MORE</span>
-                        <div class="animatedArrow">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
             </section>
             <!-- ______Latest Collections______ -->
             <section class="sale__area mb-4">
@@ -2119,7 +2091,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
-                            <div class="section__title-wrapper text-center mb-40">
+                            <div class="section__title-wrapper text-center">
                                 <div class="section__title wow fadeInDown" data-wow-duration="1s">
                                     <h2 class="m-0 text-dark">Our Products </h2>
                                 </div>
@@ -2295,7 +2267,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-pagination"></div>
+                    <div class="d-lg-none d-md-none d-sm-none d-xs-block d-block swiper-pagination"></div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>

@@ -324,7 +324,7 @@
         smartSpeed: 500,
         items: 6,
         navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        dots: false,
+        dots: true,
         responsive: {
             0: {
                 items: 1
@@ -333,16 +333,20 @@
                 items: 1
             },
             767: {
-                items: 1
+                items: 1,
+                dots: false,
             },
             992: {
-                items: 1
+                items: 1,
+                dots: false,
             },
             1200: {
-                items: 1
+                items: 1,
+                dots: false,
             },
             1600: {
-                items: 1
+                items: 1,
+                dots: false,
             }
         }
     });
