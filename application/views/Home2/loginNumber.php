@@ -42,6 +42,10 @@
             width: 100%;
         }
 
+        .category_section, .marqueeContainer{
+            display: none!important;
+        }
+
         .loginContainer{
             margin-top: 28px;
         }
@@ -187,7 +191,7 @@
                         
                         <div class="inputFieldContainer container1">
                             <span>+91 | </span>
-                            <input type="number" class="numberInput" id="number" oninput="this.value = this.value.slice(0, 10);" placeholder="Enter Mobile Number">
+                            <input type="number" class="numberInput" id="number" oninput="this.value = this.value.slice(0, 10);" placeholder="Enter Mobile Number*">
                         </div>
                         <p class="m-0 p-0 errorMsg text-danger"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid mobile number</p>
                     </div>

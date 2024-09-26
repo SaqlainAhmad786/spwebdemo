@@ -77,5 +77,8 @@ class Home2 extends Home_Controller
     public function orderPlaced(){
    $this->load->view('Home2/orderPlaced');
  }
+    public function productDetails(){
+   $this->load->view('Home2/productDetails');
+ }
     
 }

@@ -600,10 +600,9 @@
     $('.combos__slider').owlCarousel({
         loop: false,
         margin: 30,
-        autoplay: false,
+        autoplay: true,
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
-        smartSpeed: 500,
         items: 6,
         navText: ['<i class="fa-solid fa-angle-left"></i>', '<i class="fa-solid fa-angle-right"></i>'],
         nav: true,
@@ -612,7 +611,6 @@
             0: {
                 items: 1.5,
                 nav: false,
-                autoplay: true,
             },
             576: {
                 items: 2,
@@ -641,7 +639,6 @@
         autoplay: true,
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
-        smartSpeed: 500,
         items: 6,
         navText: ['<i class="fa-solid fa-angle-left"></i>', '<i class="fa-solid fa-angle-right"></i>'],
         nav: true,
@@ -650,22 +647,22 @@
             0: {
                 margin: 10,
                 items: 1.5,
-                autoplay: true,
+                nav: false,
             },
             400: {
                 margin: 10,
                 items: 2,
-                autoplay: true,
+                nav: false,
             },
             576: {
                 margin: 10,
                 items: 2,
-                autoplay: true,
+                nav: false,
             },
             767: {
                 margin: 10,
                 items: 3,
-                autoplay: true,
+                nav: false,
             },
             992: {
                 items: 2,
@@ -716,10 +713,9 @@
     $('.bagProduct__slider').owlCarousel({
         loop: false,
         margin: 30,
-        autoplay: false,
+        autoplay: true,
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
-        smartSpeed: 500,
         items: 5,
         navText: ['<i class="fa-solid fa-angle-left"></i>', '<i class="fa-solid fa-angle-right"></i>'],
         nav: true,
@@ -729,19 +725,16 @@
                 margin: 10,
                 items: 1.5,
                 nav: false,
-                autoplay: false,
             },
             400: {
                 margin: 10,
                 items: 2,
                 nav: false,
-                autoplay: false,
             },
             767: {
                 margin: 10,
                 items: 3,
                 nav: false,
-                autoplay: false,
             },
             992: {
                 items: 3,
@@ -772,19 +765,16 @@
                 margin: 10,
                 items: 1.5,
                 nav: false,
-                autoplay: true,
             },
             400: {
                 margin: 10,
                 items: 2,
                 nav: false,
-                autoplay: true,
             },
             767: {
                 margin: 10,
                 items: 3,
                 nav: false,
-                autoplay: true,
             },
             992: {
                 margin: 10,

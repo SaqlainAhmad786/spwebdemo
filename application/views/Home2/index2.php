@@ -142,6 +142,10 @@
             display: none;
         }
 
+        .swiper-pagination-bullet-active{
+            background-color: var(--pinkcolor)!important;
+        }
+
         .productSliderCard{
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
         }
@@ -386,7 +390,7 @@
         }
 
         .prebookSliderCard img{
-            height: 240px;
+            height: 220px;
             width: 100%;
             object-fit: cover;
         }
@@ -421,7 +425,18 @@
 
         .brochureCard img{
             height: 280px;
+            width: 320px;
             object-fit: cover;
+        }
+
+        .brochureCardDetails{
+            font-family: var(--heading_font);
+            background-color: #deedff;
+        }
+
+        .brochureCardDetails p{
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .brochureCard button{
@@ -1992,78 +2007,108 @@
                 </div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-xl-12">
-                            <div class="combos__slider add_combo_imgcss owl-carousel">
-                                <div class="blog__item">
-                                    <div class="blog__thumb">
-                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                        <div class="col-12">
+                            <div class="swiper comboSwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="blog__item">
+                                            <div class="blog__thumb">
+                                                <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                                            </div>
+                                            <div class="overlay_add">
+                                                <div class="lastText">
+                                                    <p>Women Kurta</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="overlay_add">
-                                        <div class="lastText">
-                                            <p>Women Kurta</p>
+                                    <div class="swiper-slide">
+                                        <div class="blog__item">
+                                            <div class="blog__thumb">
+                                                <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                                            </div>
+                                            <div class="overlay_add">
+                                                <div class="lastText">
+                                                    <p>Women Kurta</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="blog__item">
+                                            <div class="blog__thumb">
+                                                <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                                            </div>
+                                            <div class="overlay_add">
+                                                <div class="lastText">
+                                                    <p>Women Kurta</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="blog__item">
+                                            <div class="blog__thumb">
+                                                <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                                            </div>
+                                            <div class="overlay_add">
+                                                <div class="lastText">
+                                                    <p>Women Kurta</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="blog__item">
+                                            <div class="blog__thumb">
+                                                <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                                            </div>
+                                            <div class="overlay_add">
+                                                <div class="lastText">
+                                                    <p>Women Kurta</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="blog__item">
+                                            <div class="blog__thumb">
+                                                <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                                            </div>
+                                            <div class="overlay_add">
+                                                <div class="lastText">
+                                                    <p>Women Kurta</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="blog__item">
+                                            <div class="blog__thumb">
+                                                <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                                            </div>
+                                            <div class="overlay_add">
+                                                <div class="lastText">
+                                                    <p>Women Kurta</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="blog__item">
+                                            <div class="blog__thumb">
+                                                <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
+                                            </div>
+                                            <div class="overlay_add">
+                                                <div class="lastText">
+                                                    <p>Women Kurta</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="blog__item">
-                                    <div class="blog__thumb">
-                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="overlay_add">
-                                        <div class="lastText">
-                                            <p>Women Kurta</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog__item">
-                                    <div class="blog__thumb">
-                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="overlay_add">
-                                        <div class="lastText">
-                                            <p>Women Kurta</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog__item">
-                                    <div class="blog__thumb">
-                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="overlay_add">
-                                        <div class="lastText">
-                                            <p>Women Kurta</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog__item">
-                                    <div class="blog__thumb">
-                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="overlay_add">
-                                        <div class="lastText">
-                                            <p>Women Kurta</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog__item">
-                                    <div class="blog__thumb">
-                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="overlay_add">
-                                        <div class="lastText">
-                                            <p>Women Kurta</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog__item">
-                                    <div class="blog__thumb">
-                                        <a href="#"><img src="https://m.media-amazon.com/images/I/81rYMYCiyaL._AC_UL480_FMwebp_QL65_.jpg" alt="img"></a>
-                                    </div>
-                                    <div class="overlay_add">
-                                        <div class="lastText">
-                                            <p>Women Kurta</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
                             </div>
                         </div>
                     </div>
@@ -2089,7 +2134,7 @@
                 
                 <div class="swiper productSwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background: transparent">
+                        <div class="swiper-slide">
                             <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
                                 <p>Revamp your style</p>
                                 <div class="img-container mb-2">
@@ -2117,7 +2162,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide" style="background: transparent">
+                        <div class="swiper-slide">
                             <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
                                 <p>Revamp your style</p>
                                 <div class="img-container mb-2">
@@ -2139,7 +2184,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide" style="background: transparent">
+                        <div class="swiper-slide">
                             <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
                                 <p>Revamp your style</p>
                                 <div class="img-container mb-2">
@@ -2161,7 +2206,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide" style="background: transparent">
+                        <div class="swiper-slide">
                             <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
                                 <p>Revamp your style</p>
                                 <div class="img-container mb-2">
@@ -2183,7 +2228,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide" style="background: transparent">
+                        <div class="swiper-slide">
                             <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
                                 <p>Revamp your style</p>
                                 <div class="img-container mb-2">
@@ -2205,7 +2250,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide" style="background: transparent">
+                        <div class="swiper-slide">
                             <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
                                 <p>Revamp your style</p>
                                 <div class="img-container mb-2">
@@ -2227,7 +2272,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide" style="background: transparent">
+                        <div class="swiper-slide">
                             <div class="border rounded-lg p-4 productSliderCard text-left bg-white">
                                 <p>Revamp your style</p>
                                 <div class="img-container mb-2">
@@ -2250,6 +2295,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="swiper-pagination"></div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
@@ -2273,7 +2319,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-12 ">
-                            <div class="bagProduct__slider owl-carousel">
+                            <!-- <div class="bagProduct__slider owl-carousel">
                                 <div class="swiper-slide">
                                     <a href="#" class="storeSliderCard border rounded-lg overflow-hidden text-decoration-none">
                                         <div class="imgCont">
@@ -2351,6 +2397,91 @@
                                         </div>
                                     </a>
                                 </div>
+                            </div> -->
+                            <div class="swiper storeSwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="storeSliderCard border rounded-lg overflow-hidden ">
+                                            <a href="#" class="text-decoration-none">
+                                                <div class="imgCont">
+                                                    <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                                </div>
+                                                <div class="p-3 text-left">
+                                                    <p class="m-0">MENS WEAR</p>
+                                                    <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="storeSliderCard border rounded-lg overflow-hidden ">
+                                            <a href="#" class="text-decoration-none">
+                                                <div class="imgCont">
+                                                    <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                                </div>
+                                                <div class="p-3 text-left">
+                                                    <p class="m-0">MENS WEAR</p>
+                                                    <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="storeSliderCard border rounded-lg overflow-hidden ">
+                                            <a href="#" class="text-decoration-none">
+                                                <div class="imgCont">
+                                                    <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                                </div>
+                                                <div class="p-3 text-left">
+                                                    <p class="m-0">MENS WEAR</p>
+                                                    <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="storeSliderCard border rounded-lg overflow-hidden ">
+                                            <a href="#" class="text-decoration-none">
+                                                <div class="imgCont">
+                                                    <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                                </div>
+                                                <div class="p-3 text-left">
+                                                    <p class="m-0">MENS WEAR</p>
+                                                    <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="storeSliderCard border rounded-lg overflow-hidden ">
+                                            <a href="#" class="text-decoration-none">
+                                                <div class="imgCont">
+                                                    <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                                </div>
+                                                <div class="p-3 text-left">
+                                                    <p class="m-0">MENS WEAR</p>
+                                                    <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="storeSliderCard border rounded-lg overflow-hidden ">
+                                            <a href="#" class="text-decoration-none">
+                                                <div class="imgCont">
+                                                    <img src="<?= base_url('assets/new_website/img/product-1.jpg') ?>" alt="">
+                                                </div>
+                                                <div class="p-3 text-left">
+                                                    <p class="m-0">MENS WEAR</p>
+                                                    <p class="m-0 fs10 text-secondary" >Lorem ipsum dolor sit amet.</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
                             </div>
                         </div>
                     </div>
@@ -2408,8 +2539,8 @@
             <section class="sale__area  pt-20">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-xl-12">
-                            <div class=" pre_order_slider  owl-carousel">
+                        <div class="col-12">
+                            <!-- <div class=" pre_order_slider  owl-carousel">
                                 <div class="prebookSliderCard">
                                     <div>
                                         <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
@@ -2500,6 +2631,144 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div> -->
+                            <div class="swiper prebookSwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="prebookSliderCard">
+                                            <div>
+                                                <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                                <div class="p-3 text-left">
+                                                    <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                                    <p class="m-0 fs12">Gossamer Grace</p>
+                                                    <button class="btn mt-2 fs12">PRE-ORDER</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="prebookSliderCard">
+                                            <div>
+                                                <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                                <div class="p-3 text-left">
+                                                    <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                                    <p class="m-0 fs12">Gossamer Grace</p>
+                                                    <button class="btn mt-2 fs12">PRE-ORDER</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="prebookSliderCard">
+                                            <div>
+                                                <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                                <div class="p-3 text-left">
+                                                    <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                                    <p class="m-0 fs12">Gossamer Grace</p>
+                                                    <button class="btn mt-2 fs12">PRE-ORDER</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="prebookSliderCard">
+                                            <div>
+                                                <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                                <div class="p-3 text-left">
+                                                    <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                                    <p class="m-0 fs12">Gossamer Grace</p>
+                                                    <button class="btn mt-2 fs12">PRE-ORDER</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="prebookSliderCard">
+                                            <div>
+                                                <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                                <div class="p-3 text-left">
+                                                    <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                                    <p class="m-0 fs12">Gossamer Grace</p>
+                                                    <button class="btn mt-2 fs12">PRE-ORDER</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="prebookSliderCard">
+                                            <div>
+                                                <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                                <div class="p-3 text-left">
+                                                    <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                                    <p class="m-0 fs12">Gossamer Grace</p>
+                                                    <button class="btn mt-2 fs12">PRE-ORDER</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="prebookSliderCard">
+                                            <div>
+                                                <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                                <div class="p-3 text-left">
+                                                    <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                                    <p class="m-0 fs12">Gossamer Grace</p>
+                                                    <button class="btn mt-2 fs12">PRE-ORDER</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="prebookSliderCard">
+                                            <div>
+                                                <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                                <div class="p-3 text-left">
+                                                    <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                                    <p class="m-0 fs12">Gossamer Grace</p>
+                                                    <button class="btn mt-2 fs12">PRE-ORDER</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="prebookSliderCard">
+                                            <div>
+                                                <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                                <div class="p-3 text-left">
+                                                    <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                                    <p class="m-0 fs12">Gossamer Grace</p>
+                                                    <button class="btn mt-2 fs12">PRE-ORDER</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="prebookSliderCard">
+                                            <div>
+                                                <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                                <div class="p-3 text-left">
+                                                    <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                                    <p class="m-0 fs12">Gossamer Grace</p>
+                                                    <button class="btn mt-2 fs12">PRE-ORDER</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="prebookSliderCard">
+                                            <div>
+                                                <img src="<?= base_url('assets/new_website/img/product.webp') ?>" alt="">
+                                                <div class="p-3 text-left">
+                                                    <p class="font-weight-bold text-dark fs16 m-0">Armani</p>
+                                                    <p class="m-0 fs12">Gossamer Grace</p>
+                                                    <button class="btn mt-2 fs12">PRE-ORDER</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
                             </div>
                         </div>
                     </div>
@@ -2585,8 +2854,8 @@
                     <!-- __mobile_viewSection__ -->
 
                     <div class="row mobileViewNEWOnSlickPattern">
-                        <div class="col-xl-12">
-                            <div class=" pre_order_slider  owl-carousel">
+                        <div class="col-12">
+                            <!-- <div class=" pre_order_slider  owl-carousel">
                                 <div class="position-relative">
                                     <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" style="height: 280px; object-fit: cover;" alt="">
                                     <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
@@ -2601,6 +2870,121 @@
                                         <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
                                     </div>
                                 </div>
+                                <div class="position-relative">
+                                    <img src="https://images.meesho.com/images/products/343616323/lcbl1_512.webp" style="height: 280px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    </div>
+                                </div>
+                                <div class="position-relative">
+                                    <img src="https://images.meesho.com/images/products/343616323/lcbl1_512.webp" style="height: 280px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    </div>
+                                </div>
+                                <div class="position-relative">
+                                    <img src="https://images.meesho.com/images/products/343616323/lcbl1_512.webp" style="height: 280px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    </div>
+                                </div>
+                                <div class="position-relative">
+                                    <img src="https://images.meesho.com/images/products/343616323/lcbl1_512.webp" style="height: 280px; object-fit: cover;" alt="">
+                                    <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                        <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                        <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="swiper newOnSlickSwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="position-relative">
+                                            <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" style="height: 280px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                                <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                                <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="position-relative">
+                                            <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" style="height: 280px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                                <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                                <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="position-relative">
+                                            <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" style="height: 280px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                                <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                                <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="position-relative">
+                                            <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" style="height: 280px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                                <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                                <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="position-relative">
+                                            <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" style="height: 280px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                                <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                                <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="position-relative">
+                                            <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" style="height: 280px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                                <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                                <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="position-relative">
+                                            <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" style="height: 280px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                                <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                                <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="position-relative">
+                                            <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" style="height: 280px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                                <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                                <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="position-relative">
+                                            <img src="https://i.pinimg.com/originals/27/b9/0f/27b90f8f9656bd2ef766c41359566c5d.jpg" style="height: 280px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 newOnSlickInner" style="bottom: 0;">
+                                                <p class="m-0 pl-2 fs16 text-light font-weight-bold">Weekend Style</p>
+                                                <button class="btn rounded-0 font-weight-bold newOnSlick-btn">SHOP NOW</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
                             </div>
                         </div>
                     </div>
@@ -2625,281 +3009,422 @@
                 </div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-xl-12">
-                            <div class="catelog__slider   owl-carousel mt-10 catelog_section">
-                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
-                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
-                                    <div class="blog__content">
-                                        <h4>Brocher Name</h4>
-                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div class="d-flex align-items-center">
-                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
-                                                <div class="heart-container" title="Like">
-                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
-                                                    <div class="svg-container">
-                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                                                            <polygon points="10,10 20,20"></polygon>
-                                                            <polygon points="10,50 20,50"></polygon>
-                                                            <polygon points="20,80 30,70"></polygon>
-                                                            <polygon points="90,10 80,20"></polygon>
-                                                            <polygon points="90,50 80,50"></polygon>
-                                                            <polygon points="80,80 70,70"></polygon>
-                                                        </svg>
+                        <div class="col-12">
+                            <div class="swiper catalogSwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                            <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
+                                            <div class="text-left p-2 brochureCardDetails">
+                                                <p class="m-0 text-dark">Brocher Name</p>
+                                                <div class="d-flex align-items-center text-dark fs12">
+                                                    <div class="d-flex align-items-center">
+                                                        <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                        <div class="heart-container" title="Like">
+                                                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                            <div class="svg-container">
+                                                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="10,10 20,20"></polygon>
+                                                                    <polygon points="10,50 20,50"></polygon>
+                                                                    <polygon points="20,80 30,70"></polygon>
+                                                                    <polygon points="90,10 80,20"></polygon>
+                                                                    <polygon points="90,50 80,50"></polygon>
+                                                                    <polygon points="80,80 70,70"></polygon>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                                     </div>
                                                 </div>
-                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
-                                            <div class="ml-2">
-                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
+                                            <div class="downloadBtn">
+                                                <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px; width: 32px;" alt=""></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="downloadBtn">
-                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
-                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
-                                    <div class="blog__content">
-                                        <h4>Brocher Name</h4>
-                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div class="d-flex align-items-center">
-                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
-                                                <div class="heart-container" title="Like">
-                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
-                                                    <div class="svg-container">
-                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                                                            <polygon points="10,10 20,20"></polygon>
-                                                            <polygon points="10,50 20,50"></polygon>
-                                                            <polygon points="20,80 30,70"></polygon>
-                                                            <polygon points="90,10 80,20"></polygon>
-                                                            <polygon points="90,50 80,50"></polygon>
-                                                            <polygon points="80,80 70,70"></polygon>
-                                                        </svg>
+                                    <div class="swiper-slide">
+                                        <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                            <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
+                                            <div class="text-left p-2 brochureCardDetails">
+                                                <p class="m-0 text-dark">Brocher Name</p>
+                                                <div class="d-flex align-items-center text-dark fs12">
+                                                    <div class="d-flex align-items-center">
+                                                        <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                        <div class="heart-container" title="Like">
+                                                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                            <div class="svg-container">
+                                                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="10,10 20,20"></polygon>
+                                                                    <polygon points="10,50 20,50"></polygon>
+                                                                    <polygon points="20,80 30,70"></polygon>
+                                                                    <polygon points="90,10 80,20"></polygon>
+                                                                    <polygon points="90,50 80,50"></polygon>
+                                                                    <polygon points="80,80 70,70"></polygon>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                                     </div>
                                                 </div>
-                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
-                                            <div class="ml-2">
-                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
+                                            <div class="downloadBtn">
+                                                <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px; width: 32px;" alt=""></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="downloadBtn">
-                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
-                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
-                                    <div class="blog__content">
-                                        <h4>Brocher Name</h4>
-                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div class="d-flex align-items-center">
-                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
-                                                <div class="heart-container" title="Like">
-                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
-                                                    <div class="svg-container">
-                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                                                            <polygon points="10,10 20,20"></polygon>
-                                                            <polygon points="10,50 20,50"></polygon>
-                                                            <polygon points="20,80 30,70"></polygon>
-                                                            <polygon points="90,10 80,20"></polygon>
-                                                            <polygon points="90,50 80,50"></polygon>
-                                                            <polygon points="80,80 70,70"></polygon>
-                                                        </svg>
+                                    <div class="swiper-slide">
+                                        <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                            <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
+                                            <div class="text-left p-2 brochureCardDetails">
+                                                <p class="m-0 text-dark">Brocher Name</p>
+                                                <div class="d-flex align-items-center text-dark fs12">
+                                                    <div class="d-flex align-items-center">
+                                                        <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                        <div class="heart-container" title="Like">
+                                                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                            <div class="svg-container">
+                                                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="10,10 20,20"></polygon>
+                                                                    <polygon points="10,50 20,50"></polygon>
+                                                                    <polygon points="20,80 30,70"></polygon>
+                                                                    <polygon points="90,10 80,20"></polygon>
+                                                                    <polygon points="90,50 80,50"></polygon>
+                                                                    <polygon points="80,80 70,70"></polygon>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                                     </div>
                                                 </div>
-                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
-                                            <div class="ml-2">
-                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
+                                            <div class="downloadBtn">
+                                                <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px; width: 32px;" alt=""></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="downloadBtn">
-                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
-                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
-                                    <div class="blog__content">
-                                        <h4>Brocher Name</h4>
-                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div class="d-flex align-items-center">
-                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
-                                                <div class="heart-container" title="Like">
-                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
-                                                    <div class="svg-container">
-                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                                                            <polygon points="10,10 20,20"></polygon>
-                                                            <polygon points="10,50 20,50"></polygon>
-                                                            <polygon points="20,80 30,70"></polygon>
-                                                            <polygon points="90,10 80,20"></polygon>
-                                                            <polygon points="90,50 80,50"></polygon>
-                                                            <polygon points="80,80 70,70"></polygon>
-                                                        </svg>
+                                    <div class="swiper-slide">
+                                        <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                            <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
+                                            <div class="text-left p-2 brochureCardDetails">
+                                                <p class="m-0 text-dark">Brocher Name</p>
+                                                <div class="d-flex align-items-center text-dark fs12">
+                                                    <div class="d-flex align-items-center">
+                                                        <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                        <div class="heart-container" title="Like">
+                                                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                            <div class="svg-container">
+                                                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="10,10 20,20"></polygon>
+                                                                    <polygon points="10,50 20,50"></polygon>
+                                                                    <polygon points="20,80 30,70"></polygon>
+                                                                    <polygon points="90,10 80,20"></polygon>
+                                                                    <polygon points="90,50 80,50"></polygon>
+                                                                    <polygon points="80,80 70,70"></polygon>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                                     </div>
                                                 </div>
-                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
-                                            <div class="ml-2">
-                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
+                                            <div class="downloadBtn">
+                                                <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px; width: 32px;" alt=""></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="downloadBtn">
-                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
-                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
-                                    <div class="blog__content">
-                                        <h4>Brocher Name</h4>
-                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div class="d-flex align-items-center">
-                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
-                                                <div class="heart-container" title="Like">
-                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
-                                                    <div class="svg-container">
-                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                                                            <polygon points="10,10 20,20"></polygon>
-                                                            <polygon points="10,50 20,50"></polygon>
-                                                            <polygon points="20,80 30,70"></polygon>
-                                                            <polygon points="90,10 80,20"></polygon>
-                                                            <polygon points="90,50 80,50"></polygon>
-                                                            <polygon points="80,80 70,70"></polygon>
-                                                        </svg>
+                                    <div class="swiper-slide">
+                                        <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                            <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
+                                            <div class="text-left p-2 brochureCardDetails">
+                                                <p class="m-0 text-dark">Brocher Name</p>
+                                                <div class="d-flex align-items-center text-dark fs12">
+                                                    <div class="d-flex align-items-center">
+                                                        <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                        <div class="heart-container" title="Like">
+                                                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                            <div class="svg-container">
+                                                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="10,10 20,20"></polygon>
+                                                                    <polygon points="10,50 20,50"></polygon>
+                                                                    <polygon points="20,80 30,70"></polygon>
+                                                                    <polygon points="90,10 80,20"></polygon>
+                                                                    <polygon points="90,50 80,50"></polygon>
+                                                                    <polygon points="80,80 70,70"></polygon>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                                     </div>
                                                 </div>
-                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
-                                            <div class="ml-2">
-                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
+                                            <div class="downloadBtn">
+                                                <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px; width: 32px;" alt=""></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="downloadBtn">
-                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
-                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
-                                    <div class="blog__content">
-                                        <h4>Brocher Name</h4>
-                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div class="d-flex align-items-center">
-                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
-                                                <div class="heart-container" title="Like">
-                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
-                                                    <div class="svg-container">
-                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                                                            <polygon points="10,10 20,20"></polygon>
-                                                            <polygon points="10,50 20,50"></polygon>
-                                                            <polygon points="20,80 30,70"></polygon>
-                                                            <polygon points="90,10 80,20"></polygon>
-                                                            <polygon points="90,50 80,50"></polygon>
-                                                            <polygon points="80,80 70,70"></polygon>
-                                                        </svg>
+                                    <div class="swiper-slide">
+                                        <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                            <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
+                                            <div class="text-left p-2 brochureCardDetails">
+                                                <p class="m-0 text-dark">Brocher Name</p>
+                                                <div class="d-flex align-items-center text-dark fs12">
+                                                    <div class="d-flex align-items-center">
+                                                        <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                        <div class="heart-container" title="Like">
+                                                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                            <div class="svg-container">
+                                                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="10,10 20,20"></polygon>
+                                                                    <polygon points="10,50 20,50"></polygon>
+                                                                    <polygon points="20,80 30,70"></polygon>
+                                                                    <polygon points="90,10 80,20"></polygon>
+                                                                    <polygon points="90,50 80,50"></polygon>
+                                                                    <polygon points="80,80 70,70"></polygon>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                                     </div>
                                                 </div>
-                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
-                                            <div class="ml-2">
-                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
+                                            <div class="downloadBtn">
+                                                <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px; width: 32px;" alt=""></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="downloadBtn">
-                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="brochureCard rounded-lg overflow-hidden position-relative">
-                                    <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
-                                    <div class="blog__content">
-                                        <h4>Brocher Name</h4>
-                                        <div class="d-flex align-items-center text-dark fs12" style="font-family: var(--heading_font);">
-                                            <div class="d-flex align-items-center">
-                                                <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
-                                                <div class="heart-container" title="Like">
-                                                    <input type="checkbox" class="checkbox" id="Give-It-An-Id">
-                                                    <div class="svg-container">
-                                                        <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                                                            <polygon points="10,10 20,20"></polygon>
-                                                            <polygon points="10,50 20,50"></polygon>
-                                                            <polygon points="20,80 30,70"></polygon>
-                                                            <polygon points="90,10 80,20"></polygon>
-                                                            <polygon points="90,50 80,50"></polygon>
-                                                            <polygon points="80,80 70,70"></polygon>
-                                                        </svg>
+                                    <div class="swiper-slide">
+                                        <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                            <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
+                                            <div class="text-left p-2 brochureCardDetails">
+                                                <p class="m-0 text-dark">Brocher Name</p>
+                                                <div class="d-flex align-items-center text-dark fs12">
+                                                    <div class="d-flex align-items-center">
+                                                        <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                        <div class="heart-container" title="Like">
+                                                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                            <div class="svg-container">
+                                                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="10,10 20,20"></polygon>
+                                                                    <polygon points="10,50 20,50"></polygon>
+                                                                    <polygon points="20,80 30,70"></polygon>
+                                                                    <polygon points="90,10 80,20"></polygon>
+                                                                    <polygon points="90,50 80,50"></polygon>
+                                                                    <polygon points="80,80 70,70"></polygon>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
                                                     </div>
                                                 </div>
-                                                <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                             </div>
-                                            <div class="ml-2">
-                                                <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
+                                            <div class="downloadBtn">
+                                                <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px; width: 32px;" alt=""></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="downloadBtn">
-                                        <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px;" alt=""></a>
+                                    <div class="swiper-slide">
+                                        <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                            <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
+                                            <div class="text-left p-2 brochureCardDetails">
+                                                <p class="m-0 text-dark">Brocher Name</p>
+                                                <div class="d-flex align-items-center text-dark fs12">
+                                                    <div class="d-flex align-items-center">
+                                                        <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                        <div class="heart-container" title="Like">
+                                                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                            <div class="svg-container">
+                                                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="10,10 20,20"></polygon>
+                                                                    <polygon points="10,50 20,50"></polygon>
+                                                                    <polygon points="20,80 30,70"></polygon>
+                                                                    <polygon points="90,10 80,20"></polygon>
+                                                                    <polygon points="90,50 80,50"></polygon>
+                                                                    <polygon points="80,80 70,70"></polygon>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="downloadBtn">
+                                                <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px; width: 32px;" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                            <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
+                                            <div class="text-left p-2 brochureCardDetails">
+                                                <p class="m-0 text-dark">Brocher Name</p>
+                                                <div class="d-flex align-items-center text-dark fs12">
+                                                    <div class="d-flex align-items-center">
+                                                        <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                        <div class="heart-container" title="Like">
+                                                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                            <div class="svg-container">
+                                                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="10,10 20,20"></polygon>
+                                                                    <polygon points="10,50 20,50"></polygon>
+                                                                    <polygon points="20,80 30,70"></polygon>
+                                                                    <polygon points="90,10 80,20"></polygon>
+                                                                    <polygon points="90,50 80,50"></polygon>
+                                                                    <polygon points="80,80 70,70"></polygon>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="downloadBtn">
+                                                <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px; width: 32px;" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="brochureCard rounded-lg overflow-hidden position-relative">
+                                            <img src="https://burst.shopifycdn.com/photos/model-in-gold-fashion.jpg?width=1000&format=pjpg&exif=0&iptc=0" alt="">
+                                            <div class="text-left p-2 brochureCardDetails">
+                                                <p class="m-0 text-dark">Brocher Name</p>
+                                                <div class="d-flex align-items-center text-dark fs12">
+                                                    <div class="d-flex align-items-center">
+                                                        <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
+                                                        <div class="heart-container" title="Like">
+                                                            <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                                            <div class="svg-container">
+                                                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                                    </path>
+                                                                </svg>
+                                                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="10,10 20,20"></polygon>
+                                                                    <polygon points="10,50 20,50"></polygon>
+                                                                    <polygon points="20,80 30,70"></polygon>
+                                                                    <polygon points="90,10 80,20"></polygon>
+                                                                    <polygon points="90,50 80,50"></polygon>
+                                                                    <polygon points="80,80 70,70"></polygon>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
+                                                    </div>
+                                                    <div class="ml-2">
+                                                        <button class="btn m-0 p-0 mt-1"><i class="fa fa-circle-down"></i> 500k</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="downloadBtn">
+                                                <a href="#" class="download-btn" id="download-btn"><img src="<?=base_url('assets/new_website/img/downloadIcon.png') ?>" style="height: 32px; width: 32px;" alt=""></a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
                             </div>
                         </div>
                     </div>
@@ -2913,11 +3438,10 @@
                     <div class="col-xl-12">
                         <div class="section__title-wrapper text-center mb-40">
                             <div class="section__title wow fadeInDown" data-wow-duration="1s">
-                                <h2 class="m-0 text-dark">Download Lookbook</h2>
+                                <h2 class="m-0 text-dark">Heading</h2>
                             </div>
                             <div class="section__sub-title wow fadeInDown" data-wow-duration="2s">
-                                <p class="text-secondary">Our one-stop destination for every style, trend, occasion you're shopping
-                                </p>
+                                <p class="text-secondary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, saepe!</p>
                             </div>
                         </div>
                     </div>
@@ -2968,71 +3492,100 @@
                 </div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-xl-12">
-                            <div class="catelog__slider   owl-carousel mt-10 client_section">
-                                <div class="rounded-lg overflow-hidden">
-                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
-                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
-                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
-                                        <div class="pl-2">
-                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
+                        <div class="col-12">
+                            <div class="swiper clientSwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="rounded-lg overflow-hidden">
+                                            <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                                <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                                <div class="pl-2 text-left">
+                                                    <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="rounded-lg overflow-hidden">
+                                            <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                                <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                                <div class="pl-2 text-left">
+                                                    <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="rounded-lg overflow-hidden">
+                                            <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                                <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                                <div class="pl-2 text-left">
+                                                    <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="rounded-lg overflow-hidden">
+                                            <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                                <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                                <div class="pl-2 text-left">
+                                                    <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="rounded-lg overflow-hidden">
+                                            <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                                <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                                <div class="pl-2 text-left">
+                                                    <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="rounded-lg overflow-hidden">
+                                            <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                                <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                                <div class="pl-2 text-left">
+                                                    <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="rounded-lg overflow-hidden">
+                                            <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                                <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                                <div class="pl-2 text-left">
+                                                    <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="rounded-lg overflow-hidden">
+                                            <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
+                                            <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
+                                                <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
+                                                <div class="pl-2 text-left">
+                                                    <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="rounded-lg overflow-hidden">
-                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
-                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
-                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
-                                        <div class="pl-2">
-                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg overflow-hidden">
-                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
-                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
-                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
-                                        <div class="pl-2">
-                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg overflow-hidden">
-                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
-                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
-                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
-                                        <div class="pl-2">
-                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg overflow-hidden">
-                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
-                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
-                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
-                                        <div class="pl-2">
-                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg overflow-hidden">
-                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
-                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
-                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
-                                        <div class="pl-2">
-                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg overflow-hidden">
-                                    <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 360px; object-fit: cover;" alt="">
-                                    <div class="position-absolute w-100 p-2 d-flex align-items-center rounded-lg" style="bottom: 0;background-color: rgba(0,0,0,0.5);">
-                                        <img src="https://cdn.shopify.com/s/files/1/2542/7564/files/IMG_2219.jpg?v=1697873297&width=400&height=400" style="height: 40px; width: 40px; border-radius: 100vh; object-fit: cover;" alt="">
-                                        <div class="pl-2">
-                                            <span class="fs12 text-white" style="line-height: 1;">Maroon Blush Embroidered Georgette Suit Set</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
                             </div>
                         </div>
                     </div>
@@ -3155,7 +3708,7 @@
         var swiper4 = new Swiper('.latestSwiper', {
                 slidesPerView: 1.5,
                 spaceBetween: 18,
-                autoplay:false,
+                autoplay:true,
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
@@ -3182,10 +3735,14 @@
         var swiper5 = new Swiper('.productSwiper', {
                 slidesPerView: 1,
                 spaceBetween: 18,
-                autoplay:false,
+                autoplay:true,
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,  // Makes the pagination dots clickable
                 },
                 breakpoints: {
                     650: {
@@ -3202,6 +3759,186 @@
                     },
                     1260: {
                         slidesPerView: 4
+                    }
+                }
+        });
+
+        var swiper6 = new Swiper('.comboSwiper', {
+                slidesPerView: 1.5,
+                spaceBetween: 18,
+                autoplay:true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    600: {
+                        slidesPerView: 1.5
+                    },
+                    700: {
+                        slidesPerView: 2
+                    },
+                    950: {
+                        slidesPerView: 3
+                    },
+                    1100: {
+                        slidesPerView: 4
+                    },
+                    1260: {
+                        slidesPerView: 5
+                    }
+                }
+        });
+
+        var swiper6 = new Swiper('.storeSwiper', {
+                slidesPerView: 1.5,
+                spaceBetween: 18,
+                autoplay:true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    600: {
+                        slidesPerView: 1.5
+                    },
+                    700: {
+                        slidesPerView: 2
+                    },
+                    950: {
+                        slidesPerView: 3
+                    },
+                    1100: {
+                        slidesPerView: 4
+                    },
+                    1260: {
+                        slidesPerView: 5
+                    }
+                }
+        });
+        
+        var swiper7 = new Swiper('.prebookSwiper', {
+                slidesPerView: 1.5,
+                spaceBetween: 18,
+                autoplay:true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    500: {
+                        slidesPerView: 2
+                    },
+                    600: {
+                        slidesPerView: 2.5
+                    },
+                    700: {
+                        slidesPerView: 3
+                    },
+                    950: {
+                        slidesPerView: 4
+                    },
+                    1100: {
+                        slidesPerView: 5
+                    },
+                    1260: {
+                        slidesPerView: 6
+                    }
+                }
+        });
+
+        var swiper8 = new Swiper('.newOnSlickSwiper', {
+                slidesPerView: 1.5,
+                spaceBetween: 0,
+                autoplay:true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    500: {
+                        slidesPerView: 2
+                    },
+                    600: {
+                        slidesPerView: 2.5
+                    },
+                    750: {
+                        slidesPerView: 3
+                    },
+                    950: {
+                        slidesPerView: 4
+                    },
+                    1100: {
+                        slidesPerView: 5
+                    },
+                    1260: {
+                        slidesPerView: 6
+                    }
+                }
+        });
+
+        var swiper9 = new Swiper('.catalogSwiper', {
+                slidesPerView: 1.5,
+                spaceBetween: 18,
+                autoplay:false,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    500: {
+                        slidesPerView: 2
+                    },
+                    600: {
+                        slidesPerView: 2
+                    },
+                    650: {
+                        slidesPerView: 2.5
+                    },
+                    850: {
+                        slidesPerView: 3
+                    },
+                    950: {
+                        slidesPerView: 4
+                    },
+                    1150: {
+                        slidesPerView: 4
+                    },
+                    1260: {
+                        slidesPerView: 5
+                    }
+                }
+        });
+
+        var swiper10 = new Swiper('.clientSwiper', {
+                slidesPerView: 1.5,
+                spaceBetween: 18,
+                autoplay:false,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    500: {
+                        slidesPerView: 2
+                    },
+                    600: {
+                        slidesPerView: 2
+                    },
+                    650: {
+                        slidesPerView: 2.5
+                    },
+                    850: {
+                        slidesPerView: 3
+                    },
+                    1000: {
+                        slidesPerView: 3.5
+                    },
+                    1150: {
+                        slidesPerView: 4
+                    },
+                    1260: {
+                        slidesPerView: 5
                     }
                 }
         });

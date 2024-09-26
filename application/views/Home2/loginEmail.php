@@ -30,6 +30,10 @@
             background-image: linear-gradient(127deg, #feedf4 0%, #fcf0e3 100%);
         }
 
+        .category_section, .marqueeContainer{
+            display: none!important;
+        }
+
         .loginContainer{
             margin-top: 28px;
         }
@@ -146,7 +150,7 @@
                 <form id="loginForm">
                     <div class="inputGroup position-relative">
                         <div class="inputFieldContainer container1">
-                            <input type="text" class="emailInput" id="email" placeholder="example@company.com">
+                            <input type="text" class="emailInput" id="email" placeholder="example@company.com*">
                         </div>
                         <p class="m-0 p-0 errorMsg text-danger position-absolute"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid email address</p>
                     </div>

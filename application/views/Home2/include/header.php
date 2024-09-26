@@ -76,7 +76,7 @@
             <div class="row">
                 <div class="col-lg-1 ">
                 </div>
-                <div class="col-lg-7 col-md-6">
+                <div class="col-lg-7 col-md-6 marqueeContainer">
                     <marquee width="100%" direction="left" class="text-white">
                         <?php
                         if ($this->sitepermission->notification) {
@@ -684,7 +684,7 @@
     </div>
     <div class="mobile_Header bg-white">
         <div class="header__area ">
-            <div class="container-fluid pb-2">
+            <div class="container-fluid pb-1">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6  col-6">
                         <div class="header__right p-relative">
