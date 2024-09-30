@@ -1263,6 +1263,11 @@
                 <p class="m-0 ml-2">100% SECURE</p>
             </div>
         </div>
+        <div class="d-none d-lg-block d-md-block d-sm-none position-absolute" style="top: 20px; left: 28px; z-index: 999;">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="<?=base_url('assets/new_website/img/favicon.png')?>" style="width: 40px;" alt="">
+            </div>
+        </div>
         <section class="d-lg-none d-md-none d-sm-block position-fixed top-0 w-100 bg-white" style="z-index: 999;" >
             <div class="d-flex justify-content-between align-items-center px-3 py-1 shadow-sm">
                 <div class="d-flex align-items-center py-2">
@@ -2347,7 +2352,7 @@
                             <p class="m-0 p-0"><i class="fa-solid fa-circle-check mr-1"
                                     style="color: var(--color2);"></i>Easy returns</p>
                         </div>
-                        <div class="mt-2 py-2 px-3 rounded-lg d-lg-block d-md-block d-sm-none d-none"
+                        <!-- <div class="mt-2 py-2 px-3 rounded-lg d-lg-block d-md-block d-sm-none d-none"
                             style="background-image: linear-gradient(128deg, #e83e8c 0%, 12%, #8340a1 34% 100%); font-family: 'League Spartan';">
                             <div class="d-flex align-items-center mt-2">
                                 <img src="./images/rupee.png" style="width: 30px; position: relative; left: 6px;"
@@ -2369,7 +2374,7 @@
                                 <button class="btn" style="color: yellow; box-shadow: 0px 0px 4px 1px white;"><i
                                         class="fa-solid fa-cart-shopping mr-1"></i>Add</button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

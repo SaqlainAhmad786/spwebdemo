@@ -324,13 +324,16 @@
         smartSpeed: 500,
         items: 6,
         navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        dots: true,
+        // dots: true,
         responsive: {
             0: {
-                items: 1
+                items: 1,
+                dots: true,
+
             },
             576: {
-                items: 1
+                items: 1,
+                dots: true,
             },
             767: {
                 items: 1,
@@ -359,7 +362,6 @@
         autoplaySpeed: 2000,
         navText: ['<i class="fa-solid fa-angle-left"></i>', '<i class="fa-solid fa-angle-right"></i>'],
         nav: true,
-        dots: true,
         responsive: {
             0: {
                 items: 1

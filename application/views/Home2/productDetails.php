@@ -123,14 +123,6 @@
             transform-origin: center;
         }
 
-        .colorSwiperContainer{
-            padding: 6px;
-        }
-
-        .sizeSwiperContainer{
-            padding-bottom: 8px;
-        }
-
         .sizeChartBtn{
             color: var(--pinkcolor);
         }
@@ -150,6 +142,10 @@
         
         .sizeSwiper{
             height: 55px;
+        }
+
+        .royalClubSwiper{
+            height: 120px;
         }
 
         .offerSwiper{
@@ -471,7 +467,7 @@
                     </div>
                     <div class="my-3">
                         <p class="text-dark font-weight-bold mb-1">SELECT COLOR</p>
-                        <div class="colorSwiperContainer border rounded-lg">
+                        <div class="colorSwiperContainer rounded-lg">
                             <div class="d-flex justify-content-between">
                                 <span>Color: <span class="font-weight-bold text-dark">Yellow</span></span>
                                 <span>Available: <span class="font-weight-bold text-dark">2</span></span>
@@ -504,9 +500,9 @@
                     </div>
                     <div class="my-3">
                         <p class="text-dark font-weight-bold mb-1">SELECT SIZE</p>
-                        <p class="fs12 border rounded-lg text-center text-dark mb-2">SIZE <span class="font-weight-bold">XL</span> RECOMMENDED</p>
-                        <div class="sizeSwiperContainer border rounded-lg">
-                            <div class="d-flex justify-content-between p-2">
+                        <p class="fs12 border rounded-lg text-center text-dark m-0 shadow-sm">SIZE <span class="font-weight-bold">XL</span> RECOMMENDED</p>
+                        <div class="sizeSwiperContainer rounded-lg">
+                            <div class="d-flex justify-content-between py-2">
                                 <span>Size: <span class="font-weight-bold text-dark">S</span></span>
                                 <a href="#" class="font-weight-bold sizeChartBtn">Size Chart</a>
                             </div>
@@ -698,6 +694,105 @@
                             <p class="m-0 mt-1 fs12" style="width: 80px; line-height: 1.25">Royal Club Cash</p>
                         </div>
                     </div>
+                    <div class="my-3">
+                        <p class="m-0 font-weight-bold text-dark">ROYAL  CLUB EXCLUSIVES</p>
+                        <div class="swiper royalClubSwiper my-2 px-3">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 60px;" alt="">
+                                        <p class="m-0 mt-2 fs12" style="line-height: 1.25">Club Cash Rewards Upto ₹8</p>
+                                        <a href="#" class="toolTip text-dark"
+                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                            <i class="fa-solid fa-circle-question text-secondary"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 60px;" alt="">
+                                        <p class="m-0 mt-2 fs12" style="line-height: 1.25">Exclusive Offers & Discounts</p>
+                                        <a href="#" class="toolTip text-dark"
+                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                            <i class="fa-solid fa-circle-question text-secondary"></i>
+                                        </a>
+                                    </div> 
+                                </div>
+                                <div class="swiper-slide">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 60px;" alt="">
+                                        <p class="m-0 mt-2 fs12" style="line-height: 1.25">Reduced Prices on Products</p>
+                                        <a href="#" class="toolTip text-dark"
+                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                            <i class="fa-solid fa-circle-question text-secondary"></i>
+                                        </a>
+                                    </div> 
+                                </div>
+                                <div class="swiper-slide">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 60px;" alt="">
+                                        <p class="m-0 mt-2 fs12" style="line-height: 1.25">Lower Cost Barrier</p>
+                                        <a href="#" class="toolTip text-dark"
+                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                            <i class="fa-solid fa-circle-question text-secondary"></i>
+                                        </a>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                    <hr class="m-0">
+                    <div class="my-3">
+                        <p class="m-0 font-weight-bold text-dark">COMPLETE THE LOOK</p>
+                        <div class="swiper royalClubSwiper my-2 px-3">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 60px;" alt="">
+                                        <p class="m-0 mt-2 fs12" style="line-height: 1.25">Club Cash Rewards Upto ₹8</p>
+                                        <a href="#" class="toolTip text-dark"
+                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                            <i class="fa-solid fa-circle-question text-secondary"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 60px;" alt="">
+                                        <p class="m-0 mt-2 fs12" style="line-height: 1.25">Exclusive Offers & Discounts</p>
+                                        <a href="#" class="toolTip text-dark"
+                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                            <i class="fa-solid fa-circle-question text-secondary"></i>
+                                        </a>
+                                    </div> 
+                                </div>
+                                <div class="swiper-slide">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 60px;" alt="">
+                                        <p class="m-0 mt-2 fs12" style="line-height: 1.25">Reduced Prices on Products</p>
+                                        <a href="#" class="toolTip text-dark"
+                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                            <i class="fa-solid fa-circle-question text-secondary"></i>
+                                        </a>
+                                    </div> 
+                                </div>
+                                <div class="swiper-slide">
+                                    <div>
+                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 60px;" alt="">
+                                        <p class="m-0 mt-2 fs12" style="line-height: 1.25">Lower Cost Barrier</p>
+                                        <a href="#" class="toolTip text-dark"
+                                            tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
+                                            <i class="fa-solid fa-circle-question text-secondary"></i>
+                                        </a>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -747,6 +842,17 @@
 
         var swiper3 = new Swiper('.offerSwiper', {
                 slidesPerView: 1,
+                spaceBetween: 0,
+                autoplay:false,
+                loop: false,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+        });
+
+        var swiper4 = new Swiper('.royalClubSwiper', {
+                slidesPerView: 4,
                 spaceBetween: 0,
                 autoplay:false,
                 loop: false,
