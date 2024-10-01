@@ -26,6 +26,11 @@
             margin-inline: auto;
         }
 
+        iframe{
+            width: 100%;
+            aspect-ratio: 16/9;
+        }
+
         a:hover{
             text-decoration: none;
             color: black;
@@ -36,6 +41,11 @@
         }
 
         .homePageSlider .carousel-item img {
+            max-height: 600px;
+            object-fit: cover;
+        }
+
+        .sliderVideo{
             max-height: 600px;
             object-fit: cover;
         }
@@ -858,6 +868,7 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -900,6 +911,9 @@
                         <p class="animate__animated animate__fadeInUp animate__delay-2s">Lorem ipsum dolor sit, amet consectetur adipisicing elit. A tempora obcaecati facere voluptate distinctio, adipisci nemo vero minus harum iure.</p>
                         <a href="#" class="shopNowBtn">SHOP NOW</a>
                     </div>
+                </div>
+                <div class="carousel-item">
+                    <iframe id="sliderVideo" width="auto" src="https://www.youtube.com/embed/iesoe2JF_AY" title="Myntra Fashion Carnival | 50 - 80% Off" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
