@@ -101,7 +101,7 @@
         }
 
         .fourthSwiper{
-            height:360px;
+            height:400px;
         }
 
         .latestSwiper{
@@ -148,6 +148,10 @@
 
         .swiper-pagination-bullet-active{
             background-color: var(--pinkcolor)!important;
+        }
+
+        #combo_slider .owl-dots{
+            display: none;
         }
 
         .owl-dots{
@@ -3714,7 +3718,7 @@
                 },
                 pagination: {
                     el: '.swiper-pagination',
-                    clickable: true,  // Makes the pagination dots clickable
+                    clickable: true,
                 },
                 breakpoints: {
                     650: {
@@ -3729,7 +3733,7 @@
                     1100: {
                         slidesPerView: 3
                     },
-                    1260: {
+                    1420: {
                         slidesPerView: 4
                     }
                 }
@@ -3943,7 +3947,7 @@
         });
 
         window.addEventListener('scroll', function() {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 40)) {
                 document.querySelector('.homeBottomNav').style.transform = 'translateY(100%)';
             } else {
                 document.querySelector('.homeBottomNav').style.transform = 'translateY(0%)';

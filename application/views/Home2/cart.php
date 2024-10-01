@@ -1265,7 +1265,7 @@
         </div>
         <div class="d-none d-lg-block d-md-block d-sm-none position-absolute" style="top: 20px; left: 28px; z-index: 999;">
             <div class="d-flex justify-content-center align-items-center">
-                <img src="<?=base_url('assets/new_website/img/favicon.png')?>" style="width: 40px;" alt="">
+                <img src="<?=base_url('assets/new_website/img/memberLogo.png')?>" style="height: 40px;" alt="">
             </div>
         </div>
         <section class="d-lg-none d-md-none d-sm-block position-fixed top-0 w-100 bg-white" style="z-index: 999;" >
@@ -1284,7 +1284,7 @@
             <div class="stepper-wrapper">
                 <div class="stepper-item active">
                     <div class="step-counter">1</div>
-                    <div class="step-name"><h1 style="all: unset">CART</h1></div>
+                    <div class="step-name"><h1 style="all: unset">BAG</h1></div>
                 </div>
                 <div class="stepper-item ">
                     <div class="step-counter">2</div>

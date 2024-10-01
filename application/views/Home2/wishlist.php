@@ -909,7 +909,7 @@
                     <p class="m-0 text-secondary" style="font-size: 14px;">Add items you like to your wishlist. Review
                         them anytime and effortlessly move them to your bag.
                     </p>
-                    <img class="mt-4" src="./images/wishlist.png"
+                    <img class="mt-4" src="<?= base_url('assets/new_website/img/wishlist.png')?>"
                         style="width: 100%; height: 180px; object-fit: contain;" alt="">
                     <button class="continueBtn">CONTINUE SHOPPING</button>
                 </div>
