@@ -54,15 +54,57 @@
             font-size: 16px;
         }
 
+        input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
+
+        .feedback-btn{
+            display: none!important;
+        }
+
         main {
             max-width: 1560px;
             margin-inline: auto;
+        }
+
+        .rating {
+            font-size: 12px;
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        .rating2 {
+            font-size: 12px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        .callBtn{
+            position: fixed;
+            bottom: 58px;
+            left: 20px;
+            z-index: 10000;
+            background-color: var(--maincolor);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 100vh;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .addToBagBtn{
             background-color: var(--maincolor);
             color: white;
             padding-block: 8px;
+        }
+
+        .addToBagBtn.active{
+            background-color: var(--pinkcolor);
         }
 
         .addToBagBtn:hover{
@@ -72,8 +114,24 @@
 
         .wishlistBtn{
             border: 1px solid rgba(0, 0, 0, 0.25);
-            color: rgba(0, 0, 0, 0.5);
+            color: rgba(0, 0, 0, 0.7);
             padding-block: 8px;
+        }
+
+        .priceContainer{
+            position: relative;
+            cursor: pointer!important;
+        }
+
+        .priceHoverDetails{
+            display: none;
+            background-color: white;
+            width: 240px;
+            border-radius: 8px;
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+            padding: 10px;
+            position: absolute;
+            z-index: 1000;
         }
 
         .sidebar{
@@ -92,6 +150,15 @@
         .sidebar .tabButton:hover{
             background-color: var(--pinkcolor);
             color: white;
+        }
+
+        .sidebarContent{
+            height: 240px;
+            overflow-y: scroll;
+        }
+
+        .sidebarContent::-webkit-scrollbar{
+            width: 0;
         }
 
         a:hover{
@@ -153,7 +220,7 @@
         }
 
         .colorSwiper a.active img{
-            border: 2px solid var(--pinkcolor);
+            border: 2px solid #FFD700;
             padding: 2px;
         }
         
@@ -186,11 +253,13 @@
         }
 
         .productImageSwiper{
-            height: 320px;
+            height: 360px;
+            padding-bottom: 34px;
         }
-
-        .similarProductsSwiper{
-            height: 380px;
+        
+        .productImageSwiper .swiper-slide img{
+            object-fit: cover;
+            width: 100%;
         }
 
         .swiper-slide{
@@ -219,6 +288,23 @@
 
         .swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled{
             display: none;
+        }
+
+        .swiper-pagination-bullet-active{
+            background-color: var(--pinkcolor)!important;
+        }
+
+        .sizeDetails{
+            display: none;
+            background-color: white;
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 65%;
+            padding: 10px;
+            border-radius: 8px;
         }
 
         .sizeBtn {
@@ -303,13 +389,13 @@
             font-family: Arial, Helvetica, sans-serif;
             font-size: 14;
             line-height: 1.25em;
-            width: 160px;
+            width: 120px;
             padding: 5px 10px;
             border-radius: 6px;
             box-shadow: 3px 3px 4px rgba(0, 0, 0, .65);
             position: absolute;
-            top: -76px;
-            right: -35px;
+            top: -103px;
+            right: -53px;
             display: none;
         }
 
@@ -334,6 +420,10 @@
 
         a.toolTip:hover:before {
             display: block;
+        }
+
+        .features img{
+            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
         }
 
         .coupon {
@@ -390,7 +480,7 @@
             color: rgb(150, 150, 150);
         }
 
-        .pincodeBtn {
+        .pincodeBtn, .pincodeChangeBtn {
             background-color: transparent;
             border:0;
             outline:0;
@@ -438,7 +528,7 @@
             }
         }
 
-        .similarBtn button {
+        .similarBtn a {
             position: absolute;
             bottom: 16px;
             right: 16px;
@@ -446,13 +536,14 @@
             outline: none;
             border: none;
             border-radius: 100vh;
+            background-color: white;
         }
 
-        .similarBtn button:hover .similarText {
+        .similarBtn a:hover .similarText {
             display: inline;
         }
 
-        .similarBtn button img {
+        .similarBtn a img {
             width: 20px;
             height: 20px;
         }
@@ -465,6 +556,21 @@
             font-weight: 600;
             color: var(--color2);
             margin-left: 4px;
+        }
+
+        .productHighlights {
+            position: absolute;
+            bottom: 16px;
+            left: 0px;
+        }
+
+        .productHighlights p{
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+            padding: 4px 6px;
+            border-radius: 0px 4px 4px 0px;
+            font-weight: 500;
+            font-size: 12px;
         }
 
         .shareBtn, .likeBtn {
@@ -508,6 +614,15 @@
             padding-block: 16px;
         }
 
+        .reviewsContainer{
+            height: 200px;
+            overflow-y: hidden;
+        }
+
+        .reviewsContainer::-webkit-scrollbar{
+            width: 0;
+        }
+
         .extraReviewImg{
             padding: 2px 4px;
             top: 50%;
@@ -520,11 +635,21 @@
             .similarProductsContainer{
                 grid-template-columns: repeat(4, 1fr);
             }
+
+            .sidebar{
+                width: 80%;
+            }
         }
 
         @media (width < 900px) {
             .similarProductsContainer{
                 grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (width < 768px) {
+            .sidebar{
+                width: 90%;
             }
         }
 
@@ -537,6 +662,14 @@
                 min-width: 100%;
                 border-radius: 0;
             }
+
+            .sidebar{
+                width: 95%;
+            }
+
+            .swiper-button-next, .swiper-button-prev{
+                display: none;
+            }
         }
         
     </style>
@@ -546,7 +679,7 @@
     <?php include('include/header.php'); ?>
     <main>
         <div class="sidebar">
-            <div class="px-5">
+            <div class="px-2 px-lg-5 px-md-4">
                 <div class="text-right">
                     <button class="btn closeSidebarBtn"><i class="fa fa-xmark"></i></button>
                 </div>
@@ -565,52 +698,61 @@
                 <div>
                     <div class="pt-4 d-flex justify-content-center">
                         <div class="btn-group border rounded-pill overflow-hidden" role="group" aria-label="Basic example">
-                            <button type="button" class="btn fs14 tabButton">SIZE CHART</button>
-                            <button type="button" class="btn fs14 tabButton">HOW TO MEASURE</button>
+                            <a href="#sizeChart" class="btn fs14 tabButton">SIZE CHART</a>
+                            <a href="#howToMeasure" class="btn fs14 tabButton">HOW TO MEASURE</a>
                         </div>
                     </div>
-                    <div class="mt-3">
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="mt-3 sidebarContent">
+                        <div id="sizeChart">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="howToMeasure">
+                            <img src="<?= base_url('assets/website/images/product/jeans.webp') ?>" alt="">
+                        </div>
                     </div>
                 </div>
-                <div class="position-fixed row bg-white d-flex" style="bottom: 12px;">
-                    <button class="btn fs14 addToBagBtn" style="width: 220px;"><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
-                    <button class="btn fs14 wishlistBtn ml-2" style="width: 220px;"><i class="fa-regular fa-heart"></i> WISHLIST</button>
+                <div class="position-fixed row bg-white w-100 d-flex gap-2 pr-2" style="bottom: 16px; right: 8px;">
+                    <button class="btn fs14 addToBagBtn flex-grow-1"><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
+                    <button class="btn fs14 wishlistBtn flex-grow-1"><i class="fa-regular fa-heart"></i> WISHLIST</button>
                 </div>
             </div>
         </div>
         <dialog class="reviewDialog" id="dialog">
             <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
-                <p class="m-0 font-weight-bold">What customer say about this product?</p>
+                <p class="m-0 font-weight-bold">Discover customer feedback on this product!</p>
                 <button id="closeReviewBtn" type="button" aria-label="close" class="btn p-0">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -668,6 +810,9 @@
                 </div>
             </div>
         </dialog>
+        <div class="shadow-lg callBtn d-lg-none d-md-none d-block">
+            <a href="tel:1234567890"><i class="fa-solid fa-phone"></i></a>
+        </div>
         <section class="saleTimerStripContainer border">
             <div class="saleTimerStrip">
                 <p class="m-0 text-secondary">Sale ends
@@ -679,7 +824,7 @@
             <div class="px-3 my-2">
                 <ul class="d-flex" style="gap: 4px;font-size: 14px;">
                     <li><a href="#" class="text-secondary">Home /</a></li>
-                    <li class="font-weight-bold">Products</li>
+                    <li class="font-weight-bold"><h1 style="all:unset;">Products</h1></li>
                 </ul>
             </div>
         </section>
@@ -694,9 +839,17 @@
                             <div class="zoom-container position-relative">
                                 <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
                                 <div class="similarBtn">
-                                    <button onclick="openSidebar()"><img src="<?=base_url('assets/new_website/img/cards.png')?>" alt=""><span
-                                            class="similarText">Similar
-                                            Products</span></button>
+                                    <a href="#similarProducts">
+                                        <img src="<?=base_url('assets/new_website/img/cards.png')?>" alt="">
+                                        <span class="similarText">Similar
+                                            Products</span>
+                                    </a>
+                                </div>
+                                <div class="productHighlights">
+                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <p>Lorem ipsum dolor sit amet.</p>
                                 </div>
                             </div>
                             <div class="zoom-container">
@@ -708,9 +861,10 @@
                             <div class="zoom-container">
                                 <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
                             </div>
-                            <div class="zoom-container">
-                                <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
-                            </div>
+                            <video width="100%" height="100%" autoplay muted>
+                                <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                     <div class="d-lg-none d-md-none d-block swiper productImageSwiper">
@@ -722,17 +876,26 @@
                                 <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="rounded-lg overflow-hidden" alt="">
                             </div>
                         </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                    <div class="my-2 d-flex justify-content-between align-items-center">
-                        <div>
-                            <button class="btn p-0 fs14 font-weight-bold">Modal insight</button>
-                            <a href="#similarProducts" class="btn p-0 fs14 font-weight-bold"><img src="<?= base_url('assets/new_website/img/cards.png') ?>" style="width: 20px;" alt=""> View Similar</a>
+                        <div class="swiper-pagination"></div>
+                        <div class="position-absolute w-100 d-flex justify-content-between align-items-center px-3" style="bottom: 44px; z-index: 100000;">
+                            <a href="#reviews" class="rating2 text-white">
+                                <span>4.5</span>
+                                <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 12px;">
+                                <span>| 10</span>
+                            </a>
+                            <a href="#similarProducts" class="text-light px-2 py-1 fs10 rounded-pill" style="background-color: rgba(0, 0, 0, 0.5);">VIEW SIMILAR</a>
                         </div>
-                        <div class="d-lg-block d-md-block d-none">
-                            <button class="btn fs14 font-weight-bold likeBtn"><img src="<?= base_url('assets/new_website/img/love-icon.png') ?>" style="width: 20px;" alt=""> Like</button>
-                            <button class="btn fs14 font-weight-bold shareBtn"><img src="<?= base_url('assets/new_website/img/share.png') ?>" style="width: 20px;" alt=""> Share</button>
+                    </div>
+                    <div class="d-lg-block d-md-block d-none">
+                        <div class="my-2 d-flex justify-content-between align-items-center">
+                            <div>
+                                <button class="btn p-0 fs14 font-weight-bold">Modal insight</button>
+                                <a href="#similarProducts" class="btn p-0 fs14 font-weight-bold"><img src="<?= base_url('assets/new_website/img/cards.png') ?>" style="width: 20px;" alt=""> View Similar</a>
+                            </div>
+                            <div>
+                                <button class="btn fs14 font-weight-bold likeBtn"><img src="<?= base_url('assets/new_website/img/love-icon.png') ?>" style="width: 20px;" alt=""> Like</button>
+                                <button class="btn fs14 font-weight-bold shareBtn"><img src="<?= base_url('assets/new_website/img/share.png') ?>" style="width: 20px;" alt=""> Share</button>
+                            </div>
                         </div>
                     </div>
                     <div class="my-3 d-lg-block d-md-block d-none">
@@ -756,24 +919,58 @@
                 <div class="col-lg-5 col-md-6 col-12">
                     <div>
                         <h3 class="m-0 text-dark">Jack & Jones</h3>
-                        <p class="fs12 text-secondary m-0" style="line-height: 1;">Men Grey Slim Fit Light Fade Stretchable Jeans</p>
-                        <p class="m-0 mb-2 fs12">Product Code: <span class="font-weight-bold text-dark">#123456789</span></p>
+                        <p class="fs12 text-secondary m-0 mb-2" style="line-height: 1;">Men Grey Slim Fit Light Fade Stretchable Jeans</p>
                         <div>
                             <a href="#reviews" class="border rounded-sm text-dark p-1 fs12 font-weight-bold">
                                 <span>3.5</span>
-                                <i class="fa-solid fa-star" style="color: #72BFBC;"></i>
+                                <i class="fa-solid fa-star" style="color: #FFD700;"></i>
                                 <span class="border-left pl-2">71 Ratings</span>
                             </a>
                         </div>
                     </div>
                     <hr>
-                    <div>
+                    <div class="priceContainer">
                         <div class="d-flex align-items-center gap-2 mb-1">
-                            <span class="font-weight-bold text-dark" style="font-size: 30px;">₹1,998</span>
-                            <span class="text-secondary border-right pr-2" style="font-size: 26px; text-decoration: line-through;">₹2,998</span>
+                            <span class="font-weight-bold text-dark" style="font-size: 28px;">₹1,998</span>
+                            <span class="text-secondary border-right pr-2" style="font-size: 24px; text-decoration: line-through;">₹2,998</span>
                             <span class="text-success font-weight-bold">50% OFF</span>
                         </div>
                         <span class="text-success font-weight-bold fs12">inclusive of all taxes</span>
+                        <div class="priceHoverDetails">
+                            <p class="text-dark font-weight-bold mb-1 fs12">Price details</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="fs12 d-flex flex-column">
+                                    <span>Maximum Retail Price</span>
+                                    <span>inclusive of all taxes</span>
+                                </span>
+                                <span class="text-dark font-weight-bold fs12">₹2,998</span>
+                            </div>
+                            <hr class="my-1">
+                            <span class="fs12 d-flex justify-content-between">
+                                <span>Discount</span>
+                                <span class="font-weight-bold text-dark">72% OFF</span>
+                            </span>
+                            <div class="d-flex justify-content-between">
+                                <span class="fs12 d-flex flex-column">
+                                    <span class="text-dark font-weight-bold">Selling Price</span>
+                                    <span>(inclusive of all taxes)</span>
+                                </span>
+                                <span class="text-dark font-weight-bold fs12">₹2,998</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <a href="#royalClub" class="d-flex align-items-center">
+                            <img src="<?= base_url('assets/new_website/img/crown2.png') ?>" style="width: 24px;" alt="">
+                            <p class="text-success m-0 ml-1" style="font-size: 16px; font-weight: 500;">₹1,800</p>
+                            <p class="m-0 ml-1" style="font-size: 16px; font-weight: 500;">MRP:</p>
+                            <p class="m-0 ml-1" style="font-size: 16px; font-weight: 500; text-decoration: line-through;">₹2,998</p>
+                            <p class="m-0 ml-1 border-left pl-1 text-success font-weight-bold">50% OFF</p>
+                            <!-- <div class="ml-1" style="line-height: 1;">
+                                <p class="text-success m-0" style="font-size: 20px; font-weight: 500;">₹1,800</p>
+                                <span class="text-secondary fs10 font-weight-bold">ROYAL CLUB PRICE</span>
+                            </div> -->
+                        </a>
                     </div>
                     <div class="my-3">
                         <p class="text-dark font-weight-bold mb-1">SELECT COLOR</p>
@@ -782,13 +979,13 @@
                                 <span>Color: <span class="font-weight-bold text-dark">Yellow</span></span>
                                 <span>Available: <span class="font-weight-bold text-dark">2</span></span>
                             </div>
-                            <div class="swiper colorSwiper my-1 px-3">
+                            <div class="swiper colorSwiper my-1 px-0 px-lg-4 px-md-3">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <a href=""><img src="<?= base_url('assets/new_website/img/img1.png')?>" class="rounded-lg overflow-hidden" alt=""></a>
+                                        <a href="" class="active"><img src="<?= base_url('assets/new_website/img/img1.png')?>" class="rounded-lg overflow-hidden" alt=""></a>
                                     </div>
                                     <div class="swiper-slide">
-                                        <a href="" class="active"><img src="<?= base_url('assets/new_website/img/img1.png')?>" class="rounded-lg overflow-hidden" alt=""></a>
+                                        <a href=""><img src="<?= base_url('assets/new_website/img/img1.png')?>" class="rounded-lg overflow-hidden" alt=""></a>
                                     </div>
                                     <div class="swiper-slide">
                                         <a href=""><img src="<?= base_url('assets/new_website/img/img1.png')?>" class="rounded-lg overflow-hidden" alt=""></a>
@@ -811,13 +1008,23 @@
                     <div class="my-3">
                         <p class="text-dark font-weight-bold mb-1">SELECT SIZE</p>
                         <p class="fs12 border rounded-lg text-center text-dark m-0 shadow-sm">SIZE <span class="font-weight-bold">XL</span> RECOMMENDED</p>
-                        <div class="sizeSwiperContainer rounded-lg">
+                        <div class="sizeSwiperContainer rounded-lg position-relative">
+                            <div class="sizeDetails shadow-sm">
+                                <p>Body measurement: <span class="font-weight-bold text-dark">To Fit Bust - 88</span></p>
+                                <p class="m-0 fs12">Size worn by model: S</p>
+                                <p class="m-0 fs12">Size worn by model: S</p>
+                                <p class="m-0 fs12">Size worn by model: S</p>
+                                <p class="m-0 fs12">Size worn by model: S</p>
+                            </div>
                             <div class="d-flex justify-content-between py-2">
                                 <span>Size: <span class="font-weight-bold text-dark">S</span></span>
                                 <a href="#" class="font-weight-bold sizeChartBtn">Size Chart</a>
                             </div>
-                            <div class="swiper sizeSwiper px-4">
+                            <div class="swiper sizeSwiper px-0 px-lg-4 px-md-3">
                                 <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <button class="sizeBtn" style="line-height: 1;">Free size</button>
+                                    </div>
                                     <div class="swiper-slide">
                                         <button class="sizeBtn stockLabel" data-stock="2 Left">S</button>
                                     </div>
@@ -847,21 +1054,26 @@
                                 <div class="swiper-button-prev"></div>
                             </div>
                             <p class="fs12 pl-2 mt-1">Tag past purchases & get right size recommendation</p>
+                            <div style="background-color: rgb(255, 0, 0, 0.2);" class="p-2 rounded-lg">
+                                <img src="<?= base_url('assets/new_website/img/measuring-tape.png')?>" style="width: 28px;" alt="">
+                                <span class="fs12 ml-1">We think <span class="font-weight-bold text-dark">XL</span> would be a perfect fit for you, based on your past purchases!</span>
+                            </div>
                         </div>
                     </div>
                     <hr class="m-0">
                     <div class="border rounded-lg my-3 p-3">
+                        <p class="text-dark font-weight-bold mb-1">UNLOCK EXCLUSIVE PERKS JUST FOR YOU</p>
                         <div class="d-flex align-items-center">
-                            <img src="<?= base_url('assets/new_website/img/crown2.png')?>" style="width: 48px;" alt="">
+                            <img src="<?= base_url('assets/new_website/img/crown2.png')?>" style="width: 40px;" alt="">
                             <div class="d-flex flex-column flex-grow-1 ml-2" style="line-height: 1.25">
-                                <span>Save <span class="text-success font-weight-bold">₹29.99</span> with Club</span>
-                                <span>Club Price: <span class="text-dark font-weight-bold">₹502</span></span>
+                                <span>Join the Club and save <span class="text-success font-weight-bold">₹29.99</span></span>
+                                <span>Royal Club Price: <span class="text-dark font-weight-bold">₹502</span></span>
                             </div>
-                            <button class="btn fs14" style="color: var(--pinkcolor);">Join now <i class="fa-solid fa-chevron-right"></i></button>
+                            <button class="btn fs12 font-weight-bold" style="color: var(--pinkcolor);">Join the Family now <i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                         <div class="mt-2 p-2 rounded-lg d-flex justify-content-center" style="border: 1px dashed black;gap: 4px;">
                             <img src="<?= base_url('assets/new_website/img/rupee.png')?>" style="width: 24px;" alt="">
-                            <span class="fs12">Buy & Earn Royal Cash upto <sapn class="font-weight-bold text-dark">₹5</sapn></span>
+                            <span class="fs12">Shop now & Earn Royal Cash upto <sapn class="font-weight-bold text-dark">₹5</sapn></span>
                             <a href="#" class="toolTip text-dark"
                                 tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
                                 <i class="fa-solid fa-circle-info text-secondary"></i>
@@ -874,7 +1086,25 @@
                     </div>
                     <hr class="m-0">
                     <div class="my-3">
-                        <p class="text-dark font-weight-bold mb-1">OFFERS & DISCOUNTS</p>
+                        <p class="m-0 mb-3 font-weight-bold text-dark">SELECT DELIVERY LOCATION</p>
+                        <div class="border rounded-lg p-2 d-inline">
+                            <form class="d-inline" id="pincodeForm">
+                                <input type="number" name="pincode" placeholder="Enter coupon code" class="pincodeInput">
+                                <button class="pincodeBtn">CHECK</button>
+                                <button type="button" class="pincodeChangeBtn" style="display: none;">CHANGE</button>
+                            </form>
+                        </div>
+                        <p class="m-0 fs12 mt-1 text-success pincodeSuccessMsg" style="display: none;"><i class="fa-solid fa-circle-check mr-1"></i> Pincode verified</p>
+                        <p class="m-0 fs12 mt-1 text-danger pincodeErrorMsg" style="display: none;"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Invalid Pincode</p>
+                        <div class="mt-1 text-dark pincodeSuccesInfo" style="display: none;">
+                            <p class="m-0 font-weight-bold">Receive it by Tue, Oct 08!</p>
+                            <p class="m-0 font-weight-bold">Pay on delivery is available</p>
+                        </div>
+                        <p class="fs12 m-0 mt-2 pincodeInfo" style="line-height: 1;">Enter your PIN code to check estimated delivery time and Pay on Delivery availability.</p>
+                    </div>
+                    <hr class="m-0">
+                    <div class="my-3">
+                        <p class="text-dark font-weight-bold mb-1">LATEST DEALS & DISCOUNTS</p>
                         <div class="swiper offerSwiper px-4">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
@@ -891,7 +1121,7 @@
                                             <div class="row">
                                                 <div class="col-8 btn-group w-100 py-1" role="group" aria-label="Basic example">
                                                     <p class="btn promoCode m-0">CART25</p>
-                                                    <button type="button" class="btn bg-light font-weight-bold text-nowrap"><i class="fa-solid fa-copy"></i> COPY</button>
+                                                    <button type="button" onClick="copyToClipboard('couponOne')" class="btn bg-light font-weight-bold text-nowrap"><i class="fa-solid fa-copy"></i> COPY</button>
                                                 </div>
                                                 <button class="btn p-1 col-2 text-white text-nowrap"><i class="fa-solid fa-share"></i> Share</button>
                                             </div>
@@ -978,15 +1208,15 @@
                             <div class="swiper-button-prev"></div>
                         </div>
                     </div>
-                    <a href="#" class="my-3 rounded-lg p-3 d-flex align-items-center" style="background-color: rgb(0,128,0,0.1); border:1px solid rgb(0,128,0,0.1);">
+                    <a href="#" class="my-3 rounded-lg p-3 d-flex align-items-center" style="background-color: #8340A130; border:1px solid #8340A150;">
                         <img src="<?= base_url('assets/new_website/img/mobileWhatsapp.png')?>" style="width: 40px;" alt="">
                         <div class="d-flex flex-column flex-grow-1 pl-2" style="line-height: 1.25">
-                            <span class="fs16 font-weight-bold">Discover Your Perfect Look!</span>
-                            <span class="fs12">Chat with Our Personal Fashion Stylist Today</span>
+                            <span class="fs16 font-weight-bold">Celebrate your Personal Style</span>
+                            <span class="fs10">Chat with Our Personal Fashion Stylist Today to find your perfect look</span>
                         </div>
                         <span class="float-end"><i class="fa-solid fa-chevron-right"></i></span>
                     </a>
-                    <div class="d-flex justify-content-around align-items-center py-2">
+                    <div class="d-flex justify-content-around align-items-center py-2 features">
                         <div class="text-center">
                             <img src="<?= base_url('assets/new_website/img/giftbox.png')?>" style="width: 28px;" alt="">
                             <p class="m-0 mt-1 fs12">Gift Wrap</p>
@@ -1004,8 +1234,8 @@
                             <p class="m-0 mt-1 fs12" style="width: 80px; line-height: 1.25">Royal Club Cash</p>
                         </div>
                     </div>
-                    <div class="my-3">
-                        <p class="m-0 font-weight-bold text-dark">ROYAL  CLUB EXCLUSIVES</p>
+                    <div class="my-3" id="royalClub">
+                        <p class="m-0 font-weight-bold text-dark">ROYAL CLUB EXCLUSIVES</p>
                         <div class="swiper royalClubSwiper my-2 px-3">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
@@ -1091,9 +1321,9 @@
                             <div class="swiper-button-prev"></div>
                         </div>
                     </div>
-                    <hr class="m-0">
+                    <!-- <hr class="m-0"> -->
                     <div class="my-3">
-                        <div class="d-flex flex-column border-bottom py-2 mx-2">
+                        <div class="d-flex flex-column border-bottom py-2">
                             <div id="headingOne">
                                 <button class="btn btn-block text-left font-weight-bold text-dark align-items-center fs14" type="button" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne">
@@ -1132,7 +1362,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex flex-column border-bottom py-2 mx-2">
+                        <div class="d-flex flex-column border-bottom py-2">
                             <div id="headingTwo">
                                 <button class="btn btn-block text-left font-weight-bold text-dark align-items-center fs14" type="button" data-toggle="collapse" data-target="#collapseTwo"
                                     aria-expanded="false" aria-controls="collapseTwo">
@@ -1149,13 +1379,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex flex-column border-bottom py-2 mx-2">
+                        <div class="d-flex flex-column border-bottom py-2">
                             <div id="headingThree">
                                 <button class="btn btn-block text-left font-weight-bold text-dark align-items-center fs14" type="button" data-toggle="collapse" data-target="#collapseThree"
                                     aria-expanded="true" aria-controls="collapseThree">
-                                    <img src="<?=base_url('assets/new_website/img/return2.png')?>" class="mr-1" style="width: 20px; margin-top: -2px;"
+                                    <img src="<?=base_url('assets/new_website/img/care.png')?>" class="mr-1" style="width: 20px; margin-top: -2px;"
                                         alt="">
-                                    <span class="font-weight-bold">RETURN & EXCHANGE GUIDELINES</span>
+                                    <span class="font-weight-bold">CARE</span>
                                     <i class="fa-solid fa-caret-down float-right mt-1"></i>
                                 </button>
                             </div>
@@ -1189,18 +1419,48 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <hr class="m-0">
-                    <div class="my-3">
-                        <p class="m-0 mb-3 font-weight-bold text-dark">SELECT DELIVERY LOCATION</p>
-                        <div class="border rounded-lg p-2 d-inline">
-                            <input type="text" placeholder="Enter coupon code" class="pincodeInput">
-                            <button class="pincodeBtn">CHECK</button>
+                        <div class="d-flex flex-column border-bottom py-2">
+                            <div id="headingFour">
+                                <button class="btn btn-block text-left font-weight-bold text-dark align-items-center fs14" type="button" data-toggle="collapse" data-target="#collapseFour"
+                                    aria-expanded="true" aria-controls="collapseFour">
+                                    <img src="<?=base_url('assets/new_website/img/return2.png')?>" class="mr-1" style="width: 20px; margin-top: -2px;"
+                                        alt="">
+                                    <span class="font-weight-bold">RETURN & EXCHANGE GUIDELINES</span>
+                                    <i class="fa-solid fa-caret-down float-right mt-1"></i>
+                                </button>
+                            </div>
+
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="">
+                                <div class="card-body p-0 px-3 pb-2 mt-2">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores impedit necessitatibus qui quaerat commodi ipsa harum sequi, at aliquid quidem iure ad quasi tempore alias amet est perferendis facere unde vel! Quos perspiciatis est quas! Sint consequatur non eius rem sequi soluta? Quis vero sint a eveniet incidunt, praesentium fugiat?</p>
+                                    <div>
+                                        <p class="text-dark font-weight-bold mb-1">Fabric:</p>
+                                        <ul style="list-style-type: '-'; padding-left: 0;">
+                                            <li>
+                                                <div>
+                                                    <span class="font-weight-bold">Material: </span>
+                                                    <span>100% Organic Cotton</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <span class="font-weight-bold">Weight: </span>
+                                                    <span>180 GSM (grams per square meter) for a comfortable, medium-weight feel</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <span class="font-weight-bold">Weave: </span>
+                                                    <span>Je₹ey knit for a soft and breathable texture</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <p class="fs12 m-0 mt-1">Enter your PIN code to check estimated delivery time and Pay on Delivery availability.</p>
                     </div>
-                    <hr class="m-0">
-                    <div class="my-3">
+                    <div class="my-3" id="reviews">
                         <p class="m-0 mb-3 font-weight-bold text-dark">RATINGS & REVIEWS</p>
                         <div class="d-flex border rounded-lg py-2">
                             <div class="border-right px-4 d-flex align-items-center">
@@ -1241,48 +1501,58 @@
                         <div>
                             <p class="m-0 my-2 font-weight-bold text-dark">BUYER PHOTOS</p>
                             <div>
-                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 80px; height: 80px; object-fit: cover;" alt="">
-                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 80px; height: 80px; object-fit: cover;" alt="">
-                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 80px; height: 80px; object-fit: cover;" alt="">
-                                <a href="#" class="position-relative extraReviewImgCont">
-                                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 80px; height: 80px; object-fit: cover;" alt="">
-                                    <div class="position-absolute extraReviewImg">
-                                        <span class="fs16">+5</span>
-                                    </div>
-                                </a>
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 60px; height: 60px; object-fit: cover;" alt="">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 60px; height: 60px; object-fit: cover;" alt="">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 60px; height: 60px; object-fit: cover;" alt="">
+                                
                             </div>
                         </div>
                         <hr class="my-3">
                         <div>
                             <p class="m-0 my-2 font-weight-bold text-dark">MOST HELPFULL REVIEW</p>
-                            <div class="border-bottom py-2">
-                                <div class="mb-1">
-                                    <span class="text-light bg-success p-1 rounded-lg">4 <i class="fa-solid fa-star fs12"></i></span>
+                            <div class="reviewsContainer">
+                                <div class="border-bottom py-2">
+                                    <div class="mb-1">
+                                        <span class="text-dark p-1 rounded-lg border">4 <i class="fa-solid fa-star fs12" style="color: #FFD700;"></i></span>
+                                    </div>
+                                    <p class="m-0 text-dark">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum temporibus exercitationem deserunt eos inventore laborum?</p>
+                                    <div class="mt-2 text-secondary d-flex justify-content-between">
+                                        <span>John Doe | 1 day ago</span>
+                                        <div>
+                                            <button class="btn fs14 p-0 text-secondary"><i class="fa-regular fa-thumbs-up"></i> 12</button>
+                                            <button class="btn fs14 p-0 text-secondary"><i class="fa-regular fa-thumbs-down"></i> 12</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="m-0 text-dark">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum temporibus exercitationem deserunt eos inventore laborum?</p>
-                                <div class="mt-2 text-secondary d-flex justify-content-between">
-                                    <span>John Doe | 1 day ago</span>
-                                    <div>
-                                        <button class="btn p-0 text-secondary"><i class="fa-regular fa-thumbs-up"></i> 12</button>
-                                        <button class="btn p-0 text-secondary"><i class="fa-regular fa-thumbs-down"></i> 12</button>
+                                <div class="border-bottom py-2">
+                                    <div class="mb-1">
+                                        <span class="text-dark p-1 rounded-lg border">4 <i class="fa-solid fa-star fs12" style="color: #FFD700;"></i></span>
+                                    </div>
+                                    <p class="m-0 text-dark">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum temporibus exercitationem deserunt eos inventore laborum?</p>
+                                    <div class="mt-2 text-secondary d-flex justify-content-between">
+                                        <span>John Doe | 1 day ago</span>
+                                        <div>
+                                            <button class="btn fs14 p-0 text-secondary"><i class="fa-regular fa-thumbs-up"></i> 12</button>
+                                            <button class="btn fs14 p-0 text-secondary"><i class="fa-regular fa-thumbs-down"></i> 12</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-bottom py-2">
+                                    <div class="mb-1">
+                                        <span class="text-dark p-1 rounded-lg border">4 <i class="fa-solid fa-star fs12" style="color: #FFD700;"></i></span>
+                                    </div>
+                                    <p class="m-0 text-dark">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum temporibus exercitationem deserunt eos inventore laborum?</p>
+                                    <div class="mt-2 text-secondary d-flex justify-content-between">
+                                        <span>John Doe | 1 day ago</span>
+                                        <div>
+                                            <button class="btn fs14 p-0 text-secondary"><i class="fa-regular fa-thumbs-up"></i> 12</button>
+                                            <button class="btn fs14 p-0 text-secondary"><i class="fa-regular fa-thumbs-down"></i> 12</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="border-bottom py-2">
-                                <div class="mb-1">
-                                    <span class="text-light bg-success p-1 rounded-lg">4 <i class="fa-solid fa-star fs12"></i></span>
-                                </div>
-                                <p class="m-0 text-dark">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum temporibus exercitationem deserunt eos inventore laborum?</p>
-                                <div class="mt-2 text-secondary d-flex justify-content-between">
-                                    <span>John Doe | 1 day ago</span>
-                                    <div>
-                                        <button class="btn p-0 text-secondary"><i class="fa-regular fa-thumbs-up"></i> 12</button>
-                                        <button class="btn p-0 text-secondary"><i class="fa-regular fa-thumbs-down"></i> 12</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="text-dark font-weight-bold">View all reviews <i class="fa-solid fa-chevron-right"></i></a>
                         </div>
+                        <button type="button" class="btn fs14 font-weight-bold moreReviewBtn" style="color:var(--pinkcolor);">View all reviews <i class="fa-solid fa-chevron-down"></i></button>
                     </div>
                 </div>
             </div>
@@ -1294,7 +1564,7 @@
                     <div class="card">
                         <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
-                            <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#accordOne" aria-expanded="true" aria-controls="accordOne">
+                            <button class="btn btn-block text-left fs14" style="font-family: var(--mainfont);" type="button" data-toggle="collapse" data-target="#accordOne" aria-expanded="true" aria-controls="accordOne">
                             Collapsible Group Item #1
                             </button>
                         </h2>
@@ -1309,7 +1579,7 @@
                     <div class="card">
                         <div class="card-header" id="headingTwo">
                         <h2 class="mb-0">
-                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#accordTwo" aria-expanded="false" aria-controls="accordTwo">
+                            <button class="btn btn-block text-left collapsed fs14" style="font-family: var(--mainfont);" type="button" data-toggle="collapse" data-target="#accordTwo" aria-expanded="false" aria-controls="accordTwo">
                             Collapsible Group Item #2
                             </button>
                         </h2>
@@ -1323,7 +1593,7 @@
                     <div class="card">
                         <div class="card-header" id="headingThree">
                         <h2 class="mb-0">
-                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#accordThree" aria-expanded="false" aria-controls="accordThree">
+                            <button class="btn btn-block text-left collapsed fs14" style="font-family: var(--mainfont);" type="button" data-toggle="collapse" data-target="#accordThree" aria-expanded="false" aria-controls="accordThree">
                             Collapsible Group Item #3
                             </button>
                         </h2>
@@ -1336,13 +1606,20 @@
                     </div>
                 </div>
             </div>
-            <div class="my-4 px-4" id="similarProducts">
+            <div class="my-4 px-2" id="similarProducts">
                 <p class="fs16 text-center font-weight-bold text-dark">SIMILAR PRODUCTS</p>
                 <hr class="my-3">
                 <div class="d-lg-block d-md-block d-none">
                     <div class="similarProductsContainer">
                         <div class="border rounded-lg overflow-hidden">
-                            <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
                             <div class="p-2">
                                 <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
                                 <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
@@ -1354,7 +1631,14 @@
                             </div>
                         </div>
                         <div class="border rounded-lg overflow-hidden">
-                            <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
                             <div class="p-2">
                                 <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
                                 <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
@@ -1366,7 +1650,14 @@
                             </div>
                         </div>
                         <div class="border rounded-lg overflow-hidden">
-                            <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
                             <div class="p-2">
                                 <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
                                 <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
@@ -1378,7 +1669,14 @@
                             </div>
                         </div>
                         <div class="border rounded-lg overflow-hidden">
-                            <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
                             <div class="p-2">
                                 <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
                                 <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
@@ -1390,7 +1688,14 @@
                             </div>
                         </div>
                         <div class="border rounded-lg overflow-hidden">
-                            <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
                             <div class="p-2">
                                 <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
                                 <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
@@ -1402,19 +1707,14 @@
                             </div>
                         </div>
                         <div class="border rounded-lg overflow-hidden">
-                            <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
-                            <div class="p-2">
-                                <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
-                                <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
-                                <div class="mt-1">
-                                    <span>₹1,998</span>
-                                    <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
-                                    <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="border rounded-lg overflow-hidden">
-                            <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                             <div class="p-2">
                                 <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
                                 <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
@@ -1431,8 +1731,15 @@
                 <div class="d-lg-none d-md-none d-block swiper similarProductsSwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="border rounded-lg overflow-hidden mx-auto" style="width: 200px;">
-                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 100%; object-fit: contain" alt="">
+                            <div class="border rounded-lg overflow-hidden">
+                                <div class="position-relative">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
+                                    </div>
+                                </div>
                                 <div class="p-2 text-left">
                                     <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
                                     <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
@@ -1446,8 +1753,36 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="border rounded-lg overflow-hidden">
-                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
-                                <div class="p-2">
+                                <div class="position-relative">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
+                                    </div>
+                                </div>
+                                <div class="p-2 text-left">
+                                    <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
+                                    <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
+                                    <div class="mt-1">
+                                        <span>₹1,998</span>
+                                        <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
+                                        <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="border rounded-lg overflow-hidden">
+                                <div class="position-relative">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
+                                    </div>
+                                </div>
+                                <div class="p-2 text-left">
                                     <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
                                     <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
                                     <div class="mt-1">
@@ -1459,8 +1794,196 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <div class="my-4 px-2" id="similarProducts">
+                <p class="fs16 text-center font-weight-bold text-dark">CUSTOMERS ALSO LIKED</p>
+                <hr class="my-3">
+                <div class="d-lg-block d-md-block d-none">
+                    <div class="similarProductsContainer">
+                        <div class="border rounded-lg overflow-hidden">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
+                                <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
+                                <div class="mt-1">
+                                    <span>₹1,998</span>
+                                    <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
+                                    <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border rounded-lg overflow-hidden">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
+                                <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
+                                <div class="mt-1">
+                                    <span>₹1,998</span>
+                                    <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
+                                    <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border rounded-lg overflow-hidden">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
+                                <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
+                                <div class="mt-1">
+                                    <span>₹1,998</span>
+                                    <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
+                                    <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border rounded-lg overflow-hidden">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
+                                <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
+                                <div class="mt-1">
+                                    <span>₹1,998</span>
+                                    <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
+                                    <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border rounded-lg overflow-hidden">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
+                                <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
+                                <div class="mt-1">
+                                    <span>₹1,998</span>
+                                    <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
+                                    <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border rounded-lg overflow-hidden">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
+                                <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
+                                <div class="mt-1">
+                                    <span>₹1,998</span>
+                                    <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
+                                    <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-lg-none d-md-none d-block swiper alsoLikedSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="border rounded-lg overflow-hidden">
+                                <div class="position-relative">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
+                                    </div>
+                                </div>
+                                <div class="p-2 text-left">
+                                    <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
+                                    <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
+                                    <div class="mt-1">
+                                        <span>₹1,998</span>
+                                        <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
+                                        <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="border rounded-lg overflow-hidden">
+                                <div class="position-relative">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
+                                    </div>
+                                </div>
+                                <div class="p-2 text-left">
+                                    <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
+                                    <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
+                                    <div class="mt-1">
+                                        <span>₹1,998</span>
+                                        <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
+                                        <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="border rounded-lg overflow-hidden">
+                                <div class="position-relative">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                    <div class="rating text-white">
+                                        <span>4.5</span>
+                                        <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                        <span>| 10</span>
+                                    </div>
+                                </div>
+                                <div class="p-2 text-left">
+                                    <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
+                                    <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
+                                    <div class="mt-1">
+                                        <span>₹1,998</span>
+                                        <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
+                                        <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1486,6 +2009,16 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                console.log('Text copied to clipboard: ' + text);
+            }).catch(function(error) {
+                console.error('Error copying text: ', error);
+            });
+        }
+
+        
         var swiper1 = new Swiper('.colorSwiper', {
                 slidesPerView: 5,
                 spaceBetween: '8px',
@@ -1496,14 +2029,14 @@
                     prevEl: ".swiper-button-prev",
                 },
                 breakpoints: {
-                    1024: {
-                        slidesPerView: 7
+                    1100: {
+                        slidesPerView: 6
                     },
                     768: {
                         slidesPerView: 5
                     },
                     640: {
-                        slidesPerView: 5
+                        slidesPerView: 6
                     },
                     400: {
                         slidesPerView: 5
@@ -1531,13 +2064,13 @@
                         slidesPerView: 5
                     },
                     640: {
-                        slidesPerView: 5
+                        slidesPerView: 8
                     },
                     400: {
-                        slidesPerView: 5
+                        slidesPerView: 6
                     },
                     300: {
-                        slidesPerView: 4
+                        slidesPerView: 5
                     }
                 }
         });
@@ -1577,25 +2110,85 @@
 
         var swiper6 = new Swiper('.productImageSwiper', {
                 slidesPerView: 1,
-                spaceBetween: 0,
-                autoplay:true,
-                loop: false,
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-        });
-
-        var swiper7 = new Swiper('.similarProductsSwiper', {
-                slidesPerView: 1,
-                spaceBetween: 0,
+                spaceBetween: 16,
                 autoplay:false,
                 loop: false,
                 navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
         });
+
+        var swiper7 = new Swiper('.similarProductsSwiper', {
+                slidesPerView: 1.5,
+                spaceBetween: 16,
+                autoplay:false,
+                loop: false,
+        });
+
+        var swiper8 = new Swiper('.alsoLikedSwiper', {
+                slidesPerView: 1.5,
+                spaceBetween: 16,
+                autoplay:false,
+                loop: false,
+        });
+
+        const priceContainer = document.querySelector(".priceContainer");
+        const priceHoverDetails = document.querySelector(".priceHoverDetails");
+
+        priceContainer.addEventListener("mouseenter", () => {
+            priceHoverDetails.style.display = "block";
+        })
+
+        priceContainer.addEventListener("mouseleave", () => {
+            priceHoverDetails.style.display = "none";
+        })
+
+        const sizeBtn = document.querySelectorAll(".sizeBtn");
+
+        sizeBtn.forEach(btn => {
+            btn.addEventListener("mouseenter", () => {
+                document.querySelector(".sizeDetails").style.display = "block";
+            })
+        })
+
+        sizeBtn.forEach(btn => {
+            btn.addEventListener("mouseleave", () => {
+                document.querySelector(".sizeDetails").style.display = "none";
+            })
+        })
+
+        const addToBagBtn = document.querySelectorAll(".addToBagBtn");
+
+        addToBagBtn.forEach(btn => {
+            btn.addEventListener("click", () => {
+                if(btn.classList.contains("active")){
+                    btn.classList.remove("active");
+                    btn.innerHTML = "<i class='bx bx-shopping-bag'></i> ADD TO BAG";
+                } else {
+                    btn.classList.add("active");
+                    btn.innerHTML = "<i class='bx bx-shopping-bag'></i> GO TO BAG";
+                }
+            })
+        })
+
+        const wishlistBtn = document.querySelectorAll(".wishlistBtn");
+
+        wishlistBtn.forEach(btn => {
+            btn.addEventListener("click", () => {
+                if(btn.classList.contains("active")){
+                    btn.classList.remove("active");
+                    btn.innerHTML = "<i class='fa-regular fa-heart'></i> WISHLIST";
+                } else {
+                    btn.classList.add("active");
+                    btn.innerHTML = "<i class='fa-solid fa-heart text-danger'></i> WISHLISTED";
+                }
+            })
+        })
 
         document.querySelectorAll('.zoom-container').forEach(container => {
             const zoomImage = container.querySelector('.zoom-image');
@@ -1635,12 +2228,64 @@
         reviewBtn.addEventListener("click", (e) => {
             e.preventDefault();
             reviewDialog.showModal();
+            document.body.classList.add("sidebar-open");
         });
 
         closeReviewBtn.addEventListener("click", () => {
             reviewDialog.close();
+            document.body.classList.remove("sidebar-open");
         });
 
+        const pincodeInput = document.querySelector('.pincodeInput');
+  
+        pincodeInput.addEventListener('input', function () {
+            if (this.value.length > 6) {
+                this.value = this.value.slice(0, 6);
+            }
+        });
+
+        const pincodeForm = document.querySelector("#pincodeForm");
+        const pincodeBtn = document.querySelector(".pincodeBtn");
+        const pincodeChangeBtn = document.querySelector(".pincodeChangeBtn");
+
+        pincodeForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const data = new FormData(pincodeForm);
+            const pincode = data.get("pincode");
+            if(pincode == 000000){
+                document.querySelector(".pincodeErrorMsg").style.display = "block";
+                return;
+            } else if(pincode.length < 6){
+                document.querySelector(".pincodeErrorMsg").style.display = "block";
+                return;
+            } else {
+                document.querySelector(".pincodeInfo").style.display = "none";
+                document.querySelector(".pincodeSuccessMsg").style.display = "block";
+                pincodeInput.value = pincode;
+                pincodeBtn.style.display = "none";
+                pincodeChangeBtn.style.display = "inline";
+                document.querySelector(".pincodeSuccesInfo").style.display = "block";
+            }
+        });
+
+        pincodeChangeBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            pincodeForm.style.display = "block";
+            pincodeChangeBtn.style.display = "block";
+            pincodeBtn.style.display = "none";
+        });
+
+        // pincodeChangeBtn.addEventListener("click", () => {
+        //     pincodeInput.value = "";
+        //     pincodeInput.focus();
+        //     pincodeChangeBtn.style.display = "none";
+        // });
+
+        const moreReviewBtn = document.querySelector(".moreReviewBtn");
+        moreReviewBtn.addEventListener("click", () => {
+            document.querySelector(".reviewsContainer").style.height = "300px";
+            document.querySelector(".reviewsContainer").style.overflowY = "scroll";
+        })
         
     </script>
     <?php include('include/footer.php'); ?>
