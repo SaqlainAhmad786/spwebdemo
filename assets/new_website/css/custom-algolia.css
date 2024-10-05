@@ -56,7 +56,6 @@
 .aa-Panel {
     z-index: 9999;
     position: fixed;
-    top: 0px;
 }
 
 .aa-Form:focus-within {

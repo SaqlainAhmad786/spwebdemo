@@ -192,7 +192,8 @@
 
         .productSliderCard span{
             font-family: var(--heading_font)!important;
-            color: white;
+            font-weight: 500;
+            color: black;
             position: absolute;
             bottom: 0;
             left: 8px;
@@ -215,12 +216,13 @@
             border-radius: 4px;
             overflow: hidden;
             position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .productSliderCard .img-card img{
             height: 100%;
             width: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: all .4s ease-in-out;
         }
 
@@ -913,7 +915,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <iframe id="sliderVideo" width="auto" src="https://www.youtube.com/embed/iesoe2JF_AY" title="Myntra Fashion Carnival | 50 - 80% Off" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe id="sliderVideo" width="auto" src="https://www.youtube.com/embed/iesoe2JF_AY?controls=0&rel=0&modestbranding=1&fs=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
