@@ -97,10 +97,30 @@
             font-weight: 500;
         }
 
+        .notifyBtn{
+            position: fixed;
+            bottom: 104px;
+            left: 20px;
+            z-index: 10000;
+            background-color: var(--maincolor);
+            color: white;
+            padding: 2px 0px;
+            border-radius: 100vh;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .addBtnContainer{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap:4px;
+        }
+
         .addToBagBtn{
             background-color: var(--maincolor);
             color: white;
             padding-block: 8px;
+            font-weight:500;
         }
 
         .addToBagBtn.active{
@@ -116,6 +136,7 @@
             border: 1px solid rgba(0, 0, 0, 0.25);
             color: rgba(0, 0, 0, 0.7);
             padding-block: 8px;
+            font-weight:500;
         }
 
         .priceContainer{
@@ -228,10 +249,6 @@
             height: 55px;
         }
 
-        .royalClubSwiper{
-            height: 120px;
-        }
-
         .lookSwiper{
             height: 180px;
         }
@@ -298,10 +315,10 @@
             display: none;
             background-color: white;
             position: absolute;
-            top: -150px;
+            top: -120px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 1000;
+            z-index: 10;
             width: 65%;
             padding: 10px;
             border-radius: 8px;
@@ -319,10 +336,15 @@
             transition: all 200ms ease;
         }
 
-        .sizeBtn:focus {
-            background-color: var(--pinkcolor);
-            color: white;
-            border-color: var(--pinkcolor);
+        .sizeBtn.active{
+            background-color: var(--pinkcolor)!important;
+            color: white!important;
+            border-color: var(--pinkcolor)!important;
+        }
+
+        .sizeBtn.freeSizeBtn{
+            width: 80px;
+            border-radius: 20px;
         }
 
         .sizeBtn:hover {
@@ -379,7 +401,6 @@
         a.toolTip {
             position: relative;
             font-size: 12px;
-            z-index: 999;
         }
 
         a.toolTip::after {
@@ -537,6 +558,7 @@
             border: none;
             border-radius: 100vh;
             background-color: white;
+            z-index: 10;
         }
 
         .similarBtn a:hover .similarText {
@@ -565,12 +587,15 @@
         }
 
         .productHighlights p{
+            display: inline-block;
             background-color: rgba(255, 255, 255, 0.8);
             color: black;
             padding: 4px 6px;
+            margin-block: 4px;
             border-radius: 0px 4px 4px 0px;
             font-weight: 500;
             font-size: 12px;
+            line-height: 1.5;
         }
 
         .shareBtn, .likeBtn {
@@ -615,8 +640,12 @@
         }
 
         .reviewsContainer{
-            height: 200px;
+            /* height: 200px; */
             overflow-y: hidden;
+        }
+
+        .reviewsContainer > *:not(:first-child) {
+            display: none;
         }
 
         .reviewsContainer::-webkit-scrollbar{
@@ -629,6 +658,88 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
+        }
+
+        .blinkingText {
+            animation: blink 1.5s linear infinite;
+        }
+
+        #toaster {
+            position: fixed;
+            top: 160px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toast {
+            min-width: 250px;
+            margin-bottom: 10px;
+            padding: 15px;
+            color: #fff;
+            background-color: #333;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateX(100%);
+            transition: transform 0.5s, opacity 0.5s;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            background-color: #333333;
+            color: white;
+        }
+
+        .toast.error {
+            background-color: #333333;
+            border: 1px solid red;
+            color: white;
+        }
+
+        .notifyCredentialInputContainer {
+          border: 1px solid rgba(0, 0, 0, 0.15);
+          padding: 4px 8px;
+          border-radius: 4px;   
+        }
+
+        .notifyCredentialInputContainer .notifyCredentialInputSpan {
+            display: none;
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .notifyCredentialInput {
+            border: none;
+            outline: none;
+            padding: 4px 8px;
+            border-radius: 0;
+            font-size: 14px;
+            width: 254px;
+        }
+
+        .notifyCredentialInput::placeholder {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .notifyMsg, .notifyErrorMsg {
+            display: none;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
         @media (width < 1100px) {
@@ -650,6 +761,10 @@
         @media (width < 768px) {
             .sidebar{
                 width: 90%;
+            }
+
+            .productImageContainer{
+                grid-template-columns: 1fr 1fr 1fr;
             }
         }
 
@@ -678,6 +793,7 @@
 <body>
     <?php include('include/header.php'); ?>
     <main>
+        <div id="toaster"></div>
         <div class="sidebar">
             <div class="px-2 px-lg-5 px-md-4">
                 <div class="text-right">
@@ -744,9 +860,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="position-fixed row bg-white w-100 d-flex gap-2 pr-2" style="bottom: 16px; right: 8px;">
-                    <button class="btn fs14 addToBagBtn flex-grow-1"><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
-                    <button class="btn fs14 wishlistBtn flex-grow-1"><i class="fa-regular fa-heart"></i> WISHLIST</button>
+                <div class="position-fixed row bg-white w-100 pr-2 addBtnContainer" style="bottom: 16px; right: 8px;">
+                    <button class="btn fs14 addToBagBtn"><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
+                    <button class="btn fs14 wishlistBtn"><i class="fa-regular fa-heart"></i> WISHLIST</button>
                 </div>
             </div>
         </div>
@@ -810,9 +926,61 @@
                 </div>
             </div>
         </dialog>
+        <dialog class="royalCashDialog" id="dialog">
+            <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+                <p class="m-0 font-weight-bold">Royal Club cash</p>
+                <button id="closeRoyalCashDialogBtn" type="button" aria-label="close" class="btn p-0">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-3">
+                <div class="d-flex align-items-center gap-2">
+                    <img src="<?= base_url('assets/new_website/img/crown2.png') ?>" style="width: 28px;" alt="">
+                    <p>Earn Royal Club Cash upto ₹3 on this product</p>
+                </div>
+                <p class="fs10 mt-2 text-secondary" style="line-height: 1;">You can redeem your Royal Club Cash on your next purchase (Min. ₹100 RC Cash is required)</p>
+            </div>
+        </dialog>
+        <div class="shadow-lg notifyBtn d-lg-none d-md-none d-block">
+            <button class="btn text-light notifyDialogBtn"><i class="fa-solid fa-bell"></i></button>
+        </div>
         <div class="shadow-lg callBtn d-lg-none d-md-none d-block">
             <a href="tel:1234567890"><i class="fa-solid fa-phone"></i></a>
         </div>
+        <dialog class="dialog2 notifyDialog border-top-0 text-left" id="dialog">
+            <div>
+                <div class="d-flex justify-content-end align-items-center px-3 py-2 border-bottom">
+                    <button type="button" aria-label="close" class="btn p-0 notifyDialogCloseBtn">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <!-- <button id="" aria-label="close" class="notifyDialogCloseBtn"><span class="close-btn" id="close-popup">
+                    <i class="fa-solid fa-xmark"></i>
+                </span></button> -->
+                <div class="p-3">
+                    <div class="d-flex align-items-center">
+                        <img src="<?= base_url('assets/new_website/img/notification.gif') ?>" style="width: 40px;" alt="">
+                        <p class="font-weight-bold text-left m-0 p-0"
+                        style="font-family: 'League Spartan'; font-size: 28px;">
+                        Receive Updates</p>
+                    </div>
+                    <p class="text-secondary p-0">Get alerts for restocks, price drops, and availability.</p>
+                    <p class="text-success m-0 p-0 notifyMsg" style="font-size: 14px;"><i class="fas fa-check-circle"></i> You're all set</p>
+                    <p class="text-danger m-0 p-0 notifyErrorMsg" style="font-size: 14px;"><i class="fas fa-info-circle"></i> Please input valid details!</p>
+                    <form class="notifyForm">
+                        <div class="notifyCredentialInputContainer">
+                            <span class="notifyCredentialInputSpan">+91 |</span>
+                            <input type="text" name="credential" id="" placeholder="Enter Email id or WhatsApp number"
+                            class="notifyCredentialInput">
+                        </div>
+                        <button type="submit" class="btn w-100 rounded-sm mt-2 notifyCredentialBtn"
+                            style="background-color: var(--maincolor); color: white;">CONFIRM</button>
+                        <button type="button" onClick="notifyFocus()" class="btn w-100 rounded-sm mt-2 notifyCredentialEditBtn"
+                            style="background-color: var(--maincolor); color: white; display: none">EDIT</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
         <section class="saleTimerStripContainer border">
             <div class="saleTimerStrip">
                 <p class="m-0 text-secondary">Sale ends
@@ -831,7 +999,7 @@
         <section>
             <div class="productHeroSection row m-0">
                 <div class="col-lg-7 col-md-6 col-12">
-                    <div class="d-lg-block d-md-block d-none">
+                    <div class="d-lg-block d-md-block d-sm-block d-none">
                         <div class="productImageContainer">
                             <div class="zoom-container">
                                 <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
@@ -846,10 +1014,24 @@
                                     </a>
                                 </div>
                                 <div class="productHighlights">
-                                    <p>Lorem ipsum dolor sit amet.</p>
-                                    <p>Lorem ipsum dolor sit amet.</p>
-                                    <p>Lorem ipsum dolor sit amet.</p>
-                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <div>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo adipisci fugit amet eveniet iure suscipit.</p>
+                                    </div>
+                                    <div>
+                                        <p>Lorem ipsum dolor sit amet.</p>
+                                    </div>
+                                    <div>
+                                        <p>Lorem, ipsum dolor.</p>
+                                    </div>
+                                    <div>
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
+                                    </div>
+                                    <div>
+                                        <p>Lorem, ipsum.</p>
+                                    </div>
+                                    <div>
+                                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="zoom-container">
@@ -862,12 +1044,12 @@
                                 <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
                             </div>
                             <video width="100%" height="100%" autoplay muted>
-                                <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+                                <source src="<?= base_url('assets/website/images/product/productVideo.mp4') ?>" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
                     </div>
-                    <div class="d-lg-none d-md-none d-block swiper productImageSwiper">
+                    <div class="d-lg-none d-md-none d-sm-none d-block swiper productImageSwiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="rounded-lg overflow-hidden" alt="">
@@ -888,9 +1070,9 @@
                     </div>
                     <div class="d-lg-block d-md-block d-none">
                         <div class="my-2 d-flex justify-content-between align-items-center">
-                            <div>
+                            <div class="d-flex gap-2 align-items-center">
                                 <button class="btn p-0 fs14 font-weight-bold">Modal insight</button>
-                                <a href="#similarProducts" class="btn p-0 fs14 font-weight-bold"><img src="<?= base_url('assets/new_website/img/cards.png') ?>" style="width: 20px;" alt=""> View Similar</a>
+                                <a href="#similarProducts" class="btn p-0 fs14 font-weight-bold">View Similar</a>
                             </div>
                             <div>
                                 <button class="btn fs14 font-weight-bold likeBtn"><img src="<?= base_url('assets/new_website/img/love-icon.png') ?>" style="width: 20px;" alt=""> Like</button>
@@ -931,13 +1113,13 @@
                     <hr>
                     <div class="priceContainer">
                         <div class="d-flex align-items-center gap-2 mb-1">
-                            <span class="font-weight-bold text-dark" style="font-size: 28px;">₹1,998</span>
-                            <span class="text-secondary border-right pr-2" style="font-size: 24px; text-decoration: line-through;">₹2,998</span>
+                            <span class="font-weight-bold text-dark" style="font-size: 24px;">₹1,998</span>
+                            <span class="text-secondary border-right pr-2" style="font-size: 22px; text-decoration: line-through;">₹2,998</span>
                             <span class="text-success font-weight-bold">50% OFF</span>
                         </div>
                         <span class="text-success font-weight-bold fs12">inclusive of all taxes</span>
                         <div class="priceHoverDetails">
-                            <p class="text-dark font-weight-bold mb-1 fs12">Price details</p>
+                            <p class="text-dark font-weight-bold mb-1 fs12 text-center">PRICE DETAILS</p>
                             <div class="d-flex justify-content-between">
                                 <span class="fs12 d-flex flex-column">
                                     <span>Maximum Retail Price</span>
@@ -948,7 +1130,7 @@
                             <hr class="my-1">
                             <span class="fs12 d-flex justify-content-between">
                                 <span>Discount</span>
-                                <span class="font-weight-bold text-dark">72% OFF</span>
+                                <span class="font-weight-bold text-success">72% OFF</span>
                             </span>
                             <div class="d-flex justify-content-between">
                                 <span class="fs12 d-flex flex-column">
@@ -959,12 +1141,20 @@
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <button class="btn p-0 m-0 fs12 font-weight-bold royalCashBtn">
+                            <img src="<?= base_url('assets/new_website/img/crown2.png') ?>" style="width: 16px;" alt="">
+                            <span>Earn Royal Club Cash ₹3 <i class="fa-solid fa-info-circle text-secondary"></i></span>
+                        </button>
+                    </div>
+                    <hr class="my-2">
                     <div class="mb-3">
+                        <p class="m-0 fs12 text-dark font-weight-bold">ROYAL CLUB PRICE:</p>
                         <a href="#royalClub" class="d-flex align-items-center">
-                            <img src="<?= base_url('assets/new_website/img/crown2.png') ?>" style="width: 24px;" alt="">
-                            <p class="text-success m-0 ml-1" style="font-size: 16px; font-weight: 500;">₹1,800</p>
-                            <p class="m-0 ml-1" style="font-size: 16px; font-weight: 500;">MRP:</p>
-                            <p class="m-0 ml-1" style="font-size: 16px; font-weight: 500; text-decoration: line-through;">₹2,998</p>
+                            <img class="blinkingText" src="<?= base_url('assets/new_website/img/crown2.png') ?>" style="width: 24px;" alt="">
+                            <p class="text-dark m-0 ml-1" style="font-size: 16px; font-weight: 500;">₹1,800</p>
+                            <p class="m-0 ml-1" style="font-weight: 500;">MRP:</p>
+                            <p class="m-0 ml-1" style="font-weight: 500; text-decoration: line-through;">₹2,998</p>
                             <p class="m-0 ml-1 border-left pl-1 text-success font-weight-bold">50% OFF</p>
                             <!-- <div class="ml-1" style="line-height: 1;">
                                 <p class="text-success m-0" style="font-size: 20px; font-weight: 500;">₹1,800</p>
@@ -1023,9 +1213,9 @@
                             <div class="swiper sizeSwiper px-0 px-lg-4 px-md-3">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <button class="sizeBtn" style="line-height: 1;">Free size</button>
+                                        <button class="sizeBtn freeSizeBtn" style="line-height: 1;">Free size</button>
                                     </div>
-                                    <div class="swiper-slide">
+                                    <!-- <div class="swiper-slide">
                                         <button class="sizeBtn stockLabel" data-stock="2 Left">S</button>
                                     </div>
                                     <div class="swiper-slide">
@@ -1048,13 +1238,13 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <button class="sizeBtn">XS</button>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="swiper-button-next"></div>
                                 <div class="swiper-button-prev"></div>
                             </div>
                             <p class="fs12 pl-2 mt-1">Tag past purchases & get right size recommendation</p>
-                            <div style="background-color: rgb(255, 0, 0, 0.2);" class="p-2 rounded-lg">
+                            <div style="background-color: rgb(255, 0, 0, 0.05);" class="p-2 rounded-lg">
                                 <img src="<?= base_url('assets/new_website/img/measuring-tape.png')?>" style="width: 28px;" alt="">
                                 <span class="fs12 ml-1">We think <span class="font-weight-bold text-dark">XL</span> would be a perfect fit for you, based on your past purchases!</span>
                             </div>
@@ -1063,11 +1253,13 @@
                     <hr class="m-0">
                     <div class="border rounded-lg my-3 p-3">
                         <p class="text-dark font-weight-bold mb-1">UNLOCK EXCLUSIVE PERKS JUST FOR YOU</p>
-                        <div class="d-flex align-items-center">
-                            <img src="<?= base_url('assets/new_website/img/crown2.png')?>" style="width: 40px;" alt="">
-                            <div class="d-flex flex-column flex-grow-1 ml-2" style="line-height: 1.25">
-                                <span>Join the Club and save <span class="text-success font-weight-bold">₹29.99</span></span>
-                                <span>Royal Club Price: <span class="text-dark font-weight-bold">₹502</span></span>
+                        <div class="d-flex align-items-lg-center align-items-md-center align-items-sm-center align-items-start flex-column flex-lg-row flex-md-row flex-sm-row">
+                            <div class="d-flex align-items-center">
+                                <img src="<?= base_url('assets/new_website/img/crown2.png')?>" style="width: 40px;" alt="">
+                                <div class="d-flex flex-column flex-grow-1 ml-2" style="line-height: 1.25">
+                                    <span>Join the Club and save <span class="text-success font-weight-bold">₹29.99</span></span>
+                                    <span>Royal Club Price: <span class="text-dark font-weight-bold">₹502</span></span>
+                                </div>
                             </div>
                             <button class="btn fs12 font-weight-bold" style="color: var(--pinkcolor);">Join the Family now <i class="fa-solid fa-chevron-right"></i></button>
                         </div>
@@ -1080,9 +1272,9 @@
                             </a>
                         </div>
                     </div>
-                    <div class="d-flex my-3">
-                        <button class="btn fs14 addToBagBtn flex-grow-1"><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
-                        <button class="btn fs14 wishlistBtn flex-grow-1 ml-1"><i class="fa-regular fa-heart"></i> WISHLIST</button>
+                    <div class="addBtnContainer mx-0 my-3">
+                        <button class="btn fs14 addToBagBtn"><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
+                        <button class="btn fs14 wishlistBtn"><i class="fa-regular fa-heart"></i> WISHLIST</button>
                     </div>
                     <hr class="m-0">
                     <div class="my-3">
@@ -1240,7 +1432,7 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div>
-                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 60px;" alt="">
+                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 80px;" alt="">
                                         <p class="m-0 mt-2 fs12" style="line-height: 1.25">Club Cash Rewards Upto ₹8</p>
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
@@ -1250,7 +1442,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div>
-                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 60px;" alt="">
+                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 80px;" alt="">
                                         <p class="m-0 mt-2 fs12" style="line-height: 1.25">Exclusive Offers & Discounts</p>
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
@@ -1260,7 +1452,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div>
-                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 60px;" alt="">
+                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 80px;" alt="">
                                         <p class="m-0 mt-2 fs12" style="line-height: 1.25">Reduced Prices on Products</p>
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
@@ -1270,7 +1462,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div>
-                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 60px;" alt="">
+                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 80px;" alt="">
                                         <p class="m-0 mt-2 fs12" style="line-height: 1.25">Lower Cost Barrier</p>
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
@@ -1462,8 +1654,8 @@
                     </div>
                     <div class="my-3" id="reviews">
                         <p class="m-0 mb-3 font-weight-bold text-dark">RATINGS & REVIEWS</p>
-                        <div class="d-flex border rounded-lg py-2">
-                            <div class="border-right px-4 d-flex align-items-center">
+                        <div class="d-flex justify-content-around border rounded-lg py-2">
+                            <div class="px-4 d-flex align-items-center">
                                 <p class="m-0" style="font-size: 22px;">4.0 </p>
                                 <img src="<?=base_url('assets/new_website/img/star.png')?>" class="ml-1" style="width: 18px;" alt="">
                             </div>
@@ -1471,7 +1663,7 @@
                                 <p class="m-0 fs16 font-weight-bold" style="line-height: 1;">61</p>
                                 <span>Ratings</span>
                             </div>
-                            <div class="text-center border-left px-4">
+                            <div class="text-center px-4">
                                 <p class="m-0 fs16 font-weight-bold" style="line-height: 1;">6</p>
                                 <span>Reviews</span>
                             </div>
@@ -1496,7 +1688,9 @@
                                     <span class="ml-2">Medium (80%)</span>
                                 </div>
                             </div>
-                            <button class="btn p-0 fs14 font-weight-bold reviewBtn" style="color:var(--pinkcolor);">View more...</button>
+                            <div class="text-center">
+                                <button class="btn p-0 fs14 font-weight-bold reviewBtn" style="color:var(--pinkcolor);">View more...</button>
+                            </div>
                         </div>
                         <div>
                             <p class="m-0 my-2 font-weight-bold text-dark">BUYER PHOTOS</p>
@@ -1552,7 +1746,10 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn fs14 font-weight-bold moreReviewBtn" style="color:var(--pinkcolor);">View all reviews <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="text-center">
+                            <button type="button" class="btn fs14 font-weight-bold moreReviewBtn" style="color:var(--pinkcolor);">View all reviews <i class="fa-solid fa-chevron-down"></i></button>
+                            <button type="button" class="btn fs14 font-weight-bold lessReviewBtn" style="display: none; color:var(--pinkcolor);">View less reviews <i class="fa-solid fa-chevron-up"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2030,7 +2227,7 @@
                 },
                 breakpoints: {
                     1100: {
-                        slidesPerView: 6
+                        slidesPerView: 5
                     },
                     768: {
                         slidesPerView: 5
@@ -2077,7 +2274,7 @@
 
         var swiper3 = new Swiper('.offerSwiper', {
                 slidesPerView: 1,
-                spaceBetween: '8px',
+                spaceBetween: '24px',
                 autoplay:false,
                 loop: false,
                 navigation: {
@@ -2111,12 +2308,8 @@
         var swiper6 = new Swiper('.productImageSwiper', {
                 slidesPerView: 1,
                 spaceBetween: 16,
-                autoplay:false,
+                autoplay:true,
                 loop: false,
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
@@ -2162,16 +2355,37 @@
             })
         })
 
+        sizeBtn.forEach(btn => {
+            btn.addEventListener("click", () => {
+                sizeBtn.forEach(btn => btn.classList.remove('active'));
+                btn.classList.add('active');
+            })
+        })
+
         const addToBagBtn = document.querySelectorAll(".addToBagBtn");
 
         addToBagBtn.forEach(btn => {
             btn.addEventListener("click", () => {
+                let hasActiveButton = false;
+                sizeBtn.forEach(button => {
+                    if (button.classList.contains('active')) {
+                        hasActiveButton = true;
+                    }
+                });
+                if(!hasActiveButton){
+                    document.querySelector(".sizeSwiper .swiper-wrapper").classList.add('animate__animated', 'animate__shakeX');
+                    const timer = setTimeout(() => {
+                        document.querySelector(".sizeSwiper .swiper-wrapper").classList.remove('animate__animated', 'animate__shakeX');
+                    }, 1500)
+                    return
+                }
                 if(btn.classList.contains("active")){
                     btn.classList.remove("active");
                     btn.innerHTML = "<i class='bx bx-shopping-bag'></i> ADD TO BAG";
                 } else {
                     btn.classList.add("active");
                     btn.innerHTML = "<i class='bx bx-shopping-bag'></i> GO TO BAG";
+                    showToast('Product moved to bag', 'success')
                 }
             })
         })
@@ -2236,56 +2450,137 @@
             document.body.classList.remove("sidebar-open");
         });
 
+        const notifyDialog = document.querySelector(".notifyDialog");
+        const notifyDialogCloseBtn = document.querySelector(".notifyDialogCloseBtn");
+        const notifyDialogBtn = document.querySelector(".notifyDialogBtn");
+
+        notifyDialogBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            notifyDialog.showModal();
+            document.body.classList.add("sidebar-open");
+        });
+
+        notifyDialogCloseBtn.addEventListener("click", () => {
+            notifyDialog.close();
+            document.body.classList.remove("sidebar-open");
+        });
+
         const pincodeInput = document.querySelector('.pincodeInput');
-  
+        const pincodeForm = document.querySelector("#pincodeForm");
+        const pincodeBtn = document.querySelector(".pincodeBtn");
+        const pincodeChangeBtn = document.querySelector(".pincodeChangeBtn");
+        const pincodeErrorMsg = document.querySelector(".pincodeErrorMsg");
+        const pincodeSuccessMsg = document.querySelector(".pincodeSuccessMsg");
+        const pincodeSuccesInfo = document.querySelector(".pincodeSuccesInfo");
+
         pincodeInput.addEventListener('input', function () {
             if (this.value.length > 6) {
                 this.value = this.value.slice(0, 6);
             }
+            if(pincodeErrorMsg.style.display == "block"){
+                pincodeErrorMsg.style.display = "none";
+            }
         });
-
-        const pincodeForm = document.querySelector("#pincodeForm");
-        const pincodeBtn = document.querySelector(".pincodeBtn");
-        const pincodeChangeBtn = document.querySelector(".pincodeChangeBtn");
-
+        
         pincodeForm.addEventListener("submit", (e) => {
             e.preventDefault();
             const data = new FormData(pincodeForm);
             const pincode = data.get("pincode");
             if(pincode == 000000){
-                document.querySelector(".pincodeErrorMsg").style.display = "block";
+                pincodeErrorMsg.style.display = "block";
                 return;
             } else if(pincode.length < 6){
-                document.querySelector(".pincodeErrorMsg").style.display = "block";
+                pincodeErrorMsg.style.display = "block";
                 return;
             } else {
                 document.querySelector(".pincodeInfo").style.display = "none";
-                document.querySelector(".pincodeSuccessMsg").style.display = "block";
+                pincodeSuccessMsg.style.display = "block";
                 pincodeInput.value = pincode;
+                pincodeInput.disabled = true;
                 pincodeBtn.style.display = "none";
                 pincodeChangeBtn.style.display = "inline";
-                document.querySelector(".pincodeSuccesInfo").style.display = "block";
+                pincodeSuccesInfo.style.display = "block";
             }
         });
 
-        pincodeChangeBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            pincodeForm.style.display = "block";
-            pincodeChangeBtn.style.display = "block";
-            pincodeBtn.style.display = "none";
+        pincodeChangeBtn.addEventListener("click", () => {
+            pincodeInput.disabled = false
+            pincodeInput.value = "";
+            pincodeInput.focus();
+            pincodeChangeBtn.style.display = "none";
+            pincodeBtn.style.display = "inline";
+            if(pincodeSuccesInfo.style.display == "block"){
+                pincodeSuccesInfo.style.display = "none";
+            }
+            if(pincodeSuccessMsg.style.display == "block"){
+                pincodeSuccessMsg.style.display = "none";
+            }
+            if(pincodeErrorMsg.style.display == "block"){
+                pincodeErrorMsg.style.display = "none";
+            }
         });
 
-        // pincodeChangeBtn.addEventListener("click", () => {
-        //     pincodeInput.value = "";
-        //     pincodeInput.focus();
-        //     pincodeChangeBtn.style.display = "none";
-        // });
-
         const moreReviewBtn = document.querySelector(".moreReviewBtn");
+        const lessReviewBtn = document.querySelector(".lessReviewBtn");
+        const children = document.querySelectorAll('.reviewsContainer > *:not(:first-child)');
+        
         moreReviewBtn.addEventListener("click", () => {
             document.querySelector(".reviewsContainer").style.height = "300px";
             document.querySelector(".reviewsContainer").style.overflowY = "scroll";
+            children.forEach(child => {
+                child.style.display = "block";
+            })
+            moreReviewBtn.style.display = "none";
+            lessReviewBtn.style.display = "inline";
         })
+
+        lessReviewBtn.addEventListener("click", () => {
+            document.querySelector(".reviewsContainer").style.height = "auto";
+            document.querySelector(".reviewsContainer").style.overflowY = "hidden";
+            children.forEach(child => {
+                child.style.display = "none";
+            })
+            moreReviewBtn.style.display = "inline";
+            lessReviewBtn.style.display = "none";
+        })
+
+        const royalCashBtn = document.querySelector(".royalCashBtn");
+        const royalCashDialog = document.querySelector(".royalCashDialog");
+        const closeRoyalCashDialogBtn = document.querySelector("#closeRoyalCashDialogBtn");
+
+        royalCashBtn.addEventListener("click", () => {
+            royalCashDialog.showModal();
+            document.body.classList.add("sidebar-open");
+        })
+
+        closeRoyalCashDialogBtn.addEventListener("click", () => {
+            royalCashDialog.close();
+            document.body.classList.remove("sidebar-open");
+        })
+
+        function showToast(message, type) {
+            const toaster = document.getElementById('toaster');
+            const toast = document.createElement('div');
+            
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+
+            toaster.appendChild(toast);
+            
+            // Show the toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+
+            // Remove the toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toaster.removeChild(toast);
+                }, 500);
+            }, 3000);
+        }
+
         
     </script>
     <?php include('include/footer.php'); ?>

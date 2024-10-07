@@ -1501,6 +1501,25 @@
 
         const checkMarks = document.querySelectorAll('.checkMark')
 
+        checkMarks.forEach((checkbox) => {
+            checkbox.addEventListener('change', () => {
+                const isAnyChecked = Array.from(checkMarks).some(checkbox => checkbox.checked);
+                if (isAnyChecked) {
+                    checkMarks.forEach((checkbox) => {
+                        checkbox.classList.add('checked')
+                        wishlistClearBtn.style.display = 'none'
+                        document.querySelector('.selectBtns').style.display = 'block'
+                    })
+                }else{
+                    checkMarks.forEach((checkbox) => {
+                        checkbox.classList.remove('checked')
+                        wishlistClearBtn.style.display = 'block'
+                        document.querySelector('.selectBtns').style.display = 'none'
+                    })
+                }
+            })
+        })
+
         moveBtns.forEach((btn) => {
             btn.addEventListener('click', () => {
                 sizeModal.showModal();
@@ -1560,25 +1579,6 @@
             }else{
                 document.querySelector('.notifyCredentialInputSpan').style.display = 'none'
             }
-        })
-
-        checkMarks.forEach((checkbox) => {
-            checkbox.addEventListener('change', () => {
-                const isAnyChecked = Array.from(checkMarks).some(checkbox => checkbox.checked);
-                if (isAnyChecked) {
-                    checkMarks.forEach((checkbox) => {
-                        checkbox.classList.add('checked')
-                        wishlistClearBtn.style.display = 'none'
-                        document.querySelector('.selectBtns').style.display = 'block'
-                    })
-                }else{
-                    checkMarks.forEach((checkbox) => {
-                        checkbox.classList.remove('checked')
-                        wishlistClearBtn.style.display = 'block'
-                        document.querySelector('.selectBtns').style.display = 'none'
-                    })
-                }
-            })
         })
 
         const notifyForm = document.querySelector('.notifyForm')
