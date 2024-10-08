@@ -3011,7 +3011,6 @@
                                                 <p class="m-0 text-dark">Brocher Name</p>
                                                 <div class="d-flex align-items-center text-dark fs12">
                                                     <div class="d-flex align-items-center">
-                                                        <!-- <button class="btn m-0 p-0 thumbs-up-icon"><i class="fa-regular fa-thumbs-up"></i> 122k</button> -->
                                                         <div class="heart-container" title="Like">
                                                             <input type="checkbox" class="checkbox" id="Give-It-An-Id">
                                                             <div class="svg-container">

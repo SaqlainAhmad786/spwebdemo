@@ -116,6 +116,10 @@
             gap:4px;
         }
 
+        .homeBtn{
+            margin-block: 16px;
+        }
+
         .addToBagBtn{
             background-color: var(--maincolor);
             color: white;
@@ -124,7 +128,7 @@
         }
 
         .addToBagBtn.active{
-            background-color: var(--pinkcolor);
+            background-color: var(--pinkcolor)!important;
         }
 
         .addToBagBtn:hover{
@@ -166,6 +170,11 @@
             transition: 0.3s;
             padding-top: 10px;
             z-index: 100000;
+        }
+
+        .sidebar .tabButton.active{
+            background-color: var(--pinkcolor)!important;
+            color: white!important;
         }
 
         .sidebar .tabButton:hover{
@@ -211,6 +220,11 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
+        }
+
+        .productImageContainer img {
+            aspect-ratio: 9/16;
+            object-fit: cover;
         }
 
         .zoom-container {
@@ -728,6 +742,215 @@
             display: none;
         }
 
+        .youtubePopup {
+            display: none;
+            position: fixed;
+            top:0;
+            z-index: 10000;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .youtubePopupCloseBtn{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+        }
+
+        .likeBtn {
+            background-color: var(--maincolor);
+        }
+
+        .heart-container {
+            --heart-color: rgb(255, 91, 137);
+            position: relative;
+            width: 16px;
+            height: 16px;
+            transition: .3s;
+        }
+
+        .heart-container .checkbox {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 20;
+            cursor: pointer;
+        }
+
+        .heart-container .svg-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heart-container .svg-outline, .heart-container .svg-filled {
+            fill: var(--heart-color);
+            position: absolute;
+        }
+
+        .heart-container .svg-filled {
+            animation: keyframes-svg-filled 1s;
+            display: none;
+        }
+
+        .heart-container .svg-celebrate {
+            position: absolute;
+            animation: keyframes-svg-celebrate .5s;
+            animation-fill-mode: forwards;
+            display: none;
+            stroke: var(--heart-color);
+            fill: var(--heart-color);
+            stroke-width: 2px;
+        }
+
+        .heart-container .checkbox:checked~.svg-container .svg-filled {
+            display: block
+        }
+
+        .heart-container .checkbox:checked~.svg-container .svg-celebrate {
+            display: block
+        }
+
+        @keyframes keyframes-svg-filled {
+            0% {
+                transform: scale(0);
+            }
+
+            25% {
+                transform: scale(1.2);
+            }
+
+            50% {
+                transform: scale(1);
+                filter: brightness(1.5);
+            }
+        }
+
+        @keyframes keyframes-svg-celebrate {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                filter: brightness(1.5);
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+                display: none;
+            }
+        }
+        
+        .likeContainer input, .dislikeContainer input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .likeContainer, .dislikeContainer {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .dislikeContainer{
+            transform: rotate(180deg);
+        }
+
+        .likeContainer input:checked ~ .like {
+            animation: kfs-fill-like .5s forwards;
+        }
+
+        .dislikeContainer input:checked ~ .like {
+            animation: kfs-fill-dislike .5s forwards;
+        }
+
+        .likeContainer .like {
+            fill: none;
+            stroke: rgba(0, 0, 0, 0.6);
+        }
+
+        .likeContainer input:checked ~ .celebrate {
+            display: block;
+        }
+
+        .likeContainer .celebrate {
+            position: absolute;
+            animation: kfs-celebrate 1s;
+            animation-fill-mode: forwards;
+            display: none;
+            stroke: var(--maincolor);
+        }
+
+        .dislikeContainer .celebrate {
+            position: absolute;
+            animation: kfs-celebrate 1s;
+            animation-fill-mode: forwards;
+            display: none;
+            stroke: red;
+        }
+
+        @keyframes kfs-celebrate {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5) rotate(180deg);
+                opacity: 0;
+                display: none;
+            }
+        }
+
+        @keyframes kfs-fill-like {
+
+            50% {
+                fill: var(--maincolor);
+                stroke: var(--maincolor);
+                transform: scale(1.2);
+            }
+
+            100% {
+                fill: var(--maincolor);
+                stroke: var(--maincolor);
+            }
+        }
+
+        @keyframes kfs-fill-dislike {
+
+            50% {
+                fill: red;
+                stroke: red;
+                transform: scale(1.2);
+            }
+
+            100% {
+                fill: red;
+                stroke: red;
+            }
+        }
+
         @keyframes blink {
             0% {
                 opacity: 0;
@@ -785,6 +1008,23 @@
             .swiper-button-next, .swiper-button-prev{
                 display: none;
             }
+
+            .homeBtn{
+                background-color: white;
+                box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.2);
+                margin: 0;
+                padding: 6px;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+                left: 0;
+                z-index: 1000;
+            }
+
+            .addToBagBtn:hover{
+                background-color: var(--maincolor);
+                color: white;
+            }
         }
         
     </style>
@@ -814,9 +1054,9 @@
                 <div>
                     <div class="pt-4 d-flex justify-content-center">
                         <div class="btn-group border rounded-pill overflow-hidden" role="group" aria-label="Basic example">
-                            <a href="#sizeChart" class="btn fs14 tabButton">SIZE CHART</a>
-                            <a href="#howToMeasure" class="btn fs14 tabButton">HOW TO MEASURE</a>
-                        </div>
+                            <a href="#sizeChart" id="sizeChartBtn" class="btn fs14 tabButton active">SIZE CHART</a>
+                            <a href="#howToMeasure" id="howToMeasureBtn" class="btn fs14 tabButton">HOW TO MEASURE</a>
+                        </div> 
                     </div>
                     <div class="mt-3 sidebarContent">
                         <div id="sizeChart">
@@ -941,6 +1181,18 @@
                 <p class="fs10 mt-2 text-secondary" style="line-height: 1;">You can redeem your Royal Club Cash on your next purchase (Min. ₹100 RC Cash is required)</p>
             </div>
         </dialog>
+        <dialog class="insightDialog" id="dialog">
+            <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+                <p class="m-0 font-weight-bold">Model Insights</p>
+                <button id="closeInsightDialogBtn" type="button" aria-label="close" class="btn p-0">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-3">
+                <p class="text-center">John is <span class="font-weight-bold">5'10</span> and is wearing a size <span class="font-weight-bold">S</span></p>
+                <img src="<?= base_url('assets/website/images/product/jeans.webp') ?>" alt="">
+            </div>
+        </dialog>
         <div class="shadow-lg notifyBtn d-lg-none d-md-none d-block">
             <button class="btn text-light notifyDialogBtn"><i class="fa-solid fa-bell"></i></button>
         </div>
@@ -981,6 +1233,12 @@
                 </div>
             </div>
         </dialog>
+        <div class="youtubePopup">
+            <div class="position-relative w-100 h-100 d-flex justify-content-center align-items-center">
+                <button class="btn youtubePopupCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+                <iframe width="914" height="514" src="https://www.youtube.com/embed/E3UxSs2TS2Q" title="Trend In Real Life With Myntra" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
         <section class="saleTimerStripContainer border">
             <div class="saleTimerStrip">
                 <p class="m-0 text-secondary">Sale ends
@@ -1001,9 +1259,7 @@
                 <div class="col-lg-7 col-md-6 col-12">
                     <div class="d-lg-block d-md-block d-sm-block d-none">
                         <div class="productImageContainer">
-                            <div class="zoom-container">
-                                <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
-                            </div>
+                            <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
                             <div class="zoom-container position-relative">
                                 <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
                                 <div class="similarBtn">
@@ -1034,16 +1290,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
+                            <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
                             <div class="zoom-container">
                                 <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
                             </div>
-                            <div class="zoom-container">
-                                <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
-                            </div>
-                            <div class="zoom-container">
-                                <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
-                            </div>
-                            <video width="100%" height="100%" autoplay muted>
+                            <video width="100%" height="100%" autoplay muted loop>
                                 <source src="<?= base_url('assets/website/images/product/productVideo.mp4') ?>" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
@@ -1065,17 +1317,40 @@
                                 <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 12px;">
                                 <span>| 10</span>
                             </a>
-                            <a href="#similarProducts" class="text-light px-2 py-1 fs10 rounded-pill" style="background-color: rgba(0, 0, 0, 0.5);">VIEW SIMILAR</a>
+                            <a href="#similarProducts" class="text-light px-2 py-1 fs10 rounded-pill" style="background-color: rgba(0, 0, 0, 0.5);"> <img src="<?= base_url('assets/new_website/img/cards.png') ?>" style="width: 14px;" alt=""> VIEW SIMILAR</a>
                         </div>
                     </div>
                     <div class="d-lg-block d-md-block d-none">
                         <div class="my-2 d-flex justify-content-between align-items-center">
                             <div class="d-flex gap-2 align-items-center">
-                                <button class="btn p-0 fs14 font-weight-bold">Modal insight</button>
+                                <button class="btn p-0 fs14 font-weight-bold modalInsightBtn">Modal insight</button>
                                 <a href="#similarProducts" class="btn p-0 fs14 font-weight-bold">View Similar</a>
                             </div>
-                            <div>
-                                <button class="btn fs14 font-weight-bold likeBtn"><img src="<?= base_url('assets/new_website/img/love-icon.png') ?>" style="width: 20px;" alt=""> Like</button>
+                            <div class="d-flex gap-2 align-items-center">
+                                <div class="d-flex align-items-center likeBtn">
+                                     <div class="heart-container" title="Like">
+                                         <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                                         <div class="svg-container">
+                                             <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                                 <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                                 </path>
+                                             </svg>
+                                             <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                                 <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                                 </path>
+                                             </svg>
+                                             <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                                 <polygon points="10,10 20,20"></polygon>
+                                                 <polygon points="10,50 20,50"></polygon>
+                                                 <polygon points="20,80 30,70"></polygon>
+                                                 <polygon points="90,10 80,20"></polygon>
+                                                 <polygon points="90,50 80,50"></polygon>
+                                                 <polygon points="80,80 70,70"></polygon>
+                                             </svg>
+                                         </div>
+                                     </div>
+                                     <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
+                                 </div>
                                 <button class="btn fs14 font-weight-bold shareBtn"><img src="<?= base_url('assets/new_website/img/share.png') ?>" style="width: 20px;" alt=""> Share</button>
                             </div>
                         </div>
@@ -1089,7 +1364,7 @@
                                     <span>CELEBRITY BEAUTY SECRETS</span>
                                 </div>
                             </button>
-                            <button class="btn p-0 modalBtn">
+                            <button class="btn p-0 modalBtn fashionModalBtn">
                                 <img src="https://i1.adis.ws/i/canon/pro-fashion-photography-technique-tips-1-new_e6eef04e6fe9434e9d9427a0220ef27c.jpeg" alt="">
                                 <div class="w-100 modalBtnText">
                                     <span>FASHION PAIRING</span>
@@ -1141,12 +1416,6 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <button class="btn p-0 m-0 fs12 font-weight-bold royalCashBtn">
-                            <img src="<?= base_url('assets/new_website/img/crown2.png') ?>" style="width: 16px;" alt="">
-                            <span>Earn Royal Club Cash ₹3 <i class="fa-solid fa-info-circle text-secondary"></i></span>
-                        </button>
-                    </div>
                     <hr class="my-2">
                     <div class="mb-3">
                         <p class="m-0 fs12 text-dark font-weight-bold">ROYAL CLUB PRICE:</p>
@@ -1161,6 +1430,12 @@
                                 <span class="text-secondary fs10 font-weight-bold">ROYAL CLUB PRICE</span>
                             </div> -->
                         </a>
+                        <div>
+                        <button class="btn border p-1 m-0 mt-1 fs12 font-weight-bold royalCashBtn">
+                            <img src="<?= base_url('assets/new_website/img/crown2.png') ?>" style="width: 16px;" alt="">
+                            <span>Earn Royal Club Cash ₹3 <i class="fa-solid fa-info-circle text-secondary"></i></span>
+                        </button>
+                    </div>
                     </div>
                     <div class="my-3">
                         <p class="text-dark font-weight-bold mb-1">SELECT COLOR</p>
@@ -1215,7 +1490,7 @@
                                     <div class="swiper-slide">
                                         <button class="sizeBtn freeSizeBtn" style="line-height: 1;">Free size</button>
                                     </div>
-                                    <!-- <div class="swiper-slide">
+                                    <div class="swiper-slide">
                                         <button class="sizeBtn stockLabel" data-stock="2 Left">S</button>
                                     </div>
                                     <div class="swiper-slide">
@@ -1238,7 +1513,7 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <button class="sizeBtn">XS</button>
-                                    </div> -->
+                                    </div>
                                 </div>
                                 <div class="swiper-button-next"></div>
                                 <div class="swiper-button-prev"></div>
@@ -1252,8 +1527,8 @@
                     </div>
                     <hr class="m-0">
                     <div class="border rounded-lg my-3 p-3">
-                        <p class="text-dark font-weight-bold mb-1">UNLOCK EXCLUSIVE PERKS JUST FOR YOU</p>
-                        <div class="d-flex align-items-lg-center align-items-md-center align-items-sm-center align-items-start flex-column flex-lg-row flex-md-row flex-sm-row">
+                        <p class="text-dark font-weight-bold mb-1 text-center">UNLOCK EXCLUSIVE PERKS JUST FOR YOU</p>
+                        <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center">
                                 <img src="<?= base_url('assets/new_website/img/crown2.png')?>" style="width: 40px;" alt="">
                                 <div class="d-flex flex-column flex-grow-1 ml-2" style="line-height: 1.25">
@@ -1261,7 +1536,9 @@
                                     <span>Royal Club Price: <span class="text-dark font-weight-bold">₹502</span></span>
                                 </div>
                             </div>
-                            <button class="btn fs12 font-weight-bold" style="color: var(--pinkcolor);">Join the Family now <i class="fa-solid fa-chevron-right"></i></button>
+                            <div>
+                                <button class="btn fs12 font-weight-bold text-right" style="color: var(--pinkcolor);">Join the Family now <i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
                         </div>
                         <div class="mt-2 p-2 rounded-lg d-flex justify-content-center" style="border: 1px dashed black;gap: 4px;">
                             <img src="<?= base_url('assets/new_website/img/rupee.png')?>" style="width: 24px;" alt="">
@@ -1272,7 +1549,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="addBtnContainer mx-0 my-3">
+                    <div class="mx-0 addBtnContainer homeBtn">
                         <button class="btn fs14 addToBagBtn"><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
                         <button class="btn fs14 wishlistBtn"><i class="fa-regular fa-heart"></i> WISHLIST</button>
                     </div>
@@ -1297,7 +1574,7 @@
                     <hr class="m-0">
                     <div class="my-3">
                         <p class="text-dark font-weight-bold mb-1">LATEST DEALS & DISCOUNTS</p>
-                        <div class="swiper offerSwiper px-4">
+                        <div class="swiper offerSwiper px-2">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="d-flex justify-content-center">
@@ -1315,7 +1592,7 @@
                                                     <p class="btn promoCode m-0">CART25</p>
                                                     <button type="button" onClick="copyToClipboard('couponOne')" class="btn bg-light font-weight-bold text-nowrap"><i class="fa-solid fa-copy"></i> COPY</button>
                                                 </div>
-                                                <button class="btn p-1 col-2 text-white text-nowrap"><i class="fa-solid fa-share"></i> Share</button>
+                                                <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn p-1 col-2 text-white text-nowrap"><i class="fa-solid fa-share"></i> Share</a>
                                             </div>
                                             <div id="couponOne" class="collapse" aria-labelledby="headingOne" data-parent="">
                                                 <div class="card-body p-0 px-3 pb-2 mt-2"
@@ -1347,7 +1624,7 @@
                                                     <p class="btn promoCode m-0">CART25</p>
                                                     <button type="button" class="btn bg-light font-weight-bold text-nowrap"><i class="fa-solid fa-copy"></i> COPY</button>
                                                 </div>
-                                                <button class="btn p-1 col-2 text-white text-nowrap"><i class="fa-solid fa-share"></i> Share</button>
+                                                <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn p-1 col-2 text-white text-nowrap"><i class="fa-solid fa-share"></i> Share</a>
                                             </div>
                                             <div id="couponTwo" class="collapse" aria-labelledby="headingTwo" data-parent="">
                                                 <div class="card-body p-0 px-3 pb-2 mt-2"
@@ -1379,7 +1656,7 @@
                                                     <p class="btn promoCode m-0">CART25</p>
                                                     <button type="button" class="btn bg-light font-weight-bold text-nowrap"><i class="fa-solid fa-copy"></i> COPY</button>
                                                 </div>
-                                                <button class="btn p-1 col-2 text-white text-nowrap"><i class="fa-solid fa-share"></i> Share</button>
+                                                <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn p-1 col-2 text-white text-nowrap"><i class="fa-solid fa-share"></i> Share</a>
                                             </div>
                                             <div id="couponOne" class="collapse" aria-labelledby="headingOne" data-parent="">
                                                 <div class="card-body p-0 px-3 pb-2 mt-2"
@@ -1428,7 +1705,7 @@
                     </div>
                     <div class="my-3" id="royalClub">
                         <p class="m-0 font-weight-bold text-dark">ROYAL CLUB EXCLUSIVES</p>
-                        <div class="swiper royalClubSwiper my-2 px-3">
+                        <div class="swiper royalClubSwiper my-2 px-2">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div>
@@ -1442,7 +1719,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div>
-                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 80px;" alt="">
+                                        <img src="<?= base_url('assets/new_website/img/club2.jpg')?>" style="width: 80px;" alt="">
                                         <p class="m-0 mt-2 fs12" style="line-height: 1.25">Exclusive Offers & Discounts</p>
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
@@ -1452,7 +1729,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div>
-                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 80px;" alt="">
+                                        <img src="<?= base_url('assets/new_website/img/club3.jpg')?>" style="width: 80px;" alt="">
                                         <p class="m-0 mt-2 fs12" style="line-height: 1.25">Reduced Prices on Products</p>
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
@@ -1462,7 +1739,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div>
-                                        <img src="<?= base_url('assets/new_website/img/club1.jpg')?>" style="width: 80px;" alt="">
+                                        <img src="<?= base_url('assets/new_website/img/club4.jpg')?>" style="width: 80px;" alt="">
                                         <p class="m-0 mt-2 fs12" style="line-height: 1.25">Lower Cost Barrier</p>
                                         <a href="#" class="toolTip text-dark"
                                             tip="This is a link to somewhere cool, and the toolTip gives more info about that cool place...">
@@ -1712,9 +1989,35 @@
                                     <p class="m-0 text-dark">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum temporibus exercitationem deserunt eos inventore laborum?</p>
                                     <div class="mt-2 text-secondary d-flex justify-content-between">
                                         <span>John Doe | 1 day ago</span>
-                                        <div>
-                                            <button class="btn fs14 p-0 text-secondary"><i class="fa-regular fa-thumbs-up"></i> 12</button>
-                                            <button class="btn fs14 p-0 text-secondary"><i class="fa-regular fa-thumbs-down"></i> 12</button>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <label class="m-0 likeContainer">
+                                                <input type="checkbox">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="50px" width="50px" class="like">
+                                                    <path d="M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20"></path>
+                                                </svg>
+                                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" class="celebrate">
+                                                    <polygon points="0,0 10,10"></polygon>
+                                                    <polygon points="0,25 10,25"></polygon>
+                                                    <polygon points="0,50 10,40"></polygon>
+                                                    <polygon points="50,0 40,10"></polygon>
+                                                    <polygon points="50,25 40,25"></polygon>
+                                                    <polygon points="50,50 40,40"></polygon>
+                                                </svg>
+                                            </label>
+                                            <label class="m-0 likeContainer dislikeContainer">
+                                                <input type="checkbox">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="50px" width="50px" class="like">
+                                                    <path d="M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20"></path>
+                                                </svg>
+                                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" class="celebrate">
+                                                    <polygon points="0,0 10,10"></polygon>
+                                                    <polygon points="0,25 10,25"></polygon>
+                                                    <polygon points="0,50 10,40"></polygon>
+                                                    <polygon points="50,0 40,10"></polygon>
+                                                    <polygon points="50,25 40,25"></polygon>
+                                                    <polygon points="50,50 40,40"></polygon>
+                                                </svg>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -1757,7 +2060,7 @@
         <section>
             <div class="my-4">
                 <p class="fs16 text-center font-weight-bold text-dark">Frequently Asked Questions (FAQ)</p>
-                <div class="accordion px-4" id="accordionExample">
+                <div class="accordion px-3" id="accordionExample">
                     <div class="card">
                         <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
@@ -1767,7 +2070,7 @@
                         </h2>
                         </div>
 
-                        <div id="accordOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div id="accordOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </div>
@@ -2246,7 +2549,7 @@
 
         var swiper2 = new Swiper('.sizeSwiper', {
                 slidesPerView: 8,
-                spaceBetween: '8px',
+                spaceBetween: '0px',
                 autoplay:false,
                 loop: false,
                 navigation: {
@@ -2274,13 +2577,21 @@
 
         var swiper3 = new Swiper('.offerSwiper', {
                 slidesPerView: 1,
-                spaceBetween: '24px',
+                spaceBetween: '16px',
                 autoplay:false,
                 loop: false,
                 navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
+                breakpoints: {
+                    400: {
+                        slidesPerView: 1
+                    },
+                    300: {
+                        slidesPerView: 1.1
+                    }
+                }
         });
 
         var swiper4 = new Swiper('.royalClubSwiper', {
@@ -2374,6 +2685,7 @@
                 });
                 if(!hasActiveButton){
                     document.querySelector(".sizeSwiper .swiper-wrapper").classList.add('animate__animated', 'animate__shakeX');
+                    showToast('Please select a size!', 'error')
                     const timer = setTimeout(() => {
                         document.querySelector(".sizeSwiper .swiper-wrapper").classList.remove('animate__animated', 'animate__shakeX');
                     }, 1500)
@@ -2404,21 +2716,21 @@
             })
         })
 
-        document.querySelectorAll('.zoom-container').forEach(container => {
-            const zoomImage = container.querySelector('.zoom-image');
+        // document.querySelectorAll('.zoom-container').forEach(container => {
+        //     const zoomImage = container.querySelector('.zoom-image');
             
-            container.addEventListener('mousemove', (e) => {
-                const { left, top, width, height } = container.getBoundingClientRect();
-                const x = ((e.clientX - left) / width) * 100;
-                const y = ((e.clientY - top) / height) * 100;
-                zoomImage.style.transformOrigin = `${x}% ${y}%`;
-                zoomImage.style.transform = 'scale(2)'; // Zoom level
-            });
+        //     container.addEventListener('mousemove', (e) => {
+        //         const { left, top, width, height } = container.getBoundingClientRect();
+        //         const x = ((e.clientX - left) / width) * 100;
+        //         const y = ((e.clientY - top) / height) * 100;
+        //         zoomImage.style.transformOrigin = `${x}% ${y}%`;
+        //         zoomImage.style.transform = 'scale(2)'; // Zoom level
+        //     });
             
-            container.addEventListener('mouseleave', () => {
-                zoomImage.style.transform = 'scale(1)'; // Reset zoom when mouse leaves
-            });
-        });
+        //     container.addEventListener('mouseleave', () => {
+        //         zoomImage.style.transform = 'scale(1)'; // Reset zoom when mouse leaves
+        //     });
+        // });
 
         const sidebar = document.querySelector(".sidebar");
         const closeBtn = document.querySelector(".closeSidebarBtn");
@@ -2558,6 +2870,20 @@
             document.body.classList.remove("sidebar-open");
         })
 
+        const modalInsightBtn = document.querySelector(".modalInsightBtn");
+        const insightDialog = document.querySelector(".insightDialog");
+        const closeInsightDialogBtn = document.querySelector("#closeInsightDialogBtn");
+
+        modalInsightBtn.addEventListener("click", () => {
+            insightDialog.showModal();
+            document.body.classList.add("sidebar-open");
+        })
+
+        closeInsightDialogBtn.addEventListener("click", () => {
+            insightDialog.close();
+            document.body.classList.remove("sidebar-open");
+        })
+
         function showToast(message, type) {
             const toaster = document.getElementById('toaster');
             const toast = document.createElement('div');
@@ -2581,6 +2907,29 @@
             }, 3000);
         }
 
+        const howToMeasure = document.getElementById("sizeChartBtn");
+        const howToMeasureBtn = document.getElementById("howToMeasureBtn");
+        const tabButtons = document.querySelectorAll(".tabButton");
+
+        tabButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                tabButtons.forEach(btn => {
+                    btn.classList.remove("active");
+                })
+                button.classList.add("active");
+            })
+        })
+
+        const fashionModalBtn = document.querySelector(".fashionModalBtn");
+        const youtubePopupCloseBtn = document.querySelector(".youtubePopupCloseBtn");
+
+        fashionModalBtn.addEventListener("click", () => {
+            document.querySelector(".youtubePopup").style.display = "flex";
+        })
+
+        youtubePopupCloseBtn.addEventListener("click", () => {
+            document.querySelector(".youtubePopup").style.display = "none";
+        })
         
     </script>
     <?php include('include/footer.php'); ?>
