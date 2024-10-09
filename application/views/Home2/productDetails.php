@@ -156,6 +156,7 @@
             box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
             padding: 10px;
             position: absolute;
+            top:30px;
             z-index: 1000;
         }
 
@@ -750,6 +751,7 @@
             height: 100%;
             width: 100%;
             background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100000;
         }
 
         .youtubePopupCloseBtn{
@@ -906,6 +908,53 @@
             stroke: red;
         }
 
+        .dots{
+            background-color: var(--maincolor);
+            padding: 6px;
+            border-radius: 100vh;
+            position: absolute;
+            border: 4px solid gray;
+        }
+
+        .dots::after{
+            content: attr(data-text);
+            width: 108px;
+            position: absolute;
+            top: 0px;
+            left: 16px;
+            background-color: var(--maincolor);
+            color: white;
+            padding: 6px;
+            border-radius: 8px;
+            font-size: 12px;
+            line-height: 1.1;
+            display: none;
+        }
+
+        .dots:hover::after{
+            display: block;
+        }
+
+        .dot1{
+            top: 100px;
+            left: 208px;
+        }
+        .dot2{
+            top: 256px;
+            left: 174px;
+        }
+        .dot3{
+            bottom: 36px;
+            left: 208px;
+        }
+
+        .customerImagesContainer{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            place-items: center;
+            gap: 8px;
+        }
+
         @keyframes kfs-celebrate {
             0% {
                 transform: scale(0);
@@ -1024,6 +1073,10 @@
             .addToBagBtn:hover{
                 background-color: var(--maincolor);
                 color: white;
+            }
+
+            .customerImagesContainer{
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -1193,6 +1246,47 @@
                 <img src="<?= base_url('assets/website/images/product/jeans.webp') ?>" alt="">
             </div>
         </dialog>
+        <dialog class="celebDialog" id="dialog">
+            <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+                <p class="m-0 font-weight-bold">CELEBRITY BEAUTY SECRETS</p>
+                <button id="closeCelebDialogBtn" type="button" aria-label="close" class="btn p-0">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="position-relative">
+                <img src="<?= base_url('assets/new_website/img/combo3.webp') ?>" alt="">
+                <a href="#" class="dots dot1" data-text="View matching Earings"></a>
+                <a href="#" class="dots dot2" data-text="View matching Dresses"></a>
+                <a href="#" class="dots dot3" data-text="View matching Sandals"></a>
+            </div>
+        </dialog>
+        <dialog class="customerImagesDialog" id="dialog" style="min-width: 500px;">
+            <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+                <p class="m-0 font-weight-bold">CUSTOMER IMAGES</p>
+                <button id="closeCustomerImagesDialogBtn" type="button" aria-label="close" class="btn p-0">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-3 customerImagesContainer">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+            </div>
+        </dialog>
         <div class="shadow-lg notifyBtn d-lg-none d-md-none d-block">
             <button class="btn text-light notifyDialogBtn"><i class="fa-solid fa-bell"></i></button>
         </div>
@@ -1259,7 +1353,9 @@
                 <div class="col-lg-7 col-md-6 col-12">
                     <div class="d-lg-block d-md-block d-sm-block d-none">
                         <div class="productImageContainer">
-                            <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
+                            <div class="zoom-container">
+                                <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
+                            </div>
                             <div class="zoom-container position-relative">
                                 <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
                                 <div class="similarBtn">
@@ -1290,8 +1386,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
-                            <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
+                            <div class="zoom-container">
+                                <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
+                            </div>
+                            <div class="zoom-container">
+                                <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
+                            </div>
                             <div class="zoom-container">
                                 <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
                             </div>
@@ -1351,14 +1451,14 @@
                                      </div>
                                      <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
                                  </div>
-                                <button class="btn fs14 font-weight-bold shareBtn"><img src="<?= base_url('assets/new_website/img/share.png') ?>" style="width: 20px;" alt=""> Share</button>
+                                <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn fs14 font-weight-bold shareBtn"><img src="<?= base_url('assets/new_website/img/share.png') ?>" style="width: 20px;" alt=""> Share</a>
                             </div>
                         </div>
                     </div>
                     <div class="my-3 d-lg-block d-md-block d-none">
                         <p class="m-0 mb-1 text-dark font-weight-bold">UNLOCKING GLAMOUR</p>
                         <div class="modalBtnContainer">
-                            <button class="btn p-0 modalBtn">
+                            <button class="btn p-0 modalBtn celebDialogBtn">
                                 <img src="https://i1.adis.ws/i/canon/pro-fashion-photography-technique-tips-1-new_e6eef04e6fe9434e9d9427a0220ef27c.jpeg" alt="">
                                 <div class="w-100 modalBtnText">
                                     <span>CELEBRITY BEAUTY SECRETS</span>
@@ -1527,17 +1627,17 @@
                     </div>
                     <hr class="m-0">
                     <div class="border rounded-lg my-3 p-3">
-                        <p class="text-dark font-weight-bold mb-1 text-center">UNLOCK EXCLUSIVE PERKS JUST FOR YOU</p>
-                        <div class="d-flex justify-content-between align-items-center">
+                        <p class="text-dark fs12 font-weight-bold mb-1 text-center">UNLOCK EXCLUSIVE PERKS JUST FOR YOU</p>
+                        <div>
                             <div class="d-flex align-items-center">
                                 <img src="<?= base_url('assets/new_website/img/crown2.png')?>" style="width: 40px;" alt="">
-                                <div class="d-flex flex-column flex-grow-1 ml-2" style="line-height: 1.25">
+                                <div class="d-flex flex-column ml-2" style="line-height: 1.25">
                                     <span>Join the Club and save <span class="text-success font-weight-bold">₹29.99</span></span>
                                     <span>Royal Club Price: <span class="text-dark font-weight-bold">₹502</span></span>
                                 </div>
                             </div>
-                            <div>
-                                <button class="btn fs12 font-weight-bold text-right" style="color: var(--pinkcolor);">Join the Family now <i class="fa-solid fa-chevron-right"></i></button>
+                            <div class="text-right">
+                                <button class="btn fs12 p-0 font-weight-bold" style="color: var(--pinkcolor);">Join the Family now <i class="fa-solid fa-chevron-right"></i></button>
                             </div>
                         </div>
                         <div class="mt-2 p-2 rounded-lg d-flex justify-content-center" style="border: 1px dashed black;gap: 4px;">
@@ -1559,7 +1659,7 @@
                         <div class="border rounded-lg p-2 d-inline">
                             <form class="d-inline" id="pincodeForm">
                                 <input type="number" name="pincode" placeholder="Enter coupon code" class="pincodeInput">
-                                <button class="pincodeBtn">CHECK</button>
+                                <button class="pincodeBtn fs12">CHECK</button>
                                 <button type="button" class="pincodeChangeBtn" style="display: none;">CHANGE</button>
                             </form>
                         </div>
@@ -1590,7 +1690,7 @@
                                             <div class="row">
                                                 <div class="col-8 btn-group w-100 py-1" role="group" aria-label="Basic example">
                                                     <p class="btn promoCode m-0">CART25</p>
-                                                    <button type="button" onClick="copyToClipboard('couponOne')" class="btn bg-light font-weight-bold text-nowrap"><i class="fa-solid fa-copy"></i> COPY</button>
+                                                    <button type="button" onClick="copyToClipboard('couponOne')" class="btn bg-light font-weight-bold text-nowrap promoCopyBtn"><i class="fa-solid fa-copy"></i> COPY</button>
                                                 </div>
                                                 <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn p-1 col-2 text-white text-nowrap"><i class="fa-solid fa-share"></i> Share</a>
                                             </div>
@@ -1624,7 +1724,7 @@
                                                     <p class="btn promoCode m-0">CART25</p>
                                                     <button type="button" class="btn bg-light font-weight-bold text-nowrap"><i class="fa-solid fa-copy"></i> COPY</button>
                                                 </div>
-                                                <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn p-1 col-2 text-white text-nowrap"><i class="fa-solid fa-share"></i> Share</a>
+                                                <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn p-1 col-2 text-white text-nowrap promoCopyBtn"><i class="fa-solid fa-share"></i> Share</a>
                                             </div>
                                             <div id="couponTwo" class="collapse" aria-labelledby="headingTwo" data-parent="">
                                                 <div class="card-body p-0 px-3 pb-2 mt-2"
@@ -1654,7 +1754,7 @@
                                             <div class="row">
                                                 <div class="col-8 btn-group w-100 py-1" role="group" aria-label="Basic example">
                                                     <p class="btn promoCode m-0">CART25</p>
-                                                    <button type="button" class="btn bg-light font-weight-bold text-nowrap"><i class="fa-solid fa-copy"></i> COPY</button>
+                                                    <button type="button" class="btn bg-light font-weight-bold text-nowrap promoCopyBtn"><i class="fa-solid fa-copy"></i> COPY</button>
                                                 </div>
                                                 <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn p-1 col-2 text-white text-nowrap"><i class="fa-solid fa-share"></i> Share</a>
                                             </div>
@@ -1975,7 +2075,12 @@
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 60px; height: 60px; object-fit: cover;" alt="">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 60px; height: 60px; object-fit: cover;" alt="">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 60px; height: 60px; object-fit: cover;" alt="">
-                                
+                                <button class="btn p-0 position-relative customerImageBtn">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 60px; height: 60px; object-fit: cover;" alt="">
+                                    <div class="position-absolute" style="top: 50%; right: 50%; transform: translate(50%,-50%); ">
+                                        <span class="text-white font-weight-bold">+3</span>
+                                    </div>
+                                </button>
                             </div>
                         </div>
                         <hr class="my-3">
@@ -2716,21 +2821,21 @@
             })
         })
 
-        // document.querySelectorAll('.zoom-container').forEach(container => {
-        //     const zoomImage = container.querySelector('.zoom-image');
+        document.querySelectorAll('.zoom-container').forEach(container => {
+            const zoomImage = container.querySelector('.zoom-image');
             
-        //     container.addEventListener('mousemove', (e) => {
-        //         const { left, top, width, height } = container.getBoundingClientRect();
-        //         const x = ((e.clientX - left) / width) * 100;
-        //         const y = ((e.clientY - top) / height) * 100;
-        //         zoomImage.style.transformOrigin = `${x}% ${y}%`;
-        //         zoomImage.style.transform = 'scale(2)'; // Zoom level
-        //     });
+            container.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = container.getBoundingClientRect();
+                const x = ((e.clientX - left) / width) * 100;
+                const y = ((e.clientY - top) / height) * 100;
+                zoomImage.style.transformOrigin = `${x}% ${y}%`;
+                zoomImage.style.transform = 'scale(2)'; // Zoom level
+            });
             
-        //     container.addEventListener('mouseleave', () => {
-        //         zoomImage.style.transform = 'scale(1)'; // Reset zoom when mouse leaves
-        //     });
-        // });
+            container.addEventListener('mouseleave', () => {
+                zoomImage.style.transform = 'scale(1)'; // Reset zoom when mouse leaves
+            });
+        });
 
         const sidebar = document.querySelector(".sidebar");
         const closeBtn = document.querySelector(".closeSidebarBtn");
@@ -2884,6 +2989,20 @@
             document.body.classList.remove("sidebar-open");
         })
 
+        const customerImageBtn = document.querySelector(".customerImageBtn");
+        const customerImagesDialog = document.querySelector(".customerImagesDialog");
+        const closeCustomerImagesDialogBtn = document.querySelector("#closeCustomerImagesDialogBtn");
+
+        customerImageBtn.addEventListener("click", () => {
+            customerImagesDialog.showModal();
+            document.body.classList.add("sidebar-open");
+        })
+
+        closeCustomerImagesDialogBtn.addEventListener("click", () => {
+            customerImagesDialog.close();
+            document.body.classList.remove("sidebar-open");
+        })
+
         function showToast(message, type) {
             const toaster = document.getElementById('toaster');
             const toast = document.createElement('div');
@@ -2925,10 +3044,34 @@
 
         fashionModalBtn.addEventListener("click", () => {
             document.querySelector(".youtubePopup").style.display = "flex";
+            document.body.classList.add("sidebar-open");
         })
 
         youtubePopupCloseBtn.addEventListener("click", () => {
             document.querySelector(".youtubePopup").style.display = "none";
+            document.body.classList.remove("sidebar-open");
+        })
+
+        const celebDialogBtn = document.querySelector(".celebDialogBtn");
+        const celebDialog = document.querySelector(".celebDialog");
+        const closeCelebDialogBtn = document.querySelector("#closeCelebDialogBtn");
+
+        celebDialogBtn.addEventListener("click", () => {
+            celebDialog.showModal();
+            document.body.classList.add("sidebar-open");
+        })
+
+        closeCelebDialogBtn.addEventListener("click", () => {
+            celebDialog.close();
+            document.body.classList.remove("sidebar-open");
+        })
+
+        const promoCopyBtns = document.querySelectorAll(".promoCopyBtn");
+
+        promoCopyBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                btn.innerText = "Copied";
+            })
         })
         
     </script>
