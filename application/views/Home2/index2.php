@@ -775,7 +775,7 @@
             }
 
             .welcomeSwiper{
-                height: 208px;
+                height: 360px;
             }
 
             .latestSwiper{

@@ -1417,15 +1417,15 @@
                                 <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 12px;">
                                 <span>| 10</span>
                             </a>
-                            <a href="#similarProducts" class="text-light px-2 py-1 fs10 rounded-pill" style="background-color: rgba(0, 0, 0, 0.5);"> <img src="<?= base_url('assets/new_website/img/cards.png') ?>" style="width: 14px;" alt=""> VIEW SIMILAR</a>
+                            <button class="btn text-light px-2 py-1 fs12 rounded-pill scrollBtn" style="background-color: rgba(0, 0, 0, 0.5);"> <img src="<?= base_url('assets/new_website/img/cards.png') ?>" style="width: 14px;" alt=""> VIEW SIMILAR</button>
                         </div>
                     </div>
-                    <div class="d-lg-block d-md-block d-none">
-                        <div class="my-2 d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-2 align-items-center">
-                                <button class="btn p-0 fs14 font-weight-bold modalInsightBtn">Modal insight</button>
-                                <a href="#similarProducts" class="btn p-0 fs14 font-weight-bold">View Similar</a>
-                            </div>
+                    <div>
+                        <div class="my-1 d-flex justify-content-between align-items-center">
+                            <button class="btn p-0 fs14 font-weight-bold d-flex align-items-center modalInsightBtn">
+                                <img src="<?= base_url('assets/new_website/img/model.jpg') ?>" style="width: 16px;" alt="">
+                                <span class="ml-1">Modal insight</span>
+                            </button>
                             <div class="d-flex gap-2 align-items-center">
                                 <div class="d-flex align-items-center likeBtn">
                                      <div class="heart-container" title="Like">
@@ -1478,18 +1478,18 @@
                         <h3 class="m-0 text-dark">Jack & Jones</h3>
                         <p class="fs12 text-secondary m-0 mb-2" style="line-height: 1;">Men Grey Slim Fit Light Fade Stretchable Jeans</p>
                         <div>
-                            <a href="#reviews" class="border rounded-sm text-dark p-1 fs12 font-weight-bold">
+                            <button class="btn border rounded-sm text-dark p-1 fs12 font-weight-bold reviewScrollBtn">
                                 <span>3.5</span>
                                 <i class="fa-solid fa-star" style="color: #FFD700;"></i>
                                 <span class="border-left pl-2">71 Ratings</span>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <hr>
                     <div class="priceContainer">
                         <div class="d-flex align-items-center gap-2 mb-1">
                             <span class="font-weight-bold text-dark" style="font-size: 24px;">₹1,998</span>
-                            <span class="text-secondary border-right pr-2" style="font-size: 22px; text-decoration: line-through;">₹2,998</span>
+                            <span class="text-secondary border-right pr-2" style="font-size: 20px; text-decoration: line-through;">₹2,998</span>
                             <span class="text-success font-weight-bold">50% OFF</span>
                         </div>
                         <span class="text-success font-weight-bold fs12">inclusive of all taxes</span>
@@ -1521,15 +1521,12 @@
                         <p class="m-0 fs12 text-dark font-weight-bold">ROYAL CLUB PRICE:</p>
                         <a href="#royalClub" class="d-flex align-items-center">
                             <img class="blinkingText" src="<?= base_url('assets/new_website/img/crown2.png') ?>" style="width: 24px;" alt="">
-                            <p class="text-dark m-0 ml-1" style="font-size: 16px; font-weight: 500;">₹1,800</p>
-                            <p class="m-0 ml-1" style="font-weight: 500;">MRP:</p>
-                            <p class="m-0 ml-1" style="font-weight: 500; text-decoration: line-through;">₹2,998</p>
-                            <p class="m-0 ml-1 border-left pl-1 text-success font-weight-bold">50% OFF</p>
-                            <!-- <div class="ml-1" style="line-height: 1;">
-                                <p class="text-success m-0" style="font-size: 20px; font-weight: 500;">₹1,800</p>
-                                <span class="text-secondary fs10 font-weight-bold">ROYAL CLUB PRICE</span>
-                            </div> -->
+                            <p class="text-dark m-0 ml-1" style="font-size: 16px; font-weight: 700;">₹1,800</p>
+                            <p class="m-0 ml-1 fs12" style="font-weight: 500;">MRP:</p>
+                            <p class="m-0 ml-1 fs12" style="font-weight: 500; text-decoration: line-through;">₹2,998</p>
+                            <p class="m-0 ml-1 fs12 border-left pl-1 text-success font-weight-bold">50% OFF</p>
                         </a>
+                        <p class="m-0 text-secondary font-weight-bold fs10">inclusive of all taxes</p>
                         <div>
                         <button class="btn border p-1 m-0 mt-1 fs12 font-weight-bold royalCashBtn">
                             <img src="<?= base_url('assets/new_website/img/crown2.png') ?>" style="width: 16px;" alt="">
@@ -1669,7 +1666,7 @@
                             <p class="m-0 font-weight-bold">Receive it by Tue, Oct 08!</p>
                             <p class="m-0 font-weight-bold">Pay on delivery is available</p>
                         </div>
-                        <p class="fs12 m-0 mt-2 pincodeInfo" style="line-height: 1;">Enter your PIN code to check estimated delivery time and Pay on Delivery availability.</p>
+                        <p class="fs12 m-0 mt-2 pincodeInfo" style="line-height: 1;">Enter PIN to check delivery and Pay on Delivery.</p>
                     </div>
                     <hr class="m-0">
                     <div class="my-3">
@@ -2161,6 +2158,23 @@
                     </div>
                 </div>
             </div>
+            <div class="my-3 px-2 d-lg-none d-md-none d-block">
+                <p class="m-0 mb-1 text-dark font-weight-bold">UNLOCKING GLAMOUR</p>
+                <div class="d-flex flex-column flex-sm-row modalBtnContainer">
+                    <button class="btn p-0 modalBtn celebDialogBtn">
+                        <img src="https://i1.adis.ws/i/canon/pro-fashion-photography-technique-tips-1-new_e6eef04e6fe9434e9d9427a0220ef27c.jpeg" alt="">
+                        <div class="w-100 modalBtnText">
+                            <span>CELEBRITY BEAUTY SECRETS</span>
+                        </div>
+                    </button>
+                    <button class="btn p-0 modalBtn fashionModalBtn">
+                        <img src="https://i1.adis.ws/i/canon/pro-fashion-photography-technique-tips-1-new_e6eef04e6fe9434e9d9427a0220ef27c.jpeg" alt="">
+                        <div class="w-100 modalBtnText">
+                            <span>FASHION PAIRING</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
         </section>
         <section>
             <div class="my-4">
@@ -2615,6 +2629,24 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
 
+        const scrollBtn = document.querySelector('.scrollBtn')
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollBy({
+                top: 4000,
+                behavior: 'smooth'
+            });
+        })
+
+        const reviewScrollBtn = document.querySelector('.reviewScrollBtn')
+
+        reviewScrollBtn.addEventListener('click', () => {
+            window.scrollBy({
+                top: 2200,
+                behavior: 'smooth'
+            });
+        })
+
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(function() {
                 console.log('Text copied to clipboard: ' + text);
@@ -2662,8 +2694,11 @@
                     prevEl: ".swiper-button-prev",
                 },
                 breakpoints: {
+                    1200: {
+                        slidesPerView: 6
+                    },
                     1024: {
-                        slidesPerView: 8
+                        slidesPerView: 5
                     },
                     768: {
                         slidesPerView: 5
@@ -3039,12 +3074,14 @@
             })
         })
 
-        const fashionModalBtn = document.querySelector(".fashionModalBtn");
+        const fashionModalBtn = document.querySelectorAll(".fashionModalBtn");
         const youtubePopupCloseBtn = document.querySelector(".youtubePopupCloseBtn");
 
-        fashionModalBtn.addEventListener("click", () => {
-            document.querySelector(".youtubePopup").style.display = "flex";
-            document.body.classList.add("sidebar-open");
+        fashionModalBtn.forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelector(".youtubePopup").style.display = "flex";
+                document.body.classList.add("sidebar-open");
+            })
         })
 
         youtubePopupCloseBtn.addEventListener("click", () => {
@@ -3052,13 +3089,15 @@
             document.body.classList.remove("sidebar-open");
         })
 
-        const celebDialogBtn = document.querySelector(".celebDialogBtn");
+        const celebDialogBtn = document.querySelectorAll(".celebDialogBtn");
         const celebDialog = document.querySelector(".celebDialog");
         const closeCelebDialogBtn = document.querySelector("#closeCelebDialogBtn");
 
-        celebDialogBtn.addEventListener("click", () => {
-            celebDialog.showModal();
-            document.body.classList.add("sidebar-open");
+        celebDialogBtn.forEach(btn => {
+            btn.addEventListener("click", () => {
+                celebDialog.showModal();
+                document.body.classList.add("sidebar-open");
+            })
         })
 
         closeCelebDialogBtn.addEventListener("click", () => {
