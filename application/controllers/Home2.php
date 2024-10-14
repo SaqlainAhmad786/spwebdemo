@@ -80,5 +80,8 @@ class Home2 extends Home_Controller
     public function productDetails(){
    $this->load->view('Home2/productDetails');
  }
+    public function pdpImage(){
+   $this->load->view('Home2/pdpImage');
+ }
     
 }

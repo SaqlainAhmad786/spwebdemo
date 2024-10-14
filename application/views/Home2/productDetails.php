@@ -88,7 +88,7 @@
             position: fixed;
             bottom: 58px;
             left: 20px;
-            z-index: 10000;
+            z-index: 100;
             background-color: var(--maincolor);
             color: white;
             padding: 8px 12px;
@@ -101,7 +101,7 @@
             position: fixed;
             bottom: 104px;
             left: 20px;
-            z-index: 10000;
+            z-index: 100;
             background-color: var(--maincolor);
             color: white;
             padding: 2px 0px;
@@ -948,11 +948,60 @@
             left: 208px;
         }
 
+        .customerImagesDialog{
+            height: 80vh;
+            overflow-y: clip;
+        }
+
         .customerImagesContainer{
+            height: 100%;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            place-items: center;
             gap: 8px;
+            overflow: scroll!important;
+        }
+
+        .customerImagesContainer a{
+            width: 128px;
+            height: 128px;
+        }
+
+        .customerImagesContainer a img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .customerImagesContainer::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        .customerReveiwDialog{
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            width: 70%;
+            height: 80vh;
+            border-radius: 4px;
+            border: 0;
+            box-shadow: 0 5px 30px 0 #000;
+            animation: fadeIn 300ms ease both;
+            z-index: 100000;
+        }
+
+        .customerReveiwDialog img{
+            object-fit: contain;
+            width: 200px;
+        }
+
+        .customerReveiwDialog .buttons{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 95%;
         }
 
         @keyframes kfs-celebrate {
@@ -1038,6 +1087,10 @@
             .productImageContainer{
                 grid-template-columns: 1fr 1fr 1fr;
             }
+
+            .customerReveiwDialog{
+                width: 85%;
+            }
         }
 
         @media (width < 568px) {
@@ -1076,7 +1129,17 @@
             }
 
             .customerImagesContainer{
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+                place-items: center;
+            }
+
+            .customerImagesContainer a{
+                width: 112px;
+                height: 112px;
+            }
+
+            .customerReveiwDialog{
+                width: 90%;   
             }
         }
         
@@ -1234,7 +1297,7 @@
                 <p class="fs10 mt-2 text-secondary" style="line-height: 1;">You can redeem your Royal Club Cash on your next purchase (Min. ₹100 RC Cash is required)</p>
             </div>
         </dialog>
-        <dialog class="insightDialog" id="dialog">
+        <dialog class="insightDialog" id="dialog" style="max-width: 500px;">
             <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
                 <p class="m-0 font-weight-bold">Model Insights</p>
                 <button id="closeInsightDialogBtn" type="button" aria-label="close" class="btn p-0">
@@ -1242,8 +1305,48 @@
                 </button>
             </div>
             <div class="p-3">
-                <p class="text-center">John is <span class="font-weight-bold">5'10</span> and is wearing a size <span class="font-weight-bold">S</span></p>
                 <img src="<?= base_url('assets/website/images/product/jeans.webp') ?>" alt="">
+                <p class="text-center">John is <span class="font-weight-bold">5'10</span> and is wearing a size <span class="font-weight-bold">S</span></p>
+                <div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center p-1" scope="col">Parameters</th>
+                                <th class="text-center p-1" scope="col">Size specification</th>
+                            </tr>
+                        </thead>
+                        <tbody style="font-size: 12px;">
+                            <tr>
+                                <td class="p-1 font-weight-bold">Model Hips</td>
+                                <td class="p-1">38 inches</td>
+                            </tr>
+                            <tr>
+                                <td class="p-1 font-weight-bold">Model Waist</td>
+                                <td class="p-1">38 inches</td>
+                            </tr>
+                            <tr>
+                                <td class="p-1 font-weight-bold">Model Height</td>
+                                <td class="p-1">38 inches</td>
+                            </tr>
+                            <tr>
+                                <td class="p-1 font-weight-bold">Model Chest</td>
+                                <td class="p-1">38 inches</td>
+                            </tr>
+                            <tr>
+                                <td class="p-1 font-weight-bold">Model Inseam</td>
+                                <td class="p-1">38 inches</td>
+                            </tr>
+                            <tr>
+                                <td class="p-1 font-weight-bold">Model Sleeve length</td>
+                                <td class="p-1">38 inches</td>
+                            </tr>
+                            <tr>
+                                <td class="p-1 font-weight-bold">Model Neck size</td>
+                                <td class="p-1">38 inches</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </dialog>
         <dialog class="celebDialog" id="dialog">
@@ -1260,31 +1363,127 @@
                 <a href="#" class="dots dot3" data-text="View matching Sandals"></a>
             </div>
         </dialog>
-        <dialog class="customerImagesDialog" id="dialog" style="min-width: 500px;">
+        <div class="customerReveiwDialog">
+            <div class="d-flex justify-content-end align-items-center px-3 py-2 border-bottom">
+                <button id="closeCustomerReviewBtn" type="button" aria-label="close" class="btn p-0">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="row m-0">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 position-relativ">
+                    <div class="h-100 d-flex justify-content-center align-items-center">
+                        <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center buttons">
+                        <button class="btn"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button class="btn"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 p-2">
+                    <div class="border-bottom py-2">
+                        <div class="mb-1">
+                            <span class="text-dark p-1 rounded-lg border">4 <i class="fa-solid fa-star fs12" style="color: #FFD700;"></i></span>
+                        </div>
+                        <p class="m-0 text-dark">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum temporibus exercitationem deserunt eos inventore laborum?</p>
+                        <div class="mt-2 text-secondary d-flex justify-content-between">
+                                        <span>John Doe | 1 day ago</span>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <label class="m-0 likeContainer">
+                                                <input type="checkbox">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="50px" width="50px" class="like">
+                                                    <path d="M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20"></path>
+                                                </svg>
+                                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" class="celebrate">
+                                                    <polygon points="0,0 10,10"></polygon>
+                                                    <polygon points="0,25 10,25"></polygon>
+                                                    <polygon points="0,50 10,40"></polygon>
+                                                    <polygon points="50,0 40,10"></polygon>
+                                                    <polygon points="50,25 40,25"></polygon>
+                                                    <polygon points="50,50 40,40"></polygon>
+                                                </svg>
+                                            </label>
+                                            <label class="m-0 likeContainer dislikeContainer">
+                                                <input type="checkbox">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="50px" width="50px" class="like">
+                                                    <path d="M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20"></path>
+                                                </svg>
+                                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" class="celebrate">
+                                                    <polygon points="0,0 10,10"></polygon>
+                                                    <polygon points="0,25 10,25"></polygon>
+                                                    <polygon points="0,50 10,40"></polygon>
+                                                    <polygon points="50,0 40,10"></polygon>
+                                                    <polygon points="50,25 40,25"></polygon>
+                                                    <polygon points="50,50 40,40"></polygon>
+                                                </svg>
+                                            </label>
+                                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <dialog class="customerImagesDialog" id="dialog" style="max-width: 600px;">
             <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
-                <p class="m-0 font-weight-bold">CUSTOMER IMAGES</p>
+                <p class="m-0 font-weight-bold">BUYER IMAGES</p>
                 <button id="closeCustomerImagesDialogBtn" type="button" aria-label="close" class="btn p-0">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <div class="p-3 customerImagesContainer">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
-                <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+            <div class="p-lg-3 p-md-3 p-2 customerImagesContainer">
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
+                <a href="#">
+                    <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
+                </a>
             </div>
         </dialog>
         <div class="shadow-lg notifyBtn d-lg-none d-md-none d-block">
@@ -1424,7 +1623,7 @@
                         <div class="my-1 d-flex justify-content-between align-items-center">
                             <button class="btn p-0 fs14 font-weight-bold d-flex align-items-center modalInsightBtn">
                                 <img src="<?= base_url('assets/new_website/img/model.jpg') ?>" style="width: 16px;" alt="">
-                                <span class="ml-1">Modal insight</span>
+                                <span class="ml-1">Model insight</span>
                             </button>
                             <div class="d-flex gap-2 align-items-center">
                                 <div class="d-flex align-items-center likeBtn">
@@ -1449,9 +1648,9 @@
                                              </svg>
                                          </div>
                                      </div>
-                                     <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">Like</label>
+                                     <label for="Give-It-An-Id" class="ml-1 mb-0 cursor-pointer">4 likes</label>
                                  </div>
-                                <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn fs14 font-weight-bold shareBtn"><img src="<?= base_url('assets/new_website/img/share.png') ?>" style="width: 20px;" alt=""> Share</a>
+                                <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn fs14 font-weight-bold shareBtn"><img src="<?= base_url('assets/new_website/img/share.png') ?>" style="width: 16px;" alt=""> Share</a>
                             </div>
                         </div>
                     </div>
@@ -1684,7 +1883,7 @@
                                                 aria-expanded="true" aria-controls="couponOne">See more</button>
                                             </div>
                                             <hr style="border: 1px dashed white;" />
-                                            <div class="row">
+                                            <div class="row align-items-center">
                                                 <div class="col-8 btn-group w-100 py-1" role="group" aria-label="Basic example">
                                                     <p class="btn promoCode m-0">CART25</p>
                                                     <button type="button" onClick="copyToClipboard('couponOne')" class="btn bg-light font-weight-bold text-nowrap promoCopyBtn"><i class="fa-solid fa-copy"></i> COPY</button>
@@ -1712,18 +1911,18 @@
                                             <div class="circle2"></div>
                                             <div class="d-flex justify-content-between">
                                                 <p class="m-0 fs14 text-left" style="width: 70%;">Lorem ipsum dolor sit amet consectetur adipisicing elit?</p>
-                                                <button class="float-right btn p-0 m-0 font-weight-bold text-light" style="font-size: 12px; white-space: nowrap;" data-toggle="collapse" data-target="#couponTwo"
-                                                aria-expanded="true" aria-controls="couponTwo">See more</button>
+                                                <button class="float-right btn p-0 m-0 font-weight-bold text-light" style="font-size: 12px; white-space: nowrap;" data-toggle="collapse" data-target="#couponOne"
+                                                aria-expanded="true" aria-controls="couponOne">See more</button>
                                             </div>
                                             <hr style="border: 1px dashed white;" />
-                                            <div class="row">
+                                            <div class="row align-items-center">
                                                 <div class="col-8 btn-group w-100 py-1" role="group" aria-label="Basic example">
                                                     <p class="btn promoCode m-0">CART25</p>
-                                                    <button type="button" class="btn bg-light font-weight-bold text-nowrap"><i class="fa-solid fa-copy"></i> COPY</button>
+                                                    <button type="button" onClick="copyToClipboard('couponOne')" class="btn bg-light font-weight-bold text-nowrap promoCopyBtn"><i class="fa-solid fa-copy"></i> COPY</button>
                                                 </div>
-                                                <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn p-1 col-2 text-white text-nowrap promoCopyBtn"><i class="fa-solid fa-share"></i> Share</a>
+                                                <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn p-1 col-2 text-white text-nowrap"><i class="fa-solid fa-share"></i> Share</a>
                                             </div>
-                                            <div id="couponTwo" class="collapse" aria-labelledby="headingTwo" data-parent="">
+                                            <div id="couponOne" class="collapse" aria-labelledby="headingOne" data-parent="">
                                                 <div class="card-body p-0 px-3 pb-2 mt-2"
                                                     style="font-size: 13px; color: rgb(0, 0, 0,0.75);">
                                                     <p class="m-0 p-0 text-dark text-center font-weight-bold" style="font-size: 12px">TERMS & CONDITIONS</p>
@@ -1748,10 +1947,10 @@
                                                 aria-expanded="true" aria-controls="couponOne">See more</button>
                                             </div>
                                             <hr style="border: 1px dashed white;" />
-                                            <div class="row">
+                                            <div class="row align-items-center">
                                                 <div class="col-8 btn-group w-100 py-1" role="group" aria-label="Basic example">
                                                     <p class="btn promoCode m-0">CART25</p>
-                                                    <button type="button" class="btn bg-light font-weight-bold text-nowrap promoCopyBtn"><i class="fa-solid fa-copy"></i> COPY</button>
+                                                    <button type="button" onClick="copyToClipboard('couponOne')" class="btn bg-light font-weight-bold text-nowrap promoCopyBtn"><i class="fa-solid fa-copy"></i> COPY</button>
                                                 </div>
                                                 <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn p-1 col-2 text-white text-nowrap"><i class="fa-solid fa-share"></i> Share</a>
                                             </div>
@@ -2069,7 +2268,9 @@
                         <div>
                             <p class="m-0 my-2 font-weight-bold text-dark">BUYER PHOTOS</p>
                             <div>
-                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 60px; height: 60px; object-fit: cover;" alt="">
+                                <button class="btn p-0 customerReviewBtn">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 60px; height: 60px; object-fit: cover;" alt="">
+                                </button>
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 60px; height: 60px; object-fit: cover;" alt="">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="width: 60px; height: 60px; object-fit: cover;" alt="">
                                 <button class="btn p-0 position-relative customerImageBtn">
@@ -2938,7 +3139,9 @@
             e.preventDefault();
             const data = new FormData(pincodeForm);
             const pincode = data.get("pincode");
-            if(pincode == 000000){
+            if(pincode == ""){
+                return;
+            } else if(pincode == 000000){
                 pincodeErrorMsg.style.display = "block";
                 return;
             } else if(pincode.length < 6){
@@ -3035,6 +3238,22 @@
 
         closeCustomerImagesDialogBtn.addEventListener("click", () => {
             customerImagesDialog.close();
+            document.body.classList.remove("sidebar-open");
+        })
+
+        const customerReviewBtns = document.querySelectorAll(".customerReviewBtn");
+        const customerReveiwDialog = document.querySelector(".customerReveiwDialog");
+        const closeCustomerReviewBtn = document.querySelector("#closeCustomerReviewBtn");
+
+        customerReviewBtns.forEach((btn, i) => {
+            btn.addEventListener("click", () => {
+                customerReveiwDialog.style.display = "block";
+                document.body.classList.add("sidebar-open");
+            })
+        })
+
+        closeCustomerReviewBtn.addEventListener("click", () => {
+            customerReveiwDialog.style.display = "none";
             document.body.classList.remove("sidebar-open");
         })
 
