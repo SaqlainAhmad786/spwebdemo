@@ -185,11 +185,13 @@
 
         .sidebarContent{
             height: 240px;
-            overflow-y: scroll;
+            overflow-y: scroll; /* Enable scrolling */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;
         }
 
         .sidebarContent::-webkit-scrollbar{
-            width: 0;
+            display: none;
         }
 
         a:hover{
@@ -285,7 +287,7 @@
         }
 
         .productImageSwiper{
-            height: 360px;
+            height: 440px;
             padding-bottom: 34px;
         }
         
@@ -545,6 +547,11 @@
             z-index: 2;
         }
 
+        .celebDialog img{
+            height: 420px;
+            width: 300px;
+        }
+
         .similarProductsContainer {
             width: 85%;
             margin-inline: auto;
@@ -754,6 +761,11 @@
             z-index: 100000;
         }
 
+        .youtubePopup iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+        }
+
         .youtubePopupCloseBtn{
             position: absolute;
             top: 10px;
@@ -936,16 +948,16 @@
         }
 
         .dot1{
-            top: 100px;
-            left: 208px;
+            top: 84px;
+            left: 200px;
         }
         .dot2{
-            top: 256px;
-            left: 174px;
+            top: 200px;
+            left: 158px;
         }
         .dot3{
-            bottom: 36px;
-            left: 208px;
+            bottom: 32px;
+            left: 202px;
         }
 
         .customerImagesDialog{
@@ -1002,6 +1014,85 @@
             top: 50%;
             transform: translateY(-50%);
             width: 95%;
+        }
+
+        .loginPromptContainer{
+            background: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100000;
+            display: none;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        input[type="checkbox"] {
+            accent-color: var(--color2);
+        }
+
+        .inputGroup{
+            position: relative;
+        }
+
+        .inputGroup .errorMsg{
+            display: none;
+            font-size:12px;
+            position: absolute;
+            top: 36px;
+        }
+
+        .inputFieldContainer{
+            border: 1px solid #d4d5d9;
+            padding-inline:8px;
+            margin-bottom: 20px;
+            transition: all 200ms ease-in-out;
+        }
+
+        .inputFieldContainer input{
+            border: none;
+            outline: none;
+            padding: 6px;
+            width: 80%;
+        }
+
+        .inputFieldContainer input:focus .inputFieldContainer{
+            border-color: var(--color2);
+        }
+
+        .inputFieldContainer span{
+            color: rgb(150, 150, 150);
+        }
+
+        .inputFieldContainer input::placeholder{
+            color: rgb(150, 150, 150);
+        }
+
+        .loginBtn {
+            width: 100%;
+            background-color: var(--maincolor);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
+
+        .loginBtn.disabled {
+            background-color: gray;
+            cursor: not-allowed;
         }
 
         @keyframes kfs-celebrate {
@@ -1113,14 +1204,13 @@
 
             .homeBtn{
                 background-color: white;
-                box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.2);
                 margin: 0;
                 padding: 6px;
-                position: fixed;
+                position: sticky;
                 width: 100%;
                 bottom: 0;
                 left: 0;
-                z-index: 1000;
+                z-index: 10;
             }
 
             .addToBagBtn:hover{
@@ -1141,6 +1231,16 @@
             .customerReveiwDialog{
                 width: 90%;   
             }
+
+            .likeBtn{
+                padding: 4px 8px;
+                font-size: 12px;
+            }
+
+            .shareBtn{
+                padding: 6px 8px;
+                font-size: 12px;
+            }
         }
         
     </style>
@@ -1150,13 +1250,55 @@
     <?php include('include/header.php'); ?>
     <main>
         <div id="toaster"></div>
+        <div class="loginPromptContainer">
+            <div class="position-absolute" style="top: 4px; right: 4px;">
+                <button class="btn closeLoginPromptBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div>
+                <img src="<?=base_url('assets/new_website/img/login-cover.jpg')?>" alt="">
+            </div>
+            <div class="px-4 py-3">
+                <p class="mb-2" style="font-size: 20px; color: gray; font-family: 'League Spartan', sans-serif;">
+                    <span class="font-weight-bold" style="font-size: 24px; color: black;">Login</span>
+                     or
+                     <span class="font-weight-bold"
+                        style="font-size: 24px; color: black;">Signup</span>
+                </p>
+                <p class="mb-1" style="font-size: 12px; color: var(--maincolor);">Please enter your mobile number and verify with OTP</p>
+                <form id="loginForm">
+                    <div class="inputGroup">
+                        
+                        <div class="inputFieldContainer container1">
+                            <span>+91 | </span>
+                            <input type="number" class="numberInput" id="number" oninput="this.value = this.value.slice(0, 10);" placeholder="Enter Mobile Number*">
+                        </div>
+                        <p class="m-0 p-0 errorMsg text-danger"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid mobile number</p>
+                    </div>
+                    <div class="d-flex align-items-center mb-2"
+                        style="gap: 4px;font-size: 12px;font-weight: 500; color: var(--maincolor);">
+                        <input type="checkbox" id="tandc">
+                        <label class="m-0" for="tandc">I ACCEPT TERMS AND CONDITIONS</label>
+                    </div>
+                    <p class="mb-2" style="font-size: 12px; line-height: 1.1;">By continuing, I agree to the <a href="#"
+                            style="color: var(--maincolor); font-weight: 600;">Terms of Use</a>
+                        and <a href="#" style="color: var(--maincolor); font-weight: 600;">Privacy Policy</a></p>
+                    <button type="submit" class="loginBtn">LOGIN</button>
+                    <p class="text-center" style="font-size: 14px; color: gray;">Login via <a href="./loginEmail.html"
+                            style="color: var(--maincolor); font-weight: 600;">Email</a>
+                    </p>
+                    <p class="text-center mb-0" style="font-size: 12px; color: gray;">Having Trouble? <a
+                            href="mailto:me@example.com?subject=Me&body=HELP!!!"
+                            style=" color: var(--maincolor); font-weight: 600;">Get Help</a></p>
+                </form>
+            </div>
+        </div>
         <div class="sidebar">
             <div class="px-2 px-lg-5 px-md-4">
                 <div class="text-right">
                     <button class="btn closeSidebarBtn"><i class="fa fa-xmark"></i></button>
                 </div>
                 <div class="d-flex gap-2 mt-4">
-                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="height: 200px;" alt="">
+                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="height: 160px;" alt="">
                     <div class="mt-2">
                         <p class="fs16 text-dark font-weight-bold m-0">Product Name</p>
                         <p class="fs12 text-secondary m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sint.</p>
@@ -1170,12 +1312,12 @@
                 <div>
                     <div class="pt-4 d-flex justify-content-center">
                         <div class="btn-group border rounded-pill overflow-hidden" role="group" aria-label="Basic example">
-                            <a href="#sizeChart" id="sizeChartBtn" class="btn fs14 tabButton active">SIZE CHART</a>
-                            <a href="#howToMeasure" id="howToMeasureBtn" class="btn fs14 tabButton">HOW TO MEASURE</a>
+                            <a href="#sizeChart" id="sizeChartSectionBtn" class="btn fs12 tabButton">SIZE CHART</a>
+                            <a href="#howToMeasure" id="howToMeasureBtn" class="btn fs12 tabButton">HOW TO MEASURE</a>
                         </div> 
                     </div>
                     <div class="mt-3 sidebarContent">
-                        <div id="sizeChart">
+                        <section id="sizeChart">
                             <table class="table">
                                 <tbody>
                                     <tr>
@@ -1210,10 +1352,10 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div id="howToMeasure">
-                            <img src="<?= base_url('assets/website/images/product/jeans.webp') ?>" alt="">
-                        </div>
+                        </section>
+                        <section id="howToMeasure">
+                            <img src="<?= base_url('assets/website/images/product/jeans.webp') ?>" style="width: 100%;" alt="">
+                        </section>
                     </div>
                 </div>
                 <div class="position-fixed row bg-white w-100 pr-2 addBtnContainer" style="bottom: 16px; right: 8px;">
@@ -1305,44 +1447,43 @@
                 </button>
             </div>
             <div class="p-3">
-                <img src="<?= base_url('assets/website/images/product/jeans.webp') ?>" alt="">
                 <p class="text-center">John is <span class="font-weight-bold">5'10</span> and is wearing a size <span class="font-weight-bold">S</span></p>
                 <div>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="text-center p-1" scope="col">Parameters</th>
-                                <th class="text-center p-1" scope="col">Size specification</th>
+                                <th scope="col">Parameters</th>
+                                <th scope="col">Size specification</th>
                             </tr>
                         </thead>
-                        <tbody style="font-size: 12px;">
+                        <tbody>
                             <tr>
                                 <td class="p-1 font-weight-bold">Model Hips</td>
-                                <td class="p-1">38 inches</td>
+                                <td>38 inches</td>
                             </tr>
                             <tr>
                                 <td class="p-1 font-weight-bold">Model Waist</td>
-                                <td class="p-1">38 inches</td>
+                                <td>38 inches</td>
                             </tr>
                             <tr>
                                 <td class="p-1 font-weight-bold">Model Height</td>
-                                <td class="p-1">38 inches</td>
+                                <td>38 inches</td>
                             </tr>
                             <tr>
                                 <td class="p-1 font-weight-bold">Model Chest</td>
-                                <td class="p-1">38 inches</td>
+                                <td>38 inches</td>
                             </tr>
                             <tr>
                                 <td class="p-1 font-weight-bold">Model Inseam</td>
-                                <td class="p-1">38 inches</td>
+                                <td>38 inches</td>
                             </tr>
                             <tr>
                                 <td class="p-1 font-weight-bold">Model Sleeve length</td>
-                                <td class="p-1">38 inches</td>
+                                <td>38 inches</td>
                             </tr>
                             <tr>
                                 <td class="p-1 font-weight-bold">Model Neck size</td>
-                                <td class="p-1">38 inches</td>
+                                <td>38 inches</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1356,11 +1497,11 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <div class="position-relative">
+            <div class="position-relative bg-transparent text-center p-2">
                 <img src="<?= base_url('assets/new_website/img/combo3.webp') ?>" alt="">
-                <a href="#" class="dots dot1" data-text="View matching Earings"></a>
-                <a href="#" class="dots dot2" data-text="View matching Dresses"></a>
-                <a href="#" class="dots dot3" data-text="View matching Sandals"></a>
+                <a href="" class="dots dot1" data-text="View matching Earings"></a>
+                <a href="" class="dots dot2" data-text="View matching Dresses"></a>
+                <a href="" class="dots dot3" data-text="View matching Sandals"></a>
             </div>
         </dialog>
         <div class="customerReveiwDialog">
@@ -1380,7 +1521,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-12 p-2">
-                    <div class="border-bottom py-2">
+                    <div class="py-2">
                         <div class="mb-1">
                             <span class="text-dark p-1 rounded-lg border">4 <i class="fa-solid fa-star fs12" style="color: #FFD700;"></i></span>
                         </div>
@@ -1529,7 +1670,7 @@
         <div class="youtubePopup">
             <div class="position-relative w-100 h-100 d-flex justify-content-center align-items-center">
                 <button class="btn youtubePopupCloseBtn"><i class="fa-solid fa-xmark"></i></button>
-                <iframe width="914" height="514" src="https://www.youtube.com/embed/E3UxSs2TS2Q" title="Trend In Real Life With Myntra" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/E3UxSs2TS2Q" title="Trend In Real Life With Myntra" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
         <section class="saleTimerStripContainer border">
@@ -1539,16 +1680,16 @@
                 </p>
             </div>
         </section>
-        <section class="text-dark">
+        <!-- <section class="text-dark">
             <div class="px-3 my-2">
                 <ul class="d-flex" style="gap: 4px;font-size: 14px;">
                     <li><a href="#" class="text-secondary">Home /</a></li>
                     <li class="font-weight-bold"><h1 style="all:unset;">Products</h1></li>
                 </ul>
             </div>
-        </section>
+        </section> -->
         <section>
-            <div class="productHeroSection row m-0">
+            <div class="productHeroSection row m-0 mt-">
                 <div class="col-lg-7 col-md-6 col-12">
                     <div class="d-lg-block d-md-block d-sm-block d-none">
                         <div class="productImageContainer">
@@ -1852,11 +1993,11 @@
                     <hr class="m-0">
                     <div class="my-3">
                         <p class="m-0 mb-3 font-weight-bold text-dark">SELECT DELIVERY LOCATION</p>
-                        <div class="border rounded-lg p-2 d-inline">
-                            <form class="d-inline" id="pincodeForm">
-                                <input type="number" name="pincode" placeholder="Enter coupon code" class="pincodeInput">
+                        <div class="border rounded-lg py-1 px-2 d-lg-inline-block d-md-inline-block d-block">
+                            <form class="d-flex" id="pincodeForm">
+                                <input type="number" name="pincode" placeholder="Enter coupon code" class="pincodeInput flex-grow-1">
                                 <button class="pincodeBtn fs12">CHECK</button>
-                                <button type="button" class="pincodeChangeBtn" style="display: none;">CHANGE</button>
+                                <button type="button" class="pincodeChangeBtn fs12" style="display: none;">CHANGE</button>
                             </form>
                         </div>
                         <p class="m-0 fs12 mt-1 text-success pincodeSuccessMsg" style="display: none;"><i class="fa-solid fa-circle-check mr-1"></i> Pincode verified</p>
@@ -2829,6 +2970,19 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loginPromptContainer').style.display = 'block';
+                document.body.classList.add("sidebar-open");
+            }, 5000)
+        });
+
+        const closeLoginPromptBtn = document.querySelector(".closeLoginPromptBtn");
+
+        closeLoginPromptBtn.addEventListener("click", () => {
+            document.querySelector('.loginPromptContainer').style.display = 'none';
+            document.body.classList.remove("sidebar-open");
+        });
 
         const scrollBtn = document.querySelector('.scrollBtn')
 
@@ -2843,7 +2997,7 @@
 
         reviewScrollBtn.addEventListener('click', () => {
             window.scrollBy({
-                top: 2200,
+                top: 2300,
                 behavior: 'smooth'
             });
         })
@@ -3213,6 +3367,30 @@
             document.body.classList.remove("sidebar-open");
         })
 
+        const sections = document.querySelectorAll(".sidebarContent section");
+        const tabButtons = document.querySelectorAll(".tabButton");
+        const sidebarContent = document.querySelector('.sidebarContent')
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const navLink = document.querySelector(`.tabButton[href="#${id}"]`);
+
+                if (entry.isIntersecting) {
+                    navLink.classList.add('active');
+                    entry.target.classList.add('active');
+                } else {
+                    navLink.classList.remove('active');
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+
         const modalInsightBtn = document.querySelector(".modalInsightBtn");
         const insightDialog = document.querySelector(".insightDialog");
         const closeInsightDialogBtn = document.querySelector("#closeInsightDialogBtn");
@@ -3280,18 +3458,7 @@
             }, 3000);
         }
 
-        const howToMeasure = document.getElementById("sizeChartBtn");
-        const howToMeasureBtn = document.getElementById("howToMeasureBtn");
-        const tabButtons = document.querySelectorAll(".tabButton");
-
-        tabButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                tabButtons.forEach(btn => {
-                    btn.classList.remove("active");
-                })
-                button.classList.add("active");
-            })
-        })
+        
 
         const fashionModalBtn = document.querySelectorAll(".fashionModalBtn");
         const youtubePopupCloseBtn = document.querySelector(".youtubePopupCloseBtn");
