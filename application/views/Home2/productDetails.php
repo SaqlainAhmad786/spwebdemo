@@ -84,32 +84,6 @@
             border-radius: 4px;
         }
 
-        .callBtn{
-            position: fixed;
-            bottom: 58px;
-            left: 20px;
-            z-index: 100;
-            background-color: var(--maincolor);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 100vh;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .notifyBtn{
-            position: fixed;
-            bottom: 104px;
-            left: 20px;
-            z-index: 100;
-            background-color: var(--maincolor);
-            color: white;
-            padding: 2px 0px;
-            border-radius: 100vh;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
         .addBtnContainer{
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -287,8 +261,8 @@
         }
 
         .productImageSwiper{
-            height: 440px;
-            padding-bottom: 34px;
+            height: 412px;
+            padding-bottom: 28px;
         }
         
         .productImageSwiper .swiper-slide img{
@@ -1021,7 +995,7 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-            z-index: 100000;
+            z-index: 99990;
             display: none;
         }
 
@@ -1154,6 +1128,51 @@
             }
         }
 
+        .productImageZoomDialog{
+            background-color:white;
+            display: none;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100dvh;
+            z-index: 99999;
+        }
+
+        .mobileZoomImg{
+            background-color: white;
+            display: none;
+            width: 100%;  /* Adjust based on screen */
+            height: 100vh;  /* Full screen height */
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            touch-action: none;
+            z-index: 20;
+        }
+
+        .closeMobileZoomImg{
+            background-color: white;
+            padding: 6px 10px;
+            color: var(--maincolor);
+            border-radius: 100vh;
+        }
+
+        .mobileZoomImg button{
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .movableImg {
+            max-width: 1000px;
+            height: 1000px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: grab;
+        }
+
         @media (width < 1100px) {
             .similarProductsContainer{
                 grid-template-columns: repeat(4, 1fr);
@@ -1205,7 +1224,7 @@
             .homeBtn{
                 background-color: white;
                 margin: 0;
-                padding: 6px;
+                padding-block: 6px;
                 position: sticky;
                 width: 100%;
                 bottom: 0;
@@ -1241,6 +1260,21 @@
                 padding: 6px 8px;
                 font-size: 12px;
             }
+
+            .category_section{
+                display: none;
+            }
+            
+            .likeBtn:hover{
+                background-color: var(--maincolor);
+                color: white;
+            }
+
+            .shareBtn:hover{
+                background-color: var(--maincolor);
+                color: white;
+            }
+            
         }
         
     </style>
@@ -1627,12 +1661,6 @@
                 </a>
             </div>
         </dialog>
-        <div class="shadow-lg notifyBtn d-lg-none d-md-none d-block">
-            <button class="btn text-light notifyDialogBtn"><i class="fa-solid fa-bell"></i></button>
-        </div>
-        <div class="shadow-lg callBtn d-lg-none d-md-none d-block">
-            <a href="tel:1234567890"><i class="fa-solid fa-phone"></i></a>
-        </div>
         <dialog class="dialog2 notifyDialog border-top-0 text-left" id="dialog">
             <div>
                 <div class="d-flex justify-content-end align-items-center px-3 py-2 border-bottom">
@@ -1673,13 +1701,37 @@
                 <iframe src="https://www.youtube.com/embed/E3UxSs2TS2Q" title="Trend In Real Life With Myntra" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
-        <section class="saleTimerStripContainer border">
+        <div class="productImageZoomDialog">
+            <div class="d-flex justify-content-end">
+                <button class="btn closeProductImageZoomDialogBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="swiper pb-5 productImageSwiper2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="mobileZoomImgBtn" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="mobileZoomImgBtn" alt="">
+                    </div>
+                </div>
+                <div class="mobileZoomImg">
+                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="movableImg"  alt="">
+                    <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
+                </div>
+                <div class="mobileZoomImg">
+                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="movableImg" alt="">
+                    <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <!-- <section class="saleTimerStripContainer border">
             <div class="saleTimerStrip">
                 <p class="m-0 text-secondary">Sale ends
                     in- <span>10</span>days:<span>10</span>hrs:<span>10</span>min:<span>10</span>sec
                 </p>
             </div>
-        </section>
+        </section> -->
         <!-- <section class="text-dark">
             <div class="px-3 my-2">
                 <ul class="d-flex" style="gap: 4px;font-size: 14px;">
@@ -1689,7 +1741,7 @@
             </div>
         </section> -->
         <section>
-            <div class="productHeroSection row m-0 mt-">
+            <div class="productHeroSection row m-0 mt-2">
                 <div class="col-lg-7 col-md-6 col-12">
                     <div class="d-lg-block d-md-block d-sm-block d-none">
                         <div class="productImageContainer">
@@ -1757,7 +1809,7 @@
                                 <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 12px;">
                                 <span>| 10</span>
                             </a>
-                            <button class="btn text-light px-2 py-1 fs12 rounded-pill scrollBtn" style="background-color: rgba(0, 0, 0, 0.5);"> <img src="<?= base_url('assets/new_website/img/cards.png') ?>" style="width: 14px;" alt=""> VIEW SIMILAR</button>
+                            <button class="btn text-light px-2 py-1 fs12 rounded-pill scrollBtn" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1000"> <img src="<?= base_url('assets/new_website/img/cards.png') ?>" style="width: 14px;" alt=""> VIEW SIMILAR</button>
                         </div>
                     </div>
                     <div>
@@ -1990,6 +2042,10 @@
                         <button class="btn fs14 addToBagBtn"><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
                         <button class="btn fs14 wishlistBtn"><i class="fa-regular fa-heart"></i> WISHLIST</button>
                     </div>
+                    <div class="mx-0 addBtnContainer pb-2 d-lg-none d-md-none d-grid">
+                        <a href="tel:9876543210" class="btn fs14 border text-secondary callBtn"><i class="fa-solid fa-phone text-dark"></i> CALL</a>
+                        <button class="btn fs14 border text-secondary notifyDialogBtn"><i class="fa-regular fa-bell text-dark"></i> NOTIFY</button>
+                    </div>
                     <hr class="m-0">
                     <div class="my-3">
                         <p class="m-0 mb-3 font-weight-bold text-dark">SELECT DELIVERY LOCATION</p>
@@ -2019,7 +2075,7 @@
                                             <div class="circle1"></div>
                                             <div class="circle2"></div>
                                             <div class="d-flex justify-content-between">
-                                                <p class="m-0 fs14 text-left" style="width: 70%;">Lorem ipsum dolor sit amet consectetur adipisicing elit?</p>
+                                                <p class="m-0 fs14 text-left" style="width: 70%;">Lorem ipsum dolor sit amet consectetur?</p>
                                                 <button class="float-right btn p-0 m-0 font-weight-bold text-light" style="font-size: 12px; white-space: nowrap;" data-toggle="collapse" data-target="#couponOne"
                                                 aria-expanded="true" aria-controls="couponOne">See more</button>
                                             </div>
@@ -2051,7 +2107,7 @@
                                             <div class="circle1"></div>
                                             <div class="circle2"></div>
                                             <div class="d-flex justify-content-between">
-                                                <p class="m-0 fs14 text-left" style="width: 70%;">Lorem ipsum dolor sit amet consectetur adipisicing elit?</p>
+                                                <p class="m-0 fs14 text-left" style="width: 70%;">Lorem ipsum dolor sit amet consectetur?</p>
                                                 <button class="float-right btn p-0 m-0 font-weight-bold text-light" style="font-size: 12px; white-space: nowrap;" data-toggle="collapse" data-target="#couponOne"
                                                 aria-expanded="true" aria-controls="couponOne">See more</button>
                                             </div>
@@ -2083,7 +2139,7 @@
                                             <div class="circle1"></div>
                                             <div class="circle2"></div>
                                             <div class="d-flex justify-content-between">
-                                                <p class="m-0 fs14 text-left" style="width: 70%;">Lorem ipsum dolor sit amet consectetur adipisicing elit?</p>
+                                                <p class="m-0 fs14 text-left" style="width: 70%;">Lorem ipsum dolor sit amet consectetur?</p>
                                                 <button class="float-right btn p-0 m-0 font-weight-bold text-light" style="font-size: 12px; white-space: nowrap;" data-toggle="collapse" data-target="#couponOne"
                                                 aria-expanded="true" aria-controls="couponOne">See more</button>
                                             </div>
@@ -2196,29 +2252,57 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <a href="#" class="text-dark lookSwiperItem">
-                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg')?>" style="height: 120px;" alt="">
-                                        <p class="m-0 mt-2 font-weight-bold" style="line-height: 1.25">Shirt</p>
+                                        <img src="<?= base_url('assets/new_website/img/look1.avif')?>" style="height: 120px;" alt="">
+                                        <p class="m-0 mt-2 font-weight-bold" style="line-height: 1.25">Lorem ipsum</p>
                                         <p class="m-0 mt-1 fs12" style="line-height: 1.25">₹1,998</p>
                                     </a>
                                 </div>
                                 <div class="swiper-slide">
                                     <a href="#" class="text-dark lookSwiperItem">
-                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg')?>" style="height: 120px;" alt="">
-                                        <p class="m-0 mt-2 font-weight-bold" style="line-height: 1.25">Shirt</p>
+                                        <img src="<?= base_url('assets/new_website/img/look2.avif')?>" style="height: 120px;" alt="">
+                                        <p class="m-0 mt-2 font-weight-bold" style="line-height: 1.25">Lorem ipsum</p>
                                         <p class="m-0 mt-1 fs12" style="line-height: 1.25">₹1,998</p>
                                     </a>
                                 </div>
                                 <div class="swiper-slide">
                                     <a href="#" class="text-dark lookSwiperItem">
-                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg')?>" style="height: 120px;" alt="">
-                                        <p class="m-0 mt-2 font-weight-bold" style="line-height: 1.25">Shirt</p>
+                                        <img src="<?= base_url('assets/new_website/img/look3.avif')?>" style="height: 120px;" alt="">
+                                        <p class="m-0 mt-2 font-weight-bold" style="line-height: 1.25">Lorem ipsum</p>
                                         <p class="m-0 mt-1 fs12" style="line-height: 1.25">₹1,998</p>
                                     </a>
                                 </div>
                                 <div class="swiper-slide">
                                     <a href="#" class="text-dark lookSwiperItem">
-                                        <img src="<?= base_url('assets/new_website/img/product-1.jpg')?>" style="height: 120px;" alt="">
-                                        <p class="m-0 mt-2 font-weight-bold" style="line-height: 1.25">Shirt</p>
+                                        <img src="<?= base_url('assets/new_website/img/look4.avif')?>" style="height: 120px;" alt="">
+                                        <p class="m-0 mt-2 font-weight-bold" style="line-height: 1.25">Lorem ipsum</p>
+                                        <p class="m-0 mt-1 fs12" style="line-height: 1.25">₹1,998</p>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#" class="text-dark lookSwiperItem">
+                                        <img src="<?= base_url('assets/new_website/img/look5.avif')?>" style="height: 120px;" alt="">
+                                        <p class="m-0 mt-2 font-weight-bold" style="line-height: 1.25">Lorem ipsum</p>
+                                        <p class="m-0 mt-1 fs12" style="line-height: 1.25">₹1,998</p>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#" class="text-dark lookSwiperItem">
+                                        <img src="<?= base_url('assets/new_website/img/look6.avif')?>" style="height: 120px;" alt="">
+                                        <p class="m-0 mt-2 font-weight-bold" style="line-height: 1.25">Lorem ipsum</p>
+                                        <p class="m-0 mt-1 fs12" style="line-height: 1.25">₹1,998</p>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#" class="text-dark lookSwiperItem">
+                                        <img src="<?= base_url('assets/new_website/img/look7.avif')?>" style="height: 120px;" alt="">
+                                        <p class="m-0 mt-2 font-weight-bold" style="line-height: 1.25">Lorem ipsum</p>
+                                        <p class="m-0 mt-1 fs12" style="line-height: 1.25">₹1,998</p>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#" class="text-dark lookSwiperItem">
+                                        <img src="<?= base_url('assets/new_website/img/look8.avif')?>" style="height: 120px;" alt="">
+                                        <p class="m-0 mt-2 font-weight-bold" style="line-height: 1.25">Lorem ipsum</p>
                                         <p class="m-0 mt-1 fs12" style="line-height: 1.25">₹1,998</p>
                                     </a>
                                 </div>
@@ -2988,7 +3072,7 @@
 
         scrollBtn.addEventListener('click', () => {
             window.scrollBy({
-                top: 4000,
+                top: 3950,
                 behavior: 'smooth'
             });
         })
@@ -3109,12 +3193,33 @@
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
+                breakpoints: {
+                    568: {
+                        slidesPerView: 4
+                    },
+                    300: {
+                        slidesPerView: 3
+                    },
+                    0: {
+                        slidesPerView: 2
+                    }
+                }
         });
 
         var swiper6 = new Swiper('.productImageSwiper', {
                 slidesPerView: 1,
                 spaceBetween: 16,
                 autoplay:true,
+                loop: false,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+        });
+        var swiper61 = new Swiper('.productImageSwiper2', {
+                slidesPerView: 1,
+                spaceBetween: 16,
+                autoplay:false,
                 loop: false,
                 pagination: {
                     el: ".swiper-pagination",
@@ -3498,6 +3603,96 @@
                 btn.innerText = "Copied";
             })
         })
+
+        const mobileZoomSwiperBtn = document.querySelectorAll(".productImageSwiper .swiper-slide");
+        const productImageZoomDialog = document.querySelector(".productImageZoomDialog");
+        const closeProductImageZoomDialogBtn = document.querySelector(".closeProductImageZoomDialogBtn");
+
+        mobileZoomSwiperBtn.forEach(btn => {
+            btn.addEventListener("click", () => {
+                productImageZoomDialog.style.display = "block";
+                document.body.classList.add("sidebar-open");
+            })
+        })
+
+        closeProductImageZoomDialogBtn.addEventListener("click", () => {
+            productImageZoomDialog.style.display = "none";
+            document.body.classList.remove("sidebar-open");
+        })
+
+        const mobileZoomImgBtns = document.querySelectorAll(".mobileZoomImgBtn");
+        const mobileZoomImgs = document.querySelectorAll(".mobileZoomImg");
+        const closeMobileZoomImg = document.querySelectorAll(".closeMobileZoomImg");
+        let activeImage = null;
+
+        mobileZoomImgBtns.forEach((img, index) => {
+            img.addEventListener("click", () => {
+                mobileZoomImgs[index].style.display = "block";
+                mobileZoomImgs[index].children[0].classList.add("active")
+                activeImage = mobileZoomImgs[index].children[0];
+                closeMobileZoomImg[index].addEventListener("click", () => {
+                    mobileZoomImgs[index].style.display = "none";
+                    mobileZoomImgs[index].children[0].classList.remove("active")
+                })
+            })
+        })
+
+        // closeZoomImgBtns.forEach((btn, index) => {
+        //     btn.addEventListener("click", () => {
+        //         mobileZoomImgs[index].style.display = "none";
+        //     })
+        // })
+
+        const movableImgs = document.querySelectorAll('.movableImg');
+        let isDragging = false;
+        let startX, startY, initialX, initialY;
+
+        movableImgs.forEach(movableImg => {
+            movableImg.addEventListener('mousedown', startDrag);
+            movableImg.addEventListener('touchstart', startDrag, { passive: false });
+
+            movableImg.addEventListener('mousemove', drag);
+            movableImg.addEventListener('touchmove', drag, { passive: false });
+
+            movableImg.addEventListener('mouseup', stopDrag);
+            movableImg.addEventListener('touchend', stopDrag);
+        })
+        
+
+        function startDrag(e) {
+            e.preventDefault();
+            isDragging = true;
+            
+            // Get starting positions
+            startX = (e.type === 'touchstart') ? e.touches[0].clientX : e.clientX;
+            startY = (e.type === 'touchstart') ? e.touches[0].clientY : e.clientY;
+
+            // Store the current position of the image
+            initialX = activeImage.offsetLeft;
+            initialY = activeImage.offsetTop;
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+
+            e.preventDefault();
+            
+            // Get the new cursor/touch position
+            let currentX = (e.type === 'touchmove') ? e.touches[0].clientX : e.clientX;
+            let currentY = (e.type === 'touchmove') ? e.touches[0].clientY : e.clientY;
+
+            // Calculate how far the pointer has moved
+            const dx = currentX - startX;
+            const dy = currentY - startY;
+
+            // Move the image by adjusting the 'top' and 'left' properties
+            activeImage.style.left = initialX + dx + 'px';
+            activeImage.style.top = initialY + dy + 'px';
+        }
+
+        function stopDrag() {
+            isDragging = false;
+        }
         
     </script>
     <?php include('include/footer.php'); ?>
