@@ -196,10 +196,10 @@
         .productImageContainer {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .productImageContainer img {
+        .productImageContainer .zoom-container img {
             aspect-ratio: 9/16;
             object-fit: cover;
         }
@@ -261,12 +261,12 @@
         }
 
         .productImageSwiper{
-            height: 412px;
+            height: 480px;
             padding-bottom: 28px;
         }
         
         .productImageSwiper .swiper-slide img{
-            object-fit: cover;
+            object-fit: contain;
             width: 100%;
         }
 
@@ -668,11 +668,13 @@
         }
 
         .toast {
-            min-width: 250px;
+            min-width: 220px;
             margin-bottom: 10px;
-            padding: 15px;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 12px;
             color: #fff;
-            background-color: #333;
+            background-color: var(--maincolor);
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             opacity: 0;
@@ -686,12 +688,13 @@
         }
 
         .toast.success {
-            background-color: #333333;
+            background-color: var(--maincolor);
+            border: 1px solid green;
             color: white;
         }
 
         .toast.error {
-            background-color: #333333;
+            background-color: var(--maincolor);
             border: 1px solid red;
             color: white;
         }
@@ -991,7 +994,6 @@
         }
 
         .loginPromptContainer{
-            background: white;
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -1173,6 +1175,79 @@
             cursor: grab;
         }
 
+        .cartCounterBtn {
+            position: relative;
+        }
+
+        .cartCounter {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background-color: var(--maincolor);
+            color: white;
+            font-size: 10px;
+            padding-inline:6px;
+            border-radius: 100vh;
+        }
+
+        .stickySection{
+            position: sticky;
+            top: 0;
+            height: 100%;
+            top: 9.5rem;
+            z-index: 10;
+        }
+
+        .parentcontainer {
+            position: relative;
+        }
+
+        .imgContainer {
+            aspect-ratio: 9/16;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .imgContainer img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .zoomWindow {
+            position: absolute;
+            width: 500px;
+            height: 100%;
+            overflow: hidden;
+            display: none;
+            top: 0;
+            left: 100%;
+            z-index: 100;
+            box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+        }
+
+        .zoomWindow img {
+            position: absolute;
+            max-width: 1500px;
+            height: 1500px;
+            object-fit: cover;
+        }
+
+        .lens {
+            width: 150px;
+            height: 150px;
+            background: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            border: 2px solid var(--pinkcolor);
+            display: none;
+            pointer-events: none;
+        }
+
+        /* .lens, .zoomWindow img {
+            will-change: transform, left, top;
+            transform: translateZ(0); /* Triggers hardware acceleration */
+        } */
+
         @media (width < 1100px) {
             .similarProductsContainer{
                 grid-template-columns: repeat(4, 1fr);
@@ -1200,6 +1275,11 @@
 
             .customerReveiwDialog{
                 width: 85%;
+            }
+
+            .stickySection{
+                position: relative;
+                top: 0;
             }
         }
 
@@ -1261,7 +1341,7 @@
                 font-size: 12px;
             }
 
-            .category_section{
+            .category_section, header{
                 display: none;
             }
             
@@ -1274,7 +1354,17 @@
                 background-color: var(--maincolor);
                 color: white;
             }
+
+            .paddingTop{
+                padding-top: 36px;
+            }
             
+        }
+
+        @media (width < 385px) {
+            .productImageSwiper .swiper-slide img{
+                object-fit: cover;
+            }
         }
         
     </style>
@@ -1285,45 +1375,47 @@
     <main>
         <div id="toaster"></div>
         <div class="loginPromptContainer">
-            <div class="position-absolute" style="top: 4px; right: 4px;">
-                <button class="btn closeLoginPromptBtn"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div>
-                <img src="<?=base_url('assets/new_website/img/login-cover.jpg')?>" alt="">
-            </div>
-            <div class="px-4 py-3">
-                <p class="mb-2" style="font-size: 20px; color: gray; font-family: 'League Spartan', sans-serif;">
-                    <span class="font-weight-bold" style="font-size: 24px; color: black;">Login</span>
-                     or
-                     <span class="font-weight-bold"
-                        style="font-size: 24px; color: black;">Signup</span>
-                </p>
-                <p class="mb-1" style="font-size: 12px; color: var(--maincolor);">Please enter your mobile number and verify with OTP</p>
-                <form id="loginForm">
-                    <div class="inputGroup">
-                        
-                        <div class="inputFieldContainer container1">
-                            <span>+91 | </span>
-                            <input type="number" class="numberInput" id="number" oninput="this.value = this.value.slice(0, 10);" placeholder="Enter Mobile Number*">
-                        </div>
-                        <p class="m-0 p-0 errorMsg text-danger"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid mobile number</p>
-                    </div>
-                    <div class="d-flex align-items-center mb-2"
-                        style="gap: 4px;font-size: 12px;font-weight: 500; color: var(--maincolor);">
-                        <input type="checkbox" id="tandc">
-                        <label class="m-0" for="tandc">I ACCEPT TERMS AND CONDITIONS</label>
-                    </div>
-                    <p class="mb-2" style="font-size: 12px; line-height: 1.1;">By continuing, I agree to the <a href="#"
-                            style="color: var(--maincolor); font-weight: 600;">Terms of Use</a>
-                        and <a href="#" style="color: var(--maincolor); font-weight: 600;">Privacy Policy</a></p>
-                    <button type="submit" class="loginBtn">LOGIN</button>
-                    <p class="text-center" style="font-size: 14px; color: gray;">Login via <a href="./loginEmail.html"
-                            style="color: var(--maincolor); font-weight: 600;">Email</a>
+            <div class="bg-white position-relative" style="max-width: 380px; margin-inline:auto;">
+                <div class="position-absolute" style="top: 4px; right: 4px;">
+                    <button class="btn closeLoginPromptBtn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div>
+                    <img src="<?=base_url('assets/new_website/img/login-cover.jpg')?>" alt="">
+                </div>
+                <div class="px-4 py-3">
+                    <p class="mb-2" style="font-size: 20px; color: gray; font-family: 'League Spartan', sans-serif;">
+                        <span class="font-weight-bold" style="font-size: 24px; color: black;">Login</span>
+                         or
+                         <span class="font-weight-bold"
+                            style="font-size: 24px; color: black;">Signup</span>
                     </p>
-                    <p class="text-center mb-0" style="font-size: 12px; color: gray;">Having Trouble? <a
-                            href="mailto:me@example.com?subject=Me&body=HELP!!!"
-                            style=" color: var(--maincolor); font-weight: 600;">Get Help</a></p>
-                </form>
+                    <p class="mb-1" style="font-size: 12px; color: var(--maincolor);">Please enter your mobile number and verify with OTP</p>
+                    <form id="loginForm">
+                        <div class="inputGroup">
+                
+                            <div class="inputFieldContainer container1">
+                                <span>+91 | </span>
+                                <input type="number" class="numberInput" id="number" oninput="this.value = this.value.slice(0, 10);" placeholder="Enter Mobile Number*">
+                            </div>
+                            <p class="m-0 p-0 errorMsg text-danger"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Please enter a valid mobile number</p>
+                        </div>
+                        <div class="d-flex align-items-center mb-2"
+                            style="gap: 4px;font-size: 12px;font-weight: 500; color: var(--maincolor);">
+                            <input type="checkbox" id="tandc">
+                            <label class="m-0" for="tandc">I ACCEPT TERMS AND CONDITIONS</label>
+                        </div>
+                        <p class="mb-2" style="font-size: 12px; line-height: 1.1;">By continuing, I agree to the <a href="#"
+                                style="color: var(--maincolor); font-weight: 600;">Terms of Use</a>
+                            and <a href="#" style="color: var(--maincolor); font-weight: 600;">Privacy Policy</a></p>
+                        <button type="submit" class="loginBtn">LOGIN</button>
+                        <p class="text-center" style="font-size: 14px; color: gray;">Login via <a href="./loginEmail.html"
+                                style="color: var(--maincolor); font-weight: 600;">Email</a>
+                        </p>
+                        <p class="text-center mb-0" style="font-size: 12px; color: gray;">Having Trouble? <a
+                                href="mailto:me@example.com?subject=Me&body=HELP!!!"
+                                style=" color: var(--maincolor); font-weight: 600;">Get Help</a></p>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="sidebar">
@@ -1698,33 +1790,25 @@
         <div class="youtubePopup">
             <div class="position-relative w-100 h-100 d-flex justify-content-center align-items-center">
                 <button class="btn youtubePopupCloseBtn"><i class="fa-solid fa-xmark"></i></button>
-                <iframe src="https://www.youtube.com/embed/E3UxSs2TS2Q" title="Trend In Real Life With Myntra" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/E3UxSs2TS2Q?controls=0" title="Trend In Real Life With Myntra" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
-        <div class="productImageZoomDialog">
-            <div class="d-flex justify-content-end">
-                <button class="btn closeProductImageZoomDialogBtn"><i class="fa-solid fa-xmark"></i></button>
+        <section class="d-lg-none d-md-none d-sm-none d-block position-fixed w-100 bg-white" style="z-index: 10000; top:0;" >
+            <div class="d-flex justify-content-between align-items-center px-3 py-1 shadow-sm">
+                <div class="d-flex align-items-center text-dark">
+                    <a href=""><span style="font-size: 18px;"><i class="fa-solid fa-arrow-left"></i></span></a>
+                    <a href=""><img src="<?= base_url('assets/new_website/img/favicon.png') ?>" style="height: 40px;"  alt=""></a>
+                </div>
+                <div>
+                    <a class="cartCounterBtn" href="">
+                        <img src="<?= base_url('assets/new_website/img/bag.png') ?>" style="width: 20px;" alt="">
+                        <div>
+                            <span class="cartCounter m-0">10</span>
+                        </div>
+                    </a>
+                </div>
             </div>
-            <div class="swiper pb-5 productImageSwiper2">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="mobileZoomImgBtn" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="mobileZoomImgBtn" alt="">
-                    </div>
-                </div>
-                <div class="mobileZoomImg">
-                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="movableImg"  alt="">
-                    <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
-                </div>
-                <div class="mobileZoomImg">
-                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="movableImg" alt="">
-                    <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
+        </section>
         <!-- <section class="saleTimerStripContainer border">
             <div class="saleTimerStrip">
                 <p class="m-0 text-secondary">Sale ends
@@ -1741,11 +1825,11 @@
             </div>
         </section> -->
         <section>
-            <div class="productHeroSection row m-0 mt-2">
-                <div class="col-lg-7 col-md-6 col-12">
-                    <div class="d-lg-block d-md-block d-sm-block d-none">
+            <div class="productHeroSection row m-0 mt-2 paddingTop">
+                <div class="col-lg-6 col-md-6 col-12 px-lg-2 px-md-2 px-sm-2 p-0 stickySection">
+                    <div class="d-lg-block d-md-block d-sm-none d-none">
                         <div class="productImageContainer">
-                            <div class="zoom-container">
+                            <!-- <div class="zoom-container">
                                 <img class="zoom-image" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
                             </div>
                             <div class="zoom-container position-relative">
@@ -1790,16 +1874,69 @@
                             <video width="100%" height="100%" autoplay muted loop>
                                 <source src="<?= base_url('assets/website/images/product/productVideo.mp4') ?>" type="video/mp4">
                                 Your browser does not support the video tag.
+                            </video> -->
+                            <div class="parentcontainer">
+                                <div class="imgContainer" data-zoom="1">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoom Image" />
+                                    <span class="lens"></span>
+                                </div>
+                                <div class="zoomWindow" data-zoom="1">
+                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoomed Image" />
+                                </div>
+                            </div>
+                            <div class="parentcontainer">
+                                <div class="imgContainer first" data-zoom="2">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoom Image" />
+                                    <span class="lens"></span>
+                                </div>
+                                <div class="second zoomWindow" data-zoom="2">
+                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoomed Image" />
+                                </div>
+                            </div>
+                            <div class="parentcontainer">
+                                <div class="imgContainer first" data-zoom="3">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoom Image" />
+                                    <span class="lens"></span>
+                                </div>
+                                <div class="second zoomWindow" data-zoom="3">
+                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoomed Image" />
+                                </div>
+                            </div>
+                            <div class="parentcontainer">
+                                <div class="imgContainer first" data-zoom="4">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoom Image" />
+                                    <span class="lens"></span>
+                                </div>
+                                <div class="second zoomWindow" data-zoom="4">
+                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoomed Image" />
+                                </div>
+                            </div>
+                            <div class="parentcontainer">
+                                <div class="imgContainer first" data-zoom="5">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoom Image" />
+                                    <span class="lens"></span>
+                                </div>
+                                <div class="second zoomWindow" data-zoom="5">
+                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoomed Image" />
+                                </div>
+                            </div>
+
+                            <video width="100%" height="100%" autoplay muted loop>
+                                <source src="<?= base_url('assets/website/images/product/productVideo.mp4') ?>" type="video/mp4">
+                                Your browser does not support the video tag.
                             </video>
                         </div>
                     </div>
-                    <div class="d-lg-none d-md-none d-sm-none d-block swiper productImageSwiper">
+                    <div class="d-lg-none d-md-none d-sm-block d-block swiper productImageSwiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="rounded-lg overflow-hidden" alt="">
+                                <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="rounded-lg overflow-hidden" alt="">
+                                <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
                             </div>
                         </div>
                         <div class="swiper-pagination"></div>
@@ -1812,8 +1949,38 @@
                             <button class="btn text-light px-2 py-1 fs12 rounded-pill scrollBtn" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1000"> <img src="<?= base_url('assets/new_website/img/cards.png') ?>" style="width: 14px;" alt=""> VIEW SIMILAR</button>
                         </div>
                     </div>
-                    <div>
-                        <div class="my-1 d-flex justify-content-between align-items-center">
+                    <div class="productImageZoomDialog">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn closeProductImageZoomDialogBtn"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="swiper pb-5 productImageSwiper2">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="mobileZoomImgBtn" alt="">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="mobileZoomImgBtn" alt="">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="mobileZoomImgBtn" alt="">
+                                </div>
+                            </div>
+                            <div class="mobileZoomImg">
+                                <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="movableImg"  alt="">
+                                <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
+                            </div>
+                            <div class="mobileZoomImg">
+                                <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="movableImg" alt="">
+                                <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
+                            </div>
+                            <div class="mobileZoomImg">
+                                <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="movableImg" alt="">
+                                <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    <div class="my-1 d-flex justify-content-between align-items-center px-3">
                             <button class="btn p-0 fs14 font-weight-bold d-flex align-items-center modalInsightBtn">
                                 <img src="<?= base_url('assets/new_website/img/model.jpg') ?>" style="width: 16px;" alt="">
                                 <span class="ml-1">Model insight</span>
@@ -1845,7 +2012,6 @@
                                  </div>
                                 <a href="https://wa.me/?text=Your%20custom%20message%20here" class="btn fs14 font-weight-bold shareBtn"><img src="<?= base_url('assets/new_website/img/share.png') ?>" style="width: 16px;" alt=""> Share</a>
                             </div>
-                        </div>
                     </div>
                     <div class="my-3 d-lg-block d-md-block d-none">
                         <p class="m-0 mb-1 text-dark font-weight-bold">UNLOCKING GLAMOUR</p>
@@ -1865,7 +2031,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12">
                     <div>
                         <h3 class="m-0 text-dark">Jack & Jones</h3>
                         <p class="fs12 text-secondary m-0 mb-2" style="line-height: 1;">Men Grey Slim Fit Light Fade Stretchable Jeans</p>
@@ -1911,13 +2077,13 @@
                     <hr class="my-2">
                     <div class="mb-3">
                         <p class="m-0 fs12 text-dark font-weight-bold">ROYAL CLUB PRICE:</p>
-                        <a href="#royalClub" class="d-flex align-items-center">
+                        <button class="btn p-0 d-flex align-items-center royalClubScrollBtn">
                             <img class="blinkingText" src="<?= base_url('assets/new_website/img/crown2.png') ?>" style="width: 24px;" alt="">
                             <p class="text-dark m-0 ml-1" style="font-size: 16px; font-weight: 700;">₹1,800</p>
                             <p class="m-0 ml-1 fs12" style="font-weight: 500;">MRP:</p>
                             <p class="m-0 ml-1 fs12" style="font-weight: 500; text-decoration: line-through;">₹2,998</p>
                             <p class="m-0 ml-1 fs12 border-left pl-1 text-success font-weight-bold">50% OFF</p>
-                        </a>
+                        </button>
                         <p class="m-0 text-secondary font-weight-bold fs10">inclusive of all taxes</p>
                         <div>
                         <button class="btn border p-1 m-0 mt-1 fs12 font-weight-bold royalCashBtn">
@@ -2656,7 +2822,7 @@
                 <hr class="my-3">
                 <div class="d-lg-block d-md-block d-none">
                     <div class="similarProductsContainer">
-                        <div class="border rounded-lg overflow-hidden">
+                        <a href="#" class="border rounded-lg overflow-hidden">
                             <div class="position-relative">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                 <div class="rating text-white">
@@ -2674,8 +2840,8 @@
                                     <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="border rounded-lg overflow-hidden">
+                        </a>
+                        <a href="#" class="border rounded-lg overflow-hidden">
                             <div class="position-relative">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                 <div class="rating text-white">
@@ -2693,8 +2859,8 @@
                                     <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="border rounded-lg overflow-hidden">
+                        </a>
+                        <a href="#" class="border rounded-lg overflow-hidden">
                             <div class="position-relative">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                 <div class="rating text-white">
@@ -2712,8 +2878,8 @@
                                     <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="border rounded-lg overflow-hidden">
+                        </a>
+                        <a href="#" class="border rounded-lg overflow-hidden">
                             <div class="position-relative">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                 <div class="rating text-white">
@@ -2731,8 +2897,8 @@
                                     <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="border rounded-lg overflow-hidden">
+                        </a>
+                        <a href="#" class="border rounded-lg overflow-hidden">
                             <div class="position-relative">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                 <div class="rating text-white">
@@ -2750,8 +2916,8 @@
                                     <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="border rounded-lg overflow-hidden">
+                        </a>
+                        <a href="#" class="border rounded-lg overflow-hidden">
                             <div class="position-relative">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                 <div class="rating text-white">
@@ -2769,14 +2935,33 @@
                                     <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                        <a href="#" class="border rounded-lg overflow-hidden">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
+                                <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
+                                <div class="mt-1">
+                                    <span>₹1,998</span>
+                                    <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
+                                    <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
                 <div class="d-lg-none d-md-none d-block swiper similarProductsSwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="border rounded-lg overflow-hidden">
+                            <a href="#" class="d-block border rounded-lg overflow-hidden">
                                 <div class="position-relative">
                                     <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                     <div class="rating text-white">
@@ -2794,10 +2979,10 @@
                                         <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="swiper-slide">
-                            <div class="border rounded-lg overflow-hidden">
+                            <a href="#" class="d-block border rounded-lg overflow-hidden">
                                 <div class="position-relative">
                                     <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                     <div class="rating text-white">
@@ -2815,10 +3000,10 @@
                                         <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="swiper-slide">
-                            <div class="border rounded-lg overflow-hidden">
+                            <a href="#" class="d-block border rounded-lg overflow-hidden">
                                 <div class="position-relative">
                                     <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                     <div class="rating text-white">
@@ -2836,7 +3021,7 @@
                                         <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -2846,7 +3031,7 @@
                 <hr class="my-3">
                 <div class="d-lg-block d-md-block d-none">
                     <div class="similarProductsContainer">
-                        <div class="border rounded-lg overflow-hidden">
+                        <a href="#" class="border rounded-lg overflow-hidden">
                             <div class="position-relative">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                 <div class="rating text-white">
@@ -2864,8 +3049,8 @@
                                     <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="border rounded-lg overflow-hidden">
+                        </a>
+                        <a href="#" class="border rounded-lg overflow-hidden">
                             <div class="position-relative">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                 <div class="rating text-white">
@@ -2883,8 +3068,8 @@
                                     <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="border rounded-lg overflow-hidden">
+                        </a>
+                        <a href="#" class="border rounded-lg overflow-hidden">
                             <div class="position-relative">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                 <div class="rating text-white">
@@ -2902,8 +3087,8 @@
                                     <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="border rounded-lg overflow-hidden">
+                        </a>
+                        <a href="#" class="border rounded-lg overflow-hidden">
                             <div class="position-relative">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                 <div class="rating text-white">
@@ -2921,8 +3106,8 @@
                                     <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="border rounded-lg overflow-hidden">
+                        </a>
+                        <a href="#" class="border rounded-lg overflow-hidden">
                             <div class="position-relative">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                 <div class="rating text-white">
@@ -2940,8 +3125,8 @@
                                     <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="border rounded-lg overflow-hidden">
+                        </a>
+                        <a href="#" class="border rounded-lg overflow-hidden">
                             <div class="position-relative">
                                 <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                 <div class="rating text-white">
@@ -2959,14 +3144,33 @@
                                     <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                        <a href="#" class="border rounded-lg overflow-hidden">
+                            <div class="position-relative">
+                                <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
+                                <div class="rating text-white">
+                                    <span>4.5</span>
+                                    <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 14px;">
+                                    <span>| 10</span>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <p class="text-dark font-weight-bold m-0">Lorem ipsum</p>
+                                <p class="text-secondary fs12 m-0">Lorem ipsum dolor sit amet.</p>
+                                <div class="mt-1">
+                                    <span>₹1,998</span>
+                                    <span class="text-secondary border-right pr-2" style="text-decoration: line-through;">₹2,998</span>
+                                    <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
                 <div class="d-lg-none d-md-none d-block swiper alsoLikedSwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="border rounded-lg overflow-hidden">
+                            <a href="#" class="d-block border rounded-lg overflow-hidden">
                                 <div class="position-relative">
                                     <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                     <div class="rating text-white">
@@ -2984,10 +3188,10 @@
                                         <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="swiper-slide">
-                            <div class="border rounded-lg overflow-hidden">
+                            <a href="#" class="d-block border rounded-lg overflow-hidden">
                                 <div class="position-relative">
                                     <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                     <div class="rating text-white">
@@ -3005,10 +3209,10 @@
                                         <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="swiper-slide">
-                            <div class="border rounded-lg overflow-hidden">
+                            <a href="#" class="d-block border rounded-lg overflow-hidden">
                                 <div class="position-relative">
                                     <img src="<?= base_url('assets/new_website/img/img1.png') ?>" alt="">
                                     <div class="rating text-white">
@@ -3026,7 +3230,7 @@
                                         <span class="fs12 pl-1 text-success font-weight-bold">50% OFF</span>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -3072,7 +3276,7 @@
 
         scrollBtn.addEventListener('click', () => {
             window.scrollBy({
-                top: 3950,
+                top: 3900,
                 behavior: 'smooth'
             });
         })
@@ -3080,10 +3284,34 @@
         const reviewScrollBtn = document.querySelector('.reviewScrollBtn')
 
         reviewScrollBtn.addEventListener('click', () => {
-            window.scrollBy({
-                top: 2300,
-                behavior: 'smooth'
-            });
+            if(window.innerWidth > 768){
+                window.scrollBy({
+                    top: 2300,
+                    behavior: 'smooth'
+                });
+            }else{
+                window.scrollBy({
+                    top: 2500,
+                    behavior: 'smooth'
+                })                
+            } 
+        })
+
+        const royalClubScrollBtn = document.querySelector('.royalClubScrollBtn')
+
+        royalClubScrollBtn.addEventListener('click', () => {
+            if(window.innerWidth > 768){
+                window.scrollBy({
+                    top: 1200,
+                    behavior: 'smooth'
+                });
+            }else{
+                window.scrollBy({
+                    top: 1500,
+                    behavior: 'smooth'
+                })                
+            }    
+            
         })
 
         function copyToClipboard(text) {
@@ -3207,18 +3435,26 @@
         });
 
         var swiper6 = new Swiper('.productImageSwiper', {
-                slidesPerView: 1,
-                spaceBetween: 16,
+                slidesPerView: 2,
+                spaceBetween: 0,
                 autoplay:true,
                 loop: false,
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
                 },
+                breakpoints: {
+                    700: {
+                        slidesPerView: 2
+                    },
+                    0: {
+                        slidesPerView: 1
+                    }
+                }
         });
         var swiper61 = new Swiper('.productImageSwiper2', {
                 slidesPerView: 1,
-                spaceBetween: 16,
+                spaceBetween: 0,
                 autoplay:false,
                 loop: false,
                 pagination: {
@@ -3624,12 +3860,14 @@
         const mobileZoomImgs = document.querySelectorAll(".mobileZoomImg");
         const closeMobileZoomImg = document.querySelectorAll(".closeMobileZoomImg");
         let activeImage = null;
+        let container = null;
 
         mobileZoomImgBtns.forEach((img, index) => {
             img.addEventListener("click", () => {
                 mobileZoomImgs[index].style.display = "block";
                 mobileZoomImgs[index].children[0].classList.add("active")
                 activeImage = mobileZoomImgs[index].children[0];
+                container = mobileZoomImgs[index];
                 closeMobileZoomImg[index].addEventListener("click", () => {
                     mobileZoomImgs[index].style.display = "none";
                     mobileZoomImgs[index].children[0].classList.remove("active")
@@ -3685,9 +3923,26 @@
             const dx = currentX - startX;
             const dy = currentY - startY;
 
+            // Calculate the new position
+            let newLeft = initialX + dx;
+            let newTop = initialY + dy;
+
+            const containerRect = container.getBoundingClientRect();
+            const imageRect = activeImage.getBoundingClientRect();
+
+            // Boundary checks to prevent the image from going outside the container
+            if (newLeft > 0) newLeft = 0;  // Prevent dragging past the left edge
+            if (newTop > 0) newTop = 0;    // Prevent dragging past the top edge
+
+            const maxLeft = containerRect.width - imageRect.width;
+            const maxTop = containerRect.height - imageRect.height;
+
+            if (newLeft < maxLeft) newLeft = maxLeft;  // Prevent dragging past the right edge
+            if (newTop < maxTop) newTop = maxTop;      // Prevent dragging past the bottom edge            
+
             // Move the image by adjusting the 'top' and 'left' properties
-            activeImage.style.left = initialX + dx + 'px';
-            activeImage.style.top = initialY + dy + 'px';
+            activeImage.style.left = newLeft + 'px';
+            activeImage.style.top = newTop + 'px';
         }
 
         function stopDrag() {
@@ -3695,6 +3950,57 @@
         }
         
     </script>
+    <script>
+		let isThrottled = false;
+
+        document.querySelectorAll('.imgContainer').forEach(container => {
+            const lens = container.querySelector('.lens');
+            const zoomId = container.getAttribute('data-zoom');
+            const zoomWindow = document.querySelector(`.zoomWindow[data-zoom="${zoomId}"]`);
+            const zoomedImage = zoomWindow.querySelector('.zoomedImage');
+
+            container.addEventListener('mousemove', function(e) {
+                if (isThrottled) return;
+                isThrottled = true;
+                
+                // Use requestAnimationFrame for smoother updates
+                requestAnimationFrame(() => {
+                    const rect = container.getBoundingClientRect();
+                    let x = e.clientX - rect.left;
+                    let y = e.clientY - rect.top;
+
+                    const lensHalfWidth = lens.offsetWidth / 2;
+                    const lensHalfHeight = lens.offsetHeight / 2;
+
+                    x = Math.max(lensHalfWidth, Math.min(x, rect.width - lensHalfWidth));
+                    y = Math.max(lensHalfHeight, Math.min(y, rect.height - lensHalfHeight));
+
+                    lens.style.display = "block";
+                    zoomWindow.style.display = "block";
+
+                    lens.style.left = (x - lensHalfWidth) + 'px';
+                    lens.style.top = (y - lensHalfHeight) + 'px';
+
+                    const zoomX = (x / rect.width) * zoomedImage.width;
+                    const zoomY = (y / rect.height) * zoomedImage.height;
+
+                    const zoomImageX = Math.max(zoomWindow.clientWidth / 2, Math.min(zoomX, zoomedImage.width - zoomWindow.clientWidth / 2));
+                    const zoomImageY = Math.max(zoomWindow.clientHeight / 2, Math.min(zoomY, zoomedImage.height - zoomWindow.clientHeight / 2));
+
+                    zoomedImage.style.left = -(zoomImageX - zoomWindow.clientWidth / 2) + 'px';
+                    zoomedImage.style.top = -(zoomImageY - zoomWindow.clientHeight / 2) + 'px';
+
+                    isThrottled = false;  // Reset throttle flag
+                });
+            });
+
+            container.addEventListener('mouseout', function() {
+                lens.style.display = "none";
+                zoomWindow.style.display = "none";
+            });
+        });
+
+	</script>
     <?php include('include/footer.php'); ?>
     <!-- <?php include('include/modal.php'); ?> -->
     <?php include('include/jsLinks.php'); ?>
