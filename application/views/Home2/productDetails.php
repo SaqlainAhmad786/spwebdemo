@@ -88,10 +88,20 @@
             border-radius: 4px;
         }
 
-        .addBtnContainer{
+        .addBtnContainer, .extraBtnContainer{
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap:4px;
+        }
+
+        .extraBtnContainer{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap:4px;
+        }
+        
+        .extraBtnContainer a{
+            display: none;
         }
 
         .homeBtn{
@@ -166,7 +176,7 @@
         }
 
         .sidebarContent{
-            height: 280px;
+            height: 268px;
             overflow-y: scroll; /* Enable scrolling */
             scrollbar-width: none; /* Firefox */
             -ms-overflow-style: none;
@@ -213,6 +223,10 @@
             width: 100%;
         }
 
+        .mySwiper2{
+            width: 400px;
+        }
+
         .colorSwiper{
             height: 100px;
         }
@@ -252,7 +266,7 @@
 
         .productImageSwiper{
             height: auto;
-            padding-bottom: 28px;
+            padding-bottom: 8px;
         }
         
         .productImageSwiper .swiper-slide img{
@@ -979,7 +993,7 @@
             transform: translate(-50%, -50%);
             background: white;
             width: 70%;
-            height: 80vh;
+            height: 540px;
             border-radius: 4px;
             border: 0;
             box-shadow: 0 5px 30px 0 #000;
@@ -1002,7 +1016,6 @@
         .desktopPincodeDialog{
             max-width: 500px;
             width: 500px!important;
-            height: 500px!important;
         }
 
         .loginPromptContainer{
@@ -1361,26 +1374,22 @@
         }
 
         .homeProductBtn{
-            -webkit-border-radius: 125px;
-            -webkit-border-bottom-right-radius: 6px;
-            -moz-border-radius: 125px;
-            -moz-border-radius-bottomright: 6px;
-            border-radius: 125px;
-            border-bottom-right-radius: 6px;
-            min-width: 48px;
-            min-height: 48px;
+            box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
             width: 48px;
             height: 48px;
-            box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
+            border-radius: 100vh;
+            overflow: hidden;
             transition: all 200 ease-in-out;
         }
 
         .homeProductBtn img{
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
 
         .homeProductBtn:hover{
-            box-shadow: 2px 4px 2px 1px rgba(0, 0, 0, 0.3);
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
             scale: 1.1;
         }
 
@@ -1394,6 +1403,86 @@
         .mobileHomeProductBtn .mobileExtraProductBtns{
             width: 0;
             transition: all 200ms ease-in-out;
+        }
+
+        .btn-container {
+            text-align: right;
+        }
+
+        .btn-color-mode-switch {
+            display: inline-block;
+            margin: 0px;
+            position: relative;
+        }
+
+        .btn-color-mode-switch > label.btn-color-mode-switch-inner {
+            margin: 0px;
+            width: 80px;
+            height: 26px;
+            background-color: #8340A150;
+            border-radius: 26px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+                /*box-shadow: 0px 0px 8px 0px rgba(17, 17, 17, 0.34) inset;*/
+            display: block;
+        }
+
+        .btn-color-mode-switch > label.btn-color-mode-switch-inner:before {
+            content: attr(data-on);
+            position: absolute;
+            font-size: 14px;
+            font-weight: 600;
+            top: 1px;
+            right: 8px;
+            color: #222;
+        }
+
+        .btn-color-mode-switch > label.btn-color-mode-switch-inner:after {
+            content: attr(data-off);
+            width: 42px;
+            height: 23px;
+            background: #fff;
+            border-radius: 26px;
+            position: absolute;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            left: 2px;
+            top: 2px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0px 0px 6px -2px #111;
+            padding: 5px 0px;
+            color: var(--pinkcolor);
+            font-weight: 600;
+        }
+
+        .btn-color-mode-switch input[type="checkbox"] {
+            cursor: pointer;
+            width: 50px;
+            height: 25px;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+            margin: 0px;
+        }
+
+        .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner {
+            background-color: #8340A150;
+        }
+
+        .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:after {
+            content: attr(data-on);
+            left: 35px;
+        }
+
+        .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:before {
+            content: attr(data-off);
+            right: auto;
+            left: 5px;
         }
 
         @media (width < 1100px) {
@@ -1457,6 +1546,10 @@
                 display: none;
             }
 
+            .mySwiper2{
+                width: 280px;
+            }
+
             .homeBtn{
                 background-color: white;
                 margin-block: 16px;
@@ -1516,6 +1609,16 @@
 
             .paddingTop{
                 padding-top: 36px;
+            }
+
+            .extraBtnContainer{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap:4px;
+            }
+            
+            .extraBtnContainer a{
+                display: block;
             }
             
         }
@@ -1583,11 +1686,11 @@
                     <button class="btn closeSidebarBtn"><i class="fa fa-xmark"></i></button>
                 </div>
                 <div class="d-flex gap-2">
-                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="height: 160px;" alt="">
+                    <img src="<?= base_url('assets/new_website/img/img1.png') ?>" style="height: 144px;" alt="">
                     <div class="mt-2">
                         <p class="fs16 text-dark font-weight-bold m-0">Product Name</p>
-                        <p class="fs12 text-secondary m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sint.</p>
-                        <div>
+                        <p class="fs12 text-secondary m-0" style="line-height: 1;">Lorem ipsum dolor sit amet consectetur.</p>
+                        <div class="mt-2">
                             <span class="font-weight-bold text-dark" style="font-size: 20px;">₹1,998</span>
                             <span class="text-secondary border-right pr-2" style="font-size: 16px; text-decoration: line-through;">₹2,998</span>
                             <span class="text-success font-weight-bold">50% OFF</span>
@@ -1595,13 +1698,23 @@
                     </div>
                 </div>
                 <div>
-                    <div class="pt-4 d-flex justify-content-center">
+                    <div class="pt-2 d-flex justify-content-center">
                         <div class="btn-group border rounded-pill overflow-hidden" role="group" aria-label="Basic example">
                             <a href="#sizeChart" id="sizeChartSectionBtn" class="btn fs12 tabButton">SIZE CHART</a>
                             <a href="#howToMeasure" id="howToMeasureBtn" class="btn fs12 tabButton">HOW TO MEASURE</a>
                         </div> 
                     </div>
-                    <div class="mt-3 sidebarContent">
+                    <div style="background-color: rgb(255, 0, 0, 0.05);" class="p-2 my-2 rounded-lg d-flex align-items-center">
+                        <img src="<?= base_url('assets/new_website/img/measuring-tape.png')?>" style="width: 28px;" alt="">
+                        <span class="fs12 ml-1" style="line-height: 1;">We think <span class="font-weight-bold text-dark">XL</span> would be a perfect fit for you, based on your past purchases!</span>
+                    </div>
+                    <div class="btn-container my-2">
+                        <label class="switch btn-color-mode-switch">
+                            <input value="1" id="color_mode" name="color_mode" type="checkbox">
+                            <label class="btn-color-mode-switch-inner" data-off="inch" data-on="cm" for="color_mode"></label>
+                        </label>
+                    </div>
+                    <div class="mt-2 sidebarContent">
                         <section id="sizeChart">
                             <table class="table">
                                 <tbody>
@@ -1848,28 +1961,42 @@
             <div class="d-flex justify-content-end">
                 <button class="btn closeProductImageZoomDialogBtn"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="swiper pb-5 productImageSwiper2">
+            <div class="swiper productImageSwiper2">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="mobileZoomImgBtn" alt="">
+                        <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" class="mobileZoomImgBtn" alt="">
                     </div>
                     <div class="swiper-slide">
-                        <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="mobileZoomImgBtn" alt="">
+                        <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" class="mobileZoomImgBtn" alt="">
                     </div>
                     <div class="swiper-slide">
-                        <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="mobileZoomImgBtn" alt="">
+                        <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" class="mobileZoomImgBtn" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" class="mobileZoomImgBtn" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" class="mobileZoomImgBtn" alt="">
                     </div>
                 </div>
                 <div class="mobileZoomImg">
-                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="movableImg"  alt="">
+                    <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" class="movableImg"  alt="">
                     <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
                 </div>
                 <div class="mobileZoomImg">
-                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="movableImg" alt="">
+                    <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" class="movableImg"  alt="">
                     <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
                 </div>
                 <div class="mobileZoomImg">
-                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" class="movableImg" alt="">
+                    <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" class="movableImg"  alt="">
+                    <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
+                </div>
+                <div class="mobileZoomImg">
+                    <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" class="movableImg" alt="">
+                    <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
+                </div>
+                <div class="mobileZoomImg">
+                    <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" class="movableImg" alt="">
                     <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -1883,7 +2010,7 @@
             </div>
             <div class="row m-0">
                 <div class="col-lg-7 col-md-6 col-sm-12 col-12 position-relative p-2" style="background: radial-gradient(circle at 52.1% -29.6%, rgb(144, 17, 105) 0%, rgb(51, 0, 131) 100.2%);">
-                    <div class="swiper mySwiper2 mb-2" style="height: 400px">
+                    <div class="swiper mySwiper2 mb-2">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
@@ -1904,7 +2031,7 @@
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
-                    <div thumbsSlider="" class="swiper mySwiper" style="height: 60px">
+                    <div thumbsSlider="" class="swiper mySwiper px-5" style="height: 60px">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
@@ -1974,7 +2101,7 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <div class="p-lg-3 p-md-3 p-2 customerImagesContainer">
+            <div class="px-2 pt-2 pb-5 customerImagesContainer">
                 <a href="#">
                     <img src="<?= base_url('assets/new_website/img/image5.jpg') ?>" alt="">
                 </a>
@@ -2033,14 +2160,11 @@
         </dialog>
         <dialog class="dialog2 notifyDialog border-top-0 text-left" id="dialog">
             <div>
-                <div class="d-flex justify-content-end align-items-center px-3 py-2 border-bottom">
+                <div class="px-3 py-2 position-absolute" style="top: 0; right: 0;">
                     <button type="button" aria-label="close" class="btn p-0 notifyDialogCloseBtn">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
-                <!-- <button id="" aria-label="close" class="notifyDialogCloseBtn"><span class="close-btn" id="close-popup">
-                    <i class="fa-solid fa-xmark"></i>
-                </span></button> -->
                 <div class="p-3">
                     <div class="d-flex align-items-center">
                         <img src="<?= base_url('assets/new_website/img/notification.gif') ?>" style="width: 40px;" alt="">
@@ -2074,12 +2198,11 @@
         <dialog class="dialog desktopPincodeDialog overflow-hidden" id="dialog">
             <div class="position-relative">
                 <div class="d-flex px-3 py-1 font-weight-bold justify-content-between align-items-center shadow-sm">
-                    <p class="font-weight-bold p-0 m-0">Use pincode to check delivery info</p>
+                    <p class="font-weight-bold p-0 m-0">Check Delivery</p>
                     <button id="closeDesktopPincodeDialogBtn" aria-label="close"
                     class="btn p-0 m-0 font-weight-bold"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-                <div class="p-3">
-                    <p class="m-0 mb-1 font-weight-bold text-dark">SELECT DELIVERY LOCATION</p>
+                <div class="px-3 my-3">
                     <div class="border rounded-lg py-1 px-2">
                         <form class="d-flex" id="pincodeForm">
                             <input type="number" name="pincode" placeholder="Enter coupon code" class="pincodeInput flex-grow-1">
@@ -2089,10 +2212,19 @@
                     </div>
                     <p class="m-0 fs12 mt-1 text-danger pincodeErrorMsg" style="display: none;"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Invalid Pincode</p>
                 </div>
-                <hr class="m-0">
-                <div class="p-3">
-                    <p class="m-0 font-weight-bold text-dark">Or, SELECT PINCODE FROM SAVED ADDRESS</p>
+                <!-- <hr class="m-0"> -->
+                <div class="px-3 my-3 pb-5">
+                    <p class="m-0 font-weight-bold text-dark text-center">OR</p>
                     <div class="my-3">
+                        <label for="address1" class="d-flex align-items-center cursor-pointer border-bottom">
+                            <div class="flex-grow-1">
+                                <p class="m-0 font-weight-bold">John, 123abc,</p>
+                                <p class="m-0 fs10">Pincode: 123456</p>
+                            </div>
+                            <div>
+                                <input type="radio" name="address" id="address1">
+                            </div>
+                        </label>
                         <label for="address1" class="d-flex align-items-center cursor-pointer border-bottom">
                             <div class="flex-grow-1">
                                 <p class="m-0 font-weight-bold">John, 123abc,</p>
@@ -2206,14 +2338,14 @@
                 </button>
                 <div class="bg-white rounded-lg mobileExtraProductBtns">
                     <div class="d-flex gap-2 py-2 px-3">
-                        <button class="btn p-0 m-0">
-                            <img src="<?= base_url('assets/new_website/img/shoes.jpg') ?>" class="homeProductBtn" alt="">
+                        <button class="btn p-0 m-0 homeProductBtn">
+                            <img src="<?= base_url('assets/new_website/img/shoes.jpg') ?>" alt="">
                         </button>
-                        <button class="btn p-0 m-0">
-                            <img src="<?= base_url('assets/new_website/img/jeans.jpg') ?>" class="homeProductBtn" alt="">
+                        <button class="btn p-0 m-0 homeProductBtn">
+                            <img src="<?= base_url('assets/new_website/img/jeans.jpg') ?>" alt="">
                         </button>
-                        <button class="btn p-0 m-0">
-                            <img src="<?= base_url('assets/new_website/img/tees.jpeg') ?>" class="homeProductBtn" alt="">
+                        <button class="btn p-0 m-0 homeProductBtn">
+                            <img src="<?= base_url('assets/new_website/img/tees.jpeg') ?>" alt="">
                         </button>
                     </div>
                 </div>
@@ -2237,80 +2369,79 @@
         <section>
             <div class="productHeroSection row m-0 mt-2 paddingTop">
                 <div class="col-lg-7 col-md-6 col-12 px-lg-2 px-md-2 px-sm-2 p-0 stickySection">
-                    
                     <div class="d-lg-flex d-md-flex d-sm-none d-none gap-2">
                         <div class="d-flex flex-column gap-2">
-                            <button class="btn p-0 m-0">
-                                <img src="<?= base_url('assets/new_website/img/shoes.jpg') ?>" class="homeProductBtn" alt="">
+                            <button class="btn p-0 m-0 homeProductBtn">
+                                <img src="<?= base_url('assets/new_website/img/shoes.jpg') ?>" alt="">
                             </button>
-                            <button class="btn p-0 m-0">
-                                <img src="<?= base_url('assets/new_website/img/jeans.jpg') ?>" class="homeProductBtn" alt="">
+                            <button class="btn p-0 m-0 homeProductBtn">
+                                <img src="<?= base_url('assets/new_website/img/jeans.jpg') ?>" alt="">
                             </button>
-                            <button class="btn p-0 m-0">
-                                <img src="<?= base_url('assets/new_website/img/tees.jpeg') ?>" class="homeProductBtn" alt="">
+                            <button class="btn p-0 m-0 homeProductBtn">
+                                <img src="<?= base_url('assets/new_website/img/tees.jpeg') ?>" alt="">
                             </button>
                         </div>
                         <div class="productImageContainer flex-grow-1">
                             <div class="parentcontainer">
                                 <div class="imgContainer" data-zoom="1">
-                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoom Image" />
+                                    <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" alt="Zoom Image" />
                                     <span class="lens"></span>
                                 </div>
                                 <div class="zoomWindow" data-zoom="1">
-                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoomed Image" />
+                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" alt="Zoomed Image" />
                                 </div>
                             </div>
                             <div class="parentcontainer">
                                 <div class="imgContainer first" data-zoom="2">
-                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoom Image" />
+                                    <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" alt="Zoom Image" />
                                     <span class="lens"></span>
                                 </div>
                                 <div class="second zoomWindow" data-zoom="2">
-                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoomed Image" />
+                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" alt="Zoomed Image" />
                                 </div>
                             </div>
                             <div class="parentcontainer">
                                 <div class="imgContainer first" data-zoom="3">
-                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoom Image" />
+                                    <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" alt="Zoom Image" />
                                     <span class="lens"></span>
                                 </div>
                                 <div class="second zoomWindow" data-zoom="3">
-                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoomed Image" />
+                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" alt="Zoomed Image" />
                                 </div>
                             </div>
                             <div class="parentcontainer">
                                 <div class="imgContainer first" data-zoom="4">
-                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoom Image" />
+                                    <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" alt="Zoom Image" />
                                     <span class="lens"></span>
                                 </div>
                                 <div class="second zoomWindow" data-zoom="4">
-                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoomed Image" />
+                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" alt="Zoomed Image" />
                                 </div>
                             </div>
                             <div class="parentcontainer">
                                 <div class="imgContainer first" data-zoom="5">
-                                    <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoom Image" />
+                                    <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" alt="Zoom Image" />
                                     <span class="lens"></span>
                                 </div>
                                 <div class="second zoomWindow" data-zoom="5">
-                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/img1.png')?>" alt="Zoomed Image" />
+                                    <img class="zoomedImage" src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" alt="Zoomed Image" />
                                 </div>
                             </div>
                             <div class="position-relative">
-                                <video width="100%" height="100%" autoplay muted loop>
+                                <video width="100%" height="100%" autoplay muted loop id="productVideo">
                                     <source src="<?= base_url('assets/website/images/product/productVideo.mp4') ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                                 <div class="videoBtns" >
                                     <div>
-                                        <label class="muteBtnContainer">
+                                        <label class="muteBtnContainer" id="muteToggle">
                                         <input  type="checkbox">
                                             <svg viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="mute"><path d="M301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3zM425 167l55 55 55-55c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-55 55 55 55c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-55-55-55 55c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l55-55-55-55c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg>
                                             <svg viewBox="0 0 448 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="voice"><path d="M301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3zM412.6 181.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5z"></path></svg>
                                         </label>
                                     </div>
                                     <div>
-                                        <button class="btn fullscreenBtn">
+                                        <button class="btn fullscreenBtn" id="fullscreenToggle">
                                             <img src="<?= base_url('assets/new_website/img/fullscreenIcon.png')?>" alt="">
                                         </button>
                                     </div>
@@ -2321,13 +2452,19 @@
                     <div class="d-lg-none d-md-none d-sm-block d-block swiper productImageSwiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/img1.png')?>" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" alt="">
                             </div>
                             <!-- <div class="swiper-slide">
                                 <video width="100%" height="100%" autoplay muted loop>
@@ -2346,7 +2483,6 @@
                             <button class="btn text-light px-2 py-1 fs12 rounded-pill scrollBtn" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1000"> <img src="<?= base_url('assets/new_website/img/cards.png') ?>" style="width: 14px;" alt=""> VIEW SIMILAR</button>
                         </div>
                     </div>
-                    
                     <div class="my-1 d-flex justify-content-between align-items-center px-3">
                             <button class="btn p-0 fs14 font-weight-bold d-flex align-items-center modalInsightBtn">
                                 <img src="<?= base_url('assets/new_website/img/model.jpg') ?>" style="width: 16px;" alt="">
@@ -2452,29 +2588,30 @@
                                 <p class="m-0 ml-1 fs12 border-left pl-1 text-success font-weight-bold">50% OFF</p>
                             </button>
                             <p class="m-0 text-success font-weight-bold fs10">inclusive of all taxes</p>
-                        </div>
-                        <div class="clubPriceHoverDetails">
-                            <p class="text-dark font-weight-bold mb-1 fs12 text-center">PRICE DETAILS</p>
-                            <div class="d-flex justify-content-between">
-                                <span class="fs12 d-flex flex-column">
-                                    <span>Maximum Retail Price</span>
-                                    <span>inclusive of all taxes</span>
+                            <div class="clubPriceHoverDetails">
+                                <p class="text-dark font-weight-bold mb-1 fs12 text-center">PRICE DETAILS</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="fs12 d-flex flex-column">
+                                        <span>Maximum Retail Price</span>
+                                        <span>inclusive of all taxes</span>
+                                    </span>
+                                    <span class="text-dark font-weight-bold fs12">₹2,998</span>
+                                </div>
+                                <hr class="my-1">
+                                <span class="fs12 d-flex justify-content-between">
+                                    <span>Discount</span>
+                                    <span class="font-weight-bold text-success">72% OFF</span>
                                 </span>
-                                <span class="text-dark font-weight-bold fs12">₹2,998</span>
-                            </div>
-                            <hr class="my-1">
-                            <span class="fs12 d-flex justify-content-between">
-                                <span>Discount</span>
-                                <span class="font-weight-bold text-success">72% OFF</span>
-                            </span>
-                            <div class="d-flex justify-content-between">
-                                <span class="fs12 d-flex flex-column">
-                                    <span class="text-dark font-weight-bold">Selling Price</span>
-                                    <span>(inclusive of all taxes)</span>
-                                </span>
-                                <span class="text-dark font-weight-bold fs12">₹2,998</span>
+                                <div class="d-flex justify-content-between">
+                                    <span class="fs12 d-flex flex-column">
+                                        <span class="text-dark font-weight-bold">Selling Price</span>
+                                        <span>(inclusive of all taxes)</span>
+                                    </span>
+                                    <span class="text-dark font-weight-bold fs12">₹2,998</span>
+                                </div>
                             </div>
                         </div>
+
                         <div>
                         <button class="btn border p-1 m-0 mt-1 fs12 font-weight-bold royalCashBtn">
                             <img src="<?= base_url('assets/new_website/img/crown2.png') ?>" style="width: 16px;" alt="">
@@ -2604,7 +2741,7 @@
                         <button class="btn fs14 addToBagBtn"><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
                         <button class="btn fs14 wishlistBtn"><i class="fa-regular fa-heart"></i> WISHLIST</button>
                     </div>
-                    <div class="mx-0 addBtnContainer pb-2">
+                    <div class="mx-0 extraBtnContainer pb-2">
                         <a href="tel:9876543210" class="btn fs14 border text-secondary callBtn"><i class="fa-solid fa-phone text-dark"></i> CALL</a>
                         <button class="btn fs14 border text-secondary notifyDialogBtn"><i class="fa-regular fa-bell text-dark"></i> NOTIFY</button>
                     </div>
@@ -3128,9 +3265,35 @@
                                     <p class="m-0 text-dark">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum temporibus exercitationem deserunt eos inventore laborum?</p>
                                     <div class="mt-2 text-secondary d-flex justify-content-between">
                                         <span>John Doe | 1 day ago</span>
-                                        <div>
-                                            <button class="btn fs14 p-0 text-secondary"><i class="fa-regular fa-thumbs-up"></i> 12</button>
-                                            <button class="btn fs14 p-0 text-secondary"><i class="fa-regular fa-thumbs-down"></i> 12</button>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <label class="m-0 likeContainer">
+                                                <input type="checkbox">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="50px" width="50px" class="like">
+                                                    <path d="M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20"></path>
+                                                </svg>
+                                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" class="celebrate">
+                                                    <polygon points="0,0 10,10"></polygon>
+                                                    <polygon points="0,25 10,25"></polygon>
+                                                    <polygon points="0,50 10,40"></polygon>
+                                                    <polygon points="50,0 40,10"></polygon>
+                                                    <polygon points="50,25 40,25"></polygon>
+                                                    <polygon points="50,50 40,40"></polygon>
+                                                </svg>
+                                            </label>
+                                            <label class="m-0 likeContainer dislikeContainer">
+                                                <input type="checkbox">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="50px" width="50px" class="like">
+                                                    <path d="M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20"></path>
+                                                </svg>
+                                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" class="celebrate">
+                                                    <polygon points="0,0 10,10"></polygon>
+                                                    <polygon points="0,25 10,25"></polygon>
+                                                    <polygon points="0,50 10,40"></polygon>
+                                                    <polygon points="50,0 40,10"></polygon>
+                                                    <polygon points="50,25 40,25"></polygon>
+                                                    <polygon points="50,50 40,40"></polygon>
+                                                </svg>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -3141,9 +3304,74 @@
                                     <p class="m-0 text-dark">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum temporibus exercitationem deserunt eos inventore laborum?</p>
                                     <div class="mt-2 text-secondary d-flex justify-content-between">
                                         <span>John Doe | 1 day ago</span>
-                                        <div>
-                                            <button class="btn fs14 p-0 text-secondary"><i class="fa-regular fa-thumbs-up"></i> 12</button>
-                                            <button class="btn fs14 p-0 text-secondary"><i class="fa-regular fa-thumbs-down"></i> 12</button>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <label class="m-0 likeContainer">
+                                                <input type="checkbox">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="50px" width="50px" class="like">
+                                                    <path d="M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20"></path>
+                                                </svg>
+                                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" class="celebrate">
+                                                    <polygon points="0,0 10,10"></polygon>
+                                                    <polygon points="0,25 10,25"></polygon>
+                                                    <polygon points="0,50 10,40"></polygon>
+                                                    <polygon points="50,0 40,10"></polygon>
+                                                    <polygon points="50,25 40,25"></polygon>
+                                                    <polygon points="50,50 40,40"></polygon>
+                                                </svg>
+                                            </label>
+                                            <label class="m-0 likeContainer dislikeContainer">
+                                                <input type="checkbox">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="50px" width="50px" class="like">
+                                                    <path d="M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20"></path>
+                                                </svg>
+                                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" class="celebrate">
+                                                    <polygon points="0,0 10,10"></polygon>
+                                                    <polygon points="0,25 10,25"></polygon>
+                                                    <polygon points="0,50 10,40"></polygon>
+                                                    <polygon points="50,0 40,10"></polygon>
+                                                    <polygon points="50,25 40,25"></polygon>
+                                                    <polygon points="50,50 40,40"></polygon>
+                                                </svg>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-bottom py-2">
+                                    <div class="mb-1">
+                                        <span class="text-dark p-1 rounded-lg border">4 <i class="fa-solid fa-star fs12" style="color: #FFD700;"></i></span>
+                                    </div>
+                                    <p class="m-0 text-dark">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum temporibus exercitationem deserunt eos inventore laborum?</p>
+                                    <div class="mt-2 text-secondary d-flex justify-content-between">
+                                        <span>John Doe | 1 day ago</span>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <label class="m-0 likeContainer">
+                                                <input type="checkbox">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="50px" width="50px" class="like">
+                                                    <path d="M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20"></path>
+                                                </svg>
+                                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" class="celebrate">
+                                                    <polygon points="0,0 10,10"></polygon>
+                                                    <polygon points="0,25 10,25"></polygon>
+                                                    <polygon points="0,50 10,40"></polygon>
+                                                    <polygon points="50,0 40,10"></polygon>
+                                                    <polygon points="50,25 40,25"></polygon>
+                                                    <polygon points="50,50 40,40"></polygon>
+                                                </svg>
+                                            </label>
+                                            <label class="m-0 likeContainer dislikeContainer">
+                                                <input type="checkbox">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="50px" width="50px" class="like">
+                                                    <path d="M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20"></path>
+                                                </svg>
+                                                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" class="celebrate">
+                                                    <polygon points="0,0 10,10"></polygon>
+                                                    <polygon points="0,25 10,25"></polygon>
+                                                    <polygon points="0,50 10,40"></polygon>
+                                                    <polygon points="50,0 40,10"></polygon>
+                                                    <polygon points="50,25 40,25"></polygon>
+                                                    <polygon points="50,50 40,40"></polygon>
+                                                </svg>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -3664,6 +3892,18 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+
+            const triggerPoint = 400;
+
+            if (scrollPosition >= triggerPoint) {
+                document.querySelector('.mobileHomeProductBtn').style.display = 'none';
+            } else {
+                document.querySelector('.mobileHomeProductBtn').style.display = 'block';
+            }
+        });
+        
         window.addEventListener('load', () => {
             if(window.innerWidth < 768){   
                 setTimeout(() => {
@@ -3699,7 +3939,7 @@
                 });
             }else{
                 window.scrollBy({
-                    top: 2600,
+                    top: 2500,
                     behavior: 'smooth'
                 })                
             } 
@@ -3779,7 +4019,7 @@
                 },
                 breakpoints: {
                     1250: {
-                        slidesPerView: 12
+                        slidesPerView: 11
                     },
                     1050: {
                         slidesPerView: 10
@@ -3909,6 +4149,7 @@
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
+                    dynamicBullets: true,
                 },
                 breakpoints: {
                     700: {
@@ -3927,6 +4168,7 @@
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
+                    dynamicBullets: true,
                 },
         });
 
@@ -4024,6 +4266,10 @@
                     return
                 }else if(!hasActiveButton){
                     document.querySelector(".sizeSwiper .swiper-wrapper").classList.add('animate__animated', 'animate__shakeX');
+                    window.scrollBy({
+                        top: -300,
+                        behavior: 'smooth'
+                    });
                     const timer = setTimeout(() => {
                         document.querySelector(".sizeSwiper .swiper-wrapper").classList.remove('animate__animated', 'animate__shakeX');
                     }, 1500)
@@ -4036,6 +4282,7 @@
                 } else {
                     btn.classList.add("active");
                     btn.innerHTML = "<i class='bx bx-shopping-bag'></i> GO TO BAG";
+                    showToast('Product added to Bag', 'success');
                 }
             })
         })
@@ -4131,6 +4378,9 @@
         const notifyDialog = document.querySelector(".notifyDialog");
         const notifyDialogCloseBtn = document.querySelector(".notifyDialogCloseBtn");
         const notifyDialogBtn = document.querySelector(".notifyDialogBtn");
+        const notifyCredentialInput = document.querySelector('.notifyCredentialInput')
+        const notifyCredentialBtn = document.querySelector('.notifyCredentialBtn')
+        const notifyCredentialInputContainer = document.querySelector('.notifyCredentialInputContainer')
 
         notifyDialogBtn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -4142,6 +4392,53 @@
             notifyDialog.close();
             document.body.classList.remove("sidebar-open");
         });
+
+        notifyCredentialInput.addEventListener('input', (e) => {
+            if(e.target.value.length == 0){
+                notifyCredentialInputContainer.style.borderColor = 'rgba(0, 0, 0, 0.15)'
+                document.querySelector('.notifyMsg').style.display = 'none'
+                document.querySelector('.notifyErrorMsg').style.display = 'none'
+                document.querySelector('.notifyCredentialInputSpan').style.display = 'none'
+            }
+
+            if(e.target.value.charAt(0) >= 0 || e.target.value.charAt(0) <= '9'){
+                document.querySelector('.notifyCredentialInputSpan').style.display = 'inline-block'
+            }else if(e.target.value == '0000000000'){
+                notifyCredentialBtn.classList.add('btn-disabled')
+            }else{
+                document.querySelector('.notifyCredentialInputSpan').style.display = 'none'
+            }
+        })
+
+        const notifyForm = document.querySelector('.notifyForm')
+
+        notifyForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const data = new FormData(notifyForm)
+            const credential = data.get('credential')
+            if(credential.length == 0){
+                notifyCredentialInputContainer.style.borderColor = 'red'
+                return
+            }else if (credential == '0000000000'){
+                notifyCredentialInputContainer.style.borderColor = 'red'
+                document.querySelector('.notifyErrorMsg').style.display = 'block'
+                return
+            }
+            notifyCredentialInput.value = credential
+            notifyCredentialInput.style.borderColor = 'green'
+            notifyCredentialBtn.style.display = 'none'
+            document.querySelector('.notifyCredentialEditBtn').style.display = 'block'
+            document.body.classList.toggle('modal-open');
+        })
+
+        function notifyFocus() {
+            notifyCredentialBtn.style.display = 'block'
+            document.querySelector('.notifyCredentialEditBtn').style.display = 'none'
+            notifyCredentialInput.value = ''
+            notifyCredentialInput.style.borderColor = 'gray'
+            notifyCredentialInputContainer.style.borderColor = 'rgba(0, 0, 0, 0.15)'
+            notifyCredentialInput.focus()
+        }
 
         const pincodeInput = document.querySelector('.pincodeInput');
         const pincodeForm = document.querySelector("#pincodeForm");
@@ -4401,6 +4698,7 @@
         mobileZoomImgBtns.forEach((img, index) => {
             img.addEventListener("click", () => {
                 mobileZoomImgs[index].style.display = "block";
+                document.body.classList.add("sidebar-open");
                 mobileZoomImgs[index].children[0].classList.add("active")
                 activeImage = mobileZoomImgs[index].children[0];
                 container = mobileZoomImgs[index];
@@ -4555,6 +4853,26 @@
                 mobileExtraProductBtns.style.width = "auto";
             }
         })
+
+        const video = document.getElementById('productVideo');
+        const muteToggle = document.getElementById('muteToggle');
+        const fullscreenToggle = document.getElementById('fullscreenToggle');
+
+        // Mute/Unmute Video
+        muteToggle.addEventListener('change', function() {
+            video.muted = !video.muted;
+        });
+
+        // Toggle Fullscreen
+        fullscreenToggle.addEventListener('click', function() {
+            if (!document.fullscreenElement) {
+                video.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        });
 
 	</script>
     <?php include('include/footer.php'); ?>
