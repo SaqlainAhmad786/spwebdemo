@@ -54,6 +54,10 @@
             font-size: 16px;
         }
 
+        .fs18{
+            font-size: 18px;
+        }
+
         input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
             -webkit-appearance: none;
         }
@@ -645,8 +649,8 @@
         }
 
         .reviewsContainer{
-            /* height: 200px; */
             overflow-y: hidden;
+            overflow-x: hidden;
         }
 
         .reviewsContainer > *:not(:first-child) {
@@ -1155,40 +1159,26 @@
             }
         }
 
-        .productImageZoomDialog{
-            background-color:white;
-            display: none;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 100dvh;
-            z-index: 99999;
-        }
-
         .mobileZoomImg{
             background-color: white;
             display: none;
             width: 100%;  /* Adjust based on screen */
-            height: 100vh;  /* Full screen height */
+            height: 100dvh;  /* Full screen height */
             overflow: hidden;
             position: fixed;
             top: 0;
             touch-action: none;
-            z-index: 20;
+            z-index: 10000;
         }
 
         .closeMobileZoomImg{
             background-color: white;
-            padding: 6px 10px;
+            padding: 4px 10px;
             color: var(--maincolor);
             border-radius: 100vh;
-        }
-
-        .mobileZoomImg button{
             position: absolute;
-            top: 85%;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 12px;
+            right: 12px;
         }
 
         .movableImg {
@@ -1369,7 +1359,7 @@
 
         .mobileSizeDialog .submitBtn{
             margin-top: 8px;
-            background-color: var(--pinkcolor);
+            background-color: var(--maincolor);
             color: white
         }
 
@@ -1719,34 +1709,44 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td><input type="radio"></td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                        <td></td>
+                                        <td><strong>Size</strong></td>
+                                        <td><strong>Shoulder</strong></td>
+                                        <td><strong>Bust</strong></td>
+                                        <td><strong>Waist</strong></td>
+                                        <td><strong>Hips</strong></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="radio"></td>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
+                                        <td><input type="radio" name="size" value="S"></td>
+                                        <td>S</td>
+                                        <td>30</td>
+                                        <td>28</td>
+                                        <td>27</td>
+                                        <td>11</td>
                                     </tr>
                                     <tr>
-                                        <td><input type="radio"></td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
+                                        <td><input type="radio" name="size" value="M"></td>
+                                        <td>M</td>
+                                        <td>30</td>
+                                        <td>28</td>
+                                        <td>27</td>
+                                        <td>11</td>
                                     </tr>
                                     <tr>
-                                        <td><input type="radio"></td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
+                                        <td><input type="radio" name="size" value="L"></td>
+                                        <td>L</td>
+                                        <td>30</td>
+                                        <td>28</td>
+                                        <td>27</td>
+                                        <td>11</td>
                                     </tr>
                                     <tr>
-                                        <td><input type="radio"></td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
+                                        <td><input type="radio" name="size" value="XL"></td>
+                                        <td>XL</td>
+                                        <td>30</td>
+                                        <td>28</td>
+                                        <td>27</td>
+                                        <td>11</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1757,7 +1757,7 @@
                     </div>
                 </div>
                 <div class="position-fixed row bg-white w-100 pr-2 addBtnContainer" style="bottom: 16px; right: 8px;">
-                    <button class="btn fs14 addToBagBtn"><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
+                    <button class="btn fs14 addToBagBtn" disabled><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
                     <button class="btn fs14 wishlistBtn"><i class="fa-regular fa-heart"></i> WISHLIST</button>
                 </div>
             </div>
@@ -1957,51 +1957,6 @@
                 <a href="" class="dots dot3" data-text="View matching Sandals"></a>
             </div>
         </dialog>
-        <div class="productImageZoomDialog">
-            <div class="d-flex justify-content-end">
-                <button class="btn closeProductImageZoomDialogBtn"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div class="swiper productImageSwiper2">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" class="mobileZoomImgBtn" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" class="mobileZoomImgBtn" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" class="mobileZoomImgBtn" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" class="mobileZoomImgBtn" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" class="mobileZoomImgBtn" alt="">
-                    </div>
-                </div>
-                <div class="mobileZoomImg">
-                    <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" class="movableImg"  alt="">
-                    <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
-                </div>
-                <div class="mobileZoomImg">
-                    <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" class="movableImg"  alt="">
-                    <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
-                </div>
-                <div class="mobileZoomImg">
-                    <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" class="movableImg"  alt="">
-                    <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
-                </div>
-                <div class="mobileZoomImg">
-                    <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" class="movableImg" alt="">
-                    <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
-                </div>
-                <div class="mobileZoomImg">
-                    <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" class="movableImg" alt="">
-                    <button class="btn closeMobileZoomImg"><i class="fa-solid fa-arrow-left"></i></button>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
         <div class="customerReveiwDialog">
             <div class="d-flex justify-content-end align-items-center px-3 py-2 border-bottom">
                 <button id="closeCustomerReviewBtn" type="button" aria-label="close" class="btn p-0">
@@ -2009,7 +1964,7 @@
                 </button>
             </div>
             <div class="row m-0">
-                <div class="col-lg-7 col-md-6 col-sm-12 col-12 position-relative p-2" style="background: radial-gradient(circle at 52.1% -29.6%, rgb(144, 17, 105) 0%, rgb(51, 0, 131) 100.2%);">
+                <div class="col-lg-7 col-md-6 col-sm-12 col-12 position-relative p-2" style="background: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%)">
                     <div class="swiper mySwiper2 mb-2">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -2213,9 +2168,10 @@
                     <p class="m-0 fs12 mt-1 text-danger pincodeErrorMsg" style="display: none;"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Invalid Pincode</p>
                 </div>
                 <!-- <hr class="m-0"> -->
-                <div class="px-3 my-3 pb-5">
+                <div class="px-3 my-2">
                     <p class="m-0 font-weight-bold text-dark text-center">OR</p>
-                    <div class="my-3">
+                    <div class="my-2">
+                        <p class="fs18 font-weight-bold">Select a saved address to check delivery</p>
                         <label for="address1" class="d-flex align-items-center cursor-pointer border-bottom">
                             <div class="flex-grow-1">
                                 <p class="m-0 font-weight-bold">John, 123abc,</p>
@@ -2225,16 +2181,7 @@
                                 <input type="radio" name="address" id="address1">
                             </div>
                         </label>
-                        <label for="address1" class="d-flex align-items-center cursor-pointer border-bottom">
-                            <div class="flex-grow-1">
-                                <p class="m-0 font-weight-bold">John, 123abc,</p>
-                                <p class="m-0 fs10">Pincode: 123456</p>
-                            </div>
-                            <div>
-                                <input type="radio" name="address" id="address1">
-                            </div>
-                        </label>
-                        <label for="address2" class="d-flex align-items-center cursor-pointer border-bottom">
+                        <label for="address2" class="d-flex align-items-center cursor-pointer">
                             <div class="flex-grow-1">
                                 <p class="m-0 font-weight-bold">John, 123abc,</p>
                                 <p class="m-0 fs10">Pincode: 123456</p>
@@ -2309,7 +2256,7 @@
                 </div> -->
             </div>
         </dialog>
-        <section class="d-lg-none d-md-none d-sm-block position-fixed w-100 bg-white" style="z-index: 10000; top: 0;" >
+        <section class="d-lg-none d-md-none d-sm-block position-fixed w-100 bg-white" style="z-index: 1000; top: 0;" >
             <div class="d-flex justify-content-between align-items-center px-3 py-1 shadow-sm">
                 <div class="d-flex align-items-center text-dark">
                     <a href=""><span style="font-size: 20px;"><i class="fa-solid fa-arrow-left"></i></span></a>
@@ -2351,6 +2298,28 @@
                 </div>
             </div>
         </section>
+        <div>
+            <div class="mobileZoomImg">
+                <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" class="movableImg"  alt="">
+                <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="mobileZoomImg">
+                <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" class="movableImg"  alt="">
+                <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="mobileZoomImg">
+                <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" class="movableImg"  alt="">
+                <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="mobileZoomImg">
+                <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" class="movableImg" alt="">
+                <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="mobileZoomImg">
+                <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" class="movableImg" alt="">
+                <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
         <!-- <section class="saleTimerStripContainer border">
             <div class="saleTimerStrip">
                 <p class="m-0 text-secondary">Sale ends
@@ -2452,19 +2421,19 @@
                     <div class="d-lg-none d-md-none d-sm-block d-block swiper productImageSwiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <!-- <div class="swiper-slide">
                                 <video width="100%" height="100%" autoplay muted loop>
@@ -2474,7 +2443,7 @@
                             </div> -->
                         </div>
                         <div class="swiper-pagination"></div>
-                        <div class="position-absolute w-100 d-flex justify-content-between align-items-center px-3" style="bottom: 44px; z-index: 100000;">
+                        <div class="position-absolute w-100 d-flex justify-content-between align-items-center px-3" style="bottom: 44px; z-index: 1000;">
                             <a href="#reviews" class="rating2 text-white">
                                 <span>4.5</span>
                                 <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 12px;">
@@ -4034,10 +4003,10 @@
                         slidesPerView: 10
                     },
                     400: {
-                        slidesPerView: 8
+                        slidesPerView: 7
                     },
                     300: {
-                        slidesPerView: 7
+                        slidesPerView: 6
                     }
                 }
         });
@@ -4144,7 +4113,7 @@
         var swiper6 = new Swiper('.productImageSwiper', {
                 slidesPerView: 2,
                 spaceBetween: 0,
-                autoplay:true,
+                autoplay:false,
                 loop: false,
                 pagination: {
                     el: ".swiper-pagination",
@@ -4358,6 +4327,19 @@
                     mobileSizeSubmitBtn.innerHTML = "SELECT SIZE"
                 }
             })
+        })
+
+        mobileSizeSubmitBtn.addEventListener("click", () => {
+            mobileSizeDialog.close();
+            addToBagBtn.forEach((btn) => {
+                btn.classList.add("active");
+                btn.innerHTML = "<i class='bx bx-shopping-bag'></i> GO TO BAG"
+            }
+                
+            );
+            document.body.classList.remove("sidebar-open");
+            showToast('Product added to Bag', 'success');
+
         })
 
         const reviewDialog = document.querySelector(".reviewDialog");
@@ -4677,17 +4659,16 @@
         const productImageZoomDialog = document.querySelector(".productImageZoomDialog");
         const closeProductImageZoomDialogBtn = document.querySelector(".closeProductImageZoomDialogBtn");
 
-        mobileZoomSwiperBtn.forEach(btn => {
-            btn.addEventListener("click", () => {
-                productImageZoomDialog.style.display = "block";
-                // document.body.classList.add("sidebar-open");
-            })
-        })
+        // mobileZoomSwiperBtn.forEach(btn => {
+        //     btn.addEventListener("click", () => {
+        //         productImageZoomDialog.style.display = "block";
+        //     })
+        // })
 
-        closeProductImageZoomDialogBtn.addEventListener("click", () => {
-            productImageZoomDialog.style.display = "none";
-            document.body.classList.remove("sidebar-open");
-        })
+        // closeProductImageZoomDialogBtn.addEventListener("click", () => {
+        //     productImageZoomDialog.style.display = "none";
+        //     document.body.classList.remove("sidebar-open");
+        // })
 
         const mobileZoomImgBtns = document.querySelectorAll(".mobileZoomImgBtn");
         const mobileZoomImgs = document.querySelectorAll(".mobileZoomImg");
@@ -4698,7 +4679,7 @@
         mobileZoomImgBtns.forEach((img, index) => {
             img.addEventListener("click", () => {
                 mobileZoomImgs[index].style.display = "block";
-                document.body.classList.add("sidebar-open");
+                // document.body.classList.add("sidebar-open");
                 mobileZoomImgs[index].children[0].classList.add("active")
                 activeImage = mobileZoomImgs[index].children[0];
                 container = mobileZoomImgs[index];
@@ -4711,19 +4692,19 @@
 
         const movableImgs = document.querySelectorAll('.movableImg');
         let isDragging = false;
-        let startX, startY, initialX, initialY;
+        let isPinching = false;
+        let startX, startY, initialX, initialY, initialDistance, scale = 1;
 
         movableImgs.forEach(movableImg => {
             movableImg.addEventListener('mousedown', startDrag);
-            movableImg.addEventListener('touchstart', startDrag, { passive: false });
+            movableImg.addEventListener('touchstart', handleTouchStart, { passive: false });
 
             movableImg.addEventListener('mousemove', drag);
-            movableImg.addEventListener('touchmove', drag, { passive: false });
+            movableImg.addEventListener('touchmove', handleTouchMove, { passive: false });
 
             movableImg.addEventListener('mouseup', stopDrag);
-            movableImg.addEventListener('touchend', stopDrag);
+            movableImg.addEventListener('touchend', handleTouchEnd);
         })
-        
 
         function startDrag(e) {
             e.preventDefault();
@@ -4733,48 +4714,84 @@
             startX = (e.type === 'touchstart') ? e.touches[0].clientX : e.clientX;
             startY = (e.type === 'touchstart') ? e.touches[0].clientY : e.clientY;
 
+            const activeImage = e.target;
             // Store the current position of the image
             initialX = activeImage.offsetLeft;
             initialY = activeImage.offsetTop;
         }
 
         function drag(e) {
-            if (!isDragging) return;
+            if (!isDragging || isPinching) return;
 
             e.preventDefault();
             
-            // Get the new cursor/touch position
             let currentX = (e.type === 'touchmove') ? e.touches[0].clientX : e.clientX;
             let currentY = (e.type === 'touchmove') ? e.touches[0].clientY : e.clientY;
 
-            // Calculate how far the pointer has moved
             const dx = currentX - startX;
             const dy = currentY - startY;
 
-            // Calculate the new position
             let newLeft = initialX + dx;
             let newTop = initialY + dy;
 
             const containerRect = container.getBoundingClientRect();
             const imageRect = activeImage.getBoundingClientRect();
 
-            // Boundary checks to prevent the image from going outside the container
-            if (newLeft > 0) newLeft = 0;  // Prevent dragging past the left edge
-            if (newTop > 0) newTop = 0;    // Prevent dragging past the top edge
+            if (newLeft > 0) newLeft = 0;
+            if (newTop > 0) newTop = 0;
 
             const maxLeft = containerRect.width - imageRect.width;
             const maxTop = containerRect.height - imageRect.height;
 
-            if (newLeft < maxLeft) newLeft = maxLeft;  // Prevent dragging past the right edge
-            if (newTop < maxTop) newTop = maxTop;      // Prevent dragging past the bottom edge            
+            if (newLeft < maxLeft) newLeft = maxLeft;
+            if (newTop < maxTop) newTop = maxTop;            
 
-            // Move the image by adjusting the 'top' and 'left' properties
             activeImage.style.left = newLeft + 'px';
             activeImage.style.top = newTop + 'px';
         }
 
         function stopDrag() {
             isDragging = false;
+        }
+
+        function handleTouchStart(e) {
+            if (e.touches.length === 2) {
+                isPinching = true;
+                initialDistance = getDistance(e.touches[0], e.touches[1]);
+            } else {
+                startDrag(e);
+            }
+        }
+
+        function handleTouchMove(e) {
+            if (isPinching && e.touches.length === 2) {
+                const newDistance = getDistance(e.touches[0], e.touches[1]);
+                const zoomFactor = newDistance / initialDistance;
+                scale *= zoomFactor;
+
+                // Set limits on the scale
+                scale = Math.max(1, Math.min(scale, 4));
+
+                const activeImage = e.target;
+                activeImage.style.transform = `scale(${scale})`;
+
+                initialDistance = newDistance;
+            } else {
+                drag(e);
+            }
+        }
+
+        function handleTouchEnd(e) {
+            if (e.touches.length < 2) {
+                isPinching = false;
+            }
+            stopDrag();
+        }
+
+        function getDistance(touch1, touch2) {
+            const dx = touch2.clientX - touch1.clientX;
+            const dy = touch2.clientY - touch1.clientY;
+            return Math.sqrt(dx * dx + dy * dy);
         }
 
 		let isThrottled = false;
