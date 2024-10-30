@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title> Slick Pattern - Home </title>
     <?php include('include/cssLinks.php'); ?>
     <link
@@ -112,14 +113,14 @@
             margin-block: 16px;
         }
 
-        .addToBagBtn{
+        .addToBagBtn, .sidebarAddToBagBtn{
             background-color: var(--maincolor);
             color: white;
             padding-block: 8px;
             font-weight:500;
         }
 
-        .addToBagBtn.active{
+        .addToBagBtn.active, .sidebarAddToBagBtn.active{
             background-color: var(--pinkcolor)!important;
         }
 
@@ -278,6 +279,14 @@
             width: 100%;
         }
 
+        .productImageSwiper .swiper-pagination .swiper-pagination-bullet:last-child{
+            border-radius: 12% 88% 90% 10% / 10% 49% 51% 10% !important;
+        }
+
+        .productImageSwiper .swiper-pagination .swiper-pagination-bullet-active:last-child{
+            border-radius: 12% 88% 90% 10% / 10% 49% 51% 10% !important;
+        }
+
         .swiper-slide{
             text-align:center;
         }
@@ -314,6 +323,15 @@
         .swiper-pagination-bullet-active{
             background-color: var(--pinkcolor)!important;
         }
+
+        /* .swiper-pagination .swiper-pagination-bullet-active:last-child{
+            opacity: 0!important;
+        }
+
+        .swiper-pagination .swiper-pagination-bullet-active:last-child::after{
+            font-family: "Font Awesome 6 Free";
+            content: "\f00c";
+        } */
 
         .sizeDetails{
             display: none;
@@ -710,6 +728,72 @@
             background-color: var(--maincolor);
             border: 1px solid red;
             color: white;
+        }
+
+        #toaster2 {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #toaster2 div {
+            display: flex;
+        }
+
+        .toast2 {
+            display: flex;
+            align-items: center;
+            min-width: 300px;
+            margin-bottom: 10px;
+            padding: 15px;
+            color: #fff;
+            background-color: #333;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateX(100%);
+            transition: transform 0.5s, opacity 0.5s;
+        }
+
+        .toast2 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .toast2 .message {
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .toast2 button {
+            background-color: transparent;
+            font-weight: bold;
+            color: var(--pinkcolor);
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .toast2 button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .toast2.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast2.success {
+            background-color: #333333;
+        }
+
+        .toast2.error {
+            background-color: #dc3545;
         }
 
         .notifyCredentialInputContainer {
@@ -1268,6 +1352,19 @@
             justify-content: space-between;
         }
 
+        .mobileVideoBtns{
+            justify-content: end;
+            align-items: center;
+            gap: 8px;
+            bottom: 54px;
+            width: 90%;
+        }
+
+        .mobileVideoBtns .muteBtnContainer{
+            padding: 17px;
+            --size: 20px;
+        }
+
         .fullscreenBtn{
             background-color: white;
             padding: 8px;
@@ -1475,6 +1572,15 @@
             left: 5px;
         }
 
+        .sidebarTable tr.outofstock{
+            text-decoration: line-through;
+            color: rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebarTable tr.outofstock .sidebarRadioBtn{
+            pointer-events:none;
+        }
+
         @media (width < 1100px) {
             .similarProductsContainer{
                 grid-template-columns: repeat(4, 1fr);
@@ -1626,6 +1732,7 @@
     <?php include('include/header.php'); ?>
     <main>
         <div id="toaster"></div>
+        <div id="toaster2"></div>
         <div class="loginPromptContainer">
             <div class="bg-white position-relative" style="max-width: 380px; margin-inline:auto;">
                 <div class="position-absolute" style="top: 4px; right: 4px;">
@@ -1706,7 +1813,7 @@
                     </div>
                     <div class="mt-2 sidebarContent">
                         <section id="sizeChart">
-                            <table class="table">
+                            <table class="table sidebarTable">
                                 <tbody>
                                     <tr>
                                         <td></td>
@@ -1717,15 +1824,15 @@
                                         <td><strong>Hips</strong></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="radio" name="size" value="S"></td>
+                                        <td class="text-center sidebarRadioBtn"><input type="radio" name="size" value="S"></td>
                                         <td>S</td>
                                         <td>30</td>
                                         <td>28</td>
                                         <td>27</td>
                                         <td>11</td>
                                     </tr>
-                                    <tr>
-                                        <td><input type="radio" name="size" value="M"></td>
+                                    <tr class="outofstock">
+                                        <td class="text-center sidebarRadioBtn"><input type="radio" name="size" value="M"></td>
                                         <td>M</td>
                                         <td>30</td>
                                         <td>28</td>
@@ -1733,7 +1840,7 @@
                                         <td>11</td>
                                     </tr>
                                     <tr>
-                                        <td><input type="radio" name="size" value="L"></td>
+                                        <td class="text-center sidebarRadioBtn"><input type="radio" name="size" value="L"></td>
                                         <td>L</td>
                                         <td>30</td>
                                         <td>28</td>
@@ -1741,7 +1848,7 @@
                                         <td>11</td>
                                     </tr>
                                     <tr>
-                                        <td><input type="radio" name="size" value="XL"></td>
+                                        <td class="text-center sidebarRadioBtn"><input type="radio" name="size" value="XL"></td>
                                         <td>XL</td>
                                         <td>30</td>
                                         <td>28</td>
@@ -1757,7 +1864,7 @@
                     </div>
                 </div>
                 <div class="position-fixed row bg-white w-100 pr-2 addBtnContainer" style="bottom: 16px; right: 8px;">
-                    <button class="btn fs14 addToBagBtn" disabled><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
+                    <button class="btn fs14 addToBagBtn sidebarAddToBagBtn" disabled><i class=" bx bx-shopping-bag"></i> ADD TO BAG</button>
                     <button class="btn fs14 wishlistBtn"><i class="fa-regular fa-heart"></i> WISHLIST</button>
                 </div>
             </div>
@@ -2435,21 +2542,37 @@
                             <div class="swiper-slide">
                                 <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
-                            <!-- <div class="swiper-slide">
-                                <video width="100%" height="100%" autoplay muted loop>
-                                    <source src="<?= base_url('assets/website/images/product/productVideo.mp4') ?>" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div> -->
+                            <div class="swiper-slide">
+                                <div class="position-relative">
+                                    <video width="100%" height="100%" id="mobileSilderVideo" muted loop>
+                                        <source src="<?= base_url('assets/new_website/img/productVid.mp4') ?>" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="videoBtns mobileVideoBtns">
+                                        <div>
+                                            <label class="muteBtnContainer m-0" id="mobilePlay">
+                                            <input  type="checkbox">
+                                                <svg viewBox="0 0 24 24" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg" class="mute"><g id="SVGRepo_bgCarrier" stroke-width="0"/><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/><g id="SVGRepo_iconCarrier"> <path d="M21.4086 9.35258C23.5305 10.5065 23.5305 13.4935 21.4086 14.6474L8.59662 21.6145C6.53435 22.736 4 21.2763 4 18.9671L4 5.0329C4 2.72368 6.53435 1.26402 8.59661 2.38548L21.4086 9.35258Z" fill="#8340A1"/> </g></svg>
+                                                <svg viewBox="0 0 24 24" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg" class="voice"><g id="SVGRepo_bgCarrier" stroke-width="0"/><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/><g id="SVGRepo_iconCarrier"> <path d="M2 6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2C7.88562 2 8.82843 2 9.41421 2.58579C10 3.17157 10 4.11438 10 6V18C10 19.8856 10 20.8284 9.41421 21.4142C8.82843 22 7.88562 22 6 22C4.11438 22 3.17157 22 2.58579 21.4142C2 20.8284 2 19.8856 2 18V6Z" fill="#8340A1"/> <path d="M14 6C14 4.11438 14 3.17157 14.5858 2.58579C15.1716 2 16.1144 2 18 2C19.8856 2 20.8284 2 21.4142 2.58579C22 3.17157 22 4.11438 22 6V18C22 19.8856 22 20.8284 21.4142 21.4142C20.8284 22 19.8856 22 18 22C16.1144 22 15.1716 22 14.5858 21.4142C14 20.8284 14 19.8856 14 18V6Z" fill="#8340A1"/> </g></svg>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="muteBtnContainer m-0" id="mobileMuteToggle">
+                                            <input  type="checkbox">
+                                                <svg viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="mute"><path d="M301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3zM425 167l55 55 55-55c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-55 55 55 55c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-55-55-55 55c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l55-55-55-55c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg>
+                                                <svg viewBox="0 0 448 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="voice"><path d="M301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3zM412.6 181.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5z"></path></svg>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="swiper-pagination"></div>
-                        <div class="position-absolute w-100 d-flex justify-content-between align-items-center px-3" style="bottom: 44px; z-index: 1000;">
-                            <a href="#reviews" class="rating2 text-white">
-                                <span>4.5</span>
-                                <img src="<?= base_url('assets/new_website/img/star.png') ?>" alt="" style="width: 12px;">
-                                <span>| 10</span>
-                            </a>
-                            <button class="btn text-light px-2 py-1 fs12 rounded-pill scrollBtn" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1000"> <img src="<?= base_url('assets/new_website/img/cards.png') ?>" style="width: 14px;" alt=""> VIEW SIMILAR</button>
+                        <div class="position-absolute w-100 d-flex justify-content-end align-items-center px-3" style="bottom: 30px; right: -4px; z-index: 1000;">
+                            <button class="btn text-light p-1 fs10 rounded-pill scrollBtn" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1000">
+                                <img src="<?= base_url('assets/new_website/img/cards.png') ?>" style="width: 16px;" alt="">
+                                <span>VIEW SIMILAR</span>
+                            </button>
                         </div>
                     </div>
                     <div class="my-1 d-flex justify-content-between align-items-center px-3">
@@ -4127,17 +4250,6 @@
                     0: {
                         slidesPerView: 1
                     }
-                }
-        });
-        var swiper61 = new Swiper('.productImageSwiper2', {
-                slidesPerView: 1,
-                spaceBetween: 0,
-                autoplay:false,
-                loop: false,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                    dynamicBullets: true,
                 },
         });
 
@@ -4216,6 +4328,19 @@
             })
         })
 
+        const sidebarRadioBtns = document.querySelectorAll('input[name="size"]');
+        const sidebarAddToBagBtn = document.querySelector('.sidebarAddToBagBtn');
+        let sidebarRadios = false;
+
+        sidebarRadioBtns.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.checked) {
+                    sidebarRadios = true;
+                    sidebarAddToBagBtn.removeAttribute('disabled');
+                }
+            });
+        });
+
         const addToBagBtn = document.querySelectorAll(".addToBagBtn");
         const mobileSizeDialog = document.querySelector(".mobileSizeDialog");
         const closeMobileSizeDialogBtn = document.querySelector("#closeMobileSizeDialogBtn");
@@ -4228,6 +4353,13 @@
                         hasActiveButton = true;
                     }
                 });
+
+                if(sidebarRadios){
+                    btn.classList.add("active");
+                    btn.innerHTML = "<i class='bx bx-shopping-bag'></i> GO TO BAG";
+                    showToast2('Product added to Bag', 'success');
+                    return
+                }                
 
                 if(!hasActiveButton && window.innerWidth < 568){
                     mobileSizeDialog.showModal();
@@ -4251,7 +4383,7 @@
                 } else {
                     btn.classList.add("active");
                     btn.innerHTML = "<i class='bx bx-shopping-bag'></i> GO TO BAG";
-                    showToast('Product added to Bag', 'success');
+                    showToast2('Product added to Bag', 'success');
                 }
             })
         })
@@ -4338,7 +4470,7 @@
                 
             );
             document.body.classList.remove("sidebar-open");
-            showToast('Product added to Bag', 'success');
+            showToast2('Product added to Bag', 'success');
 
         })
 
@@ -4614,6 +4746,57 @@
             }, 3000);
         }
 
+        function showToast2(message, type) {
+            const toaster = document.getElementById('toaster2');
+            const toast = document.createElement('div');
+            
+            // Create the structure of the toast
+            toast.className = `toast2 ${type}`;
+            
+            // Add image
+            const img = document.createElement('img');
+            img.src = '<?= base_url('assets/new_website/img/product-1.jpg') ?>'; // Replace with your image URL
+            img.alt = 'Toast Image';
+
+            // Add message
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            messageDiv.textContent = message;
+            
+            // Add button
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'VIEW BAG';
+            closeButton.onclick = function() {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toaster.removeChild(toast);
+                }, 500);
+            };
+
+            // Append elements to the toast
+            toast.appendChild(img);
+            toast.appendChild(messageDiv);
+            toast.appendChild(closeButton);
+
+            // Append toast to the toaster container
+            toaster.appendChild(toast);
+            
+            // Show the toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+
+            // Auto-remove the toast after 3 seconds (if not closed manually)
+            setTimeout(() => {
+                if (toaster.contains(toast)) {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        toaster.removeChild(toast);
+                    }, 500);
+                }
+            }, 3000);
+        }
+
         
 
         const fashionModalBtn = document.querySelectorAll(".fashionModalBtn");
@@ -4692,19 +4875,19 @@
 
         const movableImgs = document.querySelectorAll('.movableImg');
         let isDragging = false;
-        let isPinching = false;
-        let startX, startY, initialX, initialY, initialDistance, scale = 1;
+        let startX, startY, initialX, initialY;
 
         movableImgs.forEach(movableImg => {
             movableImg.addEventListener('mousedown', startDrag);
-            movableImg.addEventListener('touchstart', handleTouchStart, { passive: false });
+            movableImg.addEventListener('touchstart', startDrag, { passive: false });
 
             movableImg.addEventListener('mousemove', drag);
-            movableImg.addEventListener('touchmove', handleTouchMove, { passive: false });
+            movableImg.addEventListener('touchmove', drag, { passive: false });
 
             movableImg.addEventListener('mouseup', stopDrag);
-            movableImg.addEventListener('touchend', handleTouchEnd);
+            movableImg.addEventListener('touchend', stopDrag);
         })
+        
 
         function startDrag(e) {
             e.preventDefault();
@@ -4714,38 +4897,42 @@
             startX = (e.type === 'touchstart') ? e.touches[0].clientX : e.clientX;
             startY = (e.type === 'touchstart') ? e.touches[0].clientY : e.clientY;
 
-            const activeImage = e.target;
             // Store the current position of the image
             initialX = activeImage.offsetLeft;
             initialY = activeImage.offsetTop;
         }
 
         function drag(e) {
-            if (!isDragging || isPinching) return;
+            if (!isDragging) return;
 
             e.preventDefault();
             
+            // Get the new cursor/touch position
             let currentX = (e.type === 'touchmove') ? e.touches[0].clientX : e.clientX;
             let currentY = (e.type === 'touchmove') ? e.touches[0].clientY : e.clientY;
 
+            // Calculate how far the pointer has moved
             const dx = currentX - startX;
             const dy = currentY - startY;
 
+            // Calculate the new position
             let newLeft = initialX + dx;
             let newTop = initialY + dy;
 
             const containerRect = container.getBoundingClientRect();
             const imageRect = activeImage.getBoundingClientRect();
 
-            if (newLeft > 0) newLeft = 0;
-            if (newTop > 0) newTop = 0;
+            // Boundary checks to prevent the image from going outside the container
+            if (newLeft > 0) newLeft = 0;  // Prevent dragging past the left edge
+            if (newTop > 0) newTop = 0;    // Prevent dragging past the top edge
 
             const maxLeft = containerRect.width - imageRect.width;
             const maxTop = containerRect.height - imageRect.height;
 
-            if (newLeft < maxLeft) newLeft = maxLeft;
-            if (newTop < maxTop) newTop = maxTop;            
+            if (newLeft < maxLeft) newLeft = maxLeft;  // Prevent dragging past the right edge
+            if (newTop < maxTop) newTop = maxTop;      // Prevent dragging past the bottom edge            
 
+            // Move the image by adjusting the 'top' and 'left' properties
             activeImage.style.left = newLeft + 'px';
             activeImage.style.top = newTop + 'px';
         }
@@ -4889,6 +5076,23 @@
             } else {
                 document.exitFullscreen();
             }
+        });
+
+        const mobileVideo = document.getElementById('mobileSilderVideo');
+        const playToggle = document.getElementById('mobilePlay');
+        const mobileMuteToggle = document.getElementById('mobileMuteToggle');
+
+        // Mute/Unmute Video
+        playToggle.addEventListener('change', function() {
+            if (mobileVideo.paused) {
+                mobileVideo.play();
+            } else {
+                mobileVideo.pause();
+            }
+        });
+
+        mobileMuteToggle.addEventListener('change', function() {
+            mobileVideo.muted = !mobileVideo.muted;
         });
 
 	</script>
