@@ -245,7 +245,7 @@
             height: 55px;
         }
 
-        .sizeSwiper2{
+        .sizeSwiper2, .sizeSwiper3, .sizeSwiper4{
             height: 55px;
         }
 
@@ -346,6 +346,23 @@
             border-radius: 8px;
         }
 
+        .selectSizeBtn{
+            background-color: white;
+            position: relative;
+            border: 2px solid var(--maincolor);
+            outline: none !important;
+            border-radius: 20px;
+            margin-top: 0.5rem;
+            transition: all 200ms ease;
+            padding: 10px;
+        }
+
+        .selectSizeBtn:hover{
+            background-color: var(--pinkcolor);
+            color: white;
+            border-color: var(--pinkcolor);
+        }
+
         .sizeBtn {
             background-color: white;
             position: relative;
@@ -365,7 +382,7 @@
         }
 
         .sizeBtn.freeSizeBtn{
-            width: 80px;
+            width: 90px;
             border-radius: 20px;
         }
 
@@ -1454,6 +1471,11 @@
             display: none!important;
         }
 
+        .mobileSizeDialog{
+            width: 100%;
+            max-width: 480px;
+        }
+
         .mobileSizeDialog .submitBtn{
             margin-top: 8px;
             background-color: var(--maincolor);
@@ -1616,6 +1638,7 @@
 
             .stickySection{
                 position: relative;
+                padding:0;
                 top: 0;
             }
 
@@ -1933,7 +1956,7 @@
                 </div>
             </div>
         </dialog>
-        <dialog class="mobileSizeDialog" id="dialog" style="max-width: 100%;">
+        <dialog class="mobileSizeDialog" id="dialog">
             <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
                 <p class="m-0 font-weight-bold">Select Size</p>
                 <button id="closeMobileSizeDialogBtn" type="button" aria-label="close" class="btn p-0">
@@ -1941,13 +1964,7 @@
                 </button>
             </div>
             <div class="p-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <p class="m-0 font-weight-bold fs-16">Size: XL</p>
-                    <button class="btn p-0 fs12 font-weight-bold mobileSizeChartBtn" style="color:var(--pinkcolor);">Size chart <i class="fa-solid fa-chevron-right"></i></button>
-                </div>
-                <div class="text-center mb-1">
-                    <span class="p-1 rounded-lg" style="font-size: 12px; background-color: rgb(255, 0, 0, 0.05); color: black;">Size XL recommended</span>    
-                </div>
+                <p class="m-0 font-weight-bold fs-16 text-center">Shirt</p>
                 <div class="swiper sizeSwiper2">
                     <div class="swiper-wrapper">
                         <!-- <div class="swiper-slide">
@@ -1985,7 +2002,83 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn w-100 fs12 font-weight-bold submitBtn" disabled>SELECT SIZE</button>
+                <p class="m-0 font-weight-bold fs-16 text-center">Shirt</p>
+                <div class="swiper sizeSwiper3">
+                    <div class="swiper-wrapper">
+                        <!-- <div class="swiper-slide">
+                            <button class="sizeBtn freeSizeBtn" style="line-height: 1;">Free size</button>
+                        </div> -->
+                        <div class="swiper-slide">
+                            <button class="sizeBtn stockLabel" data-stock="2 Left">S</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn outOfStock">M</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">L</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn recommended">XL</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">XXL</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">XXXL</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">XS</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">XS</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">XS</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">XS</button>
+                        </div>
+                    </div>
+                </div>
+                <p class="m-0 font-weight-bold fs-16 text-center">Shirt</p>
+                <div class="swiper sizeSwiper4">
+                    <div class="swiper-wrapper">
+                        <!-- <div class="swiper-slide">
+                            <button class="sizeBtn freeSizeBtn" style="line-height: 1;">Free size</button>
+                        </div> -->
+                        <div class="swiper-slide">
+                            <button class="sizeBtn stockLabel" data-stock="2 Left">S</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn outOfStock">M</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">L</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn recommended">XL</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">XXL</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">XXXL</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">XS</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">XS</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">XS</button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="sizeBtn">XS</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn w-100 fs12 font-weight-bold submitBtn" disabled>SELECT SIZES</button>
             </div>
         </dialog>
         <dialog class="royalCashDialog" id="dialog">
@@ -2448,7 +2541,7 @@
         </section>
         <section>
             <div class="productHeroSection row mx-auto mt-2 paddingTop">
-                <div class="col-lg-6 col-md-6 col-12 stickySection p-0">
+                <div class="col-lg-6 col-md-6 col-12 stickySection">
                     <div class="d-lg-block d-md-block d-sm-none d-none gap-2">
                         <div class="row">
                             <div thumbsSlider="" class="swiper thumbnailSwiper col-3" style="height: 500px;">
@@ -2719,7 +2812,10 @@
                     <div class="my-3">
                         <p class="text-dark font-weight-bold mb-1">SELECT SIZE</p>
                         <p class="fs12 border rounded-lg text-center text-dark m-0 shadow-sm">SIZE <span class="font-weight-bold">XL</span> RECOMMENDED</p>
-                        <div class="sizeSwiperContainer rounded-lg position-relative">
+                        <div class="mb-1">
+                            <button class="selectSizeBtn" style="line-height: 1;">Select Sizes</button>
+                        </div>
+                        <!-- <div class="sizeSwiperContainer rounded-lg position-relative">
                             <div class="sizeDetails shadow-sm">
                                 <p>Body measurement: <span class="font-weight-bold text-dark">To Fit Bust - 88</span></p>
                                 <p class="m-0 fs12">Size worn by model: S</p>
@@ -2733,9 +2829,6 @@
                             </div>
                             <div class="swiper sizeSwiper">
                                 <div class="swiper-wrapper">
-                                    <!-- <div class="swiper-slide">
-                                        <button class="sizeBtn freeSizeBtn" style="line-height: 1;">Free size</button>
-                                    </div> -->
                                     <div class="swiper-slide">
                                         <button class="sizeBtn stockLabel" data-stock="2 Left">S</button>
                                     </div>
@@ -2769,9 +2862,8 @@
                                 <img src="<?= base_url('assets/new_website/img/measuring-tape.png')?>" style="width: 28px;" alt="">
                                 <span class="fs12 ml-1">We think <span class="font-weight-bold text-dark">XL</span> would be a perfect fit for you, based on your past purchases!</span>
                             </div>
-                        </div>
-                    </div>
-                    <hr class="m-0">
+                        </div>-->
+                    </div> 
                     <div class="border rounded-lg my-3 p-3">
                         <p class="text-dark fs12 font-weight-bold mb-1 text-left">UNLOCK EXCLUSIVE PERKS JUST FOR YOU</p>
                         <div>
@@ -4131,6 +4223,40 @@
                     }
                 }
         });
+        var swiper22 = new Swiper('.sizeSwiper3', {
+                slidesPerView: 9,
+                spaceBetween: 0,
+                autoplay:false,
+                loop: false,
+                breakpoints: {
+                    600: {
+                        slidesPerView: 9
+                    },
+                    400: {
+                        slidesPerView: 8
+                    },
+                    300: {
+                        slidesPerView: 7
+                    }
+                }
+        });
+        var swiper23 = new Swiper('.sizeSwiper4', {
+                slidesPerView: 9,
+                spaceBetween: 0,
+                autoplay:false,
+                loop: false,
+                breakpoints: {
+                    600: {
+                        slidesPerView: 9
+                    },
+                    400: {
+                        slidesPerView: 8
+                    },
+                    300: {
+                        slidesPerView: 7
+                    }
+                }
+        });
 
         var swiper3 = new Swiper('.offerSwiper', {
                 slidesPerView: 1.5,
@@ -4321,52 +4447,66 @@
             });
         });
 
+        const selectSizeBtn = document.querySelector(".selectSizeBtn");
         const addToBagBtn = document.querySelectorAll(".addToBagBtn");
         const mobileSizeDialog = document.querySelector(".mobileSizeDialog");
         const closeMobileSizeDialogBtn = document.querySelector("#closeMobileSizeDialogBtn");
 
+        selectSizeBtn.addEventListener("click", () => {
+            mobileSizeDialog.showModal();
+            document.body.classList.add('sidebar-open');
+        })
+
         addToBagBtn.forEach(btn => {
             btn.addEventListener("click", () => {
-                let hasActiveButton = false;
-                sizeBtn.forEach(button => {
-                    if (button.classList.contains('active')) {
-                        hasActiveButton = true;
-                    }
-                });
-
-                if(sidebarRadios){
-                    btn.classList.add("active");
-                    btn.innerHTML = "<i class='bx bx-shopping-bag'></i> GO TO BAG";
-                    showToast2('Product added to Bag', 'success');
-                    return
-                }                
-
-                if(!hasActiveButton && window.innerWidth < 568){
-                    mobileSizeDialog.showModal();
-                    document.body.classList.add('sidebar-open');
-                    return
-                }else if(!hasActiveButton){
-                    document.querySelector(".sizeSwiper .swiper-wrapper").classList.add('animate__animated', 'animate__shakeX');
-                    window.scrollBy({
-                        top: -300,
-                        behavior: 'smooth'
-                    });
-                    const timer = setTimeout(() => {
-                        document.querySelector(".sizeSwiper .swiper-wrapper").classList.remove('animate__animated', 'animate__shakeX');
-                    }, 1500)
-                    return
-                }
-
-                if(btn.classList.contains("active")){
-                    btn.classList.remove("active");
-                    btn.innerHTML = "<i class='bx bx-shopping-bag'></i> ADD TO BAG";
-                } else {
-                    btn.classList.add("active");
-                    btn.innerHTML = "<i class='bx bx-shopping-bag'></i> GO TO BAG";
-                    showToast2('Product added to Bag', 'success');
-                }
+                mobileSizeDialog.showModal();
+                document.body.classList.add('sidebar-open');   
             })
         })
+        
+
+        // addToBagBtn.forEach(btn => {
+        //     btn.addEventListener("click", () => {
+        //         let hasActiveButton = false;
+        //         sizeBtn.forEach(button => {
+        //             if (button.classList.contains('active')) {
+        //                 hasActiveButton = true;
+        //             }
+        //         });
+
+        //         if(sidebarRadios){
+        //             btn.classList.add("active");
+        //             btn.innerHTML = "<i class='bx bx-shopping-bag'></i> GO TO BAG";
+        //             showToast2('Product added to Bag', 'success');
+        //             return
+        //         }                
+
+        //         if(!hasActiveButton && window.innerWidth < 568){
+        //             mobileSizeDialog.showModal();
+        //             document.body.classList.add('sidebar-open');
+        //             return
+        //         }else if(!hasActiveButton){
+        //             document.querySelector(".sizeSwiper .swiper-wrapper").classList.add('animate__animated', 'animate__shakeX');
+        //             window.scrollBy({
+        //                 top: -300,
+        //                 behavior: 'smooth'
+        //             });
+        //             const timer = setTimeout(() => {
+        //                 document.querySelector(".sizeSwiper .swiper-wrapper").classList.remove('animate__animated', 'animate__shakeX');
+        //             }, 1500)
+        //             return
+        //         }
+
+        //         if(btn.classList.contains("active")){
+        //             btn.classList.remove("active");
+        //             btn.innerHTML = "<i class='bx bx-shopping-bag'></i> ADD TO BAG";
+        //         } else {
+        //             btn.classList.add("active");
+        //             btn.innerHTML = "<i class='bx bx-shopping-bag'></i> GO TO BAG";
+        //             showToast2('Product added to Bag', 'success');
+        //         }
+        //     })
+        // })
 
         closeMobileSizeDialogBtn.addEventListener("click", () => {
             mobileSizeDialog.close();
@@ -4387,51 +4527,76 @@
             })
         })
 
-        const sidebar = document.querySelector(".sidebar");
-        const closeBtn = document.querySelector(".closeSidebarBtn");
-        const sizeChartBtn = document.querySelector(".sizeChartBtn");
+        // const sidebar = document.querySelector(".sidebar");
+        // const closeBtn = document.querySelector(".closeSidebarBtn");
+        // const sizeChartBtn = document.querySelector(".sizeChartBtn");
 
-        const mobileSizeChartBtn = document.querySelector(".mobileSizeChartBtn")
+        // const mobileSizeChartBtn = document.querySelector(".mobileSizeChartBtn")
 
-        sizeChartBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            sidebar.style.transform = "translateX(0)";
-            document.body.classList.add("sidebar-open");
-        });
+        // sizeChartBtn.addEventListener("click", (e) => {
+        //     e.preventDefault();
+        //     sidebar.style.transform = "translateX(0)";
+        //     document.body.classList.add("sidebar-open");
+        // });
 
-        closeBtn.addEventListener("click", () => {
-            sidebar.style.transform = "translateX(100%)";
-            document.body.classList.remove("sidebar-open");
-        });
+        // closeBtn.addEventListener("click", () => {
+        //     sidebar.style.transform = "translateX(100%)";
+        //     document.body.classList.remove("sidebar-open");
+        // });
 
-        mobileSizeChartBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            mobileSizeDialog.close();
-            sidebar.style.transform = "translateX(0)";
-            // document.body.classList.add("sidebar-open");
-        });
+        // mobileSizeChartBtn.addEventListener("click", (e) => {
+        //     e.preventDefault();
+        //     mobileSizeDialog.close();
+        //     sidebar.style.transform = "translateX(0)";
+        // });
 
         const mobileSizeBtns = document.querySelectorAll(".sizeSwiper2 .swiper-wrapper .swiper-slide .sizeBtn");
+        const mobileSizeBtns2 = document.querySelectorAll(".sizeSwiper3 .swiper-wrapper .swiper-slide .sizeBtn");
+        const mobileSizeBtns3 = document.querySelectorAll(".sizeSwiper4 .swiper-wrapper .swiper-slide .sizeBtn");
         const mobileSizeSubmitBtn = document.querySelector(".mobileSizeDialog .submitBtn");
         
         mobileSizeBtns.forEach(btn => {
             btn.addEventListener("click", () => {
                 mobileSizeBtns.forEach(btn => btn.classList.remove('active'));
                 btn.classList.add('active');
-            })
+            })            
+        })
+        mobileSizeBtns2.forEach(btn => {
+            btn.addEventListener("click", () => {
+                mobileSizeBtns2.forEach(btn => btn.classList.remove('active'));
+                btn.classList.add('active');
+            })            
+        })
+        mobileSizeBtns3.forEach(btn => {
+            btn.addEventListener("click", () => {
+                mobileSizeBtns3.forEach(btn => btn.classList.remove('active'));
+                btn.classList.add('active');
+            })            
         })
 
-        mobileSizeBtns.forEach(btn => {
+        mobileSizeBtns3.forEach(btn => {
             btn.addEventListener("click", () => {
                 let hasActiveButton = false;
+                let hasActiveButton2 = false;
+                let hasActiveButton3 = false;
 
                 mobileSizeBtns.forEach(button => {
                     if (button.classList.contains('active')) {
                         hasActiveButton = true;
                     }
                 });                
+                mobileSizeBtns2.forEach(button => {
+                    if (button.classList.contains('active')) {
+                        hasActiveButton2 = true;
+                    }
+                });                
+                mobileSizeBtns3.forEach(button => {
+                    if (button.classList.contains('active')) {
+                        hasActiveButton3 = true;
+                    }
+                });                
                 
-                if(hasActiveButton){
+                if(hasActiveButton && hasActiveButton2 && hasActiveButton3){
                     mobileSizeSubmitBtn.removeAttribute("disabled");
                     mobileSizeSubmitBtn.innerHTML = "DONE"
                 } else{
@@ -5038,31 +5203,30 @@
             }
         })
 
-        const video = document.getElementById('productVideo');
-        const muteToggle = document.getElementById('muteToggle');
-        const fullscreenToggle = document.getElementById('fullscreenToggle');
+        // const video = document.getElementById('productVideo');
+        // const muteToggle = document.getElementById('muteToggle');
+        // const fullscreenToggle = document.getElementById('fullscreenToggle');
 
-        // Mute/Unmute Video
-        muteToggle.addEventListener('change', function() {
-            video.muted = !video.muted;
-        });
+        // // Mute/Unmute Video
+        // muteToggle.addEventListener('change', function() {
+        //     video.muted = !video.muted;
+        // });
 
-        // Toggle Fullscreen
-        fullscreenToggle.addEventListener('click', function() {
-            if (!document.fullscreenElement) {
-                video.requestFullscreen().catch(err => {
-                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
-                });
-            } else {
-                document.exitFullscreen();
-            }
-        });
+        // // Toggle Fullscreen
+        // fullscreenToggle.addEventListener('click', function() {
+        //     if (!document.fullscreenElement) {
+        //         video.requestFullscreen().catch(err => {
+        //             console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+        //         });
+        //     } else {
+        //         document.exitFullscreen();
+        //     }
+        // });
 
         const mobileVideo = document.getElementById('mobileSilderVideo');
         const playToggle = document.getElementById('mobilePlay');
         const mobileMuteToggle = document.getElementById('mobileMuteToggle');
 
-        // Mute/Unmute Video
         playToggle.addEventListener('change', function() {
             if (mobileVideo.paused) {
                 mobileVideo.play();
