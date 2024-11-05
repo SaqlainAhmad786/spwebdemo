@@ -86,5 +86,11 @@ class Home2 extends Home_Controller
     public function pdpImage(){
    $this->load->view('Home2/pdpImage');
  }
+    public function overview(){
+   $this->load->view('Home2/overview');
+ }
+    public function profile(){
+   $this->load->view('Home2/profile');
+ }
     
 }

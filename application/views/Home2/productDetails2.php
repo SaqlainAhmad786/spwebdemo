@@ -1378,8 +1378,8 @@
         }
 
         .mobileVideoBtns .muteBtnContainer{
-            padding: 17px;
-            --size: 20px;
+            padding: 16px;
+            --size: 16px;
         }
 
         .fullscreenBtn{
@@ -1403,7 +1403,7 @@
         }        
 
         .muteBtnContainer {
-            background-color: white;
+            background-color: rgba(0,0,0,0.3);
             padding: 20px;
             border-radius: 100vh;
             --color: var(--maincolor);
@@ -1601,6 +1601,23 @@
 
         .sidebarTable tr.outofstock .sidebarRadioBtn{
             pointer-events:none;
+        }
+
+        .thumbnailSwiper .swiper-button-next{
+            top: 14px;
+            right:30px;
+            rotate: -90deg;
+        }
+
+        .thumbnailSwiper .swiper-button-prev{
+            top: 447px;
+            left:35px;
+            rotate: 270deg;
+        }
+
+        .productImageSliderContainer{
+            display: grid;
+            grid-template-columns: 2fr 10fr; 
         }
 
         @media (width < 1100px) {
@@ -2543,8 +2560,8 @@
             <div class="productHeroSection row mx-auto mt-2 paddingTop">
                 <div class="col-lg-6 col-md-6 col-12 stickySection">
                     <div class="d-lg-block d-md-block d-sm-none d-none gap-2">
-                        <div class="row">
-                            <div thumbsSlider="" class="swiper thumbnailSwiper col-3" style="height: 500px;">
+                        <div class="productImageSliderContainer">
+                            <div thumbsSlider="" class="swiper thumbnailSwiper py-4" style="height: 460px;">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" />
@@ -2562,8 +2579,12 @@
                                         <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" />
                                     </div>
                                 </div>
+                                <div class="swiper-button-next">
+                                </div>
+                                <div class="swiper-button-prev">
+                                </div>
                             </div>
-                            <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff; height: 500px;" class="swiper thumbnailSwiper2 col-9">
+                            <div style="height: 500px;" class="swiper thumbnailSwiper2 flex-grow-1">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" />
@@ -2603,18 +2624,11 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="position-relative">
-                                    <video width="100%" height="100%" id="mobileSilderVideo" muted loop>
+                                    <video width="100%" height="100%" id="mobileSilderVideo" autoplay muted loop>
                                         <source src="<?= base_url('assets/new_website/img/productVid.mp4') ?>" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
                                     <div class="videoBtns mobileVideoBtns">
-                                        <div>
-                                            <label class="muteBtnContainer m-0" id="mobilePlay">
-                                            <input  type="checkbox">
-                                                <svg viewBox="0 0 24 24" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg" class="mute"><g id="SVGRepo_bgCarrier" stroke-width="0"/><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/><g id="SVGRepo_iconCarrier"> <path d="M21.4086 9.35258C23.5305 10.5065 23.5305 13.4935 21.4086 14.6474L8.59662 21.6145C6.53435 22.736 4 21.2763 4 18.9671L4 5.0329C4 2.72368 6.53435 1.26402 8.59661 2.38548L21.4086 9.35258Z" fill="#8340A1"/> </g></svg>
-                                                <svg viewBox="0 0 24 24" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg" class="voice"><g id="SVGRepo_bgCarrier" stroke-width="0"/><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/><g id="SVGRepo_iconCarrier"> <path d="M2 6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2C7.88562 2 8.82843 2 9.41421 2.58579C10 3.17157 10 4.11438 10 6V18C10 19.8856 10 20.8284 9.41421 21.4142C8.82843 22 7.88562 22 6 22C4.11438 22 3.17157 22 2.58579 21.4142C2 20.8284 2 19.8856 2 18V6Z" fill="#8340A1"/> <path d="M14 6C14 4.11438 14 3.17157 14.5858 2.58579C15.1716 2 16.1144 2 18 2C19.8856 2 20.8284 2 21.4142 2.58579C22 3.17157 22 4.11438 22 6V18C22 19.8856 22 20.8284 21.4142 21.4142C20.8284 22 19.8856 22 18 22C16.1144 22 15.1716 22 14.5858 21.4142C14 20.8284 14 19.8856 14 18V6Z" fill="#8340A1"/> </g></svg>
-                                            </label>
-                                        </div>
                                         <div>
                                             <label class="muteBtnContainer m-0" id="mobileMuteToggle">
                                             <input  type="checkbox">
@@ -4123,10 +4137,15 @@
         var swiper100 = new Swiper(".thumbnailSwiper", {
             direction: 'vertical',
             spaceBetween: 10,
-            slidesPerView: 5,
+            slidesPerView: 4,
             freeMode: true,
             watchSlidesProgress: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
         });
+        
         var swiper200 = new Swiper(".thumbnailSwiper2", {
             spaceBetween: 10,
             thumbs: {
@@ -5224,16 +5243,7 @@
         // });
 
         const mobileVideo = document.getElementById('mobileSilderVideo');
-        const playToggle = document.getElementById('mobilePlay');
         const mobileMuteToggle = document.getElementById('mobileMuteToggle');
-
-        playToggle.addEventListener('change', function() {
-            if (mobileVideo.paused) {
-                mobileVideo.play();
-            } else {
-                mobileVideo.pause();
-            }
-        });
 
         mobileMuteToggle.addEventListener('change', function() {
             mobileVideo.muted = !mobileVideo.muted;
