@@ -2587,7 +2587,15 @@
                             <div style="height: 500px;" class="swiper thumbnailSwiper2 flex-grow-1">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" />
+                                        <div class="parentcontainer">
+                                            <div class="imgContainer" data-zoom="1">
+                                                <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" alt="Zoom Image" />
+                                                <span class="lens"></span>
+                                            </div>
+                                            <div class="zoomWindow" data-zoom="1">
+                                                <img class="zoomedImage" src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" alt="Zoomed Image" />
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" />

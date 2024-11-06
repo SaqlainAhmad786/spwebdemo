@@ -1469,6 +1469,10 @@
             transition: all 200 ease-in-out;
         }
 
+        .homeProductBtn.active{
+            border: 2px solid var(--pinkcolor);
+        }
+
         .homeProductBtn img{
             width: 100%;
             height: 100%;
@@ -2392,13 +2396,13 @@
                 </button>
                 <div class="bg-white rounded-lg mobileExtraProductBtns">
                     <div class="d-flex gap-2 py-2 px-3">
-                        <button class="btn p-0 m-0 homeProductBtn">
+                        <button class="btn p-0 m-0 mobileProductChangeBtn homeProductBtn active" onClick="changeImages(2)">
                             <img src="<?= base_url('assets/new_website/img/shoes.jpg') ?>" alt="">
                         </button>
-                        <button class="btn p-0 m-0 homeProductBtn">
+                        <button class="btn p-0 m-0 mobileProductChangeBtn homeProductBtn" onClick="changeImages(3)">
                             <img src="<?= base_url('assets/new_website/img/jeans.jpg') ?>" alt="">
                         </button>
-                        <button class="btn p-0 m-0 homeProductBtn">
+                        <button class="btn p-0 m-0 mobileProductChangeBtn homeProductBtn" onClick="changeImages(1)">
                             <img src="<?= base_url('assets/new_website/img/tees.jpeg') ?>" alt="">
                         </button>
                     </div>
@@ -2446,14 +2450,14 @@
             <div class="productHeroSection row m-0 mt-2 paddingTop">
                 <div class="col-lg-7 col-md-6 col-12 px-lg-2 px-md-2 px-sm-2 p-0 stickySection">
                     <div class="d-lg-flex d-md-flex d-sm-none d-none gap-2">
-                        <div class="d-flex flex-column gap-2">
-                            <button class="btn p-0 m-0 homeProductBtn">
+                        <div class="d-flex flex-column gap-2 webExtraProductBtns">
+                            <button class="btn p-0 m-0 webProductChangeBtn homeProductBtn active" onClick="changeImages(2)">
                                 <img src="<?= base_url('assets/new_website/img/shoes.jpg') ?>" alt="">
                             </button>
-                            <button class="btn p-0 m-0 homeProductBtn">
+                            <button class="btn p-0 m-0 webProductChangeBtn homeProductBtn" onClick="changeImages(3)">
                                 <img src="<?= base_url('assets/new_website/img/jeans.jpg') ?>" alt="">
                             </button>
-                            <button class="btn p-0 m-0 homeProductBtn">
+                            <button class="btn p-0 m-0 webProductChangeBtn homeProductBtn" onClick="changeImages(1)">
                                 <img src="<?= base_url('assets/new_website/img/tees.jpeg') ?>" alt="">
                             </button>
                         </div>
@@ -5077,6 +5081,79 @@
         mobileMuteToggle.addEventListener('change', function() {
             mobileVideo.muted = !mobileVideo.muted;
         });
+
+        const image1 = document.querySelectorAll('.parentcontainer .imgContainer img')
+        const image2 = document.querySelectorAll('.zoomedImage')
+        const image3 = document.querySelectorAll('.productImageSwiper .swiper-wrapper .swiper-slide img')
+        const image4 = document.querySelectorAll('.mobileZoomImg img')
+        // const mobileExtraProductBtns = document.quertSelectorAll('.mobileExtraProductBtns .homeProductBtn')
+        // const webExtraProductBtns = document.quertSelectorAll('.webExtraProductBtns .homeProductBtn')
+
+        const imageSets = {
+            1: [
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/27226100/2024/1/29/0d63dbfd-673d-49d0-be10-751fa0d54c0f1706543722864BULLMERMenTribalPrintedAppliqueT-shirt1.jpg",
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/27226100/2024/1/29/19cb4732-f2d8-4cac-a9d5-a7b90a6e37df1706543722846BULLMERMenTribalPrintedAppliqueT-shirt2.jpg",
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/27226100/2024/1/29/48d91740-35f5-4eb4-897b-40a17a3a085a1706543722858BULLMERMenTribalPrintedAppliqueT-shirt3.jpg",
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/27226100/2024/1/29/b3b98bdc-1344-4cdf-bbc3-fe43e1c7a0aa1706543722875BULLMERMenTribalPrintedAppliqueT-shirt4.jpg",
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/27226100/2024/1/29/3787b25f-bd53-4e9d-836c-2c2017baf54a1706543722869BULLMERMenTribalPrintedAppliqueT-shirt5.jpg",
+                ],
+            2: [
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30113890/2024/9/26/b57b31a0-fe24-4718-8941-0040f82d9a521727355692624-Red-Tape-Men-Mesh-Walking-Shoes-9661727355692254-1.jpg",
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30113890/2024/9/26/1722a69f-0f4a-4973-a24f-8f3211bd74401727355692565-Red-Tape-Men-Mesh-Walking-Shoes-9661727355692254-3.jpg",
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30113890/2024/9/26/e95d2939-276a-407d-b37f-cd1cf5698d2a1727355692538-Red-Tape-Men-Mesh-Walking-Shoes-9661727355692254-4.jpg",
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30113890/2024/9/26/5108d2a4-b54b-47d6-bd10-56de9729eff71727355692511-Red-Tape-Men-Mesh-Walking-Shoes-9661727355692254-5.jpg",
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30113890/2024/9/26/da057b64-4f53-421b-9868-c175a103e7fa1727355692486-Red-Tape-Men-Mesh-Walking-Shoes-9661727355692254-6.jpg",
+                ],
+            3: [
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/8706059/2022/8/25/600ba77d-27a6-4d99-8f31-b349edb6aec81661422693616-HIGHLANDER-Men-Blue-Tapered-Fit-Mid-Rise-Clean-Look-Stretcha-1.jpg",
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/8706059/2022/8/25/f5d20af5-9b32-4345-a0fc-3ab1979589801661422693607-HIGHLANDER-Men-Blue-Tapered-Fit-Mid-Rise-Clean-Look-Stretcha-2.jpg",
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/8706059/2022/8/25/2e696775-b4c9-48c1-a0d1-038074083c741661422693596-HIGHLANDER-Men-Blue-Tapered-Fit-Mid-Rise-Clean-Look-Stretcha-3.jpg",
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/8706059/2022/8/25/a7cc4f97-d665-48e7-8f63-6520874cc01c1661422693585-HIGHLANDER-Men-Blue-Tapered-Fit-Mid-Rise-Clean-Look-Stretcha-4.jpg",
+                    "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/8706059/2022/8/25/44ffc4b0-3702-4dd4-bad0-c59eebe6feb31661422693575-HIGHLANDER-Men-Blue-Tapered-Fit-Mid-Rise-Clean-Look-Stretcha-5.jpg",
+                ],
+        };
+
+        function changeImages(setNumber) {
+            const images = document.querySelectorAll(".image-gallery img");
+            const selectedSet = imageSets[setNumber];
+
+            image1.forEach((img, index) => {
+                img.src = selectedSet[index];
+            });
+
+            image2.forEach((img, index) => {
+                img.src = selectedSet[index];
+            });
+
+            image3.forEach((img, index) => {
+                img.src = selectedSet[index];
+            });
+
+            image4.forEach((img, index) => {
+                img.src = selectedSet[index];
+            });
+
+            image5.forEach((img, index) => {
+                img.src = selectedSet[index];
+            });
+        }
+
+        const mobileProductChangeBtn = document.querySelectorAll('.mobileProductChangeBtn')
+        const webProductChangeBtn = document.querySelectorAll('.webProductChangeBtn')
+
+        mobileProductChangeBtn.forEach(btn => {
+            btn.addEventListener("click", () => {
+                mobileProductChangeBtn.forEach(btn => btn.classList.remove('active'));
+                btn.classList.add('active');
+            })
+        })
+
+        webProductChangeBtn.forEach(btn => {
+            btn.addEventListener("click", () => {
+                webProductChangeBtn.forEach(btn => btn.classList.remove('active'));
+                btn.classList.add('active');
+            })
+        })
 
 	</script>
     <?php include('include/footer.php'); ?>

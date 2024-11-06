@@ -184,21 +184,6 @@
             border: 2px solid var(--maincolor);
         }
 
-        .cartCounterBtn {
-            position: relative;
-        }
-
-        .cartCounter {
-            position: absolute;
-            top: -10px;
-            right: -13px;
-            background-color: var(--maincolor);
-            color: white;
-            font-size: 10px;
-            padding-inline:6px;
-            border-radius: 100vh;
-        }
-
         dialog {
             position: fixed;
             top: 50%;
@@ -222,6 +207,7 @@
         .profileUploadDialog .btns{
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
+            place-items: center;
             gap: 8px;
         }
 
@@ -310,7 +296,7 @@
     <main>
         <dialog class="profileUploadDialog" id="dialog">
             <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
-                <p class="m-0 font-weight-bold">Edit Profile picture</p>
+                <p class="m-0 font-weight-bold">EDIT PROFILE PICTURE</p>
                 <button id="closeProfileUploadDialogBtn" type="button" aria-label="close" class="btn p-0">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -338,16 +324,13 @@
                 </div>
                 <div class="d-flex align-items-center">
                     <a class="cartCounterBtn ml-3" href="">
-                        <img src="<?= base_url('assets/new_website/img/search.png') ?>" style="width: 18px;" alt="">
+                        <img src="<?= base_url('assets/new_website/img/search-black.png') ?>" style="width: 18px;" alt="">
                     </a>
                     <a class="cartCounterBtn ml-3" href="">
-                        <img src="<?= base_url('assets/new_website/img/heart.png') ?>" style="width: 20px;" alt="">
+                        <img src="<?= base_url('assets/new_website/img/heart-black.png') ?>" style="width: 20px;" alt="">
                     </a>
                     <a class="cartCounterBtn ml-3" href="">
-                        <img src="<?= base_url('assets/new_website/img/bag.png') ?>" style="width: 20px;" alt="">
-                        <div>
-                            <span class="cartCounter m-0">10</span>
-                        </div>
+                        <img src="<?= base_url('assets/new_website/img/bag-black.png') ?>" style="width: 20px;" alt="">
                     </a>
                 </div>
             </div>
@@ -431,7 +414,7 @@
                 <div class="col-lg-9 col-md-9 col-sm-12 pb-5">
                     <div class="p-3 userCard mt-3 mb-4 d-lg-flex d-md-flex d-sm-flex d-none justify-content-between align-items-end">
                         <img src="<?= base_url('assets/new_website/img/user.png') ?>" alt="">
-                        <a href="#"><i class="fas fa-edit"></i> Edit Profile</a>
+                        <a href="#"><i class="fas fa-edit"></i> EDIT PROFILE</a>
                     </div>
                     <div class="d-lg-none d-md-none d-sm-none d-block my-3 border">
                         <div>
@@ -463,7 +446,9 @@
                             </div>
                         </div>
                     </div>
-                    <p class="mb-1 font-weight-bold text-dark">ORDERS, WISHLIST, AND MORE...</p>
+                    <h1 style="all:unset;">
+                        <p class="mb-1 font-weight-bold text-dark">ORDERS, WISHLIST, AND MORE...</p>
+                    </h1>
                     <div class="py-2 overviewCards">
                         <a href="#" class="border p-2">
                             <img src="<?= base_url('assets/new_website/img/order.png') ?>" alt="">

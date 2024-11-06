@@ -97,21 +97,6 @@
             font-weight: 600;
         }
 
-        .cartCounterBtn {
-            position: relative;
-        }
-
-        .cartCounter {
-            position: absolute;
-            top: -10px;
-            right: -13px;
-            background-color: var(--maincolor);
-            color: white;
-            font-size: 10px;
-            padding-inline:6px;
-            border-radius: 100vh;
-        }
-
         dialog {
             position: fixed;
             top: 50%;
@@ -219,16 +204,13 @@
                 </div>
                 <div class="d-flex align-items-center">
                     <a class="cartCounterBtn ml-3" href="">
-                        <img src="<?= base_url('assets/new_website/img/search.png') ?>" style="width: 18px;" alt="">
+                        <img src="<?= base_url('assets/new_website/img/search-black.png') ?>" style="width: 18px;" alt="">
                     </a>
                     <a class="cartCounterBtn ml-3" href="">
-                        <img src="<?= base_url('assets/new_website/img/heart.png') ?>" style="width: 20px;" alt="">
+                        <img src="<?= base_url('assets/new_website/img/heart-black.png') ?>" style="width: 20px;" alt="">
                     </a>
                     <a class="cartCounterBtn ml-3" href="">
-                        <img src="<?= base_url('assets/new_website/img/bag.png') ?>" style="width: 20px;" alt="">
-                        <div>
-                            <span class="cartCounter m-0">10</span>
-                        </div>
+                        <img src="<?= base_url('assets/new_website/img/bag-black.png') ?>" style="width: 20px;" alt="">
                     </a>
                 </div>
             </div>
@@ -305,7 +287,9 @@
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 pb-5">
-                    <p class="m-0 mt-3 fs16 font-weight-bold text-dark">Profile details</p>
+                    <h1 style="all:unset;">
+                        <p class="m-0 mt-3 fs16 font-weight-bold text-dark">Profile details</p>
+                    </h1>
                     <hr>
                     <div class="fs16 text-dark profileDetailsCont">
                         <p class="m-0 d-flex justify-content-between">

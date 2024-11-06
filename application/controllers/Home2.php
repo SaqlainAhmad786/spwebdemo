@@ -92,5 +92,8 @@ class Home2 extends Home_Controller
     public function profile(){
    $this->load->view('Home2/profile');
  }
+    public function profileEdit(){
+   $this->load->view('Home2/profileEdit');
+ }
     
 }
