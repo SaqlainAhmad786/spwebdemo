@@ -287,6 +287,11 @@
             border-radius: 12% 88% 90% 10% / 10% 49% 51% 10% !important;
         }
 
+        .thumbnailSwiper2 .swiper-slide img{
+            object-fit: cover;
+            width: 100%;
+        }
+
         .swiper-slide{
             text-align:center;
         }
@@ -1618,6 +1623,43 @@
         .productImageSliderContainer{
             display: grid;
             grid-template-columns: 2fr 10fr; 
+            gap: 4px;
+        }
+
+        .product-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.zoom-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.zoom-wrapper:hover .product-image {
+    transform: scale(2); /* Adjust scale factor for more/less zoom */
+    cursor: zoom-out;
+}
+
+        @media (width < 1200px) {
+            .productHeroSection {
+                width: 95%;
+            }
         }
 
         @media (width < 1100px) {
@@ -1630,7 +1672,7 @@
             }
 
             .productHeroSection {
-                width: 90%;
+                width: 95%;
             }
         }
 
@@ -2521,23 +2563,23 @@
         </section>
         <div>
             <div class="mobileZoomImg">
-                <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" class="movableImg"  alt="">
+                <img src="<?= base_url('assets/new_website/img/dressimage1.1.jpg')?>" class="movableImg"  alt="">
                 <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="mobileZoomImg">
-                <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" class="movableImg"  alt="">
+                <img src="<?= base_url('assets/new_website/img/dressimage2.1.jpg')?>" class="movableImg"  alt="">
                 <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="mobileZoomImg">
-                <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" class="movableImg"  alt="">
+                <img src="<?= base_url('assets/new_website/img/dressimage3.1.jpg')?>" class="movableImg"  alt="">
                 <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="mobileZoomImg">
-                <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" class="movableImg" alt="">
+                <img src="<?= base_url('assets/new_website/img/dressimage4.1.jpg')?>" class="movableImg" alt="">
                 <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="mobileZoomImg">
-                <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" class="movableImg" alt="">
+                <img src="<?= base_url('assets/new_website/img/dressimage5.1.jpg')?>" class="movableImg" alt="">
                 <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
             </div>
         </div>
@@ -2564,19 +2606,19 @@
                             <div thumbsSlider="" class="swiper thumbnailSwiper py-4" style="height: 460px;">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" />
+                                        <img src="<?= base_url('assets/new_website/img/dressimage1.1.jpg')?>" />
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" />
+                                        <img src="<?= base_url('assets/new_website/img/dressimage2.1.jpg')?>" />
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" />
+                                        <img src="<?= base_url('assets/new_website/img/dressimage3.1.jpg')?>" />
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" />
+                                        <img src="<?= base_url('assets/new_website/img/dressimage4.1.jpg')?>" />
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" />
+                                        <img src="<?= base_url('assets/new_website/img/dressimage5.1.jpg')?>" />
                                     </div>
                                 </div>
                                 <div class="swiper-button-next">
@@ -2587,27 +2629,29 @@
                             <div style="height: 500px;" class="swiper thumbnailSwiper2 flex-grow-1">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <div class="parentcontainer">
-                                            <div class="imgContainer" data-zoom="1">
-                                                <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" alt="Zoom Image" />
-                                                <span class="lens"></span>
-                                            </div>
-                                            <div class="zoomWindow" data-zoom="1">
-                                                <img class="zoomedImage" src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" alt="Zoomed Image" />
-                                            </div>
+                                        <div class="zoom-wrapper">
+                                            <img src="<?= base_url('assets/new_website/img/dressimage1.1.jpg')?>" alt="Product" class="product-image">
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" />
+                                        <div class="zoom-wrapper">
+                                            <img src="<?= base_url('assets/new_website/img/dressimage2.1.jpg')?>" alt="Product" class="product-image">
+                                        </div>
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" />
+                                        <div class="zoom-wrapper">
+                                            <img src="<?= base_url('assets/new_website/img/dressimage3.1.jpg')?>" alt="Product" class="product-image">
+                                        </div>
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" />
+                                        <div class="zoom-wrapper">
+                                            <img src="<?= base_url('assets/new_website/img/dressimage4.1.jpg')?>" alt="Product" class="product-image">
+                                        </div>
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" />
+                                        <div class="zoom-wrapper">
+                                            <img src="<?= base_url('assets/new_website/img/dressimage5.1.jpg')?>" alt="Product" class="product-image">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -2616,19 +2660,19 @@
                     <div class="d-lg-none d-md-none d-sm-block d-block swiper productImageSwiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" class="mobileZoomImgBtn" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage1.1.jpg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" class="mobileZoomImgBtn" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage2.1.jpg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" class="mobileZoomImgBtn" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage3.1.jpg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" class="mobileZoomImgBtn" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage4.1.jpg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" class="mobileZoomImgBtn" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage5.1.jpg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
                                 <div class="position-relative">
@@ -5255,6 +5299,23 @@
 
         mobileMuteToggle.addEventListener('change', function() {
             mobileVideo.muted = !mobileVideo.muted;
+        });
+
+        document.querySelectorAll('.zoom-wrapper').forEach(wrapper => {
+            wrapper.addEventListener('mousemove', (e) => {
+                const img = e.currentTarget.querySelector('.product-image');
+                const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+
+                const x = ((e.pageX - left) / width) * 100;
+                const y = ((e.pageY - top) / height) * 100;
+
+                img.style.transformOrigin = `${x}% ${y}%`;
+            });
+
+            wrapper.addEventListener('mouseleave', (e) => {
+                const img = e.currentTarget.querySelector('.product-image');
+                img.style.transformOrigin = "center center";
+            });
         });
 
 	</script>

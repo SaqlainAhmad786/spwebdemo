@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title> Slick Pattern - Home </title>
+    <title> Slick Pattern - Edit Profile </title>
     <?php include('include/cssLinks.php'); ?>
     <style>
 
@@ -289,6 +289,20 @@
             margin-bottom: 6px;
         }
 
+        .verifyEmailBtn{
+            background-color: var(--maincolor);
+            color: white;
+        }
+
+        .verifyEmailBtn:hover{
+            background-color: var(--pinkcolor);
+            color: white;
+        }
+
+        .emailInputBtns{
+            display: none;
+        }
+
         @media (width< 1100px) {
             .overviewContainer{
                 width: 85%;
@@ -339,6 +353,14 @@
                 transform: translateY(-100%);
                 min-width: 100%;
                 border-radius: 0;
+            }
+
+            .submitBtn{
+                position: fixed;
+                padding: 12px 0px;
+                bottom: 0;
+                left: 0;
+                z-index: 5;
             }
         }
         
@@ -528,9 +550,15 @@
                             <label for="full_name" class="mb-0">Full Name</label>
                             <input type="text" name="full_name" id="full_name" class="border px-2 py-1" placeholder="Enter your full name">
                         </div>
-                        <div class="d-flex flex-column mt-2">
-                            <label for="email" class="mb-0">Email</label>
-                            <input type="email" name="email" id="email" class="border px-2 py-1" placeholder="Enter your email">
+                        <div>
+                            <div class="d-flex flex-column mt-2">
+                                <label for="email" class="mb-0">Email</label>
+                                <input type="email" name="email" id="email" class="border px-2 py-1" placeholder="Enter your email">
+                            </div>
+                            <div class="gap-2 justify-content-end mt-2 emailInputBtns">
+                                <button class="btn fs14 verifyEmailBtn">VERIFY & SAVE</button>
+                                <button class="btn fs14 border verifyEmailCancelBtn">CANCEL</button>
+                            </div>
                         </div>
                         <div class="d-flex flex-column mt-2">
                             <label class="mb-0">Gender</label>
@@ -548,11 +576,11 @@
                         </div>
                         <div class="d-flex flex-column mt-2">
                             <label for="dob" class="mb-0">Date of Birth</label>
-                            <input type="date" name="dob" id="dob" class="border px-2 py-1">
+                            <input type="date" name="dob" id="dob" class="w-100 border px-2 py-1">
                         </div>
                         <div class="d-flex flex-column mt-2">
                             <label for="marriageDate" class="mb-0">Date of Marriage</label>
-                            <input type="date" name="marriageDate" id="marriageDate" class="border px-2 py-1">
+                            <input type="date" name="marriageDate" id="marriageDate" class="w-100 border px-2 py-1">
                         </div>
                         <div class="d-flex flex-column mt-2">
                             <label for="location" class="mb-0">Location</label>
@@ -566,7 +594,7 @@
                         <div class="mt-2">
                             <input type="text" name="hintName" id="hintName" class="border w-100 px-2 py-1" placeholder="Enter Hint name">
                         </div>
-                        <button class="btn w-100 fs12 font-weight-bold mt-3 rounded-0 submitBtn">SAVE CHANGES</button>
+                        <button class="btn fs14 w-100 font-weight-bold mt-3 rounded-0 submitBtn">SAVE CHANGES</button>
                     </div>
                 </div>
             </div>
@@ -679,11 +707,17 @@
             document.body.classList.remove('sidebar-open');
         })
 
-        const submitBtn = document.querySelector('.submitBtn');
+        const emailInput = document.querySelector('#email');
+        const emailInputBtns = document.querySelector('.emailInputBtns')
+        const verifyEmailCancelBtn = document.querySelector('.verifyEmailCancelBtn')
 
-        submitBtn.addEventListener('click', () => {
-            verificationDialog.showModal();
-            document.body.classList.add('sidebar-open');
+        emailInput.addEventListener('input', () => {
+            emailInputBtns.style.display = 'flex';
+        })
+
+        verifyEmailCancelBtn.addEventListener('click', () => {
+            emailInputBtns.style.display = 'none';
+            emailInput.value = '';
         })
         
     </script>

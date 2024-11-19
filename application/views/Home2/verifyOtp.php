@@ -101,13 +101,13 @@
 <body>
     <?php include('include/header.php'); ?>
     <main class="d-flex align-items-center">
-        <!-- <div class="redirectDialogContainer">
+        <div class="redirectDialogContainer">
             <div class="redirectDialog">
                 <img src="<?=base_url('assets/new_website/img/loader.gif')?>" style="width: 80px;" alt="">
                 <p class="font-weight-bold">Please wait</p>
                 <p>It will take some time</p>
             </div>
-        </div> -->
+        </div>
         <div class="bg-white p-4 mx-auto rounded-lg mt-sm-2 mt-md-4 mt-lg-4 mt-0">
             <!-- <a class="d-block mb-4" href="loginEmail.html">
                 <i class="fa-solid fa-arrow-left"></i>

@@ -580,7 +580,7 @@
                         </a>
                     </div>
                     <div class="mt-2">
-                        <button class="btn logoutBtn">LOGOUT</button>
+                        <button class="btn logoutBtn fs14">LOGOUT</button>
                     </div>
                 </div>
             </div>

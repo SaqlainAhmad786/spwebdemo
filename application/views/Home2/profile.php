@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title> Slick Pattern - Home </title>
+    <title> Slick Pattern - Profile Details </title>
     <?php include('include/cssLinks.php'); ?>
     <style>
 
@@ -293,39 +293,43 @@
                     <hr>
                     <div class="fs16 text-dark profileDetailsCont">
                         <p class="m-0 d-flex justify-content-between">
-                            <span>Name:</span>
+                            <span>Full Name:</span>
                             <span class="text-right">SP Guest</span>
                         </p>
                         <p class="m-0 d-flex justify-content-between">
-                            <span>Mobile number:</span>
+                            <span>Mobile Number:</span>
                             <span class="text-right">9876543210</span>
                         </p>
                         <p class="m-0 d-flex justify-content-between">
-                            <span>Email address:</span>
-                            <span class="text-right">--not set--</span>
+                            <span>Email Address:</span>
+                            <span class="text-right">--not added--</span>
                         </p>
                         <p class="m-0 d-flex justify-content-between">
                             <span>Gender:</span>
                             <span class="text-right">Male</span>
                         </p>
                         <p class="m-0 d-flex justify-content-between">
-                            <span>DOB:</span>
-                            <span class="text-right">--not set--</span>
+                            <span>Date of Birth:</span>
+                            <span class="text-right">--not added--</span>
+                        </p>
+                        <p class="m-0 d-flex justify-content-between">
+                            <span>Date of Marriage:</span>
+                            <span class="text-right">--not added--</span>
                         </p>
                         <p class="m-0 d-flex justify-content-between">
                             <span>Location:</span>
-                            <span class="text-right">--not set--</span>
+                            <span class="text-right">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
                         </p>
                         <p class="m-0 d-flex justify-content-between">
-                            <span>Alternate number:</span>
-                            <span class="text-right">--not set--</span>
+                            <span>Alternate Mobile:</span>
+                            <span class="text-right">--not added--</span>
                         </p>
                         <p class="m-0 d-flex justify-content-between">
-                            <span>Hint name:</span>
-                            <span class="text-right">--not set--</span>
+                            <span>Hint Name:</span>
+                            <span class="text-right">--not added--</span>
                         </p>
                         <div class="mt-3">
-                            <button class="btn font-weight-bold editBtn">Edit</button>
+                            <button class="btn font-weight-bold editBtn fs14">EDIT PROFILE</button>
                         </div>
                     </div>
                 </div>
