@@ -5302,21 +5302,24 @@
         });
 
         document.querySelectorAll('.zoom-wrapper').forEach(wrapper => {
-            wrapper.addEventListener('mousemove', (e) => {
-                const img = e.currentTarget.querySelector('.product-image');
-                const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    wrapper.addEventListener('mousemove', (e) => {
+        const img = e.currentTarget.querySelector('.product-image');
+        const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
 
-                const x = ((e.clientX  - left) / width) * 100;
-                const y = ((e.clientY - top) / height) * 100;
+                const x = ((e.pageX - left) / width) * 100;
+                const y = ((e.pageY - top) / height) * 100;
 
-                img.style.transformOrigin = `${x}% ${y}%`;
-            });
+        // Limit zoom to not exceed certain scale (e.g., 2)
+        img.style.transformOrigin = `${x}% ${y}%`;
+        img.style.transform = `scale(1.5)`; // Adjust the scale factor as needed
+    });
 
-            wrapper.addEventListener('mouseleave', (e) => {
-                const img = e.currentTarget.querySelector('.product-image');
-                img.style.transformOrigin = "center center";
-            });
-        });
+    wrapper.addEventListener('mouseleave', (e) => {
+        const img = e.currentTarget.querySelector('.product-image');
+        img.style.transformOrigin = "center center";
+        img.style.transform = "scale(1)";
+    });
+});
 
 	</script>
     <?php include('include/footer.php'); ?>
