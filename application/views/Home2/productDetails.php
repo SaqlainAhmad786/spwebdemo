@@ -59,6 +59,10 @@
             font-size: 18px;
         }
 
+        .lineHeight{
+            line-height: 1;
+        }
+
         input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
             -webkit-appearance: none;
         }
@@ -1585,6 +1589,39 @@
             pointer-events:none;
         }
 
+        .mobileSliderOverlay{
+            background: rgb(0,0,0);
+            background: linear-gradient(90deg, rgba(0,0,0,1) 20%, rgba(8,194,255,0) 100%);
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            top: 0;
+            left: 0;
+            padding-left: 24px;
+        }
+
+        .mobileSliderOverlay .overlayHeader{
+            font-size: 24px;
+            font-weight: 700;
+            color:white;
+            margin-bottom: 32px;
+        }
+
+        .mobileSliderOverlay ul{
+            display: grid;
+            gap: 16px;
+        }
+
+        .mobileSliderOverlay ul p{
+            border-color: rgba(255,255,255,0.25 )!important;
+        }
+
+
+
+
+
         @media (width < 1100px) {
             .similarProductsContainer{
                 grid-template-columns: repeat(4, 1fr);
@@ -2411,23 +2448,23 @@
         </section>
         <div>
             <div class="mobileZoomImg">
-                <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" class="movableImg"  alt="">
+                <img src="<?= base_url('assets/new_website/img/dressimage1.jpeg')?>" class="movableImg"  alt="">
                 <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="mobileZoomImg">
-                <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" class="movableImg"  alt="">
+                <img src="<?= base_url('assets/new_website/img/dressimage2.jpeg')?>" class="movableImg"  alt="">
                 <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="mobileZoomImg">
-                <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" class="movableImg"  alt="">
+                <img src="<?= base_url('assets/new_website/img/dressimage3.jpeg')?>" class="movableImg"  alt="">
                 <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="mobileZoomImg">
-                <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" class="movableImg" alt="">
+                <img src="<?= base_url('assets/new_website/img/dressimage4.jpeg')?>" class="movableImg" alt="">
                 <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="mobileZoomImg">
-                <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" class="movableImg" alt="">
+                <img src="<?= base_url('assets/new_website/img/dressimage5.jpeg')?>" class="movableImg" alt="">
                 <button class="btn closeMobileZoomImg"><i class="fa-solid fa-xmark"></i></button>
             </div>
         </div>
@@ -2532,19 +2569,44 @@
                     <div class="d-lg-none d-md-none d-sm-block d-block swiper productImageSwiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage1.jpg')?>" class="mobileZoomImgBtn" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage1.jpeg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage2.jpg')?>" class="mobileZoomImgBtn" alt="">
+                                <div class="position-relative">
+                                    <img src="<?= base_url('assets/new_website/img/dressimage2.jpeg')?>" class="mobileZoomImgBtn" alt="">
+                                    <div class="position-absolute text-left mobileSliderOverlay">
+                                        <p class="overlayHeader">Key Features</p>
+                                        <div>
+                                            <ul>
+                                                <li>
+                                                    <p class="m-0">Fabric</p>
+                                                    <p class="m-0 fs16 text-white pb-2 border-bottom">100% cotton</p>
+                                                </li>
+                                                <li>
+                                                    <p class="m-0">Fabric</p>
+                                                    <p class="m-0 fs16 text-white pb-2 border-bottom">100% cotton</p>
+                                                </li>
+                                                <li>
+                                                    <p class="m-0">Fabric</p>
+                                                    <p class="m-0 fs16 text-white pb-2 border-bottom">100% cotton</p>
+                                                </li>
+                                                <li>
+                                                    <p class="m-0">Fabric</p>
+                                                    <p class="m-0 fs16 text-white pb-2 border-bottom">100% cotton</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage3.jpg')?>" class="mobileZoomImgBtn" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage3.jpeg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage4.jpg')?>" class="mobileZoomImgBtn" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage4.jpeg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?= base_url('assets/new_website/img/dressimage5.jpg')?>" class="mobileZoomImgBtn" alt="">
+                                <img src="<?= base_url('assets/new_website/img/dressimage5.jpeg')?>" class="mobileZoomImgBtn" alt="">
                             </div>
                             <div class="swiper-slide">
                                 <div class="position-relative">
