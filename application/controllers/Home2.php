@@ -11,6 +11,7 @@ class Home2 extends Home_Controller
       $this->sitepermission = $this->db->get('site_permission')->row(); 
       $this->load->model('Web_model');
     }
+    
     public function index()
     {
         // $data["sliders"] = getData('slider',['is_status'=>'true'],'','','','asc');
@@ -95,8 +96,21 @@ class Home2 extends Home_Controller
     public function profileEdit(){
    $this->load->view('Home2/profileEdit');
  }
+ 
     public function myOrder(){
    $this->load->view('Home2/myOrder');
  }
+
+
+ public function order_details(){
+  $this->load->view('Home2/order_details');
+}
+
+public function contactus(){
+  $this->load->view('Home2/contactus');
+}
+
+
+
     
 }
