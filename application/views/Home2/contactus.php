@@ -357,45 +357,39 @@
                     <div class="row py-3 custom-bg-color">
                         
                         <div class="col-md-12">
+
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-1">
-                                            <i class="fa fa-times-circle" style="font-size:24px"></i>
+                                        <div class="col-sm-1 col-2">
+                                            <center> <i class="fa fa-times-circle" style="font-size:24px"></i> </center>
                                         </div>
-                                        <div class="col-11">
+                                        <div class="col-sm-11 col-10 px-0">
                                             <b> Cancelled </b> <br>
-                                              <span> on Fri, 20 Dec as per your request </span>
+                                            <span> on Fri, 20 Dec as per your request </span>
                                             <br>
                                         </div>
                                     </div>
 
                                     <div class="row mx-1 py-1 custom-bg-color">
                                         <div class="col-1 px-sm-1 px-0">
-                                            <img src="<?= base_url('public/images/jeans.webp') ?>" class="object-fit-contain"  alt="no-img">
+                                            <img src="<?= base_url('public/images/jeans.webp') ?>"
+                                                class="object-fit-contain" alt="no-img">
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-sm-10 col-9">
                                             <b> Refund Credited </b> <br>
-                                            <span> Your refund of ₹450.00 for return has been proccessed jeans </span>
+                                            <span> Men jeans </span>
                                             <br>
                                             <p> Size : 34 </p>
                                         </div>
-                                        <div class="col-1">
-                                            <a href="<?php echo site_url('Home2/order_details'); ?>"> <i class="fa fa-angle-right" style="font-size:21px"></i> </a>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="rating">
-                                                <span data-value="5" onclick="rate(5)">☆</span>
-                                                <span data-value="4" onclick="rate(4)">☆</span>
-                                                <span data-value="3" onclick="rate(3)">☆</span>
-                                                <span data-value="2" onclick="rate(2)">☆</span>
-                                                <span data-value="1" onclick="rate(1)">☆</span>
-                                              </div>
-                                              <p> Rate & Review to <b> earn spweb </b> </p>
+                                        <div class="col-sm-1 col-2 d-flex align-items-center">
+                                            <a href="<?php echo site_url('Home2/order_details'); ?>"> <i class="fa fa-angle-right"
+                                                    style="font-size:21px"></i> </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
                         <div class="col-md-12">
@@ -405,11 +399,34 @@
                                     <p> Hi , let us help you with your queries </p>
                                     <div>
                                         <button type="button" class="btn custom-btn"> CHAT WITH US </button>
-                                        <a href="tel:1234567890" class="btn custom-btn"> CALL US </a>
+                                        <a data-bs-toggle="modal" data-bs-target="#callusmodal" class="btn custom-btn"> CALL US </a>
                                     </div>
                                 </div>
                             </div>
-                    </div>
+
+                            <!-- callusmodal Modal -->
+                         <div class="modal fade" id="callusmodal" tabindex="-1" role="dialog"
+                            data-bs-backdrop="static" data-bs-keyboard="false"
+                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header pb-0 pt-2">
+                                        <h5 class="modal-title" id="staticBackdropLabel"> <b> CALL US </b> </h5>
+                                        <button type="button" class="close"
+                                            data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <p> Please call us on <b> +1234567890.</b> Use your registered number for better experience. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end callusmodal Modal -->
+
+                        </div>
 
                     </div>
 

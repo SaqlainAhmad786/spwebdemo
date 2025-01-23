@@ -9255,3 +9255,26 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 .aa-ItemIcon {
     box-shadow: none !important;
 }
+
+
+.custom-btn {
+    background-color: #8340a1;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: #e83e8c;
+    color: white; 
+}
+
+
+a:hover {
+    color: #8340a1;
+  }
+
+  input[type="radio"]:checked {
+    accent-color: #8340a1; /* Modern browsers support accent-color */
+    }

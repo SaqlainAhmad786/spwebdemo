@@ -12,6 +12,14 @@
             box-sizing: border-box;
         }
 
+        input[type="radio"]:checked {
+        accent-color: #8340a1; /* Modern browsers support accent-color */
+        }
+
+        .modal-dialog-centered.modal-dialog-scrollable .modal-content {
+            min-height: 450px;
+        }
+        
         h3 {
             font-family: var(--heading_font);
             font-size: 28px;
@@ -280,6 +288,44 @@
             border-radius: 50%;
         }
 
+        .scroll-container {
+            display: flex;
+            overflow-x: scroll;
+            gap: 20px;
+            padding: 20px;
+            scroll-snap-type: x mandatory;
+            }
+
+            .scroll-item {
+            flex: 0 0 auto;
+            width: 200px;
+            text-align: center;
+            scroll-snap-align: start;
+            }
+
+            .scroll-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            }
+
+            .item-info h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+            }
+
+            .item-info p {
+            font-size: 0.9em;
+            color: #777;
+            margin: 5px 0;
+            }
+
+            .item-info span {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+            }
+
         .row.overflow-scroll::-webkit-scrollbar {
             height: 8px;
         }
@@ -294,7 +340,8 @@
         }
 
         .hover-brightness {
-            transition: filter 0.2s ease;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
         }
 
         .hover-brightness:hover {
@@ -631,7 +678,7 @@
                         </div>
 
 
-                        <div class="col-md-12 d-flex justify-content-center">
+                        <div class="col-md-12 d-flex justify-content-center mt-2">
                             <img src="<?= base_url('public/images/jeans.webp') ?>" class="hover-brightness"
                                 style="height: 123px;" alt=""> <br>
                         </div>
@@ -639,7 +686,7 @@
                         <div class="col-md-12 mt-2">
                             <center>
                                 <b> T-SHIRT </b> <br>
-                                <span> Lsdhvbs bvjh bcsdv jbszdvshdfv jbvsdh dfh </pspan> <br>
+                                <span> Men jeans </pspan> <br>
                             </center>
                         </div>
 
@@ -655,17 +702,15 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12 py-3 d-flex">
-                                            <b> Arriving </b> <span> by fri,25 Des </span>
-                                            <i class='fas fa-angle-right ml-auto'></i>
+                                            <b> Arriving </b> &nbsp; <span> by fri,25 Des </span>
                                         </div>
                                         <div class="col-12 py-3 bg-active-custom d-flex" data-bs-toggle="modal" data-bs-target="#trackmodal">
                                             <b> Placed </b>
-                                            <b> Order Placed </b> <span> on 19 Des</span>
+                                            <b> Order Placed </b>  &nbsp; <span> on 19 Des</span>
                                             <i class='fas fa-angle-right ml-auto'></i>
                                         </div>
                                         <div class="col-12 py-3 d-flex">
-                                            <b> Order Placed </b> <span> on 19 Des </span>
-                                            <i class='fas fa-angle-right ml-auto'></i>
+                                            <b> Order Placed </b> &nbsp; <span> on 19 Des </span>
                                         </div>
                                     </div>
                                 </div>
@@ -916,7 +961,7 @@
 
                                                     <div class="modal-header pb-0">
                                                         <h5 class="modal-title" id="staticBackdropLabel"> <b> Reason For Cancellation </b> <br>
-                                                            <span> Please tell us correct reason for cancellation. This information is only used to improve our services </span>
+                                                            <span class="fs12"> Please tell us correct reason for cancellation. This information is only used to improve our services </span>
                                                         </h5>
                                                         <button type="button" class="close"
                                                             data-bs-dismiss="modal" aria-label="Close">
@@ -931,6 +976,65 @@
                                                                 <div class="row">
                                                                     <div class="col-12">
 
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="cancel_reason" id="Incorrect_size" value="option1">
+                                                                            <label class="form-check-label" for="Incorrect_size">
+                                                                              Incorrect Size Order
+                                                                            </label>
+                                                                          </div>
+                                                                          <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="cancel_reason" id="product_not_require" value="option2">
+                                                                            <label class="form-check-label" for="product_not_require">
+                                                                              Product Not require any more
+                                                                            </label>
+                                                                          </div>
+                                                         
+                                                                          <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="cancel_reason" id="Cash_Issue" value="option2">
+                                                                            <label class="form-check-label" for="Cash_Issue">
+                                                                              Cash Issue
+                                                                            </label>
+                                                                          </div>
+                                                                          
+                                                                          <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="cancel_reason" id="ordered_mistake" value="option2">
+                                                                            <label class="form-check-label" for="ordered_mistake">
+                                                                              Ordered By Mistake
+                                                                            </label>
+                                                                          </div>
+                                                                          
+                                                                          <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="cancel_reason" id="style_color" value="option2">
+                                                                            <label class="form-check-label" for="style_color">
+                                                                              Wants to change style/color
+                                                                            </label>
+                                                                          </div>
+
+                                                                          <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="cancel_reason" id="delayed_delivery" value="option2">
+                                                                            <label class="form-check-label" for="delayed_delivery">
+                                                                              Delayed Delivery Cancellation
+                                                                            </label>
+                                                                          </div>
+
+                                                                          <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="cancel_reason" id="duplicate_order" value="option2">
+                                                                            <label class="form-check-label" for="duplicate_order">
+                                                                              Duplicate Order
+                                                                            </label>
+                                                                          </div>
+                                                                          <hr>
+                                                                          <textarea name="" class="form-control" placeholder="Additional Comments"></textarea>
+
+                                                                          
+                                                                          <div class="d-flex justify-content-between mt-3">
+                                                                            <span> REFUND DETAILS <br>
+                                                                                <b>₹ 0</b>
+                                                                            </span> 
+
+                                                                            <button class="btn custom-btn">CANCEL <i class="fa fa-arrow-right"></i> </button>
+                                                                            
+                                                                          </div>
                                                                  
                                                                     </div>
                                                                 </div>
@@ -964,111 +1068,141 @@
                         <div class="col-md-12 px-0">
                             <div class="card mt-3">
                                 <div class="card-body py-1">
-                                    <b class="fs16"> Items that go well with this item </b>
-                                    <div class="row mb-2 mt-5 gap-2 flex-nowrap overflow-scroll"
-                                        style="display: flex; overflow-x: auto;">
+                                    <b class="fs16"> Items that go well with this item </b>  
 
-                                        <div class="col-md-3 border flex-shrink-0">
-                                            <img src="<?= base_url('public/images/jeans.webp') ?>"
-                                                style="height: 224px;width:100%" alt=""><br>
+                                   
+                                    <div class="scroll-container">
+                                      
+                                        <div class="scroll-item">
+                                          <img src="<?= base_url('public/images/jeans.webp') ?>" alt="Product 1">
+                                          <div class="item-info">
                                             <div class="mt-1 d-flex justify-content-between">
                                                 <span> T-SHIRT </span>
                                                 <span> <i class="far fa-heart heart-icon"></i> </span>
                                             </div>
-                                            <span class="fs12"> Tea Tree Essential oil. </span>
+                                            <p class="d-flex"> Tea Tree Essential oil.</p>
                                             <div class="mt-y d-flex justify-content-between">
                                                 <span class="fs11"> <b>₹ </b> 1339 </span>
                                                 <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
                                                         (15% OFF) </span></span>
                                             </div>
-                                        </div>
-
-                                        <div class="col-md-3 border flex-shrink-0">
-                                            <img src="<?= base_url('public/images/jeans.webp') ?>"
-                                                style="height: 224px;width:100%" alt=""><br>
-                                            <div class="mt-1 d-flex justify-content-between">
-                                                <span> T-SHIRT </span>
-                                                <span> <i class="far fa-heart heart-icon"></i> </span>
-                                            </div>
-                                            <span class="fs12"> Tea Tree Essential oil. </span>
-                                            <div class="mt-y d-flex justify-content-between">
-                                                <span class="fs11"> <b>₹ </b> 1339 </span>
-                                                <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
-                                                        (15% OFF) </span></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 border flex-shrink-0">
-                                            <img src="<?= base_url('public/images/jeans.webp') ?>"
-                                                style="height: 224px;width:100%" alt=""><br>
-                                            <div class="mt-1 d-flex justify-content-between">
-                                                <span> T-SHIRT </span>
-                                                <span> <i class="far fa-heart heart-icon"></i> </span>
-                                            </div>
-                                            <span class="fs12"> Tea Tree Essential oil. </span>
-                                            <div class="mt-y d-flex justify-content-between">
-                                                <span class="fs11"> <b>₹ </b> 1339 </span>
-                                                <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
-                                                        (15% OFF) </span></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 border flex-shrink-0">
-                                            <img src="<?= base_url('public/images/jeans.webp') ?>"
-                                                style="height: 224px;width:100%" alt=""><br>
-                                            <div class="mt-1 d-flex justify-content-between">
-                                                <span> T-SHIRT </span>
-                                                <span> <i class="far fa-heart heart-icon"></i> </span>
-                                            </div>
-                                            <span class="fs12"> Tea Tree Essential oil. </span>
-                                            <div class="mt-y d-flex justify-content-between">
-                                                <span class="fs11"> <b>₹ </b> 1339 </span>
-                                                <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
-                                                        (15% OFF) </span></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 border flex-shrink-0">
-                                            <img src="<?= base_url('public/images/jeans.webp') ?>"
-                                                style="height: 224px;width:100%" alt=""><br>
-                                            <div class="mt-1 d-flex justify-content-between">
-                                                <span> T-SHIRT </span>
-                                                <span> <i class="far fa-heart heart-icon"></i> </span>
-                                            </div>
-                                            <span class="fs12"> Tea Tree Essential oil. </span>
-                                            <div class="mt-y d-flex justify-content-between">
-                                                <span class="fs11"> <b>₹ </b> 1339 </span>
-                                                <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
-                                                        (15% OFF) </span></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 border flex-shrink-0">
-                                            <img src="<?= base_url('public/images/jeans.webp') ?>"
-                                                style="height: 224px;width:100%" alt=""><br>
-                                            <div class="mt-1 d-flex justify-content-between">
-                                                <span> T-SHIRT </span>
-                                                <span> <i class="far fa-heart heart-icon"></i> </span>
-                                            </div>
-                                            <span class="fs12"> Tea Tree Essential oil. </span>
-                                            <div class="mt-y d-flex justify-content-between">
-                                                <span class="fs11"> <b>₹ </b> 1339 </span>
-                                                <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
-                                                        (15% OFF) </span></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 border flex-shrink-0">
-                                            <img src="<?= base_url('public/images/jeans.webp') ?>"
-                                                style="height: 224px;width:100%" alt=""><br>
-                                            <div class="mt-1 d-flex justify-content-between">
-                                                <span> T-SHIRT </span>
-                                                <span> <i class="far fa-heart heart-icon"></i> </span>
-                                            </div>
-                                            <span class="fs12"> Tea Tree Essential oil. </span>
-                                            <div class="mt-y d-flex justify-content-between">
-                                                <span class="fs11"> <b>₹ </b> 1339 </span>
-                                                <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
-                                                        (15% OFF) </span></span>
-                                            </div>
+                                          </div>
                                         </div>
 
-                                    </div>
+                                        <div class="scroll-item">
+                                            <img src="<?= base_url('public/images/jeans.webp') ?>" alt="Product 1">
+                                            <div class="item-info">
+                                              <div class="mt-1 d-flex justify-content-between">
+                                                  <span> T-SHIRT </span>
+                                                  <span> <i class="far fa-heart heart-icon"></i> </span>
+                                              </div>
+                                              <p class="d-flex"> Tea Tree Essential oil.</p>
+                                              <div class="mt-y d-flex justify-content-between">
+                                                  <span class="fs11"> <b>₹ </b> 1339 </span>
+                                                  <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
+                                                          (15% OFF) </span></span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          
+                                          <div class="scroll-item">
+                                            <img src="<?= base_url('public/images/jeans.webp') ?>" alt="Product 1">
+                                            <div class="item-info">
+                                              <div class="mt-1 d-flex justify-content-between">
+                                                  <span> T-SHIRT </span>
+                                                  <span> <i class="far fa-heart heart-icon"></i> </span>
+                                              </div>
+                                              <p class="d-flex"> Tea Tree Essential oil.</p>
+                                              <div class="mt-y d-flex justify-content-between">
+                                                  <span class="fs11"> <b>₹ </b> 1339 </span>
+                                                  <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
+                                                          (15% OFF) </span></span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          
+                                          <div class="scroll-item">
+                                            <img src="<?= base_url('public/images/jeans.webp') ?>" alt="Product 1">
+                                            <div class="item-info">
+                                              <div class="mt-1 d-flex justify-content-between">
+                                                  <span> T-SHIRT </span>
+                                                  <span> <i class="far fa-heart heart-icon"></i> </span>
+                                              </div>
+                                              <p class="d-flex"> Tea Tree Essential oil.</p>
+                                              <div class="mt-y d-flex justify-content-between">
+                                                  <span class="fs11"> <b>₹ </b> 1339 </span>
+                                                  <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
+                                                          (15% OFF) </span></span>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="scroll-item">
+                                            <img src="<?= base_url('public/images/jeans.webp') ?>" alt="Product 1">
+                                            <div class="item-info">
+                                              <div class="mt-1 d-flex justify-content-between">
+                                                  <span> T-SHIRT </span>
+                                                  <span> <i class="far fa-heart heart-icon"></i> </span>
+                                              </div>
+                                              <p class="d-flex"> Tea Tree Essential oil.</p>
+                                              <div class="mt-y d-flex justify-content-between">
+                                                  <span class="fs11"> <b>₹ </b> 1339 </span>
+                                                  <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
+                                                          (15% OFF) </span></span>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="scroll-item">
+                                            <img src="<?= base_url('public/images/jeans.webp') ?>" alt="Product 1">
+                                            <div class="item-info">
+                                              <div class="mt-1 d-flex justify-content-between">
+                                                  <span> T-SHIRT </span>
+                                                  <span> <i class="far fa-heart heart-icon"></i> </span>
+                                              </div>
+                                              <p class="d-flex"> Tea Tree Essential oil.</p>
+                                              <div class="mt-y d-flex justify-content-between">
+                                                  <span class="fs11"> <b>₹ </b> 1339 </span>
+                                                  <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
+                                                          (15% OFF) </span></span>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="scroll-item">
+                                            <img src="<?= base_url('public/images/jeans.webp') ?>" alt="Product 1">
+                                            <div class="item-info">
+                                              <div class="mt-1 d-flex justify-content-between">
+                                                  <span> T-SHIRT </span>
+                                                  <span> <i class="far fa-heart heart-icon"></i> </span>
+                                              </div>
+                                              <p class="d-flex"> Tea Tree Essential oil.</p>
+                                              <div class="mt-y d-flex justify-content-between">
+                                                  <span class="fs11"> <b>₹ </b> 1339 </span>
+                                                  <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
+                                                          (15% OFF) </span></span>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="scroll-item">
+                                            <img src="<?= base_url('public/images/jeans.webp') ?>" alt="Product 1">
+                                            <div class="item-info">
+                                              <div class="mt-1 d-flex justify-content-between">
+                                                  <span> T-SHIRT </span>
+                                                  <span> <i class="far fa-heart heart-icon"></i> </span>
+                                              </div>
+                                              <p class="d-flex"> Tea Tree Essential oil.</p>
+                                              <div class="mt-y d-flex justify-content-between">
+                                                  <span class="fs11"> <b>₹ </b> 1339 </span>
+                                                  <span class="fs11"> <del> ₹1539 </del> <span class="text-danger">
+                                                          (15% OFF) </span></span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                       
+                                        <!-- Add more items as needed -->
+                                      </div>
 
                                 </div>
                             </div>
@@ -1124,12 +1258,167 @@
                                                 <b> Total Paid </b>
                                                 <b> ₹499.00</b>
                                             </div>
+                                            <hr>
+                                            <div class="">
+                                                <a data-bs-toggle="modal" data-bs-target="#get_invoice" class="btn btn-sm custom-btn fs12"> GET INVOICE </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
+                             <!-- end -->
 
+                              <!--  get invoice -->
+                              <div class="modal fade" id="get_invoice" tabindex="-1" role="dialog"
+                                data-bs-backdrop="static" data-bs-keyboard="false"
+                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header py-2">
+                                            <h5 class="modal-title" id="staticBackdropLabel"> <b> INVOICES </b> </h5> 
+                                        
+                                            <button type="button" class="close" data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <span style="color: #e83e8c"> In case of download failure please raise a request from </span> <br>
+                                                    <a href="<?php echo site_url('Home2/contactus'); ?>" style="color: #8340A1"> Helpcenter </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-body">
+                                          
+                                            <div class="container border">
+                                                <div class="row py-3 d-flex align-items-center">
+                                                    <div class="col-sm-1 col-1">
+                                                        <i class='fas fa-file-invoice' style="font-size: 26px;"></i>
+                                                    </div>
+                                                    <div class="col-sm-11 col-10">  
+                                                        <b>Invoice 1</b>
+                                                        <p> cd7b0cccsdffdgfgde8940181d715 </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row border-top py-3 d-flex align-items-center">
+                                                    <div class="col-sm-3 col-5">
+                                                        <span>Charge</span> <br>
+                                                        <span>Amount</span> <br>
+                                                        <span>Invoice Date</span>
+                                                    </div>
+                                                    <div class="col-sm-9 col-7">  
+                                                        <span> Platform fee </span> <br>
+                                                        <span> ₹20 </span> <br>
+                                                        <span> 17th Oct 2024 </span>
+                                                           
+                                                    </div>
+                                                </div>
+                                                <div class="row border-top py-3">
+                                                    <div class="col-12">
+                                                        <a class="btn btn-sm custom-btn fs12"> DOWNLOAD </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="container border">
+                                                <div class="row py-3 d-flex align-items-center">
+                                                    <div class="col-sm-1 col-1">
+                                                        <i class='fas fa-file-invoice' style="font-size: 26px;"></i>
+                                                    </div>
+                                                    <div class="col-sm-11 col-10">  
+                                                        <b>Invoice 1</b>
+                                                        <p> cd7b0cccsdffdgfgde8940181d715 </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row border-top py-3 d-flex align-items-center">
+                                                    <div class="col-sm-3 col-5">
+                                                        <span>Charge</span> <br>
+                                                        <span>Amount</span> <br>
+                                                        <span>Invoice Date</span>
+                                                    </div>
+                                                    <div class="col-sm-9 col-7">  
+                                                        <span> Platform fee </span> <br>
+                                                        <span> ₹20 </span> <br>
+                                                        <span> 17th Oct 2024 </span>
+                                                           
+                                                    </div>
+                                                </div>
+                                                <div class="row border-top py-3">
+                                                    <div class="col-12">
+                                                        <a class="btn btn-sm custom-btn fs12"> DOWNLOAD </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="container border">
+                                                <div class="row py-3 d-flex align-items-center">
+                                                    <div class="col-sm-1 col-1">
+                                                        <i class='fas fa-file-invoice' style="font-size: 26px;"></i>
+                                                    </div>
+                                                    <div class="col-sm-11 col-10">  
+                                                        <b>Invoice 1</b>
+                                                        <p> cd7b0cccsdffdgfgde8940181d715 </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row border-top py-3 d-flex align-items-center">
+                                                    <div class="col-sm-3 col-5">
+                                                        <span>Charge</span> <br>
+                                                        <span>Amount</span> <br>
+                                                        <span>Invoice Date</span>
+                                                    </div>
+                                                    <div class="col-sm-9 col-7">  
+                                                        <span> Platform fee </span> <br>
+                                                        <span> ₹20 </span> <br>
+                                                        <span> 17th Oct 2024 </span>
+                                                           
+                                                    </div>
+                                                </div>
+                                                <div class="row border-top py-3">
+                                                    <div class="col-12">
+                                                        <a class="btn btn-sm custom-btn fs12"> DOWNLOAD </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="container border">
+                                                <div class="row py-3 d-flex align-items-center">
+                                                    <div class="col-sm-1 col-1">
+                                                        <i class='fas fa-file-invoice' style="font-size: 26px;"></i>
+                                                    </div>
+                                                    <div class="col-sm-11 col-10">  
+                                                        <b>Invoice 1</b>
+                                                        <p> cd7b0cccsdffdgfgde8940181d715 </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row border-top py-3 d-flex align-items-center">
+                                                    <div class="col-sm-3 col-5">
+                                                        <span>Charge</span> <br>
+                                                        <span>Amount</span> <br>
+                                                        <span>Invoice Date</span>
+                                                    </div>
+                                                    <div class="col-sm-9 col-7">  
+                                                        <span> Platform fee </span> <br>
+                                                        <span> ₹20 </span> <br>
+                                                        <span> 17th Oct 2024 </span>
+                                                           
+                                                    </div>
+                                                </div>
+                                                <div class="row border-top py-3">
+                                                    <div class="col-12">
+                                                        <a class="btn btn-sm custom-btn fs12"> DOWNLOAD </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <!-- end -->
 
                         </div>
 
@@ -1203,7 +1492,7 @@
         })
     </script>
 
-    <!-- like button -->>
+    <!-- like button -->
     <script>
         document.querySelectorAll(".heart-icon").forEach(function(heart) {
             heart.addEventListener("click", function() {
@@ -1211,7 +1500,7 @@
             });
         });
     </script>
-    <!-- end  -->>
+    <!-- end  -->
 
 
 
